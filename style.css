@@ -633,29 +633,233 @@ body {
 
 /* ── Costs Panel ── */
 .costs-panel {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
   margin-bottom: 24px;
 }
 
-.cost-card {
+/* ── Costs Sections ── */
+.costs-section {
   background: var(--bg-surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
-  padding: 18px;
+  padding: 20px;
 }
 
-.cost-label {
-  font-size: 0.68rem;
-  color: var(--text-muted);
+.costs-section-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border-dim);
+}
+
+.costs-section-icon {
+  font-size: 1.1rem;
+}
+
+.costs-section-title {
+  font-size: 0.72rem;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  font-weight: 600;
-  margin-bottom: 8px;
+  color: var(--text-muted);
 }
 
-.cost-value {
+/* ── Resource Bars (Memory, Disk, Battery) ── */
+.resources-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.resource-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 4px 12px;
+  align-items: center;
+}
+
+.resource-row-header {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.resource-icon {
+  font-size: 0.85rem;
+  width: 20px;
+  text-align: center;
+}
+
+.resource-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.resource-nums {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  margin-left: auto;
+}
+
+.resource-bar {
+  height: 6px;
+  background: var(--border);
+  border-radius: 3px;
+  overflow: hidden;
+  flex: 1;
+}
+
+.resource-bar-fill {
+  height: 100%;
+  border-radius: 3px;
+  background: var(--bar-color, var(--accent-blue));
+  transition: width 0.5s ease;
+}
+
+.resource-bar-fill.warn  { background: var(--accent-yellow) !important; }
+.resource-bar-fill.alert { background: var(--accent-red) !important; }
+
+.resource-pct {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  min-width: 36px;
+  text-align: right;
+}
+
+.resource-extra {
+  display: flex;
+  gap: 24px;
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border-dim);
+  flex-wrap: wrap;
+}
+
+.resource-extra-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.resource-extra-label {
+  font-size: 0.62rem;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.resource-extra-value {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* ── LLM Cards (GPT, Claude) ── */
+.llm-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 14px;
+}
+
+.llm-card {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: border-color 0.15s;
+}
+
+.llm-card:hover {
+  border-color: var(--llm-accent, var(--border));
+}
+
+.llm-card-accent {
+  height: 3px;
+  background: var(--llm-accent, var(--border));
+}
+
+.llm-card-body {
+  padding: 16px;
+}
+
+.llm-model {
+  font-family: var(--font-mono);
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.llm-sub {
+  font-size: 0.68rem;
+  color: var(--text-dim);
+  margin-bottom: 14px;
+}
+
+.llm-stats {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 12px;
+}
+
+.llm-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.llm-stat-value {
+  font-family: var(--font-mono);
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1;
+}
+
+.llm-stat-label {
+  font-size: 0.6rem;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.llm-last-used {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  color: var(--text-dim);
+  padding-top: 10px;
+  border-top: 1px solid var(--border-dim);
+}
+
+/* ── Stats Grid (Agent Execution) ── */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+.stat-card {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 14px;
+  text-align: center;
+}
+
+.stat-card.stat-success { border-top: 2px solid var(--accent-green); }
+.stat-card.stat-error   { border-top: 2px solid var(--accent-red); }
+
+.stat-value {
   font-family: var(--font-mono);
   font-size: 1.5rem;
   font-weight: 600;
@@ -663,14 +867,15 @@ body {
   line-height: 1;
 }
 
-.cost-sub {
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
+.stat-label {
+  font-size: 0.62rem;
   color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
   margin-top: 6px;
 }
 
-.cost-budget-bar {
+.stat-bar {
   height: 4px;
   background: var(--border);
   border-radius: 2px;
@@ -678,15 +883,12 @@ body {
   overflow: hidden;
 }
 
-.cost-budget-fill {
+.stat-bar-fill {
   height: 100%;
   border-radius: 2px;
   background: var(--accent-green);
-  transition: width 0.4s ease;
+  transition: width 0.5s ease;
 }
-
-.cost-budget-fill.warn  { background: var(--accent-yellow); }
-.cost-budget-fill.alert { background: var(--accent-red); }
 
 /* ── Error / Empty States ── */
 .empty-state {
@@ -795,7 +997,9 @@ body {
 
   .tab-btn { padding: 8px 14px; font-size: 0.75rem; }
 
-  .costs-panel { grid-template-columns: repeat(2, 1fr); }
+  .llm-grid { grid-template-columns: 1fr; }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .resource-extra { gap: 16px; }
 }
 
 @media (max-width: 480px) {

@@ -12,6 +12,7 @@ const DATA = {
   agents: 'data/agents.json',
   system: 'data/system.json',
   runs:   'data/runs.jsonl',
+  costs:  'data/costs.json',
 };
 
 /* ── Agent emoji map (fallback if not in JSON) ── */
@@ -28,6 +29,7 @@ let state = {
   agents: [],
   system: null,
   runs:   [],
+  costs:  null,
   lastSync: null,
   loading: false,
   errors: [],
@@ -75,6 +77,7 @@ async function loadData() {
     fetchJSON(DATA.agents),
     fetchJSON(DATA.system),
     fetchJSONL(DATA.runs),
+    fetchJSON(DATA.costs),
   ]);
 
   /* agents */
@@ -100,6 +103,14 @@ async function loadData() {
     });
   } else {
     state.errors.push('실행 기록 로딩 실패: ' + results[2].reason.message);
+  }
+
+  /* costs */
+  if (results[3].status === 'fulfilled') {
+    state.costs = results[3].value;
+  } else {
+    /* costs.json is optional — no error shown */
+    state.costs = null;
   }
 
   state.lastSync = new Date();
@@ -375,44 +386,158 @@ function renderRunsTable() {
    RENDER — COSTS PANEL (costs tab)
 ───────────────────────────────────────────── */
 
+/* ── Helper: resource bar HTML ── */
+function resourceBar(label, icon, usedLabel, totalLabel, percent, colorVar) {
+  const cls = percent > 85 ? 'alert' : percent > 65 ? 'warn' : '';
+  return `
+    <div class="resource-row">
+      <div class="resource-row-header">
+        <span class="resource-icon">${icon}</span>
+        <span class="resource-label">${label}</span>
+        <span class="resource-nums">${escHtml(usedLabel)} / ${escHtml(totalLabel)}</span>
+      </div>
+      <div class="resource-bar">
+        <div class="resource-bar-fill ${cls}" style="width:${Math.min(percent,100)}%;--bar-color:var(${colorVar})"></div>
+      </div>
+      <span class="resource-pct">${percent}%</span>
+    </div>`;
+}
+
+/* ── Helper: LLM card HTML ── */
+function llmCard(data, accentColor, defaultModel, defaultSub) {
+  const model = data?.model || defaultModel;
+  const sub   = data?.subscription || defaultSub;
+  const today = data?.sessions_today ?? '—';
+  const total = data?.sessions_total ?? '—';
+  const last  = data?.last_used ? relativeTime(data.last_used) : '사용 기록 없음';
+
+  return `
+    <div class="llm-card" style="--llm-accent:${accentColor}">
+      <div class="llm-card-accent"></div>
+      <div class="llm-card-body">
+        <div class="llm-model">${escHtml(model)}</div>
+        <div class="llm-sub">${escHtml(sub)}</div>
+        <div class="llm-stats">
+          <div class="llm-stat">
+            <span class="llm-stat-value">${today}</span>
+            <span class="llm-stat-label">오늘 세션</span>
+          </div>
+          <div class="llm-stat">
+            <span class="llm-stat-value">${total}</span>
+            <span class="llm-stat-label">전체 세션</span>
+          </div>
+        </div>
+        <div class="llm-last-used">마지막: ${last}</div>
+      </div>
+    </div>`;
+}
+
 function renderCosts() {
   const panel = document.getElementById('costsPanel');
   if (!panel) return;
 
-  const totalRuns   = state.runs.length;
-  const successRuns = state.runs.filter(r => r.status === 'success').length;
-  const failRuns    = totalRuns - successRuns;
+  const c = state.costs;
+  const mem = c?.phone_resources?.memory;
+  const sto = c?.phone_resources?.storage;
+  const bat = c?.phone_resources?.battery;
+  const cpu = c?.phone_resources?.cpu;
+  const gpt = c?.llm_usage?.gpt;
+  const claude = c?.llm_usage?.claude;
+  const stats = c?.agent_stats;
 
-  /* Budget data — replace with real cost_tracker.json when available */
-  const usedBudget  = 0.37;
-  const totalBudget = 5.00;
-  const pct         = Math.round((usedBudget / totalBudget) * 100);
-  const fillClass   = pct > 80 ? 'alert' : pct > 60 ? 'warn' : '';
+  /* fallback from runs state if no costs.json */
+  const totalRuns   = stats?.runs_today ?? state.runs.length;
+  const successRuns = stats?.success_today ?? state.runs.filter(r => r.status === 'success').length;
+  const errorRuns   = stats?.errors_today ?? (totalRuns - successRuns);
+  const successRate = totalRuns > 0 ? Math.round(successRuns / totalRuns * 100) : 0;
+  const cronJobs    = stats?.cron_jobs_active ?? '—';
+
+  /* memory display */
+  const memUsed    = mem ? `${(mem.used_mb / 1024).toFixed(1)}G` : '—';
+  const memTotal   = mem ? `${(mem.total_mb / 1024).toFixed(1)}G` : '—';
+  const memPct     = mem?.percent ?? 0;
+
+  /* storage display */
+  const stoUsed  = sto?.used ?? '—';
+  const stoTotal = sto?.total ?? '—';
+  const stoPct   = sto?.percent ?? 0;
+
+  /* battery display */
+  const batLevel  = bat?.level ?? (state.system?.phone?.battery ?? -1);
+  const batStatus = bat?.status ?? 'unknown';
+  const batTemp   = bat?.temperature ?? '—';
+  const batStatusKo = { CHARGING: '충전 중', DISCHARGING: '방전', FULL: '완충', NOT_CHARGING: '미충전' };
+
+  /* cpu display */
+  const cpuLoad = cpu ? cpu.load_1m.toFixed(2) : '—';
 
   panel.innerHTML = `
-    <div class="cost-card">
-      <div class="cost-label">LLM 사용 비용</div>
-      <div class="cost-value">$${usedBudget.toFixed(2)}</div>
-      <div class="cost-sub">예산: $${totalBudget.toFixed(2)} / 월</div>
-      <div class="cost-budget-bar">
-        <div class="cost-budget-fill ${fillClass}" style="width:${pct}%"></div>
+    <!-- ── Phone Resources ── -->
+    <div class="costs-section">
+      <div class="costs-section-header">
+        <span class="costs-section-icon">📱</span>
+        <span class="costs-section-title">폰 리소스</span>
       </div>
-      <div class="cost-sub" style="margin-top:4px">${pct}% 사용</div>
+      <div class="resources-grid">
+        ${resourceBar('메모리 (RAM)', '🧠', memUsed, memTotal, memPct, '--accent-purple')}
+        ${resourceBar('저장공간', '💾', stoUsed, stoTotal, stoPct, '--accent-blue')}
+        ${resourceBar('배터리', batLevel >= 80 ? '🔋' : batLevel >= 40 ? '🪫' : '❗', batLevel + '%', batStatusKo[batStatus] || batStatus, Math.max(batLevel, 0), '--accent-green')}
+      </div>
+      <div class="resource-extra">
+        <div class="resource-extra-item">
+          <span class="resource-extra-label">CPU 부하 (1m)</span>
+          <span class="resource-extra-value">${cpuLoad}</span>
+        </div>
+        <div class="resource-extra-item">
+          <span class="resource-extra-label">배터리 온도</span>
+          <span class="resource-extra-value">${batTemp !== '—' ? batTemp + '°C' : '—'}</span>
+        </div>
+        <div class="resource-extra-item">
+          <span class="resource-extra-label">활성 Cron</span>
+          <span class="resource-extra-value">${cronJobs}개</span>
+        </div>
+      </div>
     </div>
-    <div class="cost-card">
-      <div class="cost-label">총 실행 횟수</div>
-      <div class="cost-value">${totalRuns}</div>
-      <div class="cost-sub">성공 ${successRuns} / 실패 ${failRuns}</div>
+
+    <!-- ── LLM Usage ── -->
+    <div class="costs-section">
+      <div class="costs-section-header">
+        <span class="costs-section-icon">🤖</span>
+        <span class="costs-section-title">LLM 사용량</span>
+      </div>
+      <div class="llm-grid">
+        ${llmCard(gpt, '#10B981', 'GPT-5.2 (Codex)', 'ChatGPT Plus OAuth')}
+        ${llmCard(claude, '#7C3AED', 'Opus 4.6', 'Claude Max 5x')}
+      </div>
     </div>
-    <div class="cost-card">
-      <div class="cost-label">성공률</div>
-      <div class="cost-value">${totalRuns ? Math.round((successRuns / totalRuns) * 100) : 0}%</div>
-      <div class="cost-sub">최근 ${totalRuns}개 기준</div>
-    </div>
-    <div class="cost-card">
-      <div class="cost-label">모델</div>
-      <div class="cost-value" style="font-size:0.95rem;line-height:1.3">GPT-4o mini</div>
-      <div class="cost-sub">OpenAI API</div>
+
+    <!-- ── Agent Stats ── -->
+    <div class="costs-section">
+      <div class="costs-section-header">
+        <span class="costs-section-icon">📊</span>
+        <span class="costs-section-title">에이전트 실행 통계</span>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-value">${totalRuns}</div>
+          <div class="stat-label">오늘 실행</div>
+        </div>
+        <div class="stat-card stat-success">
+          <div class="stat-value">${successRuns}</div>
+          <div class="stat-label">성공</div>
+        </div>
+        <div class="stat-card stat-error">
+          <div class="stat-value">${errorRuns}</div>
+          <div class="stat-label">실패</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">${successRate}%</div>
+          <div class="stat-label">성공률</div>
+          <div class="stat-bar">
+            <div class="stat-bar-fill" style="width:${successRate}%"></div>
+          </div>
+        </div>
+      </div>
     </div>
   `;
 }
