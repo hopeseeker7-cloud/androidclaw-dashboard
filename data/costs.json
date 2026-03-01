@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-03-01T07:03:00Z",
+  "timestamp": "2026-03-01T07:18:21Z",
   "phone_resources": {
     "memory": {
       "total_mb": 7443,
-      "used_mb": 4260,
-      "available_mb": 3183,
+      "used_mb": 4225,
+      "available_mb": 3218,
       "percent": 57
     },
     "storage": {
@@ -29,34 +29,36 @@
       "subscription": "Claude Max 5x",
       "sessions_today": 15,
       "sessions_total": 28,
-      "turns_today": 82,
-      "turns_total": 149,
-      "tokens_today_est": 246000,
-      "tokens_total_est": 447000,
+      "turns_today": 133,
+      "turns_total": 242,
+      "tokens_today_est": 399000,
+      "tokens_total_est": 726000,
       "daily_limit_est": 1800000,
       "last_used": "2026-03-01T05:16:48.709997+00:00"
     },
     "gpt": {
-      "model": "GPT-5.2 (Codex)",
+      "model": "gpt-5.2",
       "subscription": "ChatGPT Plus OAuth",
-      "input_tokens": 0,
-      "output_tokens": 0,
+      "input_tokens": 447725,
+      "output_tokens": 627,
       "cache_read": 0,
       "cache_write": 0,
-      "total_tokens": 0,
+      "total_tokens": 216807,
       "remaining_tokens": null,
       "percent_used": null,
-      "context_tokens": null,
-      "last_used": null,
-      "source": "unknown",
+      "context_tokens": 272000,
+      "last_used": 1772349492814,
+      "source": "openclaw_sessions",
+      "session_key": "agent:main:telegram:direct:7223758740",
+      "today_tokens": 4644,
       "binary_found": false
     }
   },
   "agent_stats": {
-    "runs_today": 24,
-    "success_today": 23,
+    "runs_today": 27,
+    "success_today": 26,
     "errors_today": 1,
-    "success_rate": 95.8,
+    "success_rate": 96.3,
     "cron_jobs_active": 5
   }
 }
