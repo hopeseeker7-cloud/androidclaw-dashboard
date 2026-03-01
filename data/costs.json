@@ -1,55 +1,55 @@
 {
-  "timestamp": "2026-03-01T14:30:00Z",
+  "timestamp": "2026-03-01T06:08:00Z",
   "phone_resources": {
     "memory": {
-      "total_mb": 7680,
-      "used_mb": 3420,
-      "available_mb": 4260,
-      "percent": 45
+      "total_mb": 7443,
+      "used_mb": 4563,
+      "available_mb": 2880,
+      "percent": 61
     },
     "storage": {
-      "used": "13G",
+      "used": "22G",
       "total": "226G",
-      "percent": 6
+      "percent": 10
     },
     "battery": {
-      "level": 87,
-      "status": "DISCHARGING",
-      "temperature": 31.2
+      "level": -1,
+      "status": "unknown",
+      "temperature": 0
     },
     "cpu": {
-      "load_1m": 0.42,
-      "load_5m": 0.35,
-      "load_15m": 0.28
+      "load_1m": 0,
+      "load_5m": 0,
+      "load_15m": 0
     }
   },
   "llm_usage": {
-    "gpt": {
-      "model": "GPT-5.2 (Codex)",
-      "subscription": "ChatGPT Plus OAuth",
-      "sessions_today": 5,
-      "sessions_total": 47,
-      "tokens_today_est": 210000,
-      "tokens_total_est": 1840000,
-      "daily_limit_est": 500000,
-      "last_used": "2026-03-01T13:15:00Z"
-    },
     "claude": {
       "model": "Opus 4.6",
       "subscription": "Claude Max 5x",
-      "sessions_today": 3,
-      "sessions_total": 18,
-      "tokens_today_est": 89000,
-      "tokens_total_est": 560000,
+      "sessions_today": 15,
+      "sessions_total": 28,
+      "tokens_today_est": 260891,
+      "tokens_total_est": 484620,
       "daily_limit_est": 500000,
-      "last_used": "2026-03-01T14:22:00Z"
+      "last_used": "2026-03-01T05:16:48.709997+00:00"
+    },
+    "gpt": {
+      "model": "GPT-5.2 (Codex)",
+      "subscription": "ChatGPT Plus OAuth",
+      "sessions_today": 0,
+      "sessions_total": 0,
+      "tokens_today_est": 0,
+      "tokens_total_est": 0,
+      "daily_limit_est": 500000,
+      "last_used": null
     }
   },
   "agent_stats": {
-    "runs_today": 48,
-    "success_today": 46,
-    "errors_today": 2,
-    "success_rate": 95.8,
+    "runs_today": 10,
+    "success_today": 9,
+    "errors_today": 1,
+    "success_rate": 90.0,
     "cron_jobs_active": 5
   }
 }
