@@ -314,6 +314,7 @@ function statusKorean(status) {
   const map = {
     WORKING:      '가동 중',
     IDLE:         '대기',
+    SLEEPING:     '수면',
     DISCONNECTED: '오프라인',
     PLANNED:      '예정',
     ERROR:        '오류',
@@ -362,10 +363,17 @@ function renderAgentGrid() {
 
   grid.innerHTML = state.agents.map(renderAgentCard).join('');
 
-  const workingCount = state.agents.filter(a => a.status === 'WORKING').length;
-  const total        = state.agents.length;
-  const countEl      = document.getElementById('agentCount');
-  if (countEl) countEl.textContent = `${workingCount}/${total} 가동`;
+  const workingCount  = state.agents.filter(a => a.status === 'WORKING').length;
+  const sleepingCount = state.agents.filter(a => a.status === 'SLEEPING').length;
+  const errorCount    = state.agents.filter(a => a.status === 'ERROR').length;
+  const total         = state.agents.length;
+  const countEl       = document.getElementById('agentCount');
+  if (countEl) {
+    let text = `${workingCount}/${total} 가동`;
+    if (sleepingCount > 0) text += ` · ${sleepingCount} 수면`;
+    if (errorCount > 0)    text += ` · ${errorCount} 오류`;
+    countEl.textContent = text;
+  }
 }
 
 /* ─────────────────────────────────────────────

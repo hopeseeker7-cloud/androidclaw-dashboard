@@ -34,6 +34,7 @@
   /* status colors */
   --status-working:      #10B981;
   --status-idle:         #F59E0B;
+  --status-sleeping:     #6366F1;
   --status-disconnected: #475569;
   --status-planned:      #3B82F6;
   --status-error:        #EF4444;
@@ -514,12 +515,14 @@ body {
 /* status colors */
 .status-WORKING      .status-dot { background: var(--status-working); }
 .status-IDLE         .status-dot { background: var(--status-idle); }
+.status-SLEEPING     .status-dot { background: var(--status-sleeping); }
 .status-DISCONNECTED .status-dot { background: var(--status-disconnected); }
 .status-PLANNED      .status-dot { background: var(--status-planned); }
 .status-ERROR        .status-dot { background: var(--status-error); }
 
 .status-WORKING      .status-label { color: var(--status-working); }
 .status-IDLE         .status-label { color: var(--status-idle); }
+.status-SLEEPING     .status-label { color: var(--status-sleeping); }
 .status-DISCONNECTED .status-label { color: var(--status-disconnected); }
 .status-PLANNED      .status-label { color: var(--status-planned); }
 .status-ERROR        .status-label { color: var(--status-error); }
@@ -533,6 +536,16 @@ body {
 /* IDLE: slow breathe */
 .status-IDLE .status-dot {
   animation: breathe 3s ease-in-out infinite;
+}
+
+/* SLEEPING: very slow moon pulse */
+.status-SLEEPING .status-dot {
+  animation: moon-pulse 4s ease-in-out infinite;
+}
+
+/* SLEEPING: slightly dimmed */
+.status-SLEEPING .agent-card-body {
+  opacity: 0.75;
 }
 
 /* PLANNED/DISCONNECTED: static + dim */
@@ -1292,6 +1305,11 @@ body {
 @keyframes breathe {
   0%, 100% { opacity: 0.5; transform: scale(0.85); }
   50%       { opacity: 1;   transform: scale(1.15); }
+}
+
+@keyframes moon-pulse {
+  0%, 100% { opacity: 0.4; transform: scale(0.9); }
+  50%       { opacity: 0.8; transform: scale(1.05); }
 }
 
 @keyframes spin {
