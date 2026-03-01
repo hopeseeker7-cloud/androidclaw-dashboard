@@ -494,11 +494,12 @@ function fmtTokens(n) {
 }
 
 /* ── SVG donut chart ── */
-function svgDonut(pct, color, size) {
+function svgDonut(pct, color, size, label) {
   const r = (size / 2) - 8;
   const circ = 2 * Math.PI * r;
   const offset = circ * (1 - Math.min(pct, 100) / 100);
   const gradId = 'g' + Math.random().toString(36).slice(2, 8);
+  const labelText = label || '사용';
   return `
     <svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" class="donut-svg">
       <defs>
@@ -519,7 +520,7 @@ function svgDonut(pct, color, size) {
         font-size="${size * 0.22}" font-weight="700">${pct}%</text>
       <text x="${size/2}" y="${size/2 + 10}" text-anchor="middle"
         fill="var(--text-dim)" font-family="var(--font-mono)"
-        font-size="${size * 0.1}">사용</text>
+        font-size="${size * 0.1}">${labelText}</text>
     </svg>`;
 }
 
@@ -545,37 +546,61 @@ function resourceMeter(label, icon, usedLabel, totalLabel, pct, color) {
 /* ── LLM usage card with donut ── */
 /* Handles TWO data formats:
    - Claude (turn-based): tokens_today_est, daily_limit_est, sessions_today, turns_today
-   - GPT (openclaw sessions): total_tokens, context_tokens, input_tokens, output_tokens */
+   - GPT (openclaw sessions): total_tokens, context_tokens, input_tokens, output_tokens
+     + window_5h_pct, window_weekly_pct, today_tokens */
 function llmUsageCard(data, color, icon, defaultModel, defaultSub) {
   const model   = data?.model || defaultModel;
   const sub     = data?.subscription || defaultSub;
   const isReal  = data?.source === 'openclaw_sessions'; /* GPT real data */
 
-  /* Token usage — prefer real tokens, fall back to estimated */
-  const tokUsed = data?.total_tokens || data?.tokens_today_est || 0;
-  const tokCap  = data?.context_tokens || data?.daily_limit_est || 1800000;
-  const tokLeft = Math.max(0, tokCap - tokUsed);
-  const pct     = tokCap > 0 ? Math.min(Math.round(tokUsed / tokCap * 100), 100) : 0;
-  const barCls  = pct > 80 ? 'alert' : pct > 60 ? 'warn' : '';
+  /* (A) Session cumulative tokens */
+  const sessTok = data?.total_tokens || 0;
+  const ctxTok  = data?.context_tokens || 0;
+
+  /* (B) Today's tokens (daily snapshot diff) */
+  const todayTok = data?.today_tokens ?? null;
+
+  /* (C) Window percentages (5h / weekly) */
+  const win5h  = data?.window_5h_pct ?? null;
+  const winWk  = data?.window_weekly_pct ?? null;
+
+  /* Fallback for Claude: estimated tokens */
+  const estTok  = data?.tokens_today_est || 0;
+  const estCap  = data?.daily_limit_est || 1800000;
+
+  /* Donut: prefer 5h window (C), then session/context ratio (A), then estimated */
+  let donutPct, donutLabel;
+  if (isReal && win5h != null) {
+    donutPct = Math.min(Math.round(win5h), 100);
+    donutLabel = '5h 윈도우';
+  } else if (isReal && ctxTok > 0) {
+    donutPct = Math.min(Math.round(sessTok / ctxTok * 100), 100);
+    donutLabel = '세션';
+  } else {
+    donutPct = estCap > 0 ? Math.min(Math.round(estTok / estCap * 100), 100) : 0;
+    donutLabel = '추정';
+  }
+
+  /* Token bar: session/context (A) for real, estimated for Claude */
+  const barUsed = isReal ? sessTok : estTok;
+  const barCap  = isReal ? (ctxTok || 272000) : estCap;
+  const barPct  = barCap > 0 ? Math.min(Math.round(barUsed / barCap * 100), 100) : 0;
+  const barCls  = barPct > 80 ? 'alert' : barPct > 60 ? 'warn' : '';
+  const barLeft = Math.max(0, barCap - barUsed);
+  const barUsedLabel = isReal ? '세션' : '추정';
+  const barCapLabel  = isReal ? '컨텍스트' : '일일용량';
 
   /* Last used — handle both ISO string and ms epoch */
   let lastStr = '—';
   if (data?.last_used) {
-    const ts = typeof data.last_used === 'number' ? data.last_used : data.last_used;
+    const ts = data.last_used;
     lastStr = relativeTime(typeof ts === 'number' ? new Date(ts).toISOString() : ts);
   }
 
-  /* Meta stats — adapt to data format */
-  const inputTok  = data?.input_tokens;
-  const outputTok = data?.output_tokens;
-  const turns     = data?.turns_today ?? 0;
-  const sessions  = data?.sessions_today ?? data?.sessions_total ?? 0;
-
   /* No-data diagnostic */
-  const noData = tokUsed === 0 && !data?.last_used;
-  const binFound = data?.binary_found;
+  const noData = barUsed === 0 && !data?.last_used;
   let noDataHint = '';
-  if (noData && binFound === false) {
+  if (noData && data?.binary_found === false) {
     noDataHint = '<div class="llm-no-data">CLI 미설치</div>';
   } else if (noData && data?.source === 'unknown') {
     noDataHint = '<div class="llm-no-data">세션 데이터 없음</div>';
@@ -583,22 +608,23 @@ function llmUsageCard(data, color, icon, defaultModel, defaultSub) {
     noDataHint = '<div class="llm-no-data">오늘 사용 기록 없음</div>';
   }
 
-  /* Token label */
-  const usedLabel = isReal ? '사용' : '추정';
-  const capLabel  = isReal ? '컨텍스트' : '일일용량';
-
-  /* Bottom meta — real data shows input/output, estimated shows turns/sessions */
+  /* Bottom meta — 3 items, adapted to data format */
   let metaHtml;
-  if (isReal && inputTok != null) {
+  if (isReal) {
+    /* GPT: 오늘(B) | 주간%(C) or 입출력 | 마지막 */
+    const col1Val = todayTok != null ? fmtTokens(todayTok) : fmtTokens(data?.input_tokens ?? 0);
+    const col1Key = todayTok != null ? '오늘' : '입력';
+    const col2Val = winWk != null ? winWk + '%' : fmtTokens(data?.output_tokens ?? 0);
+    const col2Key = winWk != null ? '주간' : '출력';
     metaHtml = `
       <div class="llm-meta-item">
-        <span class="llm-meta-val">${fmtTokens(inputTok)}</span>
-        <span class="llm-meta-key">입력</span>
+        <span class="llm-meta-val">${col1Val}</span>
+        <span class="llm-meta-key">${col1Key}</span>
       </div>
       <div class="llm-meta-divider"></div>
       <div class="llm-meta-item">
-        <span class="llm-meta-val">${fmtTokens(outputTok)}</span>
-        <span class="llm-meta-key">출력</span>
+        <span class="llm-meta-val">${col2Val}</span>
+        <span class="llm-meta-key">${col2Key}</span>
       </div>
       <div class="llm-meta-divider"></div>
       <div class="llm-meta-item">
@@ -606,9 +632,10 @@ function llmUsageCard(data, color, icon, defaultModel, defaultSub) {
         <span class="llm-meta-key">마지막</span>
       </div>`;
   } else {
+    /* Claude: 턴 | 세션 | 마지막 */
     metaHtml = `
       <div class="llm-meta-item">
-        <span class="llm-meta-val">${turns}</span>
+        <span class="llm-meta-val">${data?.turns_today ?? 0}</span>
         <span class="llm-meta-key">오늘 턴</span>
       </div>
       <div class="llm-meta-divider"></div>
@@ -628,7 +655,7 @@ function llmUsageCard(data, color, icon, defaultModel, defaultSub) {
       <div class="llm-card-glow"></div>
       <div class="llm-card-inner">
         <div class="llm-header">
-          <div class="llm-donut">${svgDonut(pct, color, 90)}</div>
+          <div class="llm-donut">${svgDonut(donutPct, color, 90, donutLabel)}</div>
           <div class="llm-title-block">
             <div class="llm-icon">${icon}</div>
             <div class="llm-model">${escHtml(model)}</div>
@@ -640,17 +667,17 @@ function llmUsageCard(data, color, icon, defaultModel, defaultSub) {
         <div class="llm-token-section">
           <div class="llm-token-bar-wrap">
             <div class="llm-token-bar">
-              <div class="llm-token-fill ${barCls}" style="width:${pct}%;background:${color}"></div>
+              <div class="llm-token-fill ${barCls}" style="width:${barPct}%;background:${color}"></div>
             </div>
             <div class="llm-token-labels">
-              <span>${fmtTokens(tokUsed)} ${usedLabel}</span>
-              <span>${fmtTokens(tokCap)} ${capLabel}</span>
+              <span>${fmtTokens(barUsed)} ${barUsedLabel}</span>
+              <span>${fmtTokens(barCap)} ${barCapLabel}</span>
             </div>
           </div>
           <div class="llm-remaining">
             <span class="llm-remaining-icon">💎</span>
             <span>잔여 용량</span>
-            <span class="llm-remaining-value">~${fmtTokens(tokLeft)}</span>
+            <span class="llm-remaining-value">~${fmtTokens(barLeft)}</span>
           </div>
         </div>
 
