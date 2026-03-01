@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="AndroidClaw 에이전트 대시보드 — 짱아 시스템 현황" />
+  <title>AndroidClaw Dashboard</title>
+
+  <!-- Preconnect for Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div class="shell">
+
+  <!-- ── Header ── -->
+  <header class="header">
+    <div class="header-left">
+      <span class="header-logo">🐾</span>
+      <div>
+        <div class="header-title">AndroidClaw Dashboard</div>
+        <div class="header-subtitle">짱아 에이전트 시스템 · Galaxy Note 20</div>
+      </div>
+    </div>
+    <div class="header-right">
+      <div class="sync-badge">
+        <span class="sync-dot"></span>
+        <span>마지막 동기화: </span>
+        <span id="lastSyncTime">—</span>
+      </div>
+      <button class="btn-refresh" id="refreshBtn" aria-label="새로고침">
+        <span class="refresh-icon" id="refreshIcon">↻</span>
+        새로고침
+      </button>
+    </div>
+  </header>
+
+  <!-- ── Error Banner ── -->
+  <div class="error-banner" id="errorBanner" role="alert" aria-live="polite"></div>
+
+  <!-- ── System Status Bar ── -->
+  <div class="system-bar" id="systemBar" aria-label="시스템 상태">
+    <div class="skeleton" style="height:20px;width:100%;border-radius:4px"></div>
+  </div>
+
+  <!-- ── Tab Navigation ── -->
+  <nav class="tabs-nav" role="tablist" aria-label="대시보드 탭">
+    <button class="tab-btn active" data-tab="home" role="tab" aria-selected="true" aria-controls="tab-home">
+      <span class="tab-icon">🏠</span>
+      홈
+    </button>
+    <button class="tab-btn" data-tab="runs" role="tab" aria-selected="false" aria-controls="tab-runs">
+      <span class="tab-icon">📋</span>
+      실행 기록
+    </button>
+    <button class="tab-btn" data-tab="costs" role="tab" aria-selected="false" aria-controls="tab-costs">
+      <span class="tab-icon">💰</span>
+      비용
+    </button>
+  </nav>
+
+  <!-- ════════════════════════════════════
+       TAB: HOME
+  ═════════════════════════════════════ -->
+  <div class="tab-panel active" id="tab-home" role="tabpanel">
+
+    <!-- Agent Grid -->
+    <div class="section-header">
+      <h2 class="section-title">에이전트 현황</h2>
+      <span class="section-count" id="agentCount">로딩 중…</span>
+    </div>
+
+    <div class="agent-grid" id="agentGrid" aria-label="에이전트 카드">
+      <!-- Skeleton placeholders shown until JS loads -->
+      <div class="agent-card">
+        <div class="agent-card-accent" style="background:var(--border)"></div>
+        <div class="agent-card-body">
+          <div class="skeleton" style="height:36px;width:36px;border-radius:50%;margin-bottom:12px"></div>
+          <div class="skeleton" style="height:14px;width:70%;margin-bottom:8px"></div>
+          <div class="skeleton" style="height:10px;width:50%"></div>
+        </div>
+      </div>
+      <div class="agent-card">
+        <div class="agent-card-accent" style="background:var(--border)"></div>
+        <div class="agent-card-body">
+          <div class="skeleton" style="height:36px;width:36px;border-radius:50%;margin-bottom:12px"></div>
+          <div class="skeleton" style="height:14px;width:70%;margin-bottom:8px"></div>
+          <div class="skeleton" style="height:10px;width:50%"></div>
+        </div>
+      </div>
+      <div class="agent-card">
+        <div class="agent-card-accent" style="background:var(--border)"></div>
+        <div class="agent-card-body">
+          <div class="skeleton" style="height:36px;width:36px;border-radius:50%;margin-bottom:12px"></div>
+          <div class="skeleton" style="height:14px;width:70%;margin-bottom:8px"></div>
+          <div class="skeleton" style="height:10px;width:50%"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Recent Activity -->
+    <div class="section-header">
+      <h2 class="section-title">최근 활동</h2>
+      <span class="section-count" id="activityCount">로딩 중…</span>
+    </div>
+
+    <div class="timeline" id="timeline" aria-label="최근 실행 타임라인">
+      <div style="color:var(--text-dim);font-size:0.8rem;padding:16px 0">로딩 중…</div>
+    </div>
+
+  </div>
+
+  <!-- ════════════════════════════════════
+       TAB: RUNS
+  ═════════════════════════════════════ -->
+  <div class="tab-panel" id="tab-runs" role="tabpanel">
+
+    <div class="section-header">
+      <h2 class="section-title">전체 실행 기록</h2>
+    </div>
+
+    <div id="runsTableWrap">
+      <div style="color:var(--text-dim);font-size:0.8rem;padding:16px 0">로딩 중…</div>
+    </div>
+
+  </div>
+
+  <!-- ════════════════════════════════════
+       TAB: COSTS
+  ═════════════════════════════════════ -->
+  <div class="tab-panel" id="tab-costs" role="tabpanel">
+
+    <div class="section-header">
+      <h2 class="section-title">비용 현황</h2>
+    </div>
+
+    <div class="costs-panel" id="costsPanel">
+      <div style="color:var(--text-dim);font-size:0.8rem;padding:16px 0">로딩 중…</div>
+    </div>
+
+    <p style="font-size:0.72rem;color:var(--text-dim);font-family:var(--font-mono);margin-top:8px">
+      * LLM 비용은 state/cost_tracker.json 파일 기반. 실제 데이터 없을 시 추정치 표시.
+    </p>
+
+  </div>
+
+</div><!-- /.shell -->
+
+<script src="app.js"></script>
+</body>
+</html>
