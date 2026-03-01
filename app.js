@@ -548,12 +548,26 @@ function llmUsageCard(data, color, icon, defaultModel, defaultSub) {
   const sub     = data?.subscription || defaultSub;
   const today   = data?.sessions_today ?? 0;
   const total   = data?.sessions_total ?? 0;
+  const turns   = data?.turns_today ?? 0;
   const tokUsed = data?.tokens_today_est ?? 0;
-  const tokCap  = data?.daily_limit_est ?? 500000;
+  const tokCap  = data?.daily_limit_est ?? 1800000;
   const tokLeft = Math.max(0, tokCap - tokUsed);
   const pct     = tokCap > 0 ? Math.min(Math.round(tokUsed / tokCap * 100), 100) : 0;
   const last    = data?.last_used ? relativeTime(data.last_used) : '—';
   const barCls  = pct > 80 ? 'alert' : pct > 60 ? 'warn' : '';
+
+  /* GPT no-data diagnostic */
+  const noData = today === 0 && total === 0 && !data?.last_used;
+  const dirsFound = data?.data_dirs_found;
+  const binFound = data?.binary_found;
+  let noDataHint = '';
+  if (noData && binFound === false) {
+    noDataHint = '<div class="llm-no-data">CLI 미설치</div>';
+  } else if (noData && dirsFound != null && dirsFound.length === 0) {
+    noDataHint = '<div class="llm-no-data">데이터 경로 미발견</div>';
+  } else if (noData) {
+    noDataHint = '<div class="llm-no-data">오늘 사용 기록 없음</div>';
+  }
 
   return `
     <div class="llm-card" style="--llm-color:${color}">
@@ -567,6 +581,7 @@ function llmUsageCard(data, color, icon, defaultModel, defaultSub) {
             <div class="llm-sub">${escHtml(sub)}</div>
           </div>
         </div>
+        ${noDataHint}
 
         <div class="llm-token-section">
           <div class="llm-token-bar-wrap">
@@ -574,26 +589,26 @@ function llmUsageCard(data, color, icon, defaultModel, defaultSub) {
               <div class="llm-token-fill ${barCls}" style="width:${pct}%;background:${color}"></div>
             </div>
             <div class="llm-token-labels">
-              <span>${fmtTokens(tokUsed)} 사용</span>
-              <span>${fmtTokens(tokCap)} 한도</span>
+              <span>${fmtTokens(tokUsed)} 추정</span>
+              <span>${fmtTokens(tokCap)} 일일용량</span>
             </div>
           </div>
           <div class="llm-remaining">
             <span class="llm-remaining-icon">💎</span>
-            <span>남은 토큰</span>
+            <span>잔여 용량</span>
             <span class="llm-remaining-value">~${fmtTokens(tokLeft)}</span>
           </div>
         </div>
 
         <div class="llm-meta">
           <div class="llm-meta-item">
-            <span class="llm-meta-val">${today}</span>
-            <span class="llm-meta-key">오늘</span>
+            <span class="llm-meta-val">${turns || today}</span>
+            <span class="llm-meta-key">오늘 턴</span>
           </div>
           <div class="llm-meta-divider"></div>
           <div class="llm-meta-item">
             <span class="llm-meta-val">${total}</span>
-            <span class="llm-meta-key">누적</span>
+            <span class="llm-meta-key">세션</span>
           </div>
           <div class="llm-meta-divider"></div>
           <div class="llm-meta-item">
@@ -651,7 +666,7 @@ function renderCosts() {
       <div class="costs-section-header">
         <span class="costs-section-icon">🤖</span>
         <span class="costs-section-title">LLM 사용량</span>
-        <span class="costs-section-badge">실시간 추정</span>
+        <span class="costs-section-badge">턴 기반 추정</span>
       </div>
       <div class="llm-grid">
         ${llmUsageCard(gpt, '#10B981', '🟢', 'GPT-5.2 (Codex)', 'ChatGPT Plus OAuth')}

@@ -909,6 +909,18 @@ body {
   padding: 20px;
 }
 
+/* ── LLM no-data hint ── */
+.llm-no-data {
+  text-align: center;
+  font-size: 0.7rem;
+  color: var(--text-dim);
+  background: rgba(255,255,255,0.03);
+  border: 1px dashed var(--border);
+  border-radius: var(--radius-sm);
+  padding: 6px 10px;
+  margin-bottom: 12px;
+}
+
 /* ── LLM Header (donut + title) ── */
 .llm-header {
   display: flex;
