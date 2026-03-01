@@ -543,30 +543,84 @@ function resourceMeter(label, icon, usedLabel, totalLabel, pct, color) {
 }
 
 /* ── LLM usage card with donut ── */
+/* Handles TWO data formats:
+   - Claude (turn-based): tokens_today_est, daily_limit_est, sessions_today, turns_today
+   - GPT (openclaw sessions): total_tokens, context_tokens, input_tokens, output_tokens */
 function llmUsageCard(data, color, icon, defaultModel, defaultSub) {
   const model   = data?.model || defaultModel;
   const sub     = data?.subscription || defaultSub;
-  const today   = data?.sessions_today ?? 0;
-  const total   = data?.sessions_total ?? 0;
-  const turns   = data?.turns_today ?? 0;
-  const tokUsed = data?.tokens_today_est ?? 0;
-  const tokCap  = data?.daily_limit_est ?? 1800000;
+  const isReal  = data?.source === 'openclaw_sessions'; /* GPT real data */
+
+  /* Token usage — prefer real tokens, fall back to estimated */
+  const tokUsed = data?.total_tokens || data?.tokens_today_est || 0;
+  const tokCap  = data?.context_tokens || data?.daily_limit_est || 1800000;
   const tokLeft = Math.max(0, tokCap - tokUsed);
   const pct     = tokCap > 0 ? Math.min(Math.round(tokUsed / tokCap * 100), 100) : 0;
-  const last    = data?.last_used ? relativeTime(data.last_used) : '—';
   const barCls  = pct > 80 ? 'alert' : pct > 60 ? 'warn' : '';
 
-  /* GPT no-data diagnostic */
-  const noData = today === 0 && total === 0 && !data?.last_used;
-  const dirsFound = data?.data_dirs_found;
+  /* Last used — handle both ISO string and ms epoch */
+  let lastStr = '—';
+  if (data?.last_used) {
+    const ts = typeof data.last_used === 'number' ? data.last_used : data.last_used;
+    lastStr = relativeTime(typeof ts === 'number' ? new Date(ts).toISOString() : ts);
+  }
+
+  /* Meta stats — adapt to data format */
+  const inputTok  = data?.input_tokens;
+  const outputTok = data?.output_tokens;
+  const turns     = data?.turns_today ?? 0;
+  const sessions  = data?.sessions_today ?? data?.sessions_total ?? 0;
+
+  /* No-data diagnostic */
+  const noData = tokUsed === 0 && !data?.last_used;
   const binFound = data?.binary_found;
   let noDataHint = '';
   if (noData && binFound === false) {
     noDataHint = '<div class="llm-no-data">CLI 미설치</div>';
-  } else if (noData && dirsFound != null && dirsFound.length === 0) {
-    noDataHint = '<div class="llm-no-data">데이터 경로 미발견</div>';
+  } else if (noData && data?.source === 'unknown') {
+    noDataHint = '<div class="llm-no-data">세션 데이터 없음</div>';
   } else if (noData) {
     noDataHint = '<div class="llm-no-data">오늘 사용 기록 없음</div>';
+  }
+
+  /* Token label */
+  const usedLabel = isReal ? '사용' : '추정';
+  const capLabel  = isReal ? '컨텍스트' : '일일용량';
+
+  /* Bottom meta — real data shows input/output, estimated shows turns/sessions */
+  let metaHtml;
+  if (isReal && inputTok != null) {
+    metaHtml = `
+      <div class="llm-meta-item">
+        <span class="llm-meta-val">${fmtTokens(inputTok)}</span>
+        <span class="llm-meta-key">입력</span>
+      </div>
+      <div class="llm-meta-divider"></div>
+      <div class="llm-meta-item">
+        <span class="llm-meta-val">${fmtTokens(outputTok)}</span>
+        <span class="llm-meta-key">출력</span>
+      </div>
+      <div class="llm-meta-divider"></div>
+      <div class="llm-meta-item">
+        <span class="llm-meta-val llm-meta-time">${lastStr}</span>
+        <span class="llm-meta-key">마지막</span>
+      </div>`;
+  } else {
+    metaHtml = `
+      <div class="llm-meta-item">
+        <span class="llm-meta-val">${turns || sessions}</span>
+        <span class="llm-meta-key">오늘 턴</span>
+      </div>
+      <div class="llm-meta-divider"></div>
+      <div class="llm-meta-item">
+        <span class="llm-meta-val">${data?.sessions_total ?? 0}</span>
+        <span class="llm-meta-key">세션</span>
+      </div>
+      <div class="llm-meta-divider"></div>
+      <div class="llm-meta-item">
+        <span class="llm-meta-val llm-meta-time">${lastStr}</span>
+        <span class="llm-meta-key">마지막</span>
+      </div>`;
   }
 
   return `
@@ -589,8 +643,8 @@ function llmUsageCard(data, color, icon, defaultModel, defaultSub) {
               <div class="llm-token-fill ${barCls}" style="width:${pct}%;background:${color}"></div>
             </div>
             <div class="llm-token-labels">
-              <span>${fmtTokens(tokUsed)} 추정</span>
-              <span>${fmtTokens(tokCap)} 일일용량</span>
+              <span>${fmtTokens(tokUsed)} ${usedLabel}</span>
+              <span>${fmtTokens(tokCap)} ${capLabel}</span>
             </div>
           </div>
           <div class="llm-remaining">
@@ -600,22 +654,7 @@ function llmUsageCard(data, color, icon, defaultModel, defaultSub) {
           </div>
         </div>
 
-        <div class="llm-meta">
-          <div class="llm-meta-item">
-            <span class="llm-meta-val">${turns || today}</span>
-            <span class="llm-meta-key">오늘 턴</span>
-          </div>
-          <div class="llm-meta-divider"></div>
-          <div class="llm-meta-item">
-            <span class="llm-meta-val">${total}</span>
-            <span class="llm-meta-key">세션</span>
-          </div>
-          <div class="llm-meta-divider"></div>
-          <div class="llm-meta-item">
-            <span class="llm-meta-val llm-meta-time">${last}</span>
-            <span class="llm-meta-key">마지막</span>
-          </div>
-        </div>
+        <div class="llm-meta">${metaHtml}</div>
       </div>
     </div>`;
 }
@@ -666,7 +705,7 @@ function renderCosts() {
       <div class="costs-section-header">
         <span class="costs-section-icon">🤖</span>
         <span class="costs-section-title">LLM 사용량</span>
-        <span class="costs-section-badge">턴 기반 추정</span>
+        <span class="costs-section-badge">실시간 + 추정</span>
       </div>
       <div class="llm-grid">
         ${llmUsageCard(gpt, '#10B981', '🟢', 'GPT-5.2 (Codex)', 'ChatGPT Plus OAuth')}
