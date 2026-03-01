@@ -177,7 +177,8 @@ function renderSystemBar() {
     return;
   }
 
-  const battery      = sys.phone?.battery ?? '—';
+  const batteryRaw   = sys.phone?.battery ?? -1;
+  const batteryOk    = batteryRaw >= 0;
   const storageUsed  = sys.phone?.storage?.used ?? '—';
   const storageTotal = sys.phone?.storage?.total ?? '—';
   const storagePct   = sys.phone?.storage?.percent ?? '—';
@@ -185,10 +186,11 @@ function renderSystemBar() {
   const network      = sys.phone?.network ?? '—';
   const gateway      = sys.openclaw?.gateway ?? '—';
 
-  const batteryClass = battery >= 50 ? 'good' : battery >= 20 ? 'warn' : 'error';
+  const batteryClass = !batteryOk ? '' : batteryRaw >= 50 ? 'good' : batteryRaw >= 20 ? 'warn' : 'error';
   const gatewayClass = gateway === 'reachable' ? 'good' : 'error';
   const gatewayText  = gateway === 'reachable' ? '연결됨' : '오프라인';
-  const batteryEmoji = battery >= 80 ? '🔋' : battery >= 40 ? '🪫' : '❗';
+  const batteryEmoji = !batteryOk ? '❓' : batteryRaw >= 80 ? '🔋' : batteryRaw >= 40 ? '🪫' : '❗';
+  const batteryText  = batteryOk ? `${batteryRaw}%` : '—';
 
   bar.innerHTML = `
     <div class="sys-item">
@@ -198,7 +200,7 @@ function renderSystemBar() {
     <div class="sys-item">
       <span class="sys-label">배터리</span>
       <span class="battery-icon">${batteryEmoji}</span>
-      <span class="sys-value ${batteryClass}">${battery}%</span>
+      <span class="sys-value ${batteryClass}">${batteryText}</span>
     </div>
     <div class="sys-item">
       <span class="sys-label">저장공간</span>
@@ -726,10 +728,11 @@ function renderCosts() {
 
   /* battery */
   const batLevel  = bat?.level ?? (state.system?.phone?.battery ?? -1);
+  const batOk     = batLevel >= 0;
   const batStatus = bat?.status ?? 'unknown';
   const batTemp   = bat?.temperature ?? '—';
   const batKo = { CHARGING:'충전 중', DISCHARGING:'방전', FULL:'완충', NOT_CHARGING:'미충전' };
-  const batIcon = batLevel >= 80 ? '🔋' : batLevel >= 40 ? '🪫' : '❗';
+  const batIcon = !batOk ? '❓' : batLevel >= 80 ? '🔋' : batLevel >= 40 ? '🪫' : '❗';
 
   /* cpu */
   const cpuLoad = cpu ? cpu.load_1m.toFixed(2) : '—';
@@ -757,7 +760,7 @@ function renderCosts() {
       <div class="res-meters">
         ${resourceMeter('메모리 (RAM)', '🧠', memUsed, memTotal, memPct, 'var(--accent-purple)')}
         ${resourceMeter('저장공간', '💾', stoUsed, stoTotal, stoPct, 'var(--accent-blue)')}
-        ${resourceMeter('배터리', batIcon, batLevel + '%', batKo[batStatus] || batStatus, Math.max(batLevel, 0), 'var(--accent-green)')}
+        ${resourceMeter('배터리', batIcon, batOk ? batLevel + '%' : '—', batOk ? (batKo[batStatus] || batStatus) : 'API 없음', Math.max(batLevel, 0), 'var(--accent-green)')}
       </div>
       <div class="res-extras">
         <div class="res-extra"><span class="res-extra-k">CPU</span><span class="res-extra-v">${cpuLoad}</span></div>
