@@ -608,13 +608,13 @@ function llmUsageCard(data, color, icon, defaultModel, defaultSub) {
   } else {
     metaHtml = `
       <div class="llm-meta-item">
-        <span class="llm-meta-val">${turns || sessions}</span>
+        <span class="llm-meta-val">${turns}</span>
         <span class="llm-meta-key">오늘 턴</span>
       </div>
       <div class="llm-meta-divider"></div>
       <div class="llm-meta-item">
-        <span class="llm-meta-val">${data?.sessions_total ?? 0}</span>
-        <span class="llm-meta-key">세션</span>
+        <span class="llm-meta-val">${data?.sessions_today ?? 0}</span>
+        <span class="llm-meta-key">오늘 세션</span>
       </div>
       <div class="llm-meta-divider"></div>
       <div class="llm-meta-item">
