@@ -386,48 +386,122 @@ function renderRunsTable() {
    RENDER — COSTS PANEL (costs tab)
 ───────────────────────────────────────────── */
 
-/* ── Helper: resource bar HTML ── */
-function resourceBar(label, icon, usedLabel, totalLabel, percent, colorVar) {
-  const cls = percent > 85 ? 'alert' : percent > 65 ? 'warn' : '';
+/* ── Token formatter ── */
+function fmtTokens(n) {
+  if (n == null || isNaN(n)) return '—';
+  if (n >= 1000000) return (n / 1000000).toFixed(1) + 'M';
+  if (n >= 1000) return Math.round(n / 1000) + 'K';
+  return String(n);
+}
+
+/* ── SVG donut chart ── */
+function svgDonut(pct, color, size) {
+  const r = (size / 2) - 8;
+  const circ = 2 * Math.PI * r;
+  const offset = circ * (1 - Math.min(pct, 100) / 100);
+  const gradId = 'g' + Math.random().toString(36).slice(2, 8);
   return `
-    <div class="resource-row">
-      <div class="resource-row-header">
-        <span class="resource-icon">${icon}</span>
-        <span class="resource-label">${label}</span>
-        <span class="resource-nums">${escHtml(usedLabel)} / ${escHtml(totalLabel)}</span>
+    <svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" class="donut-svg">
+      <defs>
+        <linearGradient id="${gradId}" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="${color}" />
+          <stop offset="100%" stop-color="${color}99" />
+        </linearGradient>
+      </defs>
+      <circle cx="${size/2}" cy="${size/2}" r="${r}"
+        stroke="var(--border)" stroke-width="6" fill="none" opacity="0.5" />
+      <circle cx="${size/2}" cy="${size/2}" r="${r}"
+        stroke="url(#${gradId})" stroke-width="6" fill="none"
+        stroke-dasharray="${circ.toFixed(1)}" stroke-dashoffset="${offset.toFixed(1)}"
+        stroke-linecap="round" transform="rotate(-90 ${size/2} ${size/2})"
+        class="donut-fill" />
+      <text x="${size/2}" y="${size/2 - 4}" text-anchor="middle"
+        fill="var(--text-primary)" font-family="var(--font-mono)"
+        font-size="${size * 0.22}" font-weight="700">${pct}%</text>
+      <text x="${size/2}" y="${size/2 + 10}" text-anchor="middle"
+        fill="var(--text-dim)" font-family="var(--font-mono)"
+        font-size="${size * 0.1}">사용</text>
+    </svg>`;
+}
+
+/* ── Resource meter (phone resources) ── */
+function resourceMeter(label, icon, usedLabel, totalLabel, pct, color) {
+  const cls = pct > 85 ? 'alert' : pct > 65 ? 'warn' : '';
+  return `
+    <div class="res-meter">
+      <div class="res-meter-icon">${icon}</div>
+      <div class="res-meter-body">
+        <div class="res-meter-top">
+          <span class="res-meter-label">${label}</span>
+          <span class="res-meter-nums">${escHtml(usedLabel)} / ${escHtml(totalLabel)}</span>
+        </div>
+        <div class="res-meter-bar">
+          <div class="res-meter-fill ${cls}" style="width:${Math.min(pct,100)}%;background:${color}"></div>
+        </div>
       </div>
-      <div class="resource-bar">
-        <div class="resource-bar-fill ${cls}" style="width:${Math.min(percent,100)}%;--bar-color:var(${colorVar})"></div>
-      </div>
-      <span class="resource-pct">${percent}%</span>
+      <div class="res-meter-pct ${cls}">${pct}%</div>
     </div>`;
 }
 
-/* ── Helper: LLM card HTML ── */
-function llmCard(data, accentColor, defaultModel, defaultSub) {
-  const model = data?.model || defaultModel;
-  const sub   = data?.subscription || defaultSub;
-  const today = data?.sessions_today ?? '—';
-  const total = data?.sessions_total ?? '—';
-  const last  = data?.last_used ? relativeTime(data.last_used) : '사용 기록 없음';
+/* ── LLM usage card with donut ── */
+function llmUsageCard(data, color, icon, defaultModel, defaultSub) {
+  const model   = data?.model || defaultModel;
+  const sub     = data?.subscription || defaultSub;
+  const today   = data?.sessions_today ?? 0;
+  const total   = data?.sessions_total ?? 0;
+  const tokUsed = data?.tokens_today_est ?? 0;
+  const tokCap  = data?.daily_limit_est ?? 500000;
+  const tokLeft = Math.max(0, tokCap - tokUsed);
+  const pct     = tokCap > 0 ? Math.min(Math.round(tokUsed / tokCap * 100), 100) : 0;
+  const last    = data?.last_used ? relativeTime(data.last_used) : '—';
+  const barCls  = pct > 80 ? 'alert' : pct > 60 ? 'warn' : '';
 
   return `
-    <div class="llm-card" style="--llm-accent:${accentColor}">
-      <div class="llm-card-accent"></div>
-      <div class="llm-card-body">
-        <div class="llm-model">${escHtml(model)}</div>
-        <div class="llm-sub">${escHtml(sub)}</div>
-        <div class="llm-stats">
-          <div class="llm-stat">
-            <span class="llm-stat-value">${today}</span>
-            <span class="llm-stat-label">오늘 세션</span>
-          </div>
-          <div class="llm-stat">
-            <span class="llm-stat-value">${total}</span>
-            <span class="llm-stat-label">전체 세션</span>
+    <div class="llm-card" style="--llm-color:${color}">
+      <div class="llm-card-glow"></div>
+      <div class="llm-card-inner">
+        <div class="llm-header">
+          <div class="llm-donut">${svgDonut(pct, color, 90)}</div>
+          <div class="llm-title-block">
+            <div class="llm-icon">${icon}</div>
+            <div class="llm-model">${escHtml(model)}</div>
+            <div class="llm-sub">${escHtml(sub)}</div>
           </div>
         </div>
-        <div class="llm-last-used">마지막: ${last}</div>
+
+        <div class="llm-token-section">
+          <div class="llm-token-bar-wrap">
+            <div class="llm-token-bar">
+              <div class="llm-token-fill ${barCls}" style="width:${pct}%;background:${color}"></div>
+            </div>
+            <div class="llm-token-labels">
+              <span>${fmtTokens(tokUsed)} 사용</span>
+              <span>${fmtTokens(tokCap)} 한도</span>
+            </div>
+          </div>
+          <div class="llm-remaining">
+            <span class="llm-remaining-icon">💎</span>
+            <span>남은 토큰</span>
+            <span class="llm-remaining-value">~${fmtTokens(tokLeft)}</span>
+          </div>
+        </div>
+
+        <div class="llm-meta">
+          <div class="llm-meta-item">
+            <span class="llm-meta-val">${today}</span>
+            <span class="llm-meta-key">오늘</span>
+          </div>
+          <div class="llm-meta-divider"></div>
+          <div class="llm-meta-item">
+            <span class="llm-meta-val">${total}</span>
+            <span class="llm-meta-key">누적</span>
+          </div>
+          <div class="llm-meta-divider"></div>
+          <div class="llm-meta-item">
+            <span class="llm-meta-val llm-meta-time">${last}</span>
+            <span class="llm-meta-key">마지막</span>
+          </div>
+        </div>
       </div>
     </div>`;
 }
@@ -445,69 +519,62 @@ function renderCosts() {
   const claude = c?.llm_usage?.claude;
   const stats = c?.agent_stats;
 
-  /* fallback from runs state if no costs.json */
+  /* fallback from runs state */
   const totalRuns   = stats?.runs_today ?? state.runs.length;
   const successRuns = stats?.success_today ?? state.runs.filter(r => r.status === 'success').length;
   const errorRuns   = stats?.errors_today ?? (totalRuns - successRuns);
   const successRate = totalRuns > 0 ? Math.round(successRuns / totalRuns * 100) : 0;
   const cronJobs    = stats?.cron_jobs_active ?? '—';
 
-  /* memory display */
-  const memUsed    = mem ? `${(mem.used_mb / 1024).toFixed(1)}G` : '—';
-  const memTotal   = mem ? `${(mem.total_mb / 1024).toFixed(1)}G` : '—';
-  const memPct     = mem?.percent ?? 0;
+  /* memory */
+  const memUsed  = mem ? `${(mem.used_mb / 1024).toFixed(1)}G` : '—';
+  const memTotal = mem ? `${(mem.total_mb / 1024).toFixed(1)}G` : '—';
+  const memPct   = mem?.percent ?? 0;
 
-  /* storage display */
+  /* storage */
   const stoUsed  = sto?.used ?? '—';
   const stoTotal = sto?.total ?? '—';
   const stoPct   = sto?.percent ?? 0;
 
-  /* battery display */
+  /* battery */
   const batLevel  = bat?.level ?? (state.system?.phone?.battery ?? -1);
   const batStatus = bat?.status ?? 'unknown';
   const batTemp   = bat?.temperature ?? '—';
-  const batStatusKo = { CHARGING: '충전 중', DISCHARGING: '방전', FULL: '완충', NOT_CHARGING: '미충전' };
+  const batKo = { CHARGING:'충전 중', DISCHARGING:'방전', FULL:'완충', NOT_CHARGING:'미충전' };
+  const batIcon = batLevel >= 80 ? '🔋' : batLevel >= 40 ? '🪫' : '❗';
 
-  /* cpu display */
+  /* cpu */
   const cpuLoad = cpu ? cpu.load_1m.toFixed(2) : '—';
 
   panel.innerHTML = `
+    <!-- ── LLM Usage (hero section) ── -->
+    <div class="costs-section costs-section-hero">
+      <div class="costs-section-header">
+        <span class="costs-section-icon">🤖</span>
+        <span class="costs-section-title">LLM 사용량</span>
+        <span class="costs-section-badge">실시간 추정</span>
+      </div>
+      <div class="llm-grid">
+        ${llmUsageCard(gpt, '#10B981', '🟢', 'GPT-5.2 (Codex)', 'ChatGPT Plus OAuth')}
+        ${llmUsageCard(claude, '#A78BFA', '🟣', 'Opus 4.6', 'Claude Max 5x')}
+      </div>
+    </div>
+
     <!-- ── Phone Resources ── -->
     <div class="costs-section">
       <div class="costs-section-header">
         <span class="costs-section-icon">📱</span>
         <span class="costs-section-title">폰 리소스</span>
       </div>
-      <div class="resources-grid">
-        ${resourceBar('메모리 (RAM)', '🧠', memUsed, memTotal, memPct, '--accent-purple')}
-        ${resourceBar('저장공간', '💾', stoUsed, stoTotal, stoPct, '--accent-blue')}
-        ${resourceBar('배터리', batLevel >= 80 ? '🔋' : batLevel >= 40 ? '🪫' : '❗', batLevel + '%', batStatusKo[batStatus] || batStatus, Math.max(batLevel, 0), '--accent-green')}
+      <div class="res-meters">
+        ${resourceMeter('메모리 (RAM)', '🧠', memUsed, memTotal, memPct, 'var(--accent-purple)')}
+        ${resourceMeter('저장공간', '💾', stoUsed, stoTotal, stoPct, 'var(--accent-blue)')}
+        ${resourceMeter('배터리', batIcon, batLevel + '%', batKo[batStatus] || batStatus, Math.max(batLevel, 0), 'var(--accent-green)')}
       </div>
-      <div class="resource-extra">
-        <div class="resource-extra-item">
-          <span class="resource-extra-label">CPU 부하 (1m)</span>
-          <span class="resource-extra-value">${cpuLoad}</span>
-        </div>
-        <div class="resource-extra-item">
-          <span class="resource-extra-label">배터리 온도</span>
-          <span class="resource-extra-value">${batTemp !== '—' ? batTemp + '°C' : '—'}</span>
-        </div>
-        <div class="resource-extra-item">
-          <span class="resource-extra-label">활성 Cron</span>
-          <span class="resource-extra-value">${cronJobs}개</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- ── LLM Usage ── -->
-    <div class="costs-section">
-      <div class="costs-section-header">
-        <span class="costs-section-icon">🤖</span>
-        <span class="costs-section-title">LLM 사용량</span>
-      </div>
-      <div class="llm-grid">
-        ${llmCard(gpt, '#10B981', 'GPT-5.2 (Codex)', 'ChatGPT Plus OAuth')}
-        ${llmCard(claude, '#7C3AED', 'Opus 4.6', 'Claude Max 5x')}
+      <div class="res-extras">
+        <div class="res-extra"><span class="res-extra-k">CPU</span><span class="res-extra-v">${cpuLoad}</span></div>
+        <div class="res-extra"><span class="res-extra-k">온도</span><span class="res-extra-v">${batTemp !== '—' ? batTemp + '°C' : '—'}</span></div>
+        <div class="res-extra"><span class="res-extra-k">Cron</span><span class="res-extra-v">${cronJobs}개</span></div>
       </div>
     </div>
 
@@ -515,27 +582,16 @@ function renderCosts() {
     <div class="costs-section">
       <div class="costs-section-header">
         <span class="costs-section-icon">📊</span>
-        <span class="costs-section-title">에이전트 실행 통계</span>
+        <span class="costs-section-title">에이전트 통계</span>
       </div>
-      <div class="stats-grid">
-        <div class="stat-card">
-          <div class="stat-value">${totalRuns}</div>
-          <div class="stat-label">오늘 실행</div>
-        </div>
-        <div class="stat-card stat-success">
-          <div class="stat-value">${successRuns}</div>
-          <div class="stat-label">성공</div>
-        </div>
-        <div class="stat-card stat-error">
-          <div class="stat-value">${errorRuns}</div>
-          <div class="stat-label">실패</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-value">${successRate}%</div>
-          <div class="stat-label">성공률</div>
-          <div class="stat-bar">
-            <div class="stat-bar-fill" style="width:${successRate}%"></div>
-          </div>
+      <div class="agent-stats-row">
+        <div class="astat"><span class="astat-v">${totalRuns}</span><span class="astat-k">실행</span></div>
+        <div class="astat astat-ok"><span class="astat-v">${successRuns}</span><span class="astat-k">성공</span></div>
+        <div class="astat astat-err"><span class="astat-v">${errorRuns}</span><span class="astat-k">실패</span></div>
+        <div class="astat astat-rate">
+          <span class="astat-v">${successRate}%</span>
+          <span class="astat-k">성공률</span>
+          <div class="astat-bar"><div class="astat-bar-fill" style="width:${successRate}%"></div></div>
         </div>
       </div>
     </div>

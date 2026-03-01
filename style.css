@@ -635,7 +635,7 @@ body {
 .costs-panel {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 20px;
   margin-bottom: 24px;
 }
 
@@ -643,22 +643,25 @@ body {
 .costs-section {
   background: var(--bg-surface);
   border: 1px solid var(--border);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-lg);
   padding: 20px;
+}
+
+.costs-section-hero {
+  background: linear-gradient(135deg, rgba(30,41,59,0.95) 0%, rgba(38,49,72,0.9) 100%);
+  border-color: rgba(167,139,250,0.2);
 }
 
 .costs-section-header {
   display: flex;
   align-items: center;
   gap: 8px;
-  margin-bottom: 16px;
+  margin-bottom: 18px;
   padding-bottom: 12px;
   border-bottom: 1px solid var(--border-dim);
 }
 
-.costs-section-icon {
-  font-size: 1.1rem;
-}
+.costs-section-icon { font-size: 1.05rem; }
 
 .costs-section-title {
   font-size: 0.72rem;
@@ -668,74 +671,287 @@ body {
   color: var(--text-muted);
 }
 
-/* ── Resource Bars (Memory, Disk, Battery) ── */
-.resources-grid {
+.costs-section-badge {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  color: var(--accent-purple);
+  background: rgba(124,58,237,0.1);
+  border: 1px solid rgba(124,58,237,0.25);
+  border-radius: 10px;
+  padding: 2px 8px;
+  letter-spacing: 0.04em;
+}
+
+/* ── SVG Donut Chart ── */
+.donut-svg { display: block; }
+
+.donut-fill {
+  transition: stroke-dashoffset 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ── LLM Cards (GPT, Claude) ── */
+.llm-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.llm-card {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.llm-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.3), 0 0 0 1px var(--llm-color, var(--border));
+}
+
+.llm-card-glow {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--llm-color, #7C3AED) 0%, transparent 50%);
+  opacity: 0.08;
+  pointer-events: none;
+  border-radius: var(--radius-lg);
+}
+
+.llm-card-inner {
+  position: relative;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+}
+
+/* ── LLM Header (donut + title) ── */
+.llm-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.llm-donut { flex-shrink: 0; }
+
+.llm-title-block {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.llm-icon {
+  font-size: 0.9rem;
+  margin-bottom: 2px;
+}
+
+.llm-model {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.llm-sub {
+  font-size: 0.65rem;
+  color: var(--text-dim);
+}
+
+/* ── Token Usage Bar ── */
+.llm-token-section {
+  margin-bottom: 16px;
+}
+
+.llm-token-bar-wrap {
+  margin-bottom: 10px;
+}
+
+.llm-token-bar {
+  height: 8px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+}
+
+.llm-token-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.llm-token-fill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 20px;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25));
+  border-radius: 0 4px 4px 0;
+}
+
+.llm-token-fill.warn { background: var(--accent-yellow) !important; }
+.llm-token-fill.alert { background: var(--accent-red) !important; }
+
+.llm-token-labels {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: var(--text-dim);
+  margin-top: 5px;
+}
+
+/* ── Remaining Tokens ── */
+.llm-remaining {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: var(--radius-sm);
+  padding: 8px 12px;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+.llm-remaining-icon { font-size: 0.85rem; }
+
+.llm-remaining-value {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--text-primary);
+}
+
+/* ── LLM Meta (bottom stats) ── */
+.llm-meta {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  padding-top: 14px;
+  border-top: 1px solid var(--border-dim);
+}
+
+.llm-meta-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.llm-meta-val {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+
+.llm-meta-key {
+  font-size: 0.58rem;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.llm-meta-divider {
+  width: 1px;
+  height: 28px;
+  background: var(--border-dim);
+  flex-shrink: 0;
+}
+
+.llm-meta-time {
+  font-size: 0.75rem !important;
+}
+
+/* ── Phone Resource Meters ── */
+.res-meters {
   display: flex;
   flex-direction: column;
   gap: 14px;
 }
 
-.resource-row {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 4px 12px;
-  align-items: center;
-}
-
-.resource-row-header {
-  grid-column: 1 / -1;
+.res-meter {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
 }
 
-.resource-icon {
-  font-size: 0.85rem;
-  width: 20px;
+.res-meter-icon {
+  font-size: 1rem;
+  width: 24px;
   text-align: center;
+  flex-shrink: 0;
 }
 
-.resource-label {
+.res-meter-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.res-meter-top {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.res-meter-label {
   font-size: 0.72rem;
   font-weight: 600;
   color: var(--text-primary);
 }
 
-.resource-nums {
+.res-meter-nums {
   font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-size: 0.65rem;
   color: var(--text-muted);
-  margin-left: auto;
 }
 
-.resource-bar {
+.res-meter-bar {
   height: 6px;
-  background: var(--border);
+  background: rgba(255,255,255,0.06);
   border-radius: 3px;
   overflow: hidden;
-  flex: 1;
 }
 
-.resource-bar-fill {
+.res-meter-fill {
   height: 100%;
   border-radius: 3px;
-  background: var(--bar-color, var(--accent-blue));
   transition: width 0.5s ease;
 }
 
-.resource-bar-fill.warn  { background: var(--accent-yellow) !important; }
-.resource-bar-fill.alert { background: var(--accent-red) !important; }
+.res-meter-fill.warn  { background: var(--accent-yellow) !important; }
+.res-meter-fill.alert { background: var(--accent-red) !important; }
 
-.resource-pct {
+.res-meter-pct {
   font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-size: 0.72rem;
   font-weight: 600;
   color: var(--text-muted);
   min-width: 36px;
   text-align: right;
+  flex-shrink: 0;
 }
 
-.resource-extra {
+.res-meter-pct.warn  { color: var(--accent-yellow); }
+.res-meter-pct.alert { color: var(--accent-red); }
+
+/* ── Extra Stats Row ── */
+.res-extras {
   display: flex;
   gap: 24px;
   margin-top: 16px;
@@ -744,122 +960,47 @@ body {
   flex-wrap: wrap;
 }
 
-.resource-extra-item {
+.res-extra {
   display: flex;
-  flex-direction: column;
-  gap: 2px;
+  align-items: baseline;
+  gap: 8px;
 }
 
-.resource-extra-label {
+.res-extra-k {
   font-size: 0.62rem;
   color: var(--text-dim);
   text-transform: uppercase;
   letter-spacing: 0.06em;
+  font-weight: 600;
 }
 
-.resource-extra-value {
+.res-extra-v {
   font-family: var(--font-mono);
   font-size: 0.82rem;
   font-weight: 600;
   color: var(--text-primary);
 }
 
-/* ── LLM Cards (GPT, Claude) ── */
-.llm-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 14px;
-}
-
-.llm-card {
-  background: var(--bg-elevated);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-md);
-  overflow: hidden;
-  transition: border-color 0.15s;
-}
-
-.llm-card:hover {
-  border-color: var(--llm-accent, var(--border));
-}
-
-.llm-card-accent {
-  height: 3px;
-  background: var(--llm-accent, var(--border));
-}
-
-.llm-card-body {
-  padding: 16px;
-}
-
-.llm-model {
-  font-family: var(--font-mono);
-  font-size: 0.92rem;
-  font-weight: 600;
-  color: var(--text-primary);
-  margin-bottom: 4px;
-}
-
-.llm-sub {
-  font-size: 0.68rem;
-  color: var(--text-dim);
-  margin-bottom: 14px;
-}
-
-.llm-stats {
+/* ── Agent Stats Row ── */
+.agent-stats-row {
   display: flex;
-  gap: 24px;
-  margin-bottom: 12px;
+  gap: 16px;
+  flex-wrap: wrap;
 }
 
-.llm-stat {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.llm-stat-value {
-  font-family: var(--font-mono);
-  font-size: 1.3rem;
-  font-weight: 600;
-  color: var(--text-primary);
-  line-height: 1;
-}
-
-.llm-stat-label {
-  font-size: 0.6rem;
-  color: var(--text-dim);
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-}
-
-.llm-last-used {
-  font-family: var(--font-mono);
-  font-size: 0.62rem;
-  color: var(--text-dim);
-  padding-top: 10px;
-  border-top: 1px solid var(--border-dim);
-}
-
-/* ── Stats Grid (Agent Execution) ── */
-.stats-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 14px;
-}
-
-.stat-card {
+.astat {
+  flex: 1;
+  min-width: 80px;
   background: var(--bg-elevated);
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
   padding: 14px;
   text-align: center;
+  transition: border-color 0.15s;
 }
 
-.stat-card.stat-success { border-top: 2px solid var(--accent-green); }
-.stat-card.stat-error   { border-top: 2px solid var(--accent-red); }
-
-.stat-value {
+.astat-v {
+  display: block;
   font-family: var(--font-mono);
   font-size: 1.5rem;
   font-weight: 600;
@@ -867,15 +1008,24 @@ body {
   line-height: 1;
 }
 
-.stat-label {
-  font-size: 0.62rem;
+.astat-k {
+  display: block;
+  font-size: 0.6rem;
   color: var(--text-dim);
   text-transform: uppercase;
   letter-spacing: 0.06em;
   margin-top: 6px;
 }
 
-.stat-bar {
+.astat-ok { border-top: 2px solid var(--accent-green); }
+.astat-ok .astat-v { color: var(--accent-green); }
+
+.astat-err { border-top: 2px solid var(--accent-red); }
+.astat-err .astat-v { color: var(--accent-red); }
+
+.astat-rate { border-top: 2px solid var(--accent-blue); }
+
+.astat-bar {
   height: 4px;
   background: var(--border);
   border-radius: 2px;
@@ -883,7 +1033,7 @@ body {
   overflow: hidden;
 }
 
-.stat-bar-fill {
+.astat-bar-fill {
   height: 100%;
   border-radius: 2px;
   background: var(--accent-green);
@@ -998,14 +1148,22 @@ body {
   .tab-btn { padding: 8px 14px; font-size: 0.75rem; }
 
   .llm-grid { grid-template-columns: 1fr; }
-  .stats-grid { grid-template-columns: repeat(2, 1fr); }
-  .resource-extra { gap: 16px; }
+  .agent-stats-row { gap: 10px; }
+  .astat { min-width: 60px; padding: 10px; }
+  .astat-v { font-size: 1.2rem; }
+  .res-extras { gap: 16px; }
 }
 
 @media (max-width: 480px) {
   .agent-grid { grid-template-columns: 1fr 1fr; }
   .header-right { gap: 8px; }
   .sync-badge span { display: none; }
+
+  .llm-header { gap: 10px; }
+  .llm-model { font-size: 0.8rem; }
+  .llm-meta-val { font-size: 0.85rem; }
+  .agent-stats-row { flex-wrap: wrap; }
+  .astat { min-width: calc(50% - 8px); }
 }
 
 /* ── Scrollbar ── */
