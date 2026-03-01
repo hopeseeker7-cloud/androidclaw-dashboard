@@ -1,0 +1,46 @@
+{
+  "timestamp": "2026-03-01T14:30:00Z",
+  "servers": [
+    {
+      "id": "openclaw",
+      "name": "OpenClaw (Angel)",
+      "emoji": "🦀",
+      "host": "34.29.181.7",
+      "zone": "us-central1-a",
+      "role": "자동매매 엔진",
+      "status": "healthy",
+      "lastCheck": "2026-03-01T14:22:00Z",
+      "consecutiveFailures": 0,
+      "checks": {
+        "ssh": true,
+        "gateway": true,
+        "timers": 29
+      },
+      "metrics": {
+        "pnl_today": "-0.42%",
+        "positions": 2,
+        "strategies_active": 8
+      }
+    },
+    {
+      "id": "hermitclaw",
+      "name": "HermitClaw (MoneyCrab)",
+      "emoji": "🐚",
+      "host": "34.158.45.28",
+      "zone": "asia-southeast1-a",
+      "role": "전략 연구 AI",
+      "status": "healthy",
+      "lastCheck": "2026-03-01T14:22:00Z",
+      "consecutiveFailures": 0,
+      "checks": {
+        "ssh": true,
+        "brain_py": true,
+        "last_sync": "2026-03-01T14:00:00Z"
+      },
+      "metrics": {
+        "strategies_generated": 4,
+        "reflections_today": 2
+      }
+    }
+  ]
+}

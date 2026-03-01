@@ -13,6 +13,7 @@ const DATA = {
   system: 'data/system.json',
   runs:   'data/runs.jsonl',
   costs:  'data/costs.json',
+  health: 'data/health.json',
 };
 
 /* ── Agent emoji map (fallback if not in JSON) ── */
@@ -30,6 +31,7 @@ let state = {
   system: null,
   runs:   [],
   costs:  null,
+  health: null,
   lastSync: null,
   loading: false,
   errors: [],
@@ -78,6 +80,7 @@ async function loadData() {
     fetchJSON(DATA.system),
     fetchJSONL(DATA.runs),
     fetchJSON(DATA.costs),
+    fetchJSON(DATA.health),
   ]);
 
   /* agents */
@@ -109,8 +112,14 @@ async function loadData() {
   if (results[3].status === 'fulfilled') {
     state.costs = results[3].value;
   } else {
-    /* costs.json is optional — no error shown */
     state.costs = null;
+  }
+
+  /* health */
+  if (results[4].status === 'fulfilled') {
+    state.health = results[4].value;
+  } else {
+    state.health = null;
   }
 
   state.lastSync = new Date();
@@ -205,6 +214,96 @@ function renderSystemBar() {
       <span class="sys-value good">${network}</span>
     </div>
   `;
+}
+
+/* ─────────────────────────────────────────────
+   RENDER — SERVER HEALTH MONITORING
+───────────────────────────────────────────── */
+
+function serverStatusInfo(srv) {
+  const fails = srv.consecutiveFailures || 0;
+  if (srv.status === 'healthy' && fails === 0)
+    return { cls: 'healthy', label: '정상', color: 'var(--accent-green)' };
+  if (srv.status === 'warning' || (fails > 0 && fails < 3))
+    return { cls: 'warning', label: '주의', color: 'var(--accent-yellow)' };
+  return { cls: 'down', label: '장애', color: 'var(--accent-red)' };
+}
+
+function renderServerCard(srv) {
+  const si = serverStatusInfo(srv);
+  const lastCheck = srv.lastCheck ? relativeTime(srv.lastCheck) : '—';
+  const checks = srv.checks || {};
+  const metrics = srv.metrics || {};
+
+  /* Build check pills */
+  const pills = [];
+  if (checks.ssh != null)
+    pills.push(`<span class="srv-pill ${checks.ssh ? 'ok' : 'fail'}">SSH ${checks.ssh ? '✓' : '✗'}</span>`);
+  if (checks.gateway != null)
+    pills.push(`<span class="srv-pill ${checks.gateway ? 'ok' : 'fail'}">Gateway ${checks.gateway ? '✓' : '✗'}</span>`);
+  if (checks.brain_py != null)
+    pills.push(`<span class="srv-pill ${checks.brain_py ? 'ok' : 'fail'}">brain.py ${checks.brain_py ? '✓' : '✗'}</span>`);
+  if (checks.timers != null)
+    pills.push(`<span class="srv-pill ok">Timers ${checks.timers}</span>`);
+
+  /* Build metric items */
+  const metricItems = [];
+  if (metrics.pnl_today != null)
+    metricItems.push(`<div class="srv-metric"><span class="srv-metric-k">PnL</span><span class="srv-metric-v ${metrics.pnl_today.startsWith('+') ? 'positive' : metrics.pnl_today.startsWith('-') ? 'negative' : ''}">${escHtml(metrics.pnl_today)}</span></div>`);
+  if (metrics.positions != null)
+    metricItems.push(`<div class="srv-metric"><span class="srv-metric-k">포지션</span><span class="srv-metric-v">${metrics.positions}</span></div>`);
+  if (metrics.strategies_active != null)
+    metricItems.push(`<div class="srv-metric"><span class="srv-metric-k">전략</span><span class="srv-metric-v">${metrics.strategies_active}</span></div>`);
+  if (metrics.strategies_generated != null)
+    metricItems.push(`<div class="srv-metric"><span class="srv-metric-k">생성 전략</span><span class="srv-metric-v">${metrics.strategies_generated}</span></div>`);
+  if (metrics.reflections_today != null)
+    metricItems.push(`<div class="srv-metric"><span class="srv-metric-k">성찰</span><span class="srv-metric-v">${metrics.reflections_today}</span></div>`);
+  if (checks.last_sync)
+    metricItems.push(`<div class="srv-metric"><span class="srv-metric-k">동기화</span><span class="srv-metric-v">${relativeTime(checks.last_sync)}</span></div>`);
+
+  return `
+    <div class="server-card srv-${si.cls}" style="--srv-color:${si.color}">
+      <div class="server-card-accent"></div>
+      <div class="server-card-body">
+        <div class="srv-header">
+          <span class="srv-emoji">${srv.emoji || '🖥️'}</span>
+          <div class="srv-title-block">
+            <div class="srv-name">${escHtml(srv.name)}</div>
+            <div class="srv-host">${escHtml(srv.host)} · ${escHtml(srv.role || srv.zone)}</div>
+          </div>
+          <div class="srv-status-badge">
+            <span class="srv-status-dot"></span>
+            <span class="srv-status-label">${si.label}</span>
+          </div>
+        </div>
+        <div class="srv-checks">${pills.join('')}</div>
+        ${metricItems.length ? `<div class="srv-metrics">${metricItems.join('')}</div>` : ''}
+        <div class="srv-footer">점검: ${lastCheck}</div>
+      </div>
+    </div>`;
+}
+
+function renderServerGrid() {
+  const grid = document.getElementById('serverGrid');
+  if (!grid) return;
+
+  const servers = state.health?.servers;
+  if (!servers || !servers.length) {
+    grid.innerHTML = `
+      <div class="empty-state" style="grid-column:1/-1">
+        <span class="empty-state-icon">🖥️</span>
+        서버 헬스 데이터 없음
+      </div>`;
+    const countEl = document.getElementById('serverCount');
+    if (countEl) countEl.textContent = '—';
+    return;
+  }
+
+  grid.innerHTML = servers.map(renderServerCard).join('');
+
+  const healthyCount = servers.filter(s => s.status === 'healthy').length;
+  const countEl = document.getElementById('serverCount');
+  if (countEl) countEl.textContent = `${healthyCount}/${servers.length} 정상`;
 }
 
 /* ─────────────────────────────────────────────
@@ -632,6 +731,7 @@ function renderErrors() {
 function render() {
   renderErrors();
   renderSystemBar();
+  renderServerGrid();
   renderAgentGrid();
   renderTimeline();
   renderRunsTable();
