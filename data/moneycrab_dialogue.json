@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-03-03 04:41",
+  "updatedAt": "2026-03-03 05:17",
   "entries": [
     {
       "ts": "2026-03-02 21:11",
@@ -30,6 +30,11 @@
       "ts": "2026-03-03 04:41",
       "role": "Jjanga",
       "text": "원인분석: 00:00 연구 사이클은 실행됐지만, Claude가 MONEYCRAB_REPORT 형식/전략 파일 생성 대신 \"bash sandbox 이슈\" 메시지를 출력해서 파서가 STRATEGY/VERDICT를 못 잡음 → 연구보고서가 비어 보임.\n조치: research_cycle 프롬프트를 수정해서 \"bash 못해도 전략 파일을 반드시 작성\" + \"변명 금지\" + \"항상 MONEYCRAB_REPORT 출력\"을 강제."
+    },
+    {
+      "ts": "2026-03-03 05:17",
+      "role": "Jjanga",
+      "text": "큐 작업 35f52fb4dbe5 research_cycle 실행 시작(05:16:52). Step1~2 진행 확인. Step3 백테스트 예상 15~25분."
     }
   ]
 }
