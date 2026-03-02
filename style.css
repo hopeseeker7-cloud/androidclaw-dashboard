@@ -1042,6 +1042,63 @@ body {
   color: var(--text-primary);
 }
 
+/* ── LLM Window Usage Bars (5h / Weekly) ── */
+.llm-windows-section {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px dashed var(--border-dim);
+}
+.llm-win-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.llm-win-label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-dim);
+  min-width: 32px;
+  text-align: right;
+}
+.llm-win-bar {
+  flex: 1;
+  height: 6px;
+  background: var(--surface-raised);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.llm-win-fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.6s ease;
+  opacity: 0.85;
+}
+.llm-win-fill.warn { opacity: 1; }
+.llm-win-fill.alert {
+  opacity: 1;
+  animation: bar-pulse 1.5s ease-in-out infinite;
+}
+@keyframes bar-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+.llm-win-pct {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  min-width: 32px;
+  text-align: right;
+}
+.llm-win-reset {
+  font-size: 0.65rem;
+  color: var(--text-dim);
+  min-width: 48px;
+}
+
 /* ── LLM Meta (bottom stats) ── */
 .llm-meta {
   display: flex;

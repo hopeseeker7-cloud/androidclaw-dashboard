@@ -503,6 +503,21 @@ function fmtTokens(n) {
   return String(n);
 }
 
+/* ── Format reset time from epoch ms ── */
+function fmtResetTime(epochMs) {
+  if (!epochMs) return '';
+  const diff = epochMs - Date.now();
+  if (diff <= 0) return '리셋됨';
+  const mins = Math.floor(diff / 60000);
+  if (mins < 60) return `${mins}분 후`;
+  const hrs = Math.floor(mins / 60);
+  const remMin = mins % 60;
+  if (hrs < 24) return remMin > 0 ? `${hrs}h ${remMin}m` : `${hrs}h`;
+  const days = Math.floor(hrs / 24);
+  const remHr = hrs % 24;
+  return `${days}d ${remHr}h`;
+}
+
 /* ── SVG donut chart ── */
 function svgDonut(pct, color, size, label) {
   const r = (size / 2) - 8;
@@ -570,9 +585,11 @@ function llmUsageCard(data, color, icon, defaultModel, defaultSub) {
   /* (B) Today's tokens (daily snapshot diff) */
   const todayTok = data?.today_tokens ?? null;
 
-  /* (C) Window percentages (5h / weekly) */
+  /* (C) Window percentages (5h / weekly) + reset times */
   const win5h  = data?.window_5h_pct ?? null;
   const winWk  = data?.window_weekly_pct ?? null;
+  const reset5h  = data?.window_5h_reset ?? null;
+  const resetWk  = data?.window_weekly_reset ?? null;
 
   /* Fallback for Claude: estimated tokens */
   const estTok  = data?.tokens_today_est || 0;
@@ -690,6 +707,27 @@ function llmUsageCard(data, color, icon, defaultModel, defaultSub) {
             <span class="llm-remaining-value">~${fmtTokens(barLeft)}</span>
           </div>
         </div>
+        ${(win5h != null || winWk != null) ? `
+        <div class="llm-windows-section">
+          ${win5h != null ? `
+          <div class="llm-win-row">
+            <span class="llm-win-label">5h</span>
+            <div class="llm-win-bar">
+              <div class="llm-win-fill ${win5h > 80 ? 'alert' : win5h > 60 ? 'warn' : ''}" style="width:${Math.min(win5h, 100)}%;background:${color}"></div>
+            </div>
+            <span class="llm-win-pct">${win5h}%</span>
+            <span class="llm-win-reset">${reset5h ? fmtResetTime(reset5h) : ''}</span>
+          </div>` : ''}
+          ${winWk != null ? `
+          <div class="llm-win-row">
+            <span class="llm-win-label">Week</span>
+            <div class="llm-win-bar">
+              <div class="llm-win-fill ${winWk > 80 ? 'alert' : winWk > 60 ? 'warn' : ''}" style="width:${Math.min(winWk, 100)}%;background:${color}"></div>
+            </div>
+            <span class="llm-win-pct">${winWk}%</span>
+            <span class="llm-win-reset">${resetWk ? fmtResetTime(resetWk) : ''}</span>
+          </div>` : ''}
+        </div>` : ''}
 
         <div class="llm-meta">${metaHtml}</div>
       </div>
