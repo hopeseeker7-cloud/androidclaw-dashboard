@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-03-02T07:38:00Z",
+  "timestamp": "2026-03-02T07:42:31Z",
   "phone_resources": {
     "memory": {
       "total_mb": 7443,
-      "used_mb": 4463,
-      "available_mb": 2980,
+      "used_mb": 4471,
+      "available_mb": 2972,
       "percent": 60
     },
     "storage": {
@@ -13,9 +13,9 @@
       "percent": 10
     },
     "battery": {
-      "level": 87,
+      "level": 90,
       "status": "CHARGING",
-      "temperature": 34.6
+      "temperature": 34.5
     },
     "cpu": {
       "load_1m": 0,
@@ -37,25 +37,26 @@
       "last_used": "2026-03-02T05:33:30.845982+00:00"
     },
     "gpt": {
-      "model": "GPT-5.2 (Codex)",
+      "model": "gpt-5.2",
       "subscription": "ChatGPT Plus OAuth",
-      "input_tokens": 0,
-      "output_tokens": 0,
+      "input_tokens": 248044,
+      "output_tokens": 42,
       "cache_read": 0,
       "cache_write": 0,
-      "total_tokens": 0,
+      "total_tokens": 249285,
       "remaining_tokens": null,
       "percent_used": null,
-      "context_tokens": null,
-      "last_used": null,
-      "source": "unknown",
-      "today_tokens": 0,
-      "binary_found": false
+      "context_tokens": 272000,
+      "last_used": 1772437077435,
+      "source": "openclaw_sessions",
+      "session_key": "agent:main:telegram:direct:7223758740",
+      "today_tokens": 6146,
+      "binary_found": true
     }
   },
   "agent_stats": {
-    "runs_today": 82,
-    "success_today": 82,
+    "runs_today": 84,
+    "success_today": 84,
     "errors_today": 0,
     "success_rate": 100.0,
     "cron_jobs_active": 9
