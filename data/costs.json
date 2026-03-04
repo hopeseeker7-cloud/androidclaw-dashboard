@@ -1,11 +1,11 @@
 {
-  "timestamp": "2026-03-04T05:00:00Z",
+  "timestamp": "2026-03-04T05:15:00Z",
   "phone_resources": {
     "memory": {
       "total_mb": 7443,
-      "used_mb": 4009,
-      "available_mb": 3434,
-      "percent": 54
+      "used_mb": 4332,
+      "available_mb": 3111,
+      "percent": 58
     },
     "storage": {
       "used": "24G",
@@ -13,9 +13,9 @@
       "percent": 11
     },
     "battery": {
-      "level": 76,
-      "status": "DISCHARGING",
-      "temperature": 27.5
+      "level": 72,
+      "status": "CHARGING",
+      "temperature": 35.8
     },
     "cpu": {
       "load_1m": 0,
@@ -37,31 +37,30 @@
       "last_used": "2026-03-04T02:57:39.735960+00:00"
     },
     "gpt": {
-      "model": "gpt-5.2",
+      "model": "GPT-5.2 (Codex)",
       "subscription": "ChatGPT Plus OAuth",
-      "input_tokens": 22676,
-      "output_tokens": 2363,
+      "input_tokens": 0,
+      "output_tokens": 0,
       "cache_read": 0,
       "cache_write": 0,
-      "total_tokens": 31027,
-      "remaining_tokens": 240973,
-      "percent_used": 11.4,
-      "context_tokens": 272000,
-      "last_used": 1772585362800,
-      "source": "openclaw_sessions",
+      "total_tokens": 0,
+      "remaining_tokens": null,
+      "percent_used": null,
+      "context_tokens": null,
+      "last_used": null,
+      "source": "unknown",
       "window_5h_pct": 2,
       "window_5h_reset": 1772603147000,
       "window_weekly_pct": 8,
       "window_weekly_reset": 1773110800000,
       "plan": "plus ($0.00)",
-      "session_key": "agent:main:telegram:direct:7223758740",
       "today_tokens": 0,
       "binary_found": true
     }
   },
   "agent_stats": {
-    "runs_today": 42,
-    "success_today": 42,
+    "runs_today": 44,
+    "success_today": 44,
     "errors_today": 0,
     "success_rate": 100.0,
     "cron_jobs_active": 8
