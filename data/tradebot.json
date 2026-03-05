@@ -1,5 +1,5 @@
 {
-  "ts": "2026-03-05T09:45:00Z",
+  "ts": "2026-03-05T10:00:00Z",
   "host": "jjanga-phone",
   "exchanges": [
     {
@@ -81,7 +81,7 @@
       "strategy_registry": {
         "total": 9,
         "active": 9,
-        "total_signals": 573,
+        "total_signals": 640,
         "total_fills": 13,
         "total_pnl_krw": -15137
       },
@@ -89,7 +89,7 @@
         {
           "name": "ict_fvg_sweep",
           "status": "paper_test",
-          "total_signals": 105,
+          "total_signals": 128,
           "total_fills": 1,
           "total_pnl_krw": -4018,
           "win_count": 0,
@@ -98,7 +98,7 @@
         {
           "name": "sol_trend_rider",
           "status": "paper_test",
-          "total_signals": 248,
+          "total_signals": 267,
           "total_fills": 8,
           "total_pnl_krw": -11278,
           "win_count": 1,
@@ -107,7 +107,7 @@
         {
           "name": "vivid_fractal_box",
           "status": "paper_test",
-          "total_signals": 61,
+          "total_signals": 72,
           "total_fills": 1,
           "total_pnl_krw": 1,
           "win_count": 1,
@@ -116,7 +116,7 @@
         {
           "name": "volume_spike",
           "status": "paper_test",
-          "total_signals": 102,
+          "total_signals": 112,
           "total_fills": 2,
           "total_pnl_krw": 161,
           "win_count": 1,
@@ -134,7 +134,7 @@
         {
           "name": "breakout",
           "status": "paper_test",
-          "total_signals": 48,
+          "total_signals": 50,
           "total_fills": 0,
           "total_pnl_krw": 0,
           "win_count": 0,
@@ -161,7 +161,7 @@
         {
           "name": "ict_sweep_revert",
           "status": "paper_test",
-          "total_signals": 4,
+          "total_signals": 6,
           "total_fills": 0,
           "total_pnl_krw": 0,
           "win_count": 0,
@@ -173,7 +173,7 @@
         "reason": "",
         "since": null
       },
-      "last_cycle": "2026-03-05T09:45:24Z",
+      "last_cycle": "2026-03-05T10:00:32Z",
       "config": {
         "capital_krw": 600000,
         "per_trade_krw": 50,
@@ -185,55 +185,55 @@
         "market": "USDT"
       },
       "signals": {
-        "ts": "2026-03-05T09:45:13.615662+00:00",
+        "ts": "2026-03-05T10:00:21.488255+00:00",
         "live_count": 0,
-        "paper_count": 8,
+        "paper_count": 5,
         "strategy_count": 13,
         "paper_signals": [
           {
             "symbol": "BTWUSDT",
             "side": "sell",
             "confidence": 0.65,
-            "reason": "[sol_trend_rider] EMA_align_dn ER=0.33 ROC=-0.001",
-            "entry_price": 0.01102,
+            "reason": "[sol_trend_rider] EMA_align_dn ER=0.26 ROC=-0.004",
+            "entry_price": 0.01107,
             "krw": 50000
           },
           {
-            "symbol": "SOLUSDT",
+            "symbol": "BTWUSDT",
             "side": "buy",
-            "confidence": 0.7,
-            "reason": "[ict_fvg_sweep] ICT: FVG retrace [91-91] gap=0.4% | vol+ | KZ",
-            "entry_price": 90.93,
-            "krw": 50000
-          },
-          {
-            "symbol": "XRPUSDT",
-            "side": "sell",
-            "confidence": 0.62,
-            "reason": "[vivid_fractal_box] BOX short @zone_top=1.4331, bottom=1.4165, width=1.17%",
-            "entry_price": 1.4299,
-            "krw": 50
-          },
-          {
-            "symbol": "USDCUSDT",
-            "side": "buy",
-            "confidence": 0.43532769751561895,
-            "reason": "[volume_spike] volume spike x2.35 (alt learning signal)",
-            "entry_price": 0.9999,
+            "confidence": 0.7000000000000001,
+            "reason": "[volume_spike] volume spike x5.00 (alt learning signal)",
+            "entry_price": 0.01107,
             "krw": 50000
           },
           {
             "symbol": "DOGEUSDT",
             "side": "buy",
             "confidence": 0.65,
-            "reason": "[sol_trend_rider] EMA_align_up ER=0.37 ROC=0.005",
-            "entry_price": 0.09901,
+            "reason": "[sol_trend_rider] EMA_align_up ER=0.32 ROC=0.003",
+            "entry_price": 0.09817,
             "krw": 50000
+          },
+          {
+            "symbol": "HYPEUSDT",
+            "side": "buy",
+            "confidence": 0.8,
+            "reason": "[sol_trend_rider] EMA_align_up ER=0.45 ROC=0.001",
+            "entry_price": 32.12,
+            "krw": 50000
+          },
+          {
+            "symbol": "HYPEUSDT",
+            "side": "sell",
+            "confidence": 0.62,
+            "reason": "[vivid_fractal_box] BOX short @zone_top=32.1800, bottom=31.4300, width=2.39%",
+            "entry_price": 32.12,
+            "krw": 50
           }
         ]
       },
       "scout": {
-        "ts": "2026-03-05T09:45:01.327122+00:00",
+        "ts": "2026-03-05T10:00:01.562390+00:00",
         "universe_count": 12,
         "top_symbols": [
           "BTCUSDT",
@@ -241,8 +241,8 @@
           "BTWUSDT",
           "SOLUSDT",
           "XRPUSDT",
-          "USDCUSDT",
           "XAUTUSDT",
+          "USDCUSDT",
           "DOGEUSDT"
         ]
       },
@@ -349,82 +349,82 @@
         }
       ],
       "cycle_health": {
-        "cycles_in_log": 70,
-        "completed": 70,
+        "cycles_in_log": 76,
+        "completed": 76,
         "errors": 0
       },
       "portfolio": {
         "capital_krw": 600000,
         "cash_krw": -400000.0,
         "invested_krw": 1000000.0,
-        "portfolio_value": 602643.04,
-        "total_pnl_krw": 2643.04,
-        "total_pnl_pct": 0.44,
+        "portfolio_value": 602229.67,
+        "total_pnl_krw": 2229.67,
+        "total_pnl_pct": 0.37,
         "holdings": [
           {
             "symbol": "XAUTUSDT",
             "qty": 48.961046591331936,
             "avg_price": 5106.1,
-            "cur_price": 5131.5,
+            "cur_price": 5128.3,
             "buy_krw": 250000.0,
-            "val_krw": 251243.61,
-            "pnl_krw": 1243.61,
-            "pnl_pct": 0.5,
+            "val_krw": 251086.94,
+            "pnl_krw": 1086.94,
+            "pnl_pct": 0.43,
             "side": "short"
           },
           {
             "symbol": "XAUTUSDT",
             "qty": 48.95241824946152,
             "avg_price": 5107.0,
-            "cur_price": 5131.5,
+            "cur_price": 5128.3,
             "buy_krw": 250000.0,
-            "val_krw": 251199.33,
-            "pnl_krw": 1199.33,
-            "pnl_pct": 0.48,
+            "val_krw": 251042.69,
+            "pnl_krw": 1042.69,
+            "pnl_pct": 0.42,
             "side": "short"
           },
           {
             "symbol": "USDCUSDT",
             "qty": 250125.0625312656,
             "avg_price": 0.9995,
-            "cur_price": 0.9999,
+            "cur_price": 0.9997,
             "buy_krw": 250000.0,
-            "val_krw": 250100.05,
-            "pnl_krw": 100.05,
-            "pnl_pct": 0.04,
+            "val_krw": 250050.03,
+            "pnl_krw": 50.03,
+            "pnl_pct": 0.02,
             "side": "short"
           },
           {
             "symbol": "USDCUSDT",
             "qty": 250125.0625312656,
             "avg_price": 0.9995,
-            "cur_price": 0.9999,
+            "cur_price": 0.9997,
             "buy_krw": 250000.0,
-            "val_krw": 250100.05,
-            "pnl_krw": 100.05,
-            "pnl_pct": 0.04,
+            "val_krw": 250050.03,
+            "pnl_krw": 50.03,
+            "pnl_pct": 0.02,
             "side": "short"
           }
         ],
         "allocation": [
           {
             "name": "XAUTUSDT",
-            "value": 251243.61,
+            "value": 251086.94,
             "pct": 41.7
           },
           {
             "name": "XAUTUSDT",
-            "value": 251199.33,
+            "value": 251042.69,
             "pct": 41.7
           },
           {
             "name": "USDCUSDT",
-            "value": 250100.05,
+            "value": 250050.03,
             "pct": 41.5
           },
           {
             "name": "USDCUSDT",
-            "value": 250100.05,
+            "value": 250050.03,
             "pct": 41.5
           }
         ]
@@ -705,7 +705,7 @@
   "summary": {
     "total_exchanges": 2,
     "total_positions": 7,
-    "total_signals": 11,
+    "total_signals": 8,
     "total_strategies": 18
   },
   "history": [
