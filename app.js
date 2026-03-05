@@ -866,14 +866,23 @@ function renderErrors() {
 
 
 /* ─────────────────────────────────────────────
-   RENDER — TRADING PANEL
+   RENDER — TRADING PANEL (v2 enriched)
 ───────────────────────────────────────────── */
 
 function fmtKRW(n) {
   if (n == null || isNaN(n)) return '\u20a90';
-  if (Math.abs(n) >= 1000000) return '\u20a9' + (n / 1000000).toFixed(1) + 'M';
-  if (Math.abs(n) >= 1000) return '\u20a9' + Math.round(n / 1000) + 'K';
-  return '\u20a9' + Math.round(n);
+  const abs = Math.abs(n);
+  const sign = n < 0 ? '-' : '';
+  if (abs >= 1000000) return sign + '\u20a9' + (abs / 1000000).toFixed(1) + 'M';
+  if (abs >= 1000) return sign + '\u20a9' + Math.round(abs / 1000).toLocaleString() + 'K';
+  return sign + '\u20a9' + Math.round(abs).toLocaleString();
+}
+
+function confidenceBadge(c) {
+  if (c == null) return '';
+  const pct = Math.round(c * 100);
+  const cls = pct >= 60 ? 'high' : pct >= 40 ? 'mid' : 'low';
+  return `<span class="conf-badge conf-${cls}">${pct}%</span>`;
 }
 
 function renderExchangeCard(ex) {
@@ -883,32 +892,128 @@ function renderExchangeCard(ex) {
   const statusKo = ex.status === 'NORMAL' ? '\uc815\uc0c1' : ex.status === 'HALTED' ? '\uc911\uc9c0' : ex.status;
   const exchangeEmoji = ex.exchange === 'BITGET' ? '\U0001f7e1' : ex.exchange === 'BITHUMB' ? '\U0001f7e0' : '\u26aa';
   const exchangeType = ex.exchange === 'BITGET' ? '\uc120\ubb3c (Futures)' : '\ud604\ubb3c (Spot)';
+  const modeLabel = ex.mode === 'demo' ? 'Paper Trading' : 'Live';
   const posCount = ex.positions?.length || 0;
   const pnlToday = ex.pnl_today?.realized_krw ?? 0;
   const tradesToday = ex.pnl_today?.trades ?? 0;
   const pnlClass = pnlToday > 0 ? 'positive' : pnlToday < 0 ? 'negative' : '';
   const lastCycle = ex.last_cycle ? relativeTime(ex.last_cycle) : '\u2014';
+  const cfg = ex.config || {};
+  const reg = ex.strategy_registry || {};
+  const sigs = ex.signals || {};
+  const scout = ex.scout || {};
+  const health = ex.cycle_health || {};
 
-  /* Strategy summary */
-  const strats = ex.strategy_registry || {};
-  const stratRows = Object.entries(strats)
-    .filter(([k]) => k !== 'strategies')
-    .map(([name, s]) => {
-      const winRate = (s.win_count + s.loss_count) > 0
-        ? Math.round(s.win_count / (s.win_count + s.loss_count) * 100) + '%'
-        : '\u2014';
+  /* ── Config summary ── */
+  const configHtml = `
+    <div class="trading-config-grid">
+      <div class="tcfg"><span class="tcfg-k">\uc790\ubcf8\uae08</span><span class="tcfg-v">${fmtKRW(cfg.capital_krw || 0)}</span></div>
+      <div class="tcfg"><span class="tcfg-k">\uac74\ub2f9 \ud22c\uc790</span><span class="tcfg-v">${fmtKRW(cfg.per_trade_krw || 0)}</span></div>
+      <div class="tcfg"><span class="tcfg-k">\ucd5c\ub300 \ud3ec\uc9c0\uc158</span><span class="tcfg-v">${cfg.max_positions || 0}</span></div>
+      <div class="tcfg"><span class="tcfg-k">\uc77c\uc190\uc808 \ud55c\ub3c4</span><span class="tcfg-v negative">${fmtKRW(cfg.daily_loss_limit_krw || 0)}</span></div>
+      <div class="tcfg"><span class="tcfg-k">\ub808\ubc84\ub9ac\uc9c0</span><span class="tcfg-v">${cfg.leverage || 1}x</span></div>
+      <div class="tcfg"><span class="tcfg-k">\ud0c0\uc784\ud504\ub808\uc784</span><span class="tcfg-v">${escHtml(cfg.timeframe || '?')}</span></div>
+    </div>`;
+
+  /* ── Strategy table ── */
+  const strats = ex.strategies_flat || [];
+  let stratHtml = '';
+  if (strats.length > 0) {
+    const stratRows = strats.map(s => {
+      const total = s.win_count + s.loss_count;
+      const winRate = total > 0 ? Math.round(s.win_count / total * 100) + '%' : '\u2014';
+      const pnlCls = s.total_pnl_krw > 0 ? 'positive' : s.total_pnl_krw < 0 ? 'negative' : '';
+      const coins = s.coins?.length ? s.coins.join(', ') : '';
+      const extra = [];
+      if (s.timeframe) extra.push(s.timeframe);
+      if (s.position_scale && s.position_scale !== 1.0) extra.push('scale:' + s.position_scale);
+      const extraStr = extra.length ? `<span class="strat-extra">${escHtml(extra.join(' · '))}</span>` : '';
       return `
         <tr>
-          <td class="strat-name">${escHtml(name)}</td>
+          <td>
+            <div class="strat-name">${escHtml(s.name)}</div>
+            ${coins ? `<div class="strat-coins">${escHtml(coins)}</div>` : ''}
+            ${extraStr}
+          </td>
           <td><span class="strat-status-badge strat-${s.status}">${escHtml(s.status)}</span></td>
           <td class="mono">${s.total_signals}</td>
           <td class="mono">${s.total_fills}</td>
-          <td class="mono ${s.total_pnl_krw > 0 ? 'positive' : s.total_pnl_krw < 0 ? 'negative' : ''}">${fmtKRW(s.total_pnl_krw)}</td>
+          <td class="mono ${pnlCls}">${fmtKRW(s.total_pnl_krw)}</td>
           <td class="mono">${winRate}</td>
         </tr>`;
     }).join('');
 
-  /* Positions */
+    stratHtml = `
+      <div class="trading-subsection">
+        <div class="trading-sub-title">\uc804\ub7b5 (${strats.length}\uac1c)</div>
+        <div class="trading-table-wrap">
+          <table class="trading-table">
+            <thead><tr><th>\uc804\ub7b5\uba85</th><th>\uc0c1\ud0dc</th><th>\uc2dc\uadf8\ub110</th><th>\uccb4\uacb0</th><th>PnL</th><th>\uc2b9\ub960</th></tr></thead>
+            <tbody>${stratRows}</tbody>
+          </table>
+        </div>
+      </div>`;
+  }
+
+  /* ── Live signals ── */
+  let sigHtml = '';
+  const paperSigs = sigs.paper_signals || [];
+  if (paperSigs.length > 0) {
+    const sigRows = paperSigs.map(s => {
+      const sideClass = s.side === 'buy' ? 'positive' : 'negative';
+      const sideKo = s.side === 'buy' ? 'BUY' : 'SELL';
+      return `
+        <tr>
+          <td class="mono">${escHtml(s.symbol || '')}</td>
+          <td class="${sideClass}" style="font-weight:700">${sideKo}</td>
+          <td>${confidenceBadge(s.confidence)}</td>
+          <td class="sig-reason">${escHtml((s.reason || '').slice(0, 60))}</td>
+          <td class="mono">${fmtKRW(s.krw || 0)}</td>
+        </tr>`;
+    }).join('');
+
+    sigHtml = `
+      <div class="trading-subsection">
+        <div class="trading-sub-title">\ucd5c\uadfc \uc2dc\uadf8\ub110 (paper: ${sigs.paper_count || 0})</div>
+        <div class="trading-table-wrap">
+          <table class="trading-table">
+            <thead><tr><th>\uc2ec\ubcfc</th><th>\ubc29\ud5a5</th><th>\uc2e0\ub8b0\ub3c4</th><th>\uc774\uc720</th><th>\uae08\uc561</th></tr></thead>
+            <tbody>${sigRows}</tbody>
+          </table>
+        </div>
+      </div>`;
+  }
+
+  /* ── Recent trades ── */
+  let tradesHtml = '';
+  const trades = ex.recent_trades || [];
+  if (trades.length > 0) {
+    const tradeRows = trades.slice(-5).reverse().map(t => {
+      const winCls = t.win ? 'positive' : 'negative';
+      const winIcon = t.win ? '\u2705' : '\u274c';
+      return `
+        <tr>
+          <td class="mono">${escHtml(t.symbol)}</td>
+          <td>${escHtml(t.algo)}</td>
+          <td>${escHtml(t.type)}</td>
+          <td class="mono ${t.pnl_pct >= 0 ? 'positive' : 'negative'}">${t.pnl_pct > 0 ? '+' : ''}${t.pnl_pct}%</td>
+          <td>${winIcon}</td>
+        </tr>`;
+    }).join('');
+
+    tradesHtml = `
+      <div class="trading-subsection">
+        <div class="trading-sub-title">\ucd5c\uadfc \uac70\ub798 (\ucd5c\uadfc 5\uac74)</div>
+        <div class="trading-table-wrap">
+          <table class="trading-table">
+            <thead><tr><th>\uc2ec\ubcfc</th><th>\uc54c\uace0\ub9ac\uc998</th><th>\uc720\ud615</th><th>PnL%</th><th>\uc2b9\ud328</th></tr></thead>
+            <tbody>${tradeRows}</tbody>
+          </table>
+        </div>
+      </div>`;
+  }
+
+  /* ── Positions ── */
   let posHtml = '';
   if (posCount > 0) {
     const posRows = ex.positions.map(p => {
@@ -917,7 +1022,7 @@ function renderExchangeCard(ex) {
       return `
         <tr>
           <td class="mono">${escHtml(p.symbol || '\u2014')}</td>
-          <td class="${sideClass}">${escHtml(side)}</td>
+          <td class="${sideClass}" style="font-weight:700">${escHtml(side)}</td>
           <td class="mono">${fmtKRW(p.entry_krw || p.size_krw || 0)}</td>
           <td class="mono ${(p.pnl_krw || 0) >= 0 ? 'positive' : 'negative'}">${fmtKRW(p.pnl_krw || 0)}</td>
           <td class="mono">${p.entry_time ? relativeTime(p.entry_time) : '\u2014'}</td>
@@ -926,13 +1031,41 @@ function renderExchangeCard(ex) {
 
     posHtml = `
       <div class="trading-subsection">
-        <div class="trading-sub-title">\ud3ec\uc9c0\uc158</div>
+        <div class="trading-sub-title">\ud3ec\uc9c0\uc158 (${posCount}\uac1c)</div>
         <div class="trading-table-wrap">
           <table class="trading-table">
             <thead><tr><th>\uc2ec\ubcfc</th><th>\ubc29\ud5a5</th><th>\ud06c\uae30</th><th>PnL</th><th>\uc9c4\uc785</th></tr></thead>
             <tbody>${posRows}</tbody>
           </table>
         </div>
+      </div>`;
+  } else {
+    posHtml = `
+      <div class="trading-subsection">
+        <div class="trading-empty-pos">\ud3ec\uc9c0\uc158 \uc5c6\uc74c \u2014 \ub300\uae30 \uc911</div>
+      </div>`;
+  }
+
+  /* ── Scout ── */
+  let scoutHtml = '';
+  if (scout.universe_count > 0) {
+    scoutHtml = `
+      <div class="trading-scout">
+        <span class="trading-scout-label">\ud0d0\uc0c9 \uc720\ub2c8\ubc84\uc2a4:</span>
+        ${scout.top_symbols.map(s => `<span class="scout-chip">${escHtml(s)}</span>`).join('')}
+        ${scout.universe_count > 8 ? `<span class="scout-more">+${scout.universe_count - 8}</span>` : ''}
+      </div>`;
+  }
+
+  /* ── Cycle health ── */
+  let healthHtml = '';
+  if (health.cycles_in_log) {
+    const errRate = health.cycles_in_log > 0 ? Math.round(health.errors / health.cycles_in_log * 100) : 0;
+    healthHtml = `
+      <div class="trading-health">
+        <span>\uc0ac\uc774\ud074: ${health.completed}/${health.cycles_in_log}</span>
+        <span>\uc5d0\ub7ec: <span class="${health.errors > 0 ? 'negative' : ''}">${health.errors}</span></span>
+        <span>\ub9c8\uc9c0\ub9c9: ${lastCycle}</span>
       </div>`;
   }
 
@@ -942,8 +1075,8 @@ function renderExchangeCard(ex) {
         <div class="trading-ex-title">
           <span class="trading-ex-emoji">${exchangeEmoji}</span>
           <div>
-            <div class="trading-ex-name">${escHtml(ex.exchange)}</div>
-            <div class="trading-ex-type">${exchangeType} \xb7 Paper Trading</div>
+            <div class="trading-ex-name">${escHtml(ex.exchange)} <span class="trading-mode-badge">${modeLabel}</span></div>
+            <div class="trading-ex-type">${exchangeType} \xb7 ${escHtml(cfg.market || '')}</div>
           </div>
         </div>
         <div class="trading-ex-status" style="color:${statusColor}">
@@ -966,23 +1099,26 @@ function renderExchangeCard(ex) {
           <span class="trading-metric-k">\uc624\ub298 \uac70\ub798</span>
         </div>
         <div class="trading-metric">
+          <span class="trading-metric-v">${reg.total_signals || 0}</span>
+          <span class="trading-metric-k">\ub204\uc801 \uc2dc\uadf8\ub110</span>
+        </div>
+        <div class="trading-metric">
+          <span class="trading-metric-v">${reg.active || 0}/${reg.total || 0}</span>
+          <span class="trading-metric-k">\ud65c\uc131 \uc804\ub7b5</span>
+        </div>
+        <div class="trading-metric">
           <span class="trading-metric-v">${lastCycle}</span>
           <span class="trading-metric-k">\ub9c8\uc9c0\ub9c9 \uc0ac\uc774\ud074</span>
         </div>
       </div>
 
+      ${configHtml}
       ${posHtml}
-
-      ${stratRows ? `
-      <div class="trading-subsection">
-        <div class="trading-sub-title">\uc804\ub7b5</div>
-        <div class="trading-table-wrap">
-          <table class="trading-table">
-            <thead><tr><th>\uc804\ub7b5\uba85</th><th>\uc0c1\ud0dc</th><th>\uc2dc\uadf8\ub110</th><th>\uccb4\uacb0</th><th>PnL</th><th>\uc2b9\ub960</th></tr></thead>
-            <tbody>${stratRows}</tbody>
-          </table>
-        </div>
-      </div>` : ''}
+      ${sigHtml}
+      ${stratHtml}
+      ${tradesHtml}
+      ${scoutHtml}
+      ${healthHtml}
 
       ${ex.error ? `<div class="trading-error">\u26a0 ${escHtml(ex.error)}</div>` : ''}
     </div>`;
@@ -1004,11 +1140,22 @@ function renderTrading() {
     return;
   }
 
-  panel.innerHTML = tb.exchanges.map(renderExchangeCard).join('');
+  const sm = tb.summary || {};
+  const summaryHtml = `
+    <div class="trading-summary-bar">
+      <div class="tsb-item"><span class="tsb-v">${sm.total_exchanges || 0}</span><span class="tsb-k">\uac70\ub798\uc18c</span></div>
+      <div class="tsb-item"><span class="tsb-v">${sm.total_positions || 0}</span><span class="tsb-k">\ud3ec\uc9c0\uc158</span></div>
+      <div class="tsb-item"><span class="tsb-v">${sm.total_signals || 0}</span><span class="tsb-k">\ub300\uae30 \uc2dc\uadf8\ub110</span></div>
+      <div class="tsb-item"><span class="tsb-v">${sm.total_strategies || 0}</span><span class="tsb-k">\uc804\ub7b5</span></div>
+      <div class="tsb-item"><span class="tsb-v">${tb.host || '\u2014'}</span><span class="tsb-k">\ud638\uc2a4\ud2b8</span></div>
+      <div class="tsb-item"><span class="tsb-v">${tb.ts ? relativeTime(tb.ts) : '\u2014'}</span><span class="tsb-k">\ub370\uc774\ud130 \uae30\uc900</span></div>
+    </div>`;
+
+  panel.innerHTML = summaryHtml + tb.exchanges.map(renderExchangeCard).join('');
 
   const statusEl = document.getElementById('tradingStatus');
   if (statusEl) {
-    statusEl.textContent = `${tb.exchanges.length}\uac1c \uac70\ub798\uc18c \xb7 ${tb.total_positions || 0} \ud3ec\uc9c0\uc158`;
+    statusEl.textContent = `${sm.total_exchanges || 0}\uac1c \uac70\ub798\uc18c \xb7 ${sm.total_positions || 0} \ud3ec\uc9c0\uc158 \xb7 ${sm.total_signals || 0} \uc2dc\uadf8\ub110`;
   }
 }
 

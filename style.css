@@ -1646,3 +1646,193 @@ body {
     padding: 4px 6px;
   }
 }
+
+/* ═══════════════════════════════════════════════
+   TRADING TAB v2 — Additional Styles
+═══════════════════════════════════════════════ */
+
+/* Summary bar */
+.trading-summary-bar {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 8px;
+  margin-bottom: 20px;
+  padding: 14px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.tsb-item { text-align: center; }
+.tsb-v {
+  display: block;
+  font-size: 1.05rem;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  color: var(--text-primary);
+}
+.tsb-k {
+  display: block;
+  font-size: 0.65rem;
+  color: var(--text-dim);
+  margin-top: 2px;
+}
+
+/* Config grid */
+.trading-config-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+  margin: 12px 0;
+  padding: 10px;
+  background: var(--bg-surface);
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+
+.tcfg { text-align: center; padding: 4px 0; }
+.tcfg-k {
+  display: block;
+  font-size: 0.65rem;
+  color: var(--text-dim);
+}
+.tcfg-v {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 600;
+  font-family: var(--font-mono);
+  color: var(--text-primary);
+}
+
+/* Mode badge */
+.trading-mode-badge {
+  display: inline-block;
+  font-size: 0.65rem;
+  padding: 1px 6px;
+  border-radius: 4px;
+  background: color-mix(in srgb, var(--accent-blue) 20%, transparent);
+  color: var(--accent-blue);
+  font-weight: 600;
+  vertical-align: middle;
+  margin-left: 6px;
+}
+
+/* Metrics grid — 6 columns */
+.trading-metrics {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+/* Confidence badge */
+.conf-badge {
+  display: inline-block;
+  padding: 1px 5px;
+  border-radius: 3px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  font-family: var(--font-mono);
+}
+.conf-high { background: color-mix(in srgb, var(--accent-green) 20%, transparent); color: var(--accent-green); }
+.conf-mid  { background: color-mix(in srgb, var(--accent-yellow) 20%, transparent); color: var(--accent-yellow); }
+.conf-low  { background: color-mix(in srgb, var(--accent-red) 20%, transparent); color: var(--accent-red); }
+
+/* Signal reason */
+.sig-reason {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  max-width: 250px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Strategy extra info */
+.strat-coins {
+  font-size: 0.68rem;
+  color: var(--text-dim);
+  font-family: var(--font-mono);
+}
+.strat-extra {
+  display: inline-block;
+  font-size: 0.65rem;
+  color: var(--accent-purple);
+  font-family: var(--font-mono);
+}
+
+/* Empty positions */
+.trading-empty-pos {
+  text-align: center;
+  padding: 16px;
+  color: var(--text-dim);
+  font-size: 0.82rem;
+  background: var(--bg-surface);
+  border-radius: 8px;
+  border: 1px dashed var(--border);
+}
+
+/* Scout universe */
+.trading-scout {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 5px;
+  margin-top: 12px;
+  padding: 8px 10px;
+  background: var(--bg-surface);
+  border-radius: 6px;
+}
+.trading-scout-label {
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  font-weight: 600;
+}
+.scout-chip {
+  display: inline-block;
+  padding: 1px 6px;
+  border-radius: 3px;
+  font-size: 0.68rem;
+  font-family: var(--font-mono);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+}
+.scout-more {
+  font-size: 0.68rem;
+  color: var(--text-dim);
+}
+
+/* Cycle health */
+.trading-health {
+  display: flex;
+  gap: 16px;
+  margin-top: 10px;
+  padding: 6px 10px;
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  font-family: var(--font-mono);
+  border-top: 1px solid var(--border);
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .trading-summary-bar {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .trading-metrics {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .trading-config-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .trading-summary-bar {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .trading-metrics {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
