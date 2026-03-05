@@ -1303,7 +1303,7 @@ function renderExchangeCard(ex) {
         </div>
       </div>
 
-      \${renderPortfolioSection(ex, state.tradebot?.history || [])}
+      ${renderPortfolioSection(ex, state.tradebot?.history || [])}
 
       <div class="trading-metrics">
         <div class="trading-metric">
