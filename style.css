@@ -1836,3 +1836,151 @@ body {
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
+/* ═══════════════════════════════════════════════
+   PORTFOLIO SECTION STYLES
+═══════════════════════════════════════════════ */
+
+.portfolio-section {
+  margin-bottom: 16px;
+}
+
+/* Summary header */
+.pf-summary-header {
+  padding: 16px 20px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  margin-bottom: 12px;
+}
+
+.pf-label {
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  margin-bottom: 4px;
+}
+
+.pf-return {
+  font-size: 2rem;
+  font-weight: 800;
+  font-family: var(--font-mono);
+  line-height: 1.1;
+}
+.pf-return.positive { color: var(--accent-green); }
+.pf-return.negative { color: var(--accent-red); }
+
+.pf-value {
+  font-size: 1.1rem;
+  font-weight: 600;
+  font-family: var(--font-mono);
+  color: var(--text-primary);
+  margin-top: 2px;
+}
+
+.pf-detail {
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  font-family: var(--font-mono);
+  margin-top: 4px;
+}
+
+/* Charts row */
+.pf-charts-row {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.pf-chart-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px;
+}
+
+.pf-chart-wide {
+  min-width: 0;
+}
+
+.pf-chart-title {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 10px;
+}
+
+.chart-empty {
+  text-align: center;
+  padding: 40px 0;
+  color: var(--text-dim);
+  font-size: 0.82rem;
+}
+
+/* Donut chart */
+.donut-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.donut-legend {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.donut-legend-item {
+  font-size: 0.72rem;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  white-space: nowrap;
+}
+
+.donut-legend-item b {
+  color: var(--text-primary);
+}
+
+.donut-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+/* Holdings table */
+.holdings-table th {
+  font-size: 0.7rem;
+}
+
+.holdings-total-row {
+  background: color-mix(in srgb, var(--accent-purple) 8%, transparent);
+  border-bottom: 2px solid var(--border) !important;
+}
+
+.holdings-total-row td {
+  padding: 8px !important;
+  border-bottom: 2px solid var(--border) !important;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .pf-charts-row {
+    grid-template-columns: 1fr;
+  }
+  .pf-return {
+    font-size: 1.5rem;
+  }
+  .donut-container {
+    flex-direction: column;
+  }
+  .donut-legend {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+}

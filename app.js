@@ -885,6 +885,224 @@ function confidenceBadge(c) {
   return `<span class="conf-badge conf-${cls}">${pct}%</span>`;
 }
 
+
+/* ── Donut Chart Colors ── */
+const DONUT_COLORS = [
+  '#F59E0B','#60A5FA','#34D399','#F472B6','#A78BFA',
+  '#FB923C','#2DD4BF','#E879F9','#FCD34D','#6EE7B7',
+];
+
+function svgDonutChart(allocation, size) {
+  if (!allocation || !allocation.length) return '';
+  const cx = size / 2, cy = size / 2, r = size / 2 - 12, r2 = r - 16;
+  let cumAngle = -90;
+  const paths = [];
+  const legends = [];
+
+  allocation.forEach((item, i) => {
+    const angle = (item.pct / 100) * 360;
+    const startRad = (cumAngle * Math.PI) / 180;
+    const endRad = ((cumAngle + angle) * Math.PI) / 180;
+    const x1 = cx + r * Math.cos(startRad);
+    const y1 = cy + r * Math.sin(startRad);
+    const x2 = cx + r * Math.cos(endRad);
+    const y2 = cy + r * Math.sin(endRad);
+    const x1i = cx + r2 * Math.cos(startRad);
+    const y1i = cy + r2 * Math.sin(startRad);
+    const x2i = cx + r2 * Math.cos(endRad);
+    const y2i = cy + r2 * Math.sin(endRad);
+    const largeArc = angle > 180 ? 1 : 0;
+    const color = DONUT_COLORS[i % DONUT_COLORS.length];
+
+    if (item.pct >= 100) {
+      // Full circle
+      paths.push(`<circle cx="${cx}" cy="${cy}" r="${(r+r2)/2}" fill="none" stroke="${color}" stroke-width="${r-r2}" />`);
+    } else if (item.pct > 0.5) {
+      paths.push(`<path d="M${x1},${y1} A${r},${r} 0 ${largeArc},1 ${x2},${y2} L${x2i},${y2i} A${r2},${r2} 0 ${largeArc},0 ${x1i},${y1i} Z" fill="${color}" opacity="0.85"><title>${item.name}: ${item.pct}%</title></path>`);
+    }
+
+    legends.push(`<span class="donut-legend-item"><span class="donut-dot" style="background:${color}"></span>${item.name} <b>${item.pct}%</b></span>`);
+    cumAngle += angle;
+  });
+
+  return `
+    <div class="donut-container">
+      <svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}">
+        ${paths.join('')}
+        <text x="${cx}" y="${cy - 6}" text-anchor="middle" fill="var(--text-primary)" font-size="12" font-weight="700" font-family="var(--font-mono)">\ubcf4\uc720\ube44\uc911</text>
+        <text x="${cx}" y="${cy + 10}" text-anchor="middle" fill="var(--text-dim)" font-size="10" font-family="var(--font-mono)">(%)</text>
+      </svg>
+      <div class="donut-legend">${legends.join('')}</div>
+    </div>`;
+}
+
+function svgLineChart(history, exchangeName, width, height) {
+  if (!history || !history.length) return '<div class="chart-empty">\ub370\uc774\ud130 \uc218\uc9d1 \uc911...</div>';
+
+  const exHistory = history.filter(h => h.exchange === exchangeName);
+  if (!exHistory.length) return '<div class="chart-empty">\ud788\uc2a4\ud1a0\ub9ac \uc5c6\uc74c</div>';
+
+  const values = exHistory.map(h => h.portfolio_value);
+  const dates = exHistory.map(h => h.date);
+  const cashValues = exHistory.map(h => h.cash_krw);
+
+  const minVal = Math.min(...values) * 0.995;
+  const maxVal = Math.max(...values) * 1.005;
+  const range = maxVal - minVal || 1;
+
+  const pad = { top: 25, right: 10, bottom: 30, left: 10 };
+  const w = width - pad.left - pad.right;
+  const h = height - pad.top - pad.bottom;
+
+  const points = values.map((v, i) => {
+    const x = pad.left + (i / Math.max(values.length - 1, 1)) * w;
+    const y = pad.top + h - ((v - minVal) / range) * h;
+    return `${x.toFixed(1)},${y.toFixed(1)}`;
+  });
+
+  const cashPoints = cashValues.map((v, i) => {
+    const x = pad.left + (i / Math.max(cashValues.length - 1, 1)) * w;
+    const y = pad.top + h - ((v - minVal) / range) * h;
+    return `${x.toFixed(1)},${y.toFixed(1)}`;
+  });
+
+  // X-axis labels (show max 8)
+  const step = Math.max(1, Math.floor(dates.length / 8));
+  const xLabels = dates.map((d, i) => {
+    if (i % step !== 0 && i !== dates.length - 1) return '';
+    const x = pad.left + (i / Math.max(dates.length - 1, 1)) * w;
+    return `<text x="${x.toFixed(1)}" y="${height - 5}" text-anchor="middle" fill="var(--text-dim)" font-size="9" font-family="var(--font-mono)">${d.slice(5)}</text>`;
+  }).filter(Boolean).join('');
+
+  // Max/min annotations
+  const maxIdx = values.indexOf(Math.max(...values));
+  const minIdx = values.indexOf(Math.min(...values));
+  const maxX = pad.left + (maxIdx / Math.max(values.length - 1, 1)) * w;
+  const maxY = pad.top + h - ((values[maxIdx] - minVal) / range) * h;
+  const minX = pad.left + (minIdx / Math.max(values.length - 1, 1)) * w;
+  const minY = pad.top + h - ((values[minIdx] - minVal) / range) * h;
+
+  return `
+    <svg width="100%" height="${height}" viewBox="0 0 ${width} ${height}" preserveAspectRatio="xMidYMid meet">
+      <defs>
+        <linearGradient id="lineGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#A78BFA" stop-opacity="0.3"/>
+          <stop offset="100%" stop-color="#A78BFA" stop-opacity="0.02"/>
+        </linearGradient>
+      </defs>
+      <!-- Grid lines -->
+      ${[0,0.25,0.5,0.75,1].map(f => {
+        const y = pad.top + h * (1-f);
+        return `<line x1="${pad.left}" y1="${y}" x2="${width-pad.right}" y2="${y}" stroke="var(--border)" stroke-width="0.5" stroke-dasharray="3,3"/>`;
+      }).join('')}
+      <!-- Area fill -->
+      <polygon points="${points.join(' ')} ${(pad.left + w).toFixed(1)},${(pad.top + h).toFixed(1)} ${pad.left},${(pad.top + h).toFixed(1)}" fill="url(#lineGrad)" />
+      <!-- Portfolio line -->
+      <polyline points="${points.join(' ')}" fill="none" stroke="#A78BFA" stroke-width="2" stroke-linejoin="round" />
+      <!-- Cash line (dashed) -->
+      <polyline points="${cashPoints.join(' ')}" fill="none" stroke="#F59E0B" stroke-width="1.5" stroke-dasharray="4,3" stroke-linejoin="round" opacity="0.7" />
+      <!-- Dots on last point -->
+      ${values.length > 0 ? `<circle cx="${points[points.length-1].split(',')[0]}" cy="${points[points.length-1].split(',')[1]}" r="3.5" fill="#A78BFA" />` : ''}
+      <!-- Max/Min labels -->
+      <text x="${maxX}" y="${maxY - 8}" text-anchor="middle" fill="#34D399" font-size="9" font-weight="600" font-family="var(--font-mono)">max ${Math.round(values[maxIdx]).toLocaleString()}</text>
+      ${minIdx !== maxIdx ? `<text x="${minX}" y="${minY + 14}" text-anchor="middle" fill="#F472B6" font-size="9" font-weight="600" font-family="var(--font-mono)">min ${Math.round(values[minIdx]).toLocaleString()}</text>` : ''}
+      <!-- X labels -->
+      ${xLabels}
+      <!-- Legend -->
+      <circle cx="${pad.left + 5}" cy="10" r="4" fill="#A78BFA"/>
+      <text x="${pad.left + 14}" y="13" fill="var(--text-dim)" font-size="9" font-family="var(--font-mono)">\ucd1d\uc790\uc0b0</text>
+      <circle cx="${pad.left + 65}" cy="10" r="4" fill="#F59E0B"/>
+      <text x="${pad.left + 74}" y="13" fill="var(--text-dim)" font-size="9" font-family="var(--font-mono)">\ud604\uae08</text>
+    </svg>`;
+}
+
+function renderPortfolioSection(ex, history) {
+  const pf = ex.portfolio || {};
+  const capital = pf.capital_krw || 0;
+  const portfolioVal = pf.portfolio_value || capital;
+  const cash = pf.cash_krw || capital;
+  const totalPnl = pf.total_pnl_krw || 0;
+  const totalPnlPct = pf.total_pnl_pct || 0;
+  const pnlClass = totalPnl > 0 ? 'positive' : totalPnl < 0 ? 'negative' : '';
+  const pnlSign = totalPnl > 0 ? '+' : '';
+
+  /* Holdings table */
+  const holdings = pf.holdings || [];
+  let holdingsHtml = '';
+  if (holdings.length > 0) {
+    // Total row
+    const totalInvested = holdings.reduce((s, h) => s + h.buy_krw, 0);
+    const totalValuation = holdings.reduce((s, h) => s + h.val_krw, 0);
+    const totalHoldingPnl = holdings.reduce((s, h) => s + h.pnl_krw, 0);
+    const totalHoldingPnlPct = totalInvested > 0 ? (totalHoldingPnl / totalInvested * 100) : 0;
+    const thpCls = totalHoldingPnl > 0 ? 'positive' : totalHoldingPnl < 0 ? 'negative' : '';
+
+    const rows = holdings.map(h => {
+      const pCls = h.pnl_krw > 0 ? 'positive' : h.pnl_krw < 0 ? 'negative' : '';
+      return `
+        <tr>
+          <td class="mono" style="font-weight:600">${escHtml(h.symbol)}</td>
+          <td class="mono ${pCls}">${h.pnl_krw > 0 ? '+' : ''}${fmtKRW(h.pnl_krw)}</td>
+          <td class="mono ${pCls}">${h.pnl_pct > 0 ? '+' : ''}${h.pnl_pct}%</td>
+          <td class="mono">${h.qty}</td>
+          <td class="mono">${h.avg_price?.toLocaleString() || '\u2014'}</td>
+          <td class="mono">${fmtKRW(h.buy_krw)}</td>
+          <td class="mono" style="font-weight:600">${fmtKRW(h.val_krw)}</td>
+        </tr>`;
+    }).join('');
+
+    holdingsHtml = `
+      <div class="trading-subsection">
+        <div class="trading-sub-title">\ubcf4\uc720 \uc790\uc0b0 \ud14c\uc774\ube14 (\ucd1d\ubcf4\uc720\uc790\uc0b0 \uc544\ub798 = \ub9e4\uc218 \ucf54\uc778 \uc0c1\uc138)</div>
+        <div class="trading-table-wrap">
+          <table class="trading-table holdings-table">
+            <thead>
+              <tr><th>\uc790\uc0b0</th><th>\ud3c9\uac00\uc190\uc775</th><th>\uc218\uc775\ub960</th><th>\ubcf4\uc720\uc218\ub7c9</th><th>\ud3c9\uade0\ub9e4\uc218\uac00</th><th>\ub9e4\uc218\uae08\uc561</th><th>\ud3c9\uac00\uae08\uc561</th></tr>
+            </thead>
+            <tbody>
+              <tr class="holdings-total-row">
+                <td style="font-weight:700">\ucd1d\ubcf4\uc720\uc790\uc0b0</td>
+                <td class="mono ${thpCls}" style="font-weight:700">${totalHoldingPnl > 0 ? '+' : ''}${fmtKRW(totalHoldingPnl)}</td>
+                <td class="mono ${thpCls}" style="font-weight:700">${totalHoldingPnlPct > 0 ? '+' : ''}${totalHoldingPnlPct.toFixed(2)}%</td>
+                <td>-</td><td>-</td>
+                <td class="mono">${fmtKRW(totalInvested)}</td>
+                <td class="mono" style="font-weight:700">${fmtKRW(totalValuation)}</td>
+              </tr>
+              ${rows}
+            </tbody>
+          </table>
+        </div>
+      </div>`;
+  }
+
+  return `
+    <div class="portfolio-section">
+      <!-- Summary header -->
+      <div class="pf-summary-header">
+        <div class="pf-summary-left">
+          <div class="pf-label">\ud604\uc7ac \uc218\uc775\ub960 \xb7 \uc790\ubcf8 ${fmtKRW(capital)}</div>
+          <div class="pf-return ${pnlClass}">${pnlSign}${totalPnlPct.toFixed(2)}%</div>
+          <div class="pf-value">${portfolioVal.toLocaleString()} KRW</div>
+          <div class="pf-detail">\uc6d0\uae08 ${capital.toLocaleString()} KRW \xb7 \ud604\uae08 ${cash.toLocaleString()} KRW</div>
+        </div>
+      </div>
+
+      <!-- Donut + Chart row -->
+      <div class="pf-charts-row">
+        <div class="pf-chart-card">
+          <div class="pf-chart-title">\uc790\uc0b0 \ubd84\ud3ec (\uc6d0\ud615)</div>
+          ${svgDonutChart(pf.allocation || [], 180)}
+        </div>
+        <div class="pf-chart-card pf-chart-wide">
+          <div class="pf-chart-title">\uc790\uc0b0 \ucd94\uc774 (\uc77c\uc790\ubcc4)</div>
+          ${svgLineChart(history, ex.exchange, 480, 180)}
+        </div>
+      </div>
+
+      ${holdingsHtml}
+    </div>`;
+}
+
 function renderExchangeCard(ex) {
   const statusColor = ex.status === 'NORMAL' ? 'var(--accent-green)'
                     : ex.status === 'HALTED' ? 'var(--accent-red)'
@@ -1084,6 +1302,8 @@ function renderExchangeCard(ex) {
           ${statusKo}
         </div>
       </div>
+
+      \${renderPortfolioSection(ex, state.tradebot?.history || [])}
 
       <div class="trading-metrics">
         <div class="trading-metric">
