@@ -1,5 +1,5 @@
 {
-  "ts": "2026-03-05T07:08:07Z",
+  "ts": "2026-03-05T07:15:01Z",
   "host": "jjanga-phone",
   "exchanges": [
     {
@@ -25,38 +25,6 @@
         },
         {
           "market_type": "futures",
-          "symbol": "HYPEUSDT",
-          "direction": "short",
-          "entry_price": 31.48,
-          "qty": 7.941550190597204,
-          "margin_usdt": 50.0,
-          "notional_usdt": 250.0,
-          "leverage": 5.0,
-          "liquidation_price": 37.6186,
-          "opened_ts": "2026-03-05T14:05:32.742244+07:00",
-          "strategy": "aggressive_breakout_momentum_v1",
-          "target_pct": 0.014,
-          "stop_pct": -0.01,
-          "adaptive_exit_enabled": true
-        },
-        {
-          "market_type": "futures",
-          "symbol": "HYPEUSDT",
-          "direction": "short",
-          "entry_price": 31.48,
-          "qty": 7941.550190597204,
-          "margin_usdt": 50000.0,
-          "notional_usdt": 250000.0,
-          "leverage": 5.0,
-          "liquidation_price": 37.6186,
-          "opened_ts": "2026-03-05T14:05:32.742244+07:00",
-          "strategy": "sol_trend_rider",
-          "target_pct": 0.014,
-          "stop_pct": -0.01,
-          "adaptive_exit_enabled": true
-        },
-        {
-          "market_type": "futures",
           "symbol": "XAUTUSDT",
           "direction": "long",
           "entry_price": 5109.9,
@@ -70,19 +38,36 @@
           "target_pct": 0.0134,
           "stop_pct": -0.0085,
           "adaptive_exit_enabled": true
+        },
+        {
+          "market_type": "futures",
+          "symbol": "XAUTUSDT",
+          "direction": "short",
+          "entry_price": 5106.1,
+          "qty": 48.961046591331936,
+          "margin_usdt": 50000.0,
+          "notional_usdt": 250000.0,
+          "leverage": 5.0,
+          "liquidation_price": 6101.789500000001,
+          "opened_ts": "2026-03-05T14:15:30.962600+07:00",
+          "strategy": "sol_trend_rider",
+          "target_pct": 0.014,
+          "stop_pct": -0.01,
+          "adaptive_exit_enabled": true
         }
       ],
       "pnl_today": {
         "date": "2026-03-05",
         "realized_krw": 0,
-        "trades": 0
+        "trades": 0,
+        "pnl_krw": -3332
       },
       "strategy_registry": {
-        "total": 6,
-        "active": 6,
-        "total_signals": 55,
-        "total_fills": 4,
-        "total_pnl_krw": 0
+        "total": 7,
+        "active": 7,
+        "total_signals": 81,
+        "total_fills": 5,
+        "total_pnl_krw": -3332
       },
       "strategies_flat": [
         {
@@ -102,7 +87,7 @@
         {
           "name": "ict_fvg_sweep",
           "status": "paper_test",
-          "total_signals": 18,
+          "total_signals": 20,
           "total_fills": 0,
           "total_pnl_krw": 0,
           "win_count": 0,
@@ -111,16 +96,16 @@
         {
           "name": "sol_trend_rider",
           "status": "paper_test",
-          "total_signals": 16,
-          "total_fills": 1,
-          "total_pnl_krw": 0,
+          "total_signals": 29,
+          "total_fills": 2,
+          "total_pnl_krw": -3329,
           "win_count": 0,
-          "loss_count": 0
+          "loss_count": 1
         },
         {
           "name": "vivid_fractal_box",
           "status": "paper_test",
-          "total_signals": 6,
+          "total_signals": 8,
           "total_fills": 1,
           "total_pnl_krw": 0,
           "win_count": 0,
@@ -129,7 +114,7 @@
         {
           "name": "volume_spike",
           "status": "paper_test",
-          "total_signals": 12,
+          "total_signals": 19,
           "total_fills": 1,
           "total_pnl_krw": 0,
           "win_count": 0,
@@ -140,6 +125,15 @@
           "status": "paper_test",
           "total_signals": 3,
           "total_fills": 1,
+          "total_pnl_krw": -3,
+          "win_count": 0,
+          "loss_count": 1
+        },
+        {
+          "name": "breakout",
+          "status": "paper_test",
+          "total_signals": 2,
+          "total_fills": 0,
           "total_pnl_krw": 0,
           "win_count": 0,
           "loss_count": 0
@@ -150,7 +144,7 @@
         "reason": "",
         "since": null
       },
-      "last_cycle": "2026-03-05T07:07:29Z",
+      "last_cycle": "2026-03-05T07:15:31Z",
       "config": {
         "capital_krw": 600000,
         "per_trade_krw": 50,
@@ -162,55 +156,47 @@
         "market": "USDT"
       },
       "signals": {
-        "ts": "2026-03-05T07:07:18.745216+00:00",
+        "ts": "2026-03-05T07:15:20.019235+00:00",
         "live_count": 0,
-        "paper_count": 8,
+        "paper_count": 4,
         "strategy_count": 13,
         "paper_signals": [
           {
-            "symbol": "BTWUSDT",
-            "side": "buy",
-            "confidence": 0.6,
-            "reason": "[ict_fvg_sweep] ICT: FVG retrace [0-0] gap=0.6% | KZ",
-            "entry_price": 0.011017,
-            "krw": 50000
-          },
-          {
             "symbol": "SOLUSDT",
             "side": "buy",
-            "confidence": 0.4290654066984975,
-            "reason": "[volume_spike] volume spike x2.29 (alt learning signal)",
-            "entry_price": 92.58,
+            "confidence": 0.8,
+            "reason": "[sol_trend_rider] EMA_align_up ER=0.45 ROC=0.001",
+            "entry_price": 92.52,
             "krw": 50000
           },
           {
             "symbol": "XRPUSDT",
             "side": "buy",
-            "confidence": 0.8,
-            "reason": "[sol_trend_rider] EMA_align_up ER=0.44 ROC=0.002",
-            "entry_price": 1.4536,
+            "confidence": 0.4,
+            "reason": "[volume_spike] volume spike x1.79 (alt learning signal)",
+            "entry_price": 1.4486,
             "krw": 50000
           },
           {
-            "symbol": "USDCUSDT",
-            "side": "buy",
-            "confidence": 0.7000000000000001,
-            "reason": "[volume_spike] volume spike x5.00 (alt learning signal)",
-            "entry_price": 0.9996,
+            "symbol": "HYPEUSDT",
+            "side": "sell",
+            "confidence": 0.65,
+            "reason": "[sol_trend_rider] EMA_align_dn ER=0.29 ROC=-0.006",
+            "entry_price": 31.73,
             "krw": 50000
           },
           {
-            "symbol": "DOGEUSDT",
-            "side": "buy",
-            "confidence": 0.6,
-            "reason": "[ict_fvg_sweep] ICT: FVG retrace [0-0] gap=0.5% | KZ",
-            "entry_price": 0.10211,
+            "symbol": "XAUTUSDT",
+            "side": "sell",
+            "confidence": 0.65,
+            "reason": "[sol_trend_rider] EMA_align_dn ER=0.29 ROC=-0.000",
+            "entry_price": 5106.1,
             "krw": 50000
           }
         ]
       },
       "scout": {
-        "ts": "2026-03-05T07:07:03.005114+00:00",
+        "ts": "2026-03-05T07:15:02.316540+00:00",
         "universe_count": 12,
         "top_symbols": [
           "BTCUSDT",
@@ -326,17 +312,17 @@
         }
       ],
       "cycle_health": {
-        "cycles_in_log": 7,
-        "completed": 7,
+        "cycles_in_log": 10,
+        "completed": 10,
         "errors": 0
       },
       "portfolio": {
         "capital_krw": 600000,
-        "cash_krw": 99500.0,
-        "invested_krw": 500500.0,
-        "portfolio_value": 602276.87,
-        "total_pnl_krw": 2276.87,
-        "total_pnl_pct": 0.38,
+        "cash_krw": 99750.0,
+        "invested_krw": 500250.0,
+        "portfolio_value": 601049.64,
+        "total_pnl_krw": 1049.64,
+        "total_pnl_pct": 0.17,
         "holdings": [
           {
             "symbol": "USDCUSDT",
@@ -350,63 +336,47 @@
             "side": "long"
           },
           {
-            "symbol": "HYPEUSDT",
-            "qty": 7.941550190597204,
-            "avg_price": 31.48,
-            "cur_price": 31.76,
-            "buy_krw": 250.0,
-            "val_krw": 252.22,
-            "pnl_krw": 2.22,
-            "pnl_pct": 0.89,
-            "side": "short"
-          },
-          {
-            "symbol": "HYPEUSDT",
-            "qty": 7941.550190597204,
-            "avg_price": 31.48,
-            "cur_price": 31.76,
-            "buy_krw": 250000.0,
-            "val_krw": 252223.63,
-            "pnl_krw": 2223.63,
-            "pnl_pct": 0.89,
-            "side": "short"
-          },
-          {
             "symbol": "XAUTUSDT",
             "qty": 0.048924636489950886,
             "avg_price": 5109.9,
-            "cur_price": 5130.1,
+            "cur_price": 5126.5,
             "buy_krw": 250.0,
-            "val_krw": 250.99,
-            "pnl_krw": 0.99,
-            "pnl_pct": 0.4,
+            "val_krw": 250.81,
+            "pnl_krw": 0.81,
+            "pnl_pct": 0.32,
             "side": "long"
+          },
+          {
+            "symbol": "XAUTUSDT",
+            "qty": 48.961046591331936,
+            "avg_price": 5106.1,
+            "cur_price": 5126.5,
+            "buy_krw": 250000.0,
+            "val_krw": 250998.81,
+            "pnl_krw": 998.81,
+            "pnl_pct": 0.4,
+            "side": "short"
           }
         ],
         "allocation": [
           {
             "name": "현금",
-            "value": 99500.0,
-            "pct": 16.5
+            "value": 99750.0,
+            "pct": 16.6
           },
           {
-            "name": "HYPEUSDT",
-            "value": 252223.63,
-            "pct": 41.9
+            "name": "XAUTUSDT",
+            "value": 250998.81,
+            "pct": 41.8
           },
           {
             "name": "USDCUSDT",
             "value": 250050.02,
-            "pct": 41.5
-          },
-          {
-            "name": "HYPEUSDT",
-            "value": 252.22,
-            "pct": 0.0
+            "pct": 41.6
           },
           {
             "name": "XAUTUSDT",
-            "value": 250.99,
+            "value": 250.81,
             "pct": 0.0
           }
         ]
@@ -700,9 +670,9 @@
   ],
   "summary": {
     "total_exchanges": 2,
-    "total_positions": 7,
-    "total_signals": 11,
-    "total_strategies": 16
+    "total_positions": 6,
+    "total_signals": 7,
+    "total_strategies": 17
   },
   "history": [
     {
