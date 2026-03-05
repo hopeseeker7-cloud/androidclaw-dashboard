@@ -1,5 +1,5 @@
 {
-  "ts": "2026-03-05T06:37:06Z",
+  "ts": "2026-03-05T06:45:00Z",
   "host": "jjanga-phone",
   "exchanges": [
     {
@@ -238,6 +238,22 @@
         "cycles_in_log": 3,
         "completed": 3,
         "errors": 0
+      },
+      "portfolio": {
+        "capital_krw": 600000,
+        "cash_krw": 600000,
+        "invested_krw": 0,
+        "portfolio_value": 600000,
+        "total_pnl_krw": 0,
+        "total_pnl_pct": 0.0,
+        "holdings": [],
+        "allocation": [
+          {
+            "name": "현금",
+            "value": 600000,
+            "pct": 100.0
+          }
+        ]
       }
     },
     {
@@ -251,9 +267,9 @@
         "trades": 0
       },
       "strategy_registry": {
-        "total": 8,
-        "active": 8,
-        "total_signals": 25,
+        "total": 9,
+        "active": 9,
+        "total_signals": 38,
         "total_fills": 0,
         "total_pnl_krw": 0
       },
@@ -275,7 +291,7 @@
         {
           "name": "vivid_fractal_box",
           "status": "paper_test",
-          "total_signals": 3,
+          "total_signals": 6,
           "total_fills": 0,
           "total_pnl_krw": 0,
           "win_count": 0,
@@ -284,7 +300,7 @@
         {
           "name": "breakout",
           "status": "paper_test",
-          "total_signals": 2,
+          "total_signals": 3,
           "total_fills": 0,
           "total_pnl_krw": 0,
           "win_count": 0,
@@ -293,7 +309,7 @@
         {
           "name": "doge_macd_squeeze",
           "status": "paper_test",
-          "total_signals": 1,
+          "total_signals": 2,
           "total_fills": 0,
           "total_pnl_krw": 0,
           "win_count": 0,
@@ -302,7 +318,7 @@
         {
           "name": "doge_macd_squeeze_v3",
           "status": "paper_test",
-          "total_signals": 1,
+          "total_signals": 2,
           "total_fills": 0,
           "total_pnl_krw": 0,
           "win_count": 0,
@@ -311,7 +327,7 @@
         {
           "name": "volume_spike",
           "status": "paper_test",
-          "total_signals": 2,
+          "total_signals": 3,
           "total_fills": 0,
           "total_pnl_krw": 0,
           "win_count": 0,
@@ -320,7 +336,7 @@
         {
           "name": "ict_fvg_sweep",
           "status": "paper_test",
-          "total_signals": 10,
+          "total_signals": 12,
           "total_fills": 0,
           "total_pnl_krw": 0,
           "win_count": 0,
@@ -329,7 +345,16 @@
         {
           "name": "sol_trend_rider",
           "status": "paper_test",
-          "total_signals": 6,
+          "total_signals": 9,
+          "total_fills": 0,
+          "total_pnl_krw": 0,
+          "win_count": 0,
+          "loss_count": 0
+        },
+        {
+          "name": "aggressive_breakout_momentum_v1",
+          "status": "paper_test",
+          "total_signals": 1,
           "total_fills": 0,
           "total_pnl_krw": 0,
           "win_count": 0,
@@ -341,7 +366,7 @@
         "reason": "",
         "since": null
       },
-      "last_cycle": "2026-03-05T06:37:29Z",
+      "last_cycle": "2026-03-05T06:45:29Z",
       "config": {
         "capital_krw": 600000,
         "per_trade_krw": 50,
@@ -353,62 +378,67 @@
         "market": "KRW"
       },
       "signals": {
-        "ts": "2026-03-05T06:37:18.185964+00:00",
+        "ts": "2026-03-05T06:45:18.365933+00:00",
         "live_count": 0,
-        "paper_count": 4,
+        "paper_count": 0,
         "strategy_count": 13,
-        "paper_signals": [
-          {
-            "symbol": "USDT_KRW",
-            "side": "sell",
-            "confidence": 0.62,
-            "reason": "[vivid_fractal_box] BOX short @zone_top=1459.0000, bottom=1453.0000, width=0.41%",
-            "entry_price": 1456.0,
-            "krw": 50
-          },
-          {
-            "symbol": "SAHARA_KRW",
-            "side": "buy",
-            "confidence": 0.4,
-            "reason": "[breakout] 5m breakout(>3) + vol x1.60 (off-KZ)",
-            "entry_price": 40.59,
-            "krw": 50000
-          },
-          {
-            "symbol": "SAHARA_KRW",
-            "side": "buy",
-            "confidence": 0.65,
-            "reason": "[sol_trend_rider] EMA_align_up ER=0.35 ROC=0.018",
-            "entry_price": 40.59,
-            "krw": 50000
-          },
-          {
-            "symbol": "SAHARA_KRW",
-            "side": "buy",
-            "confidence": 0.4,
-            "reason": "[volume_spike] volume spike x1.36 (alt learning signal)",
-            "entry_price": 40.59,
-            "krw": 50000
-          }
-        ]
+        "paper_signals": []
       },
       "scout": {
-        "ts": "2026-03-05T06:37:01.217765+00:00",
+        "ts": "2026-03-05T06:45:01.694096+00:00",
         "universe_count": 0,
         "top_symbols": []
       },
       "recent_trades": [],
       "cycle_health": {
-        "cycles_in_log": 6,
-        "completed": 6,
+        "cycles_in_log": 9,
+        "completed": 9,
         "errors": 0
+      },
+      "portfolio": {
+        "capital_krw": 600000,
+        "cash_krw": 600000,
+        "invested_krw": 0,
+        "portfolio_value": 600000,
+        "total_pnl_krw": 0,
+        "total_pnl_pct": 0.0,
+        "holdings": [],
+        "allocation": [
+          {
+            "name": "현금",
+            "value": 600000,
+            "pct": 100.0
+          }
+        ]
       }
     }
   ],
   "summary": {
     "total_exchanges": 2,
     "total_positions": 0,
-    "total_signals": 8,
-    "total_strategies": 13
-  }
+    "total_signals": 4,
+    "total_strategies": 14
+  },
+  "history": [
+    {
+      "date": "2026-03-05",
+      "exchange": "BITGET",
+      "capital_krw": 600000,
+      "portfolio_value": 600000,
+      "cash_krw": 600000,
+      "pnl_krw": 0,
+      "pnl_pct": 0.0,
+      "positions": 0
+    },
+    {
+      "date": "2026-03-05",
+      "exchange": "BITHUMB",
+      "capital_krw": 600000,
+      "portfolio_value": 600000,
+      "cash_krw": 600000,
+      "pnl_krw": 0,
+      "pnl_pct": 0.0,
+      "positions": 0
+    }
+  ]
 }
