@@ -14,6 +14,7 @@ const DATA = {
   runs:   'data/runs.jsonl',
   costs:  'data/costs.json',
   health: 'data/health.json',
+  tradebot: 'data/tradebot.json',
 };
 
 /* ── Agent emoji map (fallback if not in JSON) ── */
@@ -32,6 +33,7 @@ let state = {
   runs:   [],
   costs:  null,
   health: null,
+  tradebot: null,
   lastSync: null,
   loading: false,
   errors: [],
@@ -81,6 +83,7 @@ async function loadData() {
     fetchJSONL(DATA.runs),
     fetchJSON(DATA.costs),
     fetchJSON(DATA.health),
+    fetchJSON(DATA.tradebot),
   ]);
 
   /* agents */
@@ -120,6 +123,13 @@ async function loadData() {
     state.health = results[4].value;
   } else {
     state.health = null;
+  }
+
+  /* tradebot */
+  if (results[5].status === 'fulfilled') {
+    state.tradebot = results[5].value;
+  } else {
+    state.tradebot = null;
   }
 
   state.lastSync = new Date();
@@ -854,6 +864,154 @@ function renderErrors() {
   }
 }
 
+
+/* ─────────────────────────────────────────────
+   RENDER — TRADING PANEL
+───────────────────────────────────────────── */
+
+function fmtKRW(n) {
+  if (n == null || isNaN(n)) return '\u20a90';
+  if (Math.abs(n) >= 1000000) return '\u20a9' + (n / 1000000).toFixed(1) + 'M';
+  if (Math.abs(n) >= 1000) return '\u20a9' + Math.round(n / 1000) + 'K';
+  return '\u20a9' + Math.round(n);
+}
+
+function renderExchangeCard(ex) {
+  const statusColor = ex.status === 'NORMAL' ? 'var(--accent-green)'
+                    : ex.status === 'HALTED' ? 'var(--accent-red)'
+                    : 'var(--accent-yellow)';
+  const statusKo = ex.status === 'NORMAL' ? '\uc815\uc0c1' : ex.status === 'HALTED' ? '\uc911\uc9c0' : ex.status;
+  const exchangeEmoji = ex.exchange === 'BITGET' ? '\U0001f7e1' : ex.exchange === 'BITHUMB' ? '\U0001f7e0' : '\u26aa';
+  const exchangeType = ex.exchange === 'BITGET' ? '\uc120\ubb3c (Futures)' : '\ud604\ubb3c (Spot)';
+  const posCount = ex.positions?.length || 0;
+  const pnlToday = ex.pnl_today?.realized_krw ?? 0;
+  const tradesToday = ex.pnl_today?.trades ?? 0;
+  const pnlClass = pnlToday > 0 ? 'positive' : pnlToday < 0 ? 'negative' : '';
+  const lastCycle = ex.last_cycle ? relativeTime(ex.last_cycle) : '\u2014';
+
+  /* Strategy summary */
+  const strats = ex.strategy_registry || {};
+  const stratRows = Object.entries(strats)
+    .filter(([k]) => k !== 'strategies')
+    .map(([name, s]) => {
+      const winRate = (s.win_count + s.loss_count) > 0
+        ? Math.round(s.win_count / (s.win_count + s.loss_count) * 100) + '%'
+        : '\u2014';
+      return `
+        <tr>
+          <td class="strat-name">${escHtml(name)}</td>
+          <td><span class="strat-status-badge strat-${s.status}">${escHtml(s.status)}</span></td>
+          <td class="mono">${s.total_signals}</td>
+          <td class="mono">${s.total_fills}</td>
+          <td class="mono ${s.total_pnl_krw > 0 ? 'positive' : s.total_pnl_krw < 0 ? 'negative' : ''}">${fmtKRW(s.total_pnl_krw)}</td>
+          <td class="mono">${winRate}</td>
+        </tr>`;
+    }).join('');
+
+  /* Positions */
+  let posHtml = '';
+  if (posCount > 0) {
+    const posRows = ex.positions.map(p => {
+      const side = p.side || p.direction || '\u2014';
+      const sideClass = side.toLowerCase().includes('long') ? 'positive' : side.toLowerCase().includes('short') ? 'negative' : '';
+      return `
+        <tr>
+          <td class="mono">${escHtml(p.symbol || '\u2014')}</td>
+          <td class="${sideClass}">${escHtml(side)}</td>
+          <td class="mono">${fmtKRW(p.entry_krw || p.size_krw || 0)}</td>
+          <td class="mono ${(p.pnl_krw || 0) >= 0 ? 'positive' : 'negative'}">${fmtKRW(p.pnl_krw || 0)}</td>
+          <td class="mono">${p.entry_time ? relativeTime(p.entry_time) : '\u2014'}</td>
+        </tr>`;
+    }).join('');
+
+    posHtml = `
+      <div class="trading-subsection">
+        <div class="trading-sub-title">\ud3ec\uc9c0\uc158</div>
+        <div class="trading-table-wrap">
+          <table class="trading-table">
+            <thead><tr><th>\uc2ec\ubcfc</th><th>\ubc29\ud5a5</th><th>\ud06c\uae30</th><th>PnL</th><th>\uc9c4\uc785</th></tr></thead>
+            <tbody>${posRows}</tbody>
+          </table>
+        </div>
+      </div>`;
+  }
+
+  return `
+    <div class="trading-exchange-card">
+      <div class="trading-ex-header">
+        <div class="trading-ex-title">
+          <span class="trading-ex-emoji">${exchangeEmoji}</span>
+          <div>
+            <div class="trading-ex-name">${escHtml(ex.exchange)}</div>
+            <div class="trading-ex-type">${exchangeType} \xb7 Paper Trading</div>
+          </div>
+        </div>
+        <div class="trading-ex-status" style="color:${statusColor}">
+          <span class="trading-status-dot" style="background:${statusColor}"></span>
+          ${statusKo}
+        </div>
+      </div>
+
+      <div class="trading-metrics">
+        <div class="trading-metric">
+          <span class="trading-metric-v">${posCount}</span>
+          <span class="trading-metric-k">\ud3ec\uc9c0\uc158</span>
+        </div>
+        <div class="trading-metric">
+          <span class="trading-metric-v ${pnlClass}">${fmtKRW(pnlToday)}</span>
+          <span class="trading-metric-k">\uc624\ub298 PnL</span>
+        </div>
+        <div class="trading-metric">
+          <span class="trading-metric-v">${tradesToday}</span>
+          <span class="trading-metric-k">\uc624\ub298 \uac70\ub798</span>
+        </div>
+        <div class="trading-metric">
+          <span class="trading-metric-v">${lastCycle}</span>
+          <span class="trading-metric-k">\ub9c8\uc9c0\ub9c9 \uc0ac\uc774\ud074</span>
+        </div>
+      </div>
+
+      ${posHtml}
+
+      ${stratRows ? `
+      <div class="trading-subsection">
+        <div class="trading-sub-title">\uc804\ub7b5</div>
+        <div class="trading-table-wrap">
+          <table class="trading-table">
+            <thead><tr><th>\uc804\ub7b5\uba85</th><th>\uc0c1\ud0dc</th><th>\uc2dc\uadf8\ub110</th><th>\uccb4\uacb0</th><th>PnL</th><th>\uc2b9\ub960</th></tr></thead>
+            <tbody>${stratRows}</tbody>
+          </table>
+        </div>
+      </div>` : ''}
+
+      ${ex.error ? `<div class="trading-error">\u26a0 ${escHtml(ex.error)}</div>` : ''}
+    </div>`;
+}
+
+function renderTrading() {
+  const panel = document.getElementById('tradingPanel');
+  if (!panel) return;
+
+  const tb = state.tradebot;
+  if (!tb || !tb.exchanges || !tb.exchanges.length) {
+    panel.innerHTML = `
+      <div class="empty-state">
+        <span class="empty-state-icon">\U0001f4c8</span>
+        \ud2b8\ub808\uc774\ub529 \ub370\uc774\ud130 \uc5c6\uc74c
+      </div>`;
+    const statusEl = document.getElementById('tradingStatus');
+    if (statusEl) statusEl.textContent = '\u2014';
+    return;
+  }
+
+  panel.innerHTML = tb.exchanges.map(renderExchangeCard).join('');
+
+  const statusEl = document.getElementById('tradingStatus');
+  if (statusEl) {
+    statusEl.textContent = `${tb.exchanges.length}\uac1c \uac70\ub798\uc18c \xb7 ${tb.total_positions || 0} \ud3ec\uc9c0\uc158`;
+  }
+}
+
 /* ─────────────────────────────────────────────
    MASTER RENDER
 ───────────────────────────────────────────── */
@@ -866,6 +1024,7 @@ function render() {
   renderTimeline();
   renderRunsTable();
   renderCosts();
+  renderTrading();
   renderSyncTime();
 }
 
