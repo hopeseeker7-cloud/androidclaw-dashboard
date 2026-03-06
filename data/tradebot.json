@@ -1,5 +1,5 @@
 {
-  "ts": "2026-03-06T09:30:00Z",
+  "ts": "2026-03-06T09:45:00Z",
   "host": "jjanga-phone",
   "exchanges": [
     {
@@ -16,7 +16,7 @@
       "strategy_registry": {
         "total": 9,
         "active": 9,
-        "total_signals": 4589,
+        "total_signals": 4618,
         "total_fills": 32,
         "total_pnl_krw": -58202
       },
@@ -24,7 +24,7 @@
         {
           "name": "ict_fvg_sweep",
           "status": "paper_test",
-          "total_signals": 908,
+          "total_signals": 911,
           "total_fills": 11,
           "total_pnl_krw": -20631,
           "win_count": 3,
@@ -33,7 +33,7 @@
         {
           "name": "sol_trend_rider",
           "status": "paper_test",
-          "total_signals": 1664,
+          "total_signals": 1679,
           "total_fills": 15,
           "total_pnl_krw": -32047,
           "win_count": 3,
@@ -42,7 +42,7 @@
         {
           "name": "vivid_fractal_box",
           "status": "paper_test",
-          "total_signals": 632,
+          "total_signals": 636,
           "total_fills": 1,
           "total_pnl_krw": 1,
           "win_count": 1,
@@ -51,7 +51,7 @@
         {
           "name": "volume_spike",
           "status": "paper_test",
-          "total_signals": 914,
+          "total_signals": 921,
           "total_fills": 4,
           "total_pnl_krw": -5522,
           "win_count": 1,
@@ -108,7 +108,7 @@
         "reason": "PnL today -54807 <= -50000. Need user decision.",
         "since": "2026-03-05T22:27:18.758697+07:00"
       },
-      "last_cycle": "2026-03-06T09:30:32Z",
+      "last_cycle": "2026-03-06T09:45:31Z",
       "config": {
         "capital_krw": 600000,
         "per_trade_krw": 50,
@@ -120,39 +120,63 @@
         "market": "USDT"
       },
       "signals": {
-        "ts": "2026-03-06T09:30:21.372437+00:00",
+        "ts": "2026-03-06T09:45:20.355362+00:00",
         "live_count": 0,
-        "paper_count": 2,
+        "paper_count": 7,
         "strategy_count": 13,
         "paper_signals": [
           {
-            "symbol": "USDCUSDT",
+            "symbol": "ETHUSDT",
             "side": "buy",
-            "confidence": 0.4,
-            "reason": "[volume_spike] volume spike x1.97 (alt learning signal)",
-            "entry_price": 0.9999,
+            "confidence": 0.46023374649548887,
+            "reason": "[volume_spike] volume spike x2.60 (alt learning signal)",
+            "entry_price": 2074.3,
             "krw": 50000
           },
           {
-            "symbol": "RIVERUSDT",
+            "symbol": "ROBOUSDT",
             "side": "sell",
             "confidence": 0.65,
-            "reason": "[sol_trend_rider] EMA_align_dn ER=0.37 ROC=-0.006",
-            "entry_price": 16.6616,
+            "reason": "[sol_trend_rider] EMA_align_dn ER=0.30 ROC=-0.011",
+            "entry_price": 0.039348,
             "krw": 50000
+          },
+          {
+            "symbol": "ROBOUSDT",
+            "side": "sell",
+            "confidence": 0.68,
+            "reason": "[vivid_fractal_box] BREAKOUT short below 0.0398 (-0.15% buf)",
+            "entry_price": 0.039348,
+            "krw": 50
+          },
+          {
+            "symbol": "BSBUSDT",
+            "side": "sell",
+            "confidence": 0.8,
+            "reason": "[sol_trend_rider] EMA_align_dn ER=0.66 ROC=-0.011",
+            "entry_price": 0.11168,
+            "krw": 50000
+          },
+          {
+            "symbol": "BGBUSDT",
+            "side": "sell",
+            "confidence": 0.62,
+            "reason": "[vivid_fractal_box] BOX short @zone_top=2.2118, bottom=2.2029, width=0.40%",
+            "entry_price": 2.2101,
+            "krw": 50
           }
         ]
       },
       "scout": {
-        "ts": "2026-03-06T09:30:01.846721+00:00",
+        "ts": "2026-03-06T09:45:04.281353+00:00",
         "universe_count": 12,
         "top_symbols": [
           "BTCUSDT",
           "ETHUSDT",
           "XAUTUSDT",
           "ROBOUSDT",
-          "BSBUSDT",
           "BTWUSDT",
+          "BSBUSDT",
           "USDCUSDT",
           "SOLUSDT"
         ]
@@ -260,8 +284,8 @@
         }
       ],
       "cycle_health": {
-        "cycles_in_log": 640,
-        "completed": 640,
+        "cycles_in_log": 646,
+        "completed": 646,
         "errors": 0
       },
       "portfolio": {
@@ -556,7 +580,7 @@
   "summary": {
     "total_exchanges": 2,
     "total_positions": 3,
-    "total_signals": 5,
+    "total_signals": 10,
     "total_strategies": 18
   },
   "history": [
