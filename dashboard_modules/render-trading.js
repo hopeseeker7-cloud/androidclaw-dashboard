@@ -2,7 +2,21 @@
    render-trading.js — 트레이딩 탭 렌더러
 ───────────────────────────────────────────── */
 
+/* 반응형 차트: DOM 삽입 후 실제 너비 기반으로 채움 */
+let _pendingCharts = [];
+
+function renderChartsResponsive() {
+  _pendingCharts.forEach(({ id, history, exchange }) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const w = el.offsetWidth || 480;
+    el.innerHTML = svgLineChart(history, exchange, w, 180);
+  });
+  _pendingCharts = [];
+}
+
 function renderPortfolioSection(ex, history) {
+  _pendingCharts.push({ id: 'chart-' + ex.exchange, history, exchange: ex.exchange });
   const pf = ex.portfolio || {};
   const capital      = pf.capital_krw || 0;
   const portfolioVal = pf.portfolio_value || capital;
@@ -80,7 +94,7 @@ function renderPortfolioSection(ex, history) {
         </div>
         <div class="pf-chart-card pf-chart-wide">
           <div class="pf-chart-title">자산 추이 (일자별)</div>
-          ${svgLineChart(history, ex.exchange, 480, 180)}
+          <div id="chart-${ex.exchange}" class="pf-chart-responsive"></div>
         </div>
       </div>
 
@@ -354,7 +368,9 @@ function renderTrading() {
       <div class="tsb-item"><span class="tsb-v">${tb.ts ? relativeTime(tb.ts) : '—'}</span><span class="tsb-k">데이터 기준</span></div>
     </div>`;
 
+  _pendingCharts = [];
   panel.innerHTML = summaryHtml + tb.exchanges.map(renderExchangeCard).join('');
+  renderChartsResponsive();
 
   const statusEl = document.getElementById('tradingStatus');
   if (statusEl) {

@@ -55,8 +55,10 @@ async function loadData() {
   ]);
 
   if (results[0].status === 'fulfilled') {
-    state.agents = results[0].value;
+    const raw = results[0].value;
+    state.agents = Array.isArray(raw) ? raw : [];
   } else {
+    state.agents = [];
     state.errors.push('에이전트 데이터 로딩 실패: ' + results[0].reason.message);
   }
 
@@ -67,9 +69,11 @@ async function loadData() {
   }
 
   if (results[2].status === 'fulfilled') {
-    state.runs = results[2].value;
+    const raw = results[2].value;
+    state.runs = Array.isArray(raw) ? raw : [];
     state.runs.sort((a, b) => new Date(b.startedAt || 0) - new Date(a.startedAt || 0));
   } else {
+    state.runs = [];
     state.errors.push('실행 기록 로딩 실패: ' + results[2].reason.message);
   }
 
@@ -79,8 +83,18 @@ async function loadData() {
   if (results[4].status === 'fulfilled') state.health   = results[4].value;
   else                                    state.health   = null;
 
-  if (results[5].status === 'fulfilled') state.tradebot = results[5].value;
-  else                                    state.tradebot = null;
+  if (results[5].status === 'fulfilled') {
+    const raw = results[5].value;
+    if (raw && typeof raw === 'object') {
+      if (!Array.isArray(raw.exchanges)) raw.exchanges = [];
+      if (!Array.isArray(raw.history))   raw.history   = [];
+      state.tradebot = raw;
+    } else {
+      state.tradebot = null;
+    }
+  } else {
+    state.tradebot = null;
+  }
 
   state.lastSync = new Date();
   state.loading  = false;

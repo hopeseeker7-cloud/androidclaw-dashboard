@@ -85,6 +85,17 @@ function tickRelativeTimes() {
   if (activeTab === 'home' && state.runs.length)   renderTimeline();
 }
 
+/* ── Resize — 트레이딩 차트 반응형 재렌더 ── */
+(function () {
+  let _debounce = null;
+  window.addEventListener('resize', () => {
+    clearTimeout(_debounce);
+    _debounce = setTimeout(() => {
+      if (activeTab === 'trading') renderTrading();
+    }, 200);
+  });
+})();
+
 /* ── Init ── */
 document.addEventListener('DOMContentLoaded', () => {
   initTabs();
