@@ -5,16 +5,29 @@
 
 'use strict';
 
-/* ── Constants ── */
-const REFRESH_INTERVAL_MS = 5 * 60 * 1000; // 5 minutes
-const MAX_RUNS_DISPLAY    = 20;
-const DATA = {
-  agents: 'data/agents.json',
-  system: 'data/system.json',
-  runs:   'data/runs.jsonl',
-  costs:  'data/costs.json',
-  health: 'data/health.json',
-  tradebot: 'data/tradebot.json',
+/* ── Config ── */
+const CONFIG = {
+  REFRESH_MS:         5 * 60 * 1000,
+  TICKER_MS:          30 * 1000,
+  MAX_RUNS:           20,
+  BATTERY_GOOD:       50,
+  BATTERY_WARN:       20,
+  BATTERY_EMOJI_FULL: 80,
+  BATTERY_EMOJI_LOW:  40,
+  RES_WARN_PCT:       60,
+  RES_ALERT_PCT:      80,
+  CLAUDE_DAILY_LIMIT: 1_800_000,
+  GPT_CONTEXT_DEFAULT:272_000,
+  CONF_HIGH:          60,
+  CONF_MID:           40,
+  DATA: {
+    agents:   'data/agents.json',
+    system:   'data/system.json',
+    runs:     'data/runs.jsonl',
+    costs:    'data/costs.json',
+    health:   'data/health.json',
+    tradebot: 'data/tradebot.json',
+  },
 };
 
 /* ── Agent emoji map (fallback if not in JSON) ── */
@@ -39,6 +52,7 @@ let state = {
   errors: [],
 };
 
+let activeTab = 'home';
 let refreshTimer = null;
 
 /* ─────────────────────────────────────────────
@@ -78,12 +92,12 @@ async function loadData() {
   setRefreshButtonLoading(true);
 
   const results = await Promise.allSettled([
-    fetchJSON(DATA.agents),
-    fetchJSON(DATA.system),
-    fetchJSONL(DATA.runs),
-    fetchJSON(DATA.costs),
-    fetchJSON(DATA.health),
-    fetchJSON(DATA.tradebot),
+    fetchJSON(CONFIG.DATA.agents),
+    fetchJSON(CONFIG.DATA.system),
+    fetchJSONL(CONFIG.DATA.runs),
+    fetchJSON(CONFIG.DATA.costs),
+    fetchJSON(CONFIG.DATA.health),
+    fetchJSON(CONFIG.DATA.tradebot),
   ]);
 
   /* agents */
@@ -196,10 +210,10 @@ function renderSystemBar() {
   const network      = sys.phone?.network ?? '—';
   const gateway      = sys.openclaw?.gateway ?? '—';
 
-  const batteryClass = !batteryOk ? '' : batteryRaw >= 50 ? 'good' : batteryRaw >= 20 ? 'warn' : 'error';
+  const batteryClass = !batteryOk ? '' : batteryRaw >= CONFIG.BATTERY_GOOD ? 'good' : batteryRaw >= CONFIG.BATTERY_WARN ? 'warn' : 'error';
   const gatewayClass = gateway === 'reachable' ? 'good' : 'error';
   const gatewayText  = gateway === 'reachable' ? '연결됨' : '오프라인';
-  const batteryEmoji = !batteryOk ? '❓' : batteryRaw >= 80 ? '🔋' : batteryRaw >= 40 ? '🪫' : '❗';
+  const batteryEmoji = !batteryOk ? '❓' : batteryRaw >= CONFIG.BATTERY_EMOJI_FULL ? '🔋' : batteryRaw >= CONFIG.BATTERY_EMOJI_LOW ? '🪫' : '❗';
   const batteryText  = batteryOk ? `${batteryRaw}%` : '—';
 
   bar.innerHTML = `
@@ -215,7 +229,7 @@ function renderSystemBar() {
     <div class="sys-item">
       <span class="sys-label">저장공간</span>
       <span class="sys-value">${storageUsed} / ${storageTotal}</span>
-      <span class="sys-value ${storagePct > 80 ? 'warn' : 'good'}" style="font-size:0.7rem">(${storagePct}%)</span>
+      <span class="sys-value ${storagePct > CONFIG.RES_ALERT_PCT ? 'warn' : 'good'}" style="font-size:0.7rem">(${storagePct}%)</span>
     </div>
     <div class="sys-item">
       <span class="sys-label">업타임</span>
@@ -438,7 +452,7 @@ function renderTimeline() {
   const timeline = document.getElementById('timeline');
   if (!timeline) return;
 
-  const recentRuns = state.runs.slice(0, MAX_RUNS_DISPLAY);
+  const recentRuns = state.runs.slice(0, CONFIG.MAX_RUNS);
 
   if (!recentRuns.length) {
     timeline.innerHTML = `
@@ -561,7 +575,7 @@ function svgDonut(pct, color, size, label) {
 
 /* ── Resource meter (phone resources) ── */
 function resourceMeter(label, icon, usedLabel, totalLabel, pct, color) {
-  const cls = pct > 85 ? 'alert' : pct > 65 ? 'warn' : '';
+  const cls = pct > CONFIG.RES_ALERT_PCT ? 'alert' : pct > CONFIG.RES_WARN_PCT ? 'warn' : '';
   return `
     <div class="res-meter">
       <div class="res-meter-icon">${icon}</div>
@@ -603,7 +617,7 @@ function llmUsageCard(data, color, icon, defaultModel, defaultSub) {
 
   /* Fallback for Claude: estimated tokens */
   const estTok  = data?.tokens_today_est || 0;
-  const estCap  = data?.daily_limit_est || 1800000;
+  const estCap  = data?.daily_limit_est || CONFIG.CLAUDE_DAILY_LIMIT;
 
   /* Donut: prefer 5h window (C), then session/context ratio (A), then estimated */
   let donutPct, donutLabel;
@@ -620,9 +634,9 @@ function llmUsageCard(data, color, icon, defaultModel, defaultSub) {
 
   /* Token bar: session/context (A) for real, estimated for Claude */
   const barUsed = isReal ? sessTok : estTok;
-  const barCap  = isReal ? (ctxTok || 272000) : estCap;
+  const barCap  = isReal ? (ctxTok || CONFIG.GPT_CONTEXT_DEFAULT) : estCap;
   const barPct  = barCap > 0 ? Math.min(Math.round(barUsed / barCap * 100), 100) : 0;
-  const barCls  = barPct > 80 ? 'alert' : barPct > 60 ? 'warn' : '';
+  const barCls  = barPct > CONFIG.RES_ALERT_PCT ? 'alert' : barPct > CONFIG.RES_WARN_PCT ? 'warn' : '';
   const barLeft = Math.max(0, barCap - barUsed);
   const barUsedLabel = isReal ? '세션' : '추정';
   const barCapLabel  = isReal ? '컨텍스트' : '일일용량';
@@ -723,7 +737,7 @@ function llmUsageCard(data, color, icon, defaultModel, defaultSub) {
           <div class="llm-win-row">
             <span class="llm-win-label">5h</span>
             <div class="llm-win-bar">
-              <div class="llm-win-fill ${win5h > 80 ? 'alert' : win5h > 60 ? 'warn' : ''}" style="width:${Math.min(win5h, 100)}%;background:${color}"></div>
+              <div class="llm-win-fill ${win5h > CONFIG.RES_ALERT_PCT ? 'alert' : win5h > CONFIG.RES_WARN_PCT ? 'warn' : ''}" style="width:${Math.min(win5h, 100)}%;background:${color}"></div>
             </div>
             <span class="llm-win-pct">${win5h}%</span>
             <span class="llm-win-reset">${reset5h ? fmtResetTime(reset5h) : ''}</span>
@@ -732,7 +746,7 @@ function llmUsageCard(data, color, icon, defaultModel, defaultSub) {
           <div class="llm-win-row">
             <span class="llm-win-label">Week</span>
             <div class="llm-win-bar">
-              <div class="llm-win-fill ${winWk > 80 ? 'alert' : winWk > 60 ? 'warn' : ''}" style="width:${Math.min(winWk, 100)}%;background:${color}"></div>
+              <div class="llm-win-fill ${winWk > CONFIG.RES_ALERT_PCT ? 'alert' : winWk > CONFIG.RES_WARN_PCT ? 'warn' : ''}" style="width:${Math.min(winWk, 100)}%;background:${color}"></div>
             </div>
             <span class="llm-win-pct">${winWk}%</span>
             <span class="llm-win-reset">${resetWk ? fmtResetTime(resetWk) : ''}</span>
@@ -780,7 +794,7 @@ function renderCosts() {
   const batStatus = bat?.status ?? 'unknown';
   const batTemp   = bat?.temperature ?? '—';
   const batKo = { CHARGING:'충전 중', DISCHARGING:'방전', FULL:'완충', NOT_CHARGING:'미충전' };
-  const batIcon = !batOk ? '❓' : batLevel >= 80 ? '🔋' : batLevel >= 40 ? '🪫' : '❗';
+  const batIcon = !batOk ? '❓' : batLevel >= CONFIG.BATTERY_EMOJI_FULL ? '🔋' : batLevel >= CONFIG.BATTERY_EMOJI_LOW ? '🪫' : '❗';
 
   /* cpu */
   const cpuLoad = cpu ? cpu.load_1m.toFixed(2) : '—';
@@ -881,7 +895,7 @@ function fmtKRW(n) {
 function confidenceBadge(c) {
   if (c == null) return '';
   const pct = Math.round(c * 100);
-  const cls = pct >= 60 ? 'high' : pct >= 40 ? 'mid' : 'low';
+  const cls = pct >= CONFIG.CONF_HIGH ? 'high' : pct >= CONFIG.CONF_MID ? 'mid' : 'low';
   return `<span class="conf-badge conf-${cls}">${pct}%</span>`;
 }
 
@@ -1385,14 +1399,25 @@ function renderTrading() {
 
 function render() {
   renderErrors();
-  renderSystemBar();
-  renderServerGrid();
-  renderAgentGrid();
-  renderTimeline();
-  renderRunsTable();
-  renderCosts();
-  renderTrading();
   renderSyncTime();
+  renderSystemBar();
+
+  switch (activeTab) {
+    case 'home':
+      renderServerGrid();
+      renderAgentGrid();
+      renderTimeline();
+      break;
+    case 'runs':
+      renderRunsTable();
+      break;
+    case 'costs':
+      renderCosts();
+      break;
+    case 'trading':
+      renderTrading();
+      break;
+  }
 }
 
 /* ─────────────────────────────────────────────
@@ -1413,6 +1438,9 @@ function initTabs() {
       btn.classList.add('active');
       const panel = document.getElementById('tab-' + target);
       if (panel) panel.classList.add('active');
+
+      activeTab = target;
+      render();
     });
   });
 }
@@ -1442,7 +1470,7 @@ function initRefreshButton() {
   btn.addEventListener('click', () => {
     clearInterval(refreshTimer);
     loadData();
-    refreshTimer = setInterval(loadData, REFRESH_INTERVAL_MS);
+    refreshTimer = setInterval(loadData, CONFIG.REFRESH_MS);
   });
 }
 
@@ -1452,8 +1480,8 @@ function initRefreshButton() {
 
 function tickRelativeTimes() {
   renderSyncTime();
-  if (state.agents.length) renderAgentGrid();
-  if (state.runs.length)   renderTimeline();
+  if (activeTab === 'home' && state.agents.length) renderAgentGrid();
+  if (activeTab === 'home' && state.runs.length)   renderTimeline();
 }
 
 /* ─────────────────────────────────────────────
@@ -1480,6 +1508,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   loadData();
 
-  refreshTimer = setInterval(loadData, REFRESH_INTERVAL_MS);
-  setInterval(tickRelativeTimes, 30 * 1000);
+  refreshTimer = setInterval(loadData, CONFIG.REFRESH_MS);
+  setInterval(tickRelativeTimes, CONFIG.TICKER_MS);
 });
