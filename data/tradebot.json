@@ -1,5 +1,5 @@
 {
-  "ts": "2026-03-06T21:00:00Z",
+  "ts": "2026-03-06T21:15:00Z",
   "host": "jjanga-phone",
   "exchanges": [
     {
@@ -16,7 +16,7 @@
       "strategy_registry": {
         "total": 9,
         "active": 9,
-        "total_signals": 6559,
+        "total_signals": 6614,
         "total_fills": 32,
         "total_pnl_krw": -58202
       },
@@ -24,7 +24,7 @@
         {
           "name": "ict_fvg_sweep",
           "status": "paper_test",
-          "total_signals": 1198,
+          "total_signals": 1210,
           "total_fills": 11,
           "total_pnl_krw": -20631,
           "win_count": 3,
@@ -33,7 +33,7 @@
         {
           "name": "sol_trend_rider",
           "status": "paper_test",
-          "total_signals": 2466,
+          "total_signals": 2489,
           "total_fills": 15,
           "total_pnl_krw": -32047,
           "win_count": 3,
@@ -42,7 +42,7 @@
         {
           "name": "vivid_fractal_box",
           "status": "paper_test",
-          "total_signals": 934,
+          "total_signals": 940,
           "total_fills": 1,
           "total_pnl_krw": 1,
           "win_count": 1,
@@ -51,7 +51,7 @@
         {
           "name": "volume_spike",
           "status": "paper_test",
-          "total_signals": 1294,
+          "total_signals": 1304,
           "total_fills": 4,
           "total_pnl_krw": -5522,
           "win_count": 1,
@@ -69,7 +69,7 @@
         {
           "name": "breakout",
           "status": "paper_test",
-          "total_signals": 568,
+          "total_signals": 572,
           "total_fills": 0,
           "total_pnl_krw": 0,
           "win_count": 0,
@@ -108,7 +108,7 @@
         "reason": "PnL today -54807 <= -50000. Need user decision.",
         "since": "2026-03-05T22:27:18.758697+07:00"
       },
-      "last_cycle": "2026-03-06T21:00:24Z",
+      "last_cycle": "2026-03-06T21:15:24Z",
       "config": {
         "capital_krw": 600000,
         "per_trade_krw": 50,
@@ -120,55 +120,55 @@
         "market": "USDT"
       },
       "signals": {
-        "ts": "2026-03-06T21:00:13.300089+00:00",
+        "ts": "2026-03-06T21:15:13.184521+00:00",
         "live_count": 0,
-        "paper_count": 10,
+        "paper_count": 9,
         "strategy_count": 13,
         "paper_signals": [
+          {
+            "symbol": "BTCUSDT",
+            "side": "buy",
+            "confidence": 0.65,
+            "reason": "[sol_trend_rider] EMA_align_up ER=0.30 ROC=0.003",
+            "entry_price": 70536.23,
+            "krw": 50000
+          },
           {
             "symbol": "BTCUSDT",
             "side": "sell",
             "confidence": 0.62,
             "reason": "[vivid_fractal_box] BOX short @zone_top=70612.7700, bottom=68340.5900, width=3.32%",
-            "entry_price": 70461.88,
+            "entry_price": 70536.23,
             "krw": 50
           },
           {
-            "symbol": "ETHUSDT",
-            "side": "sell",
-            "confidence": 0.62,
-            "reason": "[vivid_fractal_box] BOX short @zone_top=2065.4500, bottom=1970.2400, width=4.83%",
-            "entry_price": 2059.49,
-            "krw": 50
-          },
-          {
-            "symbol": "ROBOUSDT",
+            "symbol": "XAUTUSDT",
             "side": "buy",
-            "confidence": 0.65,
-            "reason": "[sol_trend_rider] EMA_align_up ER=0.38 ROC=0.020",
-            "entry_price": 0.040597,
-            "krw": 50000
-          },
-          {
-            "symbol": "BTWUSDT",
-            "side": "buy",
-            "confidence": 0.35,
-            "reason": "[ict_fvg_sweep] ICT: FVG retrace [0-0] gap=0.5%",
-            "entry_price": 0.012413,
+            "confidence": 0.42,
+            "reason": "[ict_fvg_sweep] ICT: FVG retrace [5058-5086] gap=0.5% | vol+",
+            "entry_price": 5069.5,
             "krw": 50000
           },
           {
             "symbol": "XAUTUSDT",
             "side": "buy",
-            "confidence": 0.62,
-            "reason": "[vivid_fractal_box] BOX long @zone_bottom=5047.6000, top=5096.1000, width=0.96%",
-            "entry_price": 5060.9,
-            "krw": 50
+            "confidence": 0.47683529504920985,
+            "reason": "[volume_spike] volume spike x2.77 (alt learning signal)",
+            "entry_price": 5069.5,
+            "krw": 50000
+          },
+          {
+            "symbol": "SOLUSDT",
+            "side": "buy",
+            "confidence": 0.65,
+            "reason": "[sol_trend_rider] EMA_align_up ER=0.31 ROC=0.005",
+            "entry_price": 87.75,
+            "krw": 50000
           }
         ]
       },
       "scout": {
-        "ts": "2026-03-06T21:00:01.089763+00:00",
+        "ts": "2026-03-06T21:15:01.049210+00:00",
         "universe_count": 12,
         "top_symbols": [
           "BTCUSDT",
@@ -284,8 +284,8 @@
         }
       ],
       "cycle_health": {
-        "cycles_in_log": 916,
-        "completed": 916,
+        "cycles_in_log": 922,
+        "completed": 922,
         "errors": 0
       },
       "portfolio": {
@@ -580,7 +580,7 @@
   "summary": {
     "total_exchanges": 2,
     "total_positions": 3,
-    "total_signals": 13,
+    "total_signals": 12,
     "total_strategies": 18
   },
   "history": [
