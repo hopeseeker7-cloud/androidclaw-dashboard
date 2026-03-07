@@ -1,5 +1,5 @@
 {
-  "ts": "2026-03-07T10:15:00Z",
+  "ts": "2026-03-07T10:30:00Z",
   "host": "jjanga-phone",
   "exchanges": [
     {
@@ -561,7 +561,7 @@
       "strategy_registry": {
         "total": 9,
         "active": 9,
-        "total_signals": 503,
+        "total_signals": 532,
         "total_fills": 37,
         "total_pnl_krw": -70082
       },
@@ -569,7 +569,7 @@
         {
           "name": "vivid_fractal_box",
           "status": "paper_test",
-          "total_signals": 74,
+          "total_signals": 86,
           "total_fills": 10,
           "total_pnl_krw": 4,
           "win_count": 2,
@@ -578,7 +578,7 @@
         {
           "name": "breakout",
           "status": "paper_test",
-          "total_signals": 34,
+          "total_signals": 35,
           "total_fills": 2,
           "total_pnl_krw": -51770,
           "win_count": 0,
@@ -605,7 +605,7 @@
         {
           "name": "volume_spike",
           "status": "paper_test",
-          "total_signals": 55,
+          "total_signals": 63,
           "total_fills": 5,
           "total_pnl_krw": -6577,
           "win_count": 0,
@@ -614,7 +614,7 @@
         {
           "name": "ict_fvg_sweep",
           "status": "paper_test",
-          "total_signals": 160,
+          "total_signals": 167,
           "total_fills": 7,
           "total_pnl_krw": -10863,
           "win_count": 0,
@@ -623,7 +623,7 @@
         {
           "name": "sol_trend_rider",
           "status": "paper_test",
-          "total_signals": 159,
+          "total_signals": 160,
           "total_fills": 12,
           "total_pnl_krw": -3809,
           "win_count": 0,
@@ -653,7 +653,7 @@
         "reason": "PnL today -68431 <= -50000. Need user decision.",
         "since": "2026-03-07T14:17:24.416001+07:00"
       },
-      "last_cycle": "2026-03-07T10:15:30Z",
+      "last_cycle": "2026-03-07T10:30:30Z",
       "config": {
         "capital_krw": 600000,
         "per_trade_krw": 50,
@@ -665,47 +665,55 @@
         "market": "KRW"
       },
       "signals": {
-        "ts": "2026-03-07T10:15:19.427201+00:00",
+        "ts": "2026-03-07T10:30:19.405481+00:00",
         "live_count": 0,
-        "paper_count": 4,
+        "paper_count": 5,
         "strategy_count": 13,
         "paper_signals": [
           {
-            "symbol": "BTC_KRW",
+            "symbol": "SOL_KRW",
+            "side": "sell",
+            "confidence": 0.62,
+            "reason": "[vivid_fractal_box] BOX short @zone_top=125000.0000, bottom=123700.0000, width=1.05%",
+            "entry_price": 124800.0,
+            "krw": 50
+          },
+          {
+            "symbol": "SIGN_KRW",
             "side": "buy",
-            "confidence": 0.8,
-            "reason": "[sol_trend_rider] EMA_align_up ER=0.46 ROC=0.001",
-            "entry_price": 100463000.0,
+            "confidence": 0.42,
+            "reason": "[ict_fvg_sweep] ICT: FVG retrace [67-69] gap=2.3% | vol+",
+            "entry_price": 67.3,
             "krw": 50000
           },
           {
-            "symbol": "ETH_KRW",
+            "symbol": "SIGN_KRW",
             "side": "buy",
-            "confidence": 0.65,
-            "reason": "[sol_trend_rider] EMA_align_up ER=0.27 ROC=0.001",
-            "entry_price": 2934000.0,
+            "confidence": 0.4,
+            "reason": "[volume_spike] volume spike x1.36 (alt learning signal)",
+            "entry_price": 67.3,
             "krw": 50000
           },
           {
             "symbol": "H_KRW",
-            "side": "sell",
-            "confidence": 0.65,
-            "reason": "[sol_trend_rider] EMA_align_dn ER=0.33 ROC=-0.012",
-            "entry_price": 240.0,
+            "side": "buy",
+            "confidence": 0.4,
+            "reason": "[volume_spike] volume spike x1.81 (alt learning signal)",
+            "entry_price": 241.0,
             "krw": 50000
           },
           {
             "symbol": "FLOW_KRW",
             "side": "buy",
-            "confidence": 0.56,
-            "reason": "[ict_fvg_sweep] ICT: sweep below 80 by 0.9% | FVG retrace [80-81] gap=1.3% | MSS confirmed",
-            "entry_price": 79.82,
+            "confidence": 0.42,
+            "reason": "[ict_fvg_sweep] ICT: sweep below 79 by 0.4% | MSS confirmed",
+            "entry_price": 78.84,
             "krw": 50000
           }
         ]
       },
       "scout": {
-        "ts": "2026-03-07T10:15:01.822614+00:00",
+        "ts": "2026-03-07T10:30:01.734766+00:00",
         "universe_count": 12,
         "top_symbols": [
           "USDT_KRW",
@@ -720,8 +728,8 @@
       },
       "recent_trades": [],
       "cycle_health": {
-        "cycles_in_log": 109,
-        "completed": 108,
+        "cycles_in_log": 115,
+        "completed": 114,
         "errors": 0
       },
       "portfolio": {
@@ -762,7 +770,7 @@
   "summary": {
     "total_exchanges": 2,
     "total_positions": 9,
-    "total_signals": 6,
+    "total_signals": 7,
     "total_strategies": 18
   },
   "history": [
