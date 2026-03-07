@@ -1,5 +1,5 @@
 {
-  "ts": "2026-03-07T07:30:00Z",
+  "ts": "2026-03-07T07:45:00Z",
   "host": "jjanga-phone",
   "exchanges": [
     {
@@ -561,7 +561,7 @@
       "strategy_registry": {
         "total": 9,
         "active": 9,
-        "total_signals": 203,
+        "total_signals": 228,
         "total_fills": 37,
         "total_pnl_krw": -70082
       },
@@ -569,7 +569,7 @@
         {
           "name": "vivid_fractal_box",
           "status": "paper_test",
-          "total_signals": 31,
+          "total_signals": 35,
           "total_fills": 10,
           "total_pnl_krw": 4,
           "win_count": 2,
@@ -578,7 +578,7 @@
         {
           "name": "breakout",
           "status": "paper_test",
-          "total_signals": 17,
+          "total_signals": 18,
           "total_fills": 2,
           "total_pnl_krw": -51770,
           "win_count": 0,
@@ -605,7 +605,7 @@
         {
           "name": "volume_spike",
           "status": "paper_test",
-          "total_signals": 29,
+          "total_signals": 30,
           "total_fills": 5,
           "total_pnl_krw": -6577,
           "win_count": 0,
@@ -614,7 +614,7 @@
         {
           "name": "ict_fvg_sweep",
           "status": "paper_test",
-          "total_signals": 56,
+          "total_signals": 66,
           "total_fills": 7,
           "total_pnl_krw": -10863,
           "win_count": 0,
@@ -623,7 +623,7 @@
         {
           "name": "sol_trend_rider",
           "status": "paper_test",
-          "total_signals": 63,
+          "total_signals": 72,
           "total_fills": 12,
           "total_pnl_krw": -3809,
           "win_count": 0,
@@ -653,7 +653,7 @@
         "reason": "PnL today -68431 <= -50000. Need user decision.",
         "since": "2026-03-07T14:17:24.416001+07:00"
       },
-      "last_cycle": "2026-03-07T07:30:30Z",
+      "last_cycle": "2026-03-07T07:45:30Z",
       "config": {
         "capital_krw": 600000,
         "per_trade_krw": 50,
@@ -665,39 +665,39 @@
         "market": "KRW"
       },
       "signals": {
-        "ts": "2026-03-07T07:30:19.246053+00:00",
+        "ts": "2026-03-07T07:45:19.331664+00:00",
         "live_count": 0,
         "paper_count": 3,
         "strategy_count": 13,
         "paper_signals": [
           {
-            "symbol": "SIGN_KRW",
+            "symbol": "XRP_KRW",
+            "side": "sell",
+            "confidence": 0.65,
+            "reason": "[sol_trend_rider] EMA_align_dn ER=0.27 ROC=-0.001",
+            "entry_price": 2010.0,
+            "krw": 50000
+          },
+          {
+            "symbol": "FLOW_KRW",
             "side": "buy",
             "confidence": 0.6,
-            "reason": "[ict_fvg_sweep] ICT: FVG retrace [73-74] gap=1.4% | KZ",
-            "entry_price": 73.39,
+            "reason": "[ict_fvg_sweep] ICT: FVG retrace [80-85] gap=6.6% | KZ",
+            "entry_price": 81.94,
             "krw": 50000
           },
           {
-            "symbol": "H_KRW",
+            "symbol": "SKR_KRW",
             "side": "buy",
-            "confidence": 0.4388141008254379,
-            "reason": "[volume_spike] volume spike x2.39 (alt learning signal)",
-            "entry_price": 247.0,
-            "krw": 50000
-          },
-          {
-            "symbol": "SOLV_KRW",
-            "side": "buy",
-            "confidence": 0.65,
-            "reason": "[sol_trend_rider] EMA_align_up ER=0.36 ROC=0.027",
-            "entry_price": 9.407,
+            "confidence": 0.6,
+            "reason": "[ict_fvg_sweep] ICT: FVG retrace [36-36] gap=1.0% | KZ",
+            "entry_price": 36.26,
             "krw": 50000
           }
         ]
       },
       "scout": {
-        "ts": "2026-03-07T07:30:01.818665+00:00",
+        "ts": "2026-03-07T07:45:01.834057+00:00",
         "universe_count": 12,
         "top_symbols": [
           "USDT_KRW",
@@ -712,8 +712,8 @@
       },
       "recent_trades": [],
       "cycle_health": {
-        "cycles_in_log": 43,
-        "completed": 42,
+        "cycles_in_log": 49,
+        "completed": 48,
         "errors": 0
       },
       "portfolio": {
