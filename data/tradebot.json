@@ -1,5 +1,5 @@
 {
-  "ts": "2026-03-07T14:15:00Z",
+  "ts": "2026-03-07T14:30:00Z",
   "host": "jjanga-phone",
   "exchanges": [
     {
@@ -548,7 +548,7 @@
       "strategy_registry": {
         "total": 9,
         "active": 9,
-        "total_signals": 994,
+        "total_signals": 1020,
         "total_fills": 37,
         "total_pnl_krw": -70704
       },
@@ -556,7 +556,7 @@
         {
           "name": "vivid_fractal_box",
           "status": "paper_test",
-          "total_signals": 193,
+          "total_signals": 200,
           "total_fills": 10,
           "total_pnl_krw": 4,
           "win_count": 2,
@@ -601,7 +601,7 @@
         {
           "name": "ict_fvg_sweep",
           "status": "paper_test",
-          "total_signals": 288,
+          "total_signals": 295,
           "total_fills": 7,
           "total_pnl_krw": -10863,
           "win_count": 0,
@@ -610,7 +610,7 @@
         {
           "name": "sol_trend_rider",
           "status": "paper_test",
-          "total_signals": 315,
+          "total_signals": 327,
           "total_fills": 12,
           "total_pnl_krw": -3809,
           "win_count": 0,
@@ -640,7 +640,7 @@
         "reason": "PnL today -68431 <= -50000. Need user decision.",
         "since": "2026-03-07T14:17:24.416001+07:00"
       },
-      "last_cycle": "2026-03-07T14:15:29Z",
+      "last_cycle": "2026-03-07T14:30:29Z",
       "config": {
         "capital_krw": 600000,
         "per_trade_krw": 50,
@@ -652,71 +652,47 @@
         "market": "KRW"
       },
       "signals": {
-        "ts": "2026-03-07T14:15:18.542330+00:00",
+        "ts": "2026-03-07T14:30:18.997480+00:00",
         "live_count": 0,
-        "paper_count": 5,
+        "paper_count": 2,
         "strategy_count": 13,
         "paper_signals": [
           {
-            "symbol": "XRP_KRW",
-            "side": "buy",
-            "confidence": 0.62,
-            "reason": "[vivid_fractal_box] BOX long @zone_bottom=2012.0000, top=2025.0000, width=0.65%",
-            "entry_price": 2008.0,
-            "krw": 50
-          },
-          {
-            "symbol": "BTC_KRW",
+            "symbol": "ETH_KRW",
             "side": "sell",
             "confidence": 0.65,
-            "reason": "[sol_trend_rider] EMA_align_dn ER=0.30 ROC=-0.002",
-            "entry_price": 100111000.0,
+            "reason": "[sol_trend_rider] EMA_align_dn ER=0.33 ROC=-0.001",
+            "entry_price": 2918000.0,
             "krw": 50000
           },
           {
             "symbol": "ETH_KRW",
-            "side": "sell",
-            "confidence": 0.8,
-            "reason": "[sol_trend_rider] EMA_align_dn ER=0.50 ROC=-0.003",
-            "entry_price": 2917000.0,
-            "krw": 50000
-          },
-          {
-            "symbol": "SOL_KRW",
-            "side": "sell",
-            "confidence": 0.8,
-            "reason": "[sol_trend_rider] EMA_align_dn ER=0.44 ROC=-0.005",
-            "entry_price": 123900.0,
-            "krw": 50000
-          },
-          {
-            "symbol": "SIGN_KRW",
             "side": "buy",
-            "confidence": 0.6,
-            "reason": "[ict_fvg_sweep] ICT: FVG retrace [65-66] gap=2.6% | KZ",
-            "entry_price": 65.6,
-            "krw": 50000
+            "confidence": 0.62,
+            "reason": "[vivid_fractal_box] BOX long @zone_bottom=2917000.0000, top=2939000.0000, width=0.75%",
+            "entry_price": 2918000.0,
+            "krw": 50
           }
         ]
       },
       "scout": {
-        "ts": "2026-03-07T14:15:01.320152+00:00",
+        "ts": "2026-03-07T14:30:01.728675+00:00",
         "universe_count": 12,
         "top_symbols": [
           "USDT_KRW",
           "XRP_KRW",
           "BTC_KRW",
           "ETH_KRW",
-          "SOL_KRW",
           "SOLV_KRW",
+          "SOL_KRW",
           "SIGN_KRW",
           "H_KRW"
         ]
       },
       "recent_trades": [],
       "cycle_health": {
-        "cycles_in_log": 205,
-        "completed": 204,
+        "cycles_in_log": 211,
+        "completed": 210,
         "errors": 0
       },
       "portfolio": {
@@ -740,7 +716,7 @@
   "summary": {
     "total_exchanges": 2,
     "total_positions": 8,
-    "total_signals": 7,
+    "total_signals": 4,
     "total_strategies": 18
   },
   "history": [
