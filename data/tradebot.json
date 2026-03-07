@@ -1,5 +1,5 @@
 {
-  "ts": "2026-03-07T00:00:00Z",
+  "ts": "2026-03-07T00:15:00Z",
   "host": "jjanga-phone",
   "exchanges": [
     {
@@ -16,7 +16,7 @@
       "strategy_registry": {
         "total": 9,
         "active": 9,
-        "total_signals": 7088,
+        "total_signals": 7116,
         "total_fills": 47,
         "total_pnl_krw": -137638
       },
@@ -24,7 +24,7 @@
         {
           "name": "ict_fvg_sweep",
           "status": "paper_test",
-          "total_signals": 1283,
+          "total_signals": 1293,
           "total_fills": 14,
           "total_pnl_krw": -36460,
           "win_count": 3,
@@ -33,7 +33,7 @@
         {
           "name": "sol_trend_rider",
           "status": "paper_test",
-          "total_signals": 2727,
+          "total_signals": 2733,
           "total_fills": 23,
           "total_pnl_krw": -84490,
           "win_count": 3,
@@ -42,7 +42,7 @@
         {
           "name": "vivid_fractal_box",
           "status": "paper_test",
-          "total_signals": 982,
+          "total_signals": 985,
           "total_fills": 1,
           "total_pnl_krw": 1,
           "win_count": 1,
@@ -51,7 +51,7 @@
         {
           "name": "volume_spike",
           "status": "paper_test",
-          "total_signals": 1383,
+          "total_signals": 1390,
           "total_fills": 7,
           "total_pnl_krw": -13167,
           "win_count": 1,
@@ -69,7 +69,7 @@
         {
           "name": "breakout",
           "status": "paper_test",
-          "total_signals": 614,
+          "total_signals": 616,
           "total_fills": 1,
           "total_pnl_krw": -3519,
           "win_count": 0,
@@ -108,7 +108,7 @@
         "reason": "PnL today -72537 <= -50000. Need user decision.",
         "since": "2026-03-07T05:30:19.529843+07:00"
       },
-      "last_cycle": "2026-03-07T00:00:25Z",
+      "last_cycle": "2026-03-07T00:15:24Z",
       "config": {
         "capital_krw": 600000,
         "per_trade_krw": 50,
@@ -120,53 +120,20 @@
         "market": "USDT"
       },
       "signals": {
-        "ts": "2026-03-07T00:00:14.187209+00:00",
+        "ts": "2026-03-07T00:15:13.613420+00:00",
         "live_count": 0,
-        "paper_count": 4,
-        "strategy_count": 13,
-        "paper_signals": [
-          {
-            "symbol": "ETHUSDT",
-            "side": "buy",
-            "confidence": 0.65,
-            "reason": "[sol_trend_rider] EMA_align_up ER=0.26 ROC=0.003",
-            "entry_price": 2007.11,
-            "krw": 50000
-          },
-          {
-            "symbol": "ETHUSDT",
-            "side": "buy",
-            "confidence": 0.4,
-            "reason": "[volume_spike] volume spike x1.65 (alt learning signal)",
-            "entry_price": 2007.11,
-            "krw": 50000
-          },
-          {
-            "symbol": "ROBOUSDT",
-            "side": "buy",
-            "confidence": 0.68,
-            "reason": "[vivid_fractal_box] BREAKOUT long above 0.0394 (+0.15% buf)",
-            "entry_price": 0.039595,
-            "krw": 50
-          },
-          {
-            "symbol": "XAUTUSDT",
-            "side": "sell",
-            "confidence": 0.65,
-            "reason": "[sol_trend_rider] EMA_align_dn ER=0.39 ROC=-0.004",
-            "entry_price": 5060.5,
-            "krw": 50000
-          }
-        ]
+        "paper_count": 0,
+        "strategy_count": 0,
+        "paper_signals": []
       },
       "scout": {
-        "ts": "2026-03-07T00:00:01.841816+00:00",
+        "ts": "2026-03-07T00:15:01.120815+00:00",
         "universe_count": 12,
         "top_symbols": [
           "BTCUSDT",
           "ETHUSDT",
-          "ROBOUSDT",
           "BTWUSDT",
+          "ROBOUSDT",
           "XAUTUSDT",
           "BSBUSDT",
           "USDCUSDT",
@@ -276,8 +243,8 @@
         }
       ],
       "cycle_health": {
-        "cycles_in_log": 981,
-        "completed": 981,
+        "cycles_in_log": 987,
+        "completed": 987,
         "errors": 0
       },
       "portfolio": {
@@ -729,7 +696,7 @@
   "summary": {
     "total_exchanges": 2,
     "total_positions": 8,
-    "total_signals": 11,
+    "total_signals": 7,
     "total_strategies": 18
   },
   "history": [
