@@ -1,5 +1,5 @@
 {
-  "ts": "2026-03-07T04:00:00Z",
+  "ts": "2026-03-07T04:15:00Z",
   "host": "jjanga-phone",
   "exchanges": [
     {
@@ -9,26 +9,10 @@
       "positions": [
         {
           "market_type": "futures",
-          "symbol": "SOLUSDT",
-          "direction": "short",
-          "entry_price": 84.12,
-          "qty": 2971.944840703756,
-          "margin_usdt": 50000.0,
-          "notional_usdt": 250000.0,
-          "leverage": 5.0,
-          "liquidation_price": 100.52340000000001,
-          "opened_ts": "2026-03-07T10:25:26.195644+07:00",
-          "strategy": "sol_trend_rider",
-          "target_pct": 0.017,
-          "stop_pct": -0.01,
-          "adaptive_exit_enabled": true
-        },
-        {
-          "market_type": "futures",
           "symbol": "SONICUSDT",
           "direction": "short",
           "entry_price": 0.043664,
-          "qty": 5725540.491022352,
+          "qty": 33113.69563094061,
           "margin_usdt": 50000.0,
           "notional_usdt": 250000.0,
           "leverage": 5.0,
@@ -37,54 +21,6 @@
           "strategy": "sol_trend_rider",
           "target_pct": 0.017,
           "stop_pct": -0.01,
-          "adaptive_exit_enabled": true
-        },
-        {
-          "market_type": "futures",
-          "symbol": "ROBOUSDT",
-          "direction": "long",
-          "entry_price": 0.038428,
-          "qty": 6505672.946809619,
-          "margin_usdt": 50000.0,
-          "notional_usdt": 250000.0,
-          "leverage": 5.0,
-          "liquidation_price": 0.03093454,
-          "opened_ts": "2026-03-07T10:25:26.195644+07:00",
-          "strategy": "volume_spike",
-          "target_pct": 0.012,
-          "stop_pct": -0.0085,
-          "adaptive_exit_enabled": true
-        },
-        {
-          "market_type": "futures",
-          "symbol": "ROBOUSDT",
-          "direction": "long",
-          "entry_price": 0.038428,
-          "qty": 6505672.946809619,
-          "margin_usdt": 50000.0,
-          "notional_usdt": 250000.0,
-          "leverage": 5.0,
-          "liquidation_price": 0.03093454,
-          "opened_ts": "2026-03-07T10:25:26.195644+07:00",
-          "strategy": "breakout",
-          "target_pct": 0.012,
-          "stop_pct": -0.0085,
-          "adaptive_exit_enabled": true
-        },
-        {
-          "market_type": "futures",
-          "symbol": "ROBOUSDT",
-          "direction": "long",
-          "entry_price": 0.038428,
-          "qty": 6505672.946809619,
-          "margin_usdt": 50000.0,
-          "notional_usdt": 250000.0,
-          "leverage": 5.0,
-          "liquidation_price": 0.03093454,
-          "opened_ts": "2026-03-07T10:25:26.195644+07:00",
-          "strategy": "ict_fvg_sweep",
-          "target_pct": 0.012,
-          "stop_pct": -0.0085,
           "adaptive_exit_enabled": true
         },
         {
@@ -105,22 +41,6 @@
         },
         {
           "market_type": "futures",
-          "symbol": "SOLUSDT",
-          "direction": "short",
-          "entry_price": 84.21,
-          "qty": 2968.768554803468,
-          "margin_usdt": 50000.0,
-          "notional_usdt": 250000.0,
-          "leverage": 5.0,
-          "liquidation_price": 100.63095,
-          "opened_ts": "2026-03-07T10:50:24.861637+07:00",
-          "strategy": "sol_trend_rider",
-          "target_pct": 0.017,
-          "stop_pct": -0.01,
-          "adaptive_exit_enabled": true
-        },
-        {
-          "market_type": "futures",
           "symbol": "SONICUSDT",
           "direction": "short",
           "entry_price": 0.043918,
@@ -134,44 +54,92 @@
           "target_pct": 0.017,
           "stop_pct": -0.01,
           "adaptive_exit_enabled": true
+        },
+        {
+          "market_type": "futures",
+          "symbol": "SONICUSDT",
+          "direction": "short",
+          "entry_price": 0.044233,
+          "qty": 5651888.861257432,
+          "margin_usdt": 50000.0,
+          "notional_usdt": 250000.0,
+          "leverage": 5.0,
+          "liquidation_price": 0.052858435,
+          "opened_ts": "2026-03-07T11:07:27.530693+07:00",
+          "strategy": "sol_trend_rider",
+          "target_pct": 0.014,
+          "stop_pct": -0.01,
+          "adaptive_exit_enabled": true
+        },
+        {
+          "market_type": "futures",
+          "symbol": "BTWUSDT",
+          "direction": "long",
+          "entry_price": 0.012422,
+          "qty": 20125583.641925614,
+          "margin_usdt": 50000.0,
+          "notional_usdt": 250000.0,
+          "leverage": 5.0,
+          "liquidation_price": 0.009999710000000002,
+          "opened_ts": "2026-03-07T11:15:30.672089+07:00",
+          "strategy": "ict_fvg_sweep",
+          "target_pct": 0.012,
+          "stop_pct": -0.0085,
+          "adaptive_exit_enabled": true
+        },
+        {
+          "market_type": "futures",
+          "symbol": "ROBOUSDT",
+          "direction": "long",
+          "entry_price": 0.03848,
+          "qty": 6496881.496881497,
+          "margin_usdt": 50000.0,
+          "notional_usdt": 250000.0,
+          "leverage": 5.0,
+          "liquidation_price": 0.0309764,
+          "opened_ts": "2026-03-07T11:15:30.672089+07:00",
+          "strategy": "ict_fvg_sweep",
+          "target_pct": 0.012,
+          "stop_pct": -0.0085,
+          "adaptive_exit_enabled": true
         }
       ],
       "pnl_today": {
         "date": "2026-03-07",
-        "pnl_krw": -83001,
+        "pnl_krw": -79578,
         "trades": 0,
         "realized_krw": 0
       },
       "strategy_registry": {
         "total": 9,
         "active": 9,
-        "total_signals": 7742,
-        "total_fills": 58,
-        "total_pnl_krw": -141203
+        "total_signals": 7776,
+        "total_fills": 62,
+        "total_pnl_krw": -137780
       },
       "strategies_flat": [
         {
           "name": "ict_fvg_sweep",
           "status": "paper_test",
-          "total_signals": 1419,
-          "total_fills": 15,
-          "total_pnl_krw": -36460,
-          "win_count": 3,
+          "total_signals": 1427,
+          "total_fills": 17,
+          "total_pnl_krw": -35901,
+          "win_count": 4,
           "loss_count": 11
         },
         {
           "name": "sol_trend_rider",
           "status": "paper_test",
-          "total_signals": 2913,
-          "total_fills": 30,
-          "total_pnl_krw": -88055,
-          "win_count": 4,
-          "loss_count": 22
+          "total_signals": 2922,
+          "total_fills": 31,
+          "total_pnl_krw": -88666,
+          "win_count": 5,
+          "loss_count": 24
         },
         {
           "name": "vivid_fractal_box",
           "status": "paper_test",
-          "total_signals": 1071,
+          "total_signals": 1077,
           "total_fills": 2,
           "total_pnl_krw": 1,
           "win_count": 1,
@@ -180,10 +148,10 @@
         {
           "name": "volume_spike",
           "status": "paper_test",
-          "total_signals": 1558,
-          "total_fills": 8,
-          "total_pnl_krw": -13167,
-          "win_count": 1,
+          "total_signals": 1567,
+          "total_fills": 9,
+          "total_pnl_krw": -9751,
+          "win_count": 3,
           "loss_count": 6
         },
         {
@@ -198,10 +166,10 @@
         {
           "name": "breakout",
           "status": "paper_test",
-          "total_signals": 678,
+          "total_signals": 680,
           "total_fills": 2,
-          "total_pnl_krw": -3519,
-          "win_count": 0,
+          "total_pnl_krw": -3460,
+          "win_count": 1,
           "loss_count": 1
         },
         {
@@ -237,7 +205,7 @@
         "reason": "",
         "since": "2026-03-07T10:25:20.680165+07:00"
       },
-      "last_cycle": "2026-03-07T04:00:29Z",
+      "last_cycle": "2026-03-07T04:15:30Z",
       "config": {
         "capital_krw": 600000,
         "per_trade_krw": 50,
@@ -249,55 +217,55 @@
         "market": "USDT"
       },
       "signals": {
-        "ts": "2026-03-07T04:00:18.750776+00:00",
+        "ts": "2026-03-07T04:15:19.769703+00:00",
         "live_count": 0,
-        "paper_count": 6,
+        "paper_count": 8,
         "strategy_count": 13,
         "paper_signals": [
           {
+            "symbol": "ETHUSDT",
+            "side": "buy",
+            "confidence": 0.35,
+            "reason": "[ict_fvg_sweep] ICT: FVG retrace [1974-1980] gap=0.3%",
+            "entry_price": 1977.17,
+            "krw": 50000
+          },
+          {
             "symbol": "BTWUSDT",
             "side": "buy",
+            "confidence": 0.42,
+            "reason": "[ict_fvg_sweep] ICT: FVG retrace [0-0] gap=0.8% | MSS confirmed",
+            "entry_price": 0.012422,
+            "krw": 50000
+          },
+          {
+            "symbol": "ROBOUSDT",
+            "side": "buy",
+            "confidence": 0.42,
+            "reason": "[ict_fvg_sweep] ICT: FVG retrace [0-0] gap=1.0% | vol+",
+            "entry_price": 0.03848,
+            "krw": 50000
+          },
+          {
+            "symbol": "ROBOUSDT",
+            "side": "buy",
             "confidence": 0.4,
-            "reason": "[volume_spike] volume spike x1.37 (alt learning signal)",
-            "entry_price": 0.012397,
+            "reason": "[volume_spike] volume spike x1.36 (alt learning signal)",
+            "entry_price": 0.03848,
             "krw": 50000
           },
           {
-            "symbol": "XAUTUSDT",
-            "side": "buy",
-            "confidence": 0.62,
-            "reason": "[vivid_fractal_box] BOX long @zone_bottom=5122.2000, top=5149.0000, width=0.52%",
-            "entry_price": 5119.0,
-            "krw": 50
-          },
-          {
-            "symbol": "USDCUSDT",
-            "side": "buy",
-            "confidence": 0.7000000000000001,
-            "reason": "[volume_spike] volume spike x5.00 (alt learning signal)",
-            "entry_price": 1.0001,
-            "krw": 50000
-          },
-          {
-            "symbol": "XRPUSDT",
+            "symbol": "BSBUSDT",
             "side": "sell",
             "confidence": 0.65,
-            "reason": "[sol_trend_rider] EMA_align_dn ER=0.26 ROC=-0.006",
-            "entry_price": 1.3527,
+            "reason": "[sol_trend_rider] EMA_align_dn ER=0.30 ROC=-0.030",
+            "entry_price": 0.12462,
             "krw": 50000
-          },
-          {
-            "symbol": "XRPUSDT",
-            "side": "sell",
-            "confidence": 0.68,
-            "reason": "[vivid_fractal_box] BREAKOUT short below 1.3562 (-0.15% buf)",
-            "entry_price": 1.3527,
-            "krw": 50
           }
         ]
       },
       "scout": {
-        "ts": "2026-03-07T04:00:02.782497+00:00",
+        "ts": "2026-03-07T04:15:02.512867+00:00",
         "universe_count": 12,
         "top_symbols": [
           "BTCUSDT",
@@ -413,147 +381,115 @@
         }
       ],
       "cycle_health": {
-        "cycles_in_log": 1077,
-        "completed": 1077,
+        "cycles_in_log": 1083,
+        "completed": 1083,
         "errors": 0
       },
       "portfolio": {
         "capital_krw": 600000,
-        "cash_krw": -1400000.0,
-        "invested_krw": 2000000.0,
-        "portfolio_value": 610572.83,
-        "total_pnl_krw": 10572.83,
-        "total_pnl_pct": 1.76,
+        "cash_krw": -651445.88,
+        "invested_krw": 1251445.88,
+        "portfolio_value": 601773.08,
+        "total_pnl_krw": 1773.08,
+        "total_pnl_pct": 0.3,
         "holdings": [
           {
-            "symbol": "SOLUSDT",
-            "qty": 2971.944840703756,
-            "avg_price": 84.12,
-            "cur_price": 84.57,
-            "buy_krw": 250000.0,
-            "val_krw": 251337.38,
-            "pnl_krw": 1337.38,
-            "pnl_pct": 0.53,
-            "side": "short"
-          },
-          {
             "symbol": "SONICUSDT",
-            "qty": 5725540.491022352,
+            "qty": 33113.69563094061,
             "avg_price": 0.043664,
-            "cur_price": 0.043956,
-            "buy_krw": 250000.0,
-            "val_krw": 251671.86,
-            "pnl_krw": 1671.86,
-            "pnl_pct": 0.67,
+            "cur_price": 0.043797,
+            "buy_krw": 1445.88,
+            "val_krw": 1450.28,
+            "pnl_krw": 4.4,
+            "pnl_pct": 0.3,
             "side": "short"
-          },
-          {
-            "symbol": "ROBOUSDT",
-            "qty": 6505672.946809619,
-            "avg_price": 0.038428,
-            "cur_price": 0.038702,
-            "buy_krw": 250000.0,
-            "val_krw": 251782.55,
-            "pnl_krw": 1782.55,
-            "pnl_pct": 0.71,
-            "side": "long"
-          },
-          {
-            "symbol": "ROBOUSDT",
-            "qty": 6505672.946809619,
-            "avg_price": 0.038428,
-            "cur_price": 0.038702,
-            "buy_krw": 250000.0,
-            "val_krw": 251782.55,
-            "pnl_krw": 1782.55,
-            "pnl_pct": 0.71,
-            "side": "long"
-          },
-          {
-            "symbol": "ROBOUSDT",
-            "qty": 6505672.946809619,
-            "avg_price": 0.038428,
-            "cur_price": 0.038702,
-            "buy_krw": 250000.0,
-            "val_krw": 251782.55,
-            "pnl_krw": 1782.55,
-            "pnl_pct": 0.71,
-            "side": "long"
           },
           {
             "symbol": "BTCUSDT",
             "qty": 3.6839642048354833,
             "avg_price": 67861.68,
-            "cur_price": 68114.36,
+            "cur_price": 67953.0,
             "buy_krw": 250000.0,
-            "val_krw": 250930.86,
-            "pnl_krw": 930.86,
-            "pnl_pct": 0.37,
-            "side": "short"
-          },
-          {
-            "symbol": "SOLUSDT",
-            "qty": 2968.768554803468,
-            "avg_price": 84.21,
-            "cur_price": 84.57,
-            "buy_krw": 250000.0,
-            "val_krw": 251068.76,
-            "pnl_krw": 1068.76,
-            "pnl_pct": 0.43,
+            "val_krw": 250336.42,
+            "pnl_krw": 336.42,
+            "pnl_pct": 0.13,
             "side": "short"
           },
           {
             "symbol": "SONICUSDT",
             "qty": 5692426.7953914115,
             "avg_price": 0.043918,
-            "cur_price": 0.043956,
+            "cur_price": 0.043797,
             "buy_krw": 250000.0,
-            "val_krw": 250216.31,
-            "pnl_krw": 216.31,
-            "pnl_pct": 0.09,
+            "val_krw": 249311.22,
+            "pnl_krw": -688.78,
+            "pnl_pct": -0.28,
             "side": "short"
+          },
+          {
+            "symbol": "SONICUSDT",
+            "qty": 5651888.861257432,
+            "avg_price": 0.044233,
+            "cur_price": 0.043797,
+            "buy_krw": 250000.0,
+            "val_krw": 247535.78,
+            "pnl_krw": -2464.22,
+            "pnl_pct": -0.99,
+            "side": "short"
+          },
+          {
+            "symbol": "BTWUSDT",
+            "qty": 20125583.641925614,
+            "avg_price": 0.012422,
+            "cur_price": 0.012614,
+            "buy_krw": 250000.0,
+            "val_krw": 253864.11,
+            "pnl_krw": 3864.11,
+            "pnl_pct": 1.55,
+            "side": "long"
+          },
+          {
+            "symbol": "ROBOUSDT",
+            "qty": 6496881.496881497,
+            "avg_price": 0.03848,
+            "cur_price": 0.038591,
+            "buy_krw": 250000.0,
+            "val_krw": 250721.15,
+            "pnl_krw": 721.15,
+            "pnl_pct": 0.29,
+            "side": "long"
           }
         ],
         "allocation": [
           {
-            "name": "ROBOUSDT",
-            "value": 251782.55,
-            "pct": 41.2
+            "name": "BTWUSDT",
+            "value": 253864.11,
+            "pct": 42.2
           },
           {
             "name": "ROBOUSDT",
-            "value": 251782.55,
-            "pct": 41.2
-          },
-          {
-            "name": "ROBOUSDT",
-            "value": 251782.55,
-            "pct": 41.2
-          },
-          {
-            "name": "SONICUSDT",
-            "value": 251671.86,
-            "pct": 41.2
-          },
-          {
-            "name": "SOLUSDT",
-            "value": 251337.38,
-            "pct": 41.2
-          },
-          {
-            "name": "SOLUSDT",
-            "value": 251068.76,
-            "pct": 41.1
+            "value": 250721.15,
+            "pct": 41.7
           },
           {
             "name": "BTCUSDT",
-            "value": 250930.86,
+            "value": 250336.42,
+            "pct": 41.6
+          },
+          {
+            "name": "SONICUSDT",
+            "value": 249311.22,
+            "pct": 41.4
+          },
+          {
+            "name": "SONICUSDT",
+            "value": 247535.78,
             "pct": 41.1
           },
           {
             "name": "SONICUSDT",
-            "value": 250216.31,
-            "pct": 41.0
+            "value": 1450.28,
+            "pct": 0.2
           }
         ]
       }
@@ -989,8 +925,8 @@
   ],
   "summary": {
     "total_exchanges": 2,
-    "total_positions": 16,
-    "total_signals": 13,
+    "total_positions": 14,
+    "total_signals": 15,
     "total_strategies": 18
   },
   "history": [
