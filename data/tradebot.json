@@ -1,5 +1,5 @@
 {
-  "ts": "2026-03-08T15:00:00Z",
+  "ts": "2026-03-08T15:15:00Z",
   "host": "jjanga-phone",
   "exchanges": [
     {
@@ -97,7 +97,7 @@
       "strategy_registry": {
         "total": 9,
         "active": 9,
-        "total_signals": 9382,
+        "total_signals": 9388,
         "total_fills": 176,
         "total_pnl_krw": -366278
       },
@@ -114,7 +114,7 @@
         {
           "name": "sol_trend_rider",
           "status": "paper_test",
-          "total_signals": 3531,
+          "total_signals": 3536,
           "total_fills": 78,
           "total_pnl_krw": -337639,
           "win_count": 12,
@@ -132,7 +132,7 @@
         {
           "name": "volume_spike",
           "status": "paper_test",
-          "total_signals": 1860,
+          "total_signals": 1861,
           "total_fills": 12,
           "total_pnl_krw": -17952,
           "win_count": 3,
@@ -191,7 +191,7 @@
         "hybrid_guard_pipeline": true,
         "ai_judge_enabled": true
       },
-      "last_cycle": "2026-03-08T15:00:12Z",
+      "last_cycle": "2026-03-08T15:15:49Z",
       "config": {
         "capital_krw": 600000,
         "per_trade_krw": 50,
@@ -203,23 +203,23 @@
         "market": "USDT"
       },
       "signals": {
-        "ts": "2026-03-08T14:57:47.292515+00:00",
+        "ts": "2026-03-08T15:15:38.179857+00:00",
         "live_count": 0,
         "paper_count": 1,
         "strategy_count": 13,
         "paper_signals": [
           {
             "symbol": "BTCUSDT",
-            "side": "sell",
-            "confidence": 0.8,
-            "reason": "[sol_trend_rider] EMA_align_dn ER=0.70 ROC=-0.006",
-            "entry_price": 66725.99,
+            "side": "buy",
+            "confidence": 0.7000000000000001,
+            "reason": "[volume_spike] volume spike x5.00 (alt learning signal)",
+            "entry_price": 67146.0,
             "krw": 50000
           }
         ]
       },
       "scout": {
-        "ts": "2026-03-08T15:00:01.990629+00:00",
+        "ts": "2026-03-08T15:15:02.848497+00:00",
         "universe_count": 11,
         "top_symbols": [
           "BTCUSDT",
@@ -335,27 +335,27 @@
         }
       ],
       "cycle_health": {
-        "cycles_in_log": 296,
-        "completed": 295,
+        "cycles_in_log": 302,
+        "completed": 302,
         "errors": 303
       },
       "portfolio": {
         "capital_krw": 600000,
         "cash_krw": 100741.98,
         "invested_krw": 499258.02,
-        "portfolio_value": 600943.71,
-        "total_pnl_krw": 943.71,
-        "total_pnl_pct": 0.16,
+        "portfolio_value": 601118.4,
+        "total_pnl_krw": 1118.4,
+        "total_pnl_pct": 0.19,
         "holdings": [
           {
             "symbol": "BTCUSDT",
             "qty": 3.7067347595549114,
             "avg_price": 67042.3,
-            "cur_price": 67297.0,
+            "cur_price": 67344.08,
             "buy_krw": 248508.02,
-            "val_krw": 249452.13,
-            "pnl_krw": 944.11,
-            "pnl_pct": 0.38,
+            "val_krw": 249626.64,
+            "pnl_krw": 1118.62,
+            "pnl_pct": 0.45,
             "side": "short"
           },
           {
@@ -373,11 +373,11 @@
             "symbol": "BTCUSDT",
             "qty": 0.003709041976711667,
             "avg_price": 67402.85,
-            "cur_price": 67297.0,
+            "cur_price": 67344.08,
             "buy_krw": 250.0,
-            "val_krw": 249.61,
-            "pnl_krw": -0.39,
-            "pnl_pct": -0.16,
+            "val_krw": 249.78,
+            "pnl_krw": -0.22,
+            "pnl_pct": -0.09,
             "side": "short"
           },
           {
@@ -416,7 +416,7 @@
           },
           {
             "name": "BTCUSDT",
-            "value": 249452.13,
+            "value": 249626.64,
             "pct": 41.5
           },
           {
@@ -431,7 +431,7 @@
           },
           {
             "name": "BTCUSDT",
-            "value": 249.61,
+            "value": 249.78,
             "pct": 0.0
           }
         ]
