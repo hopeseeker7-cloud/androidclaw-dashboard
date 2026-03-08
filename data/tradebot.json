@@ -1,5 +1,5 @@
 {
-  "ts": "2026-03-08T14:15:00Z",
+  "ts": "2026-03-08T14:30:00Z",
   "host": "jjanga-phone",
   "exchanges": [
     {
@@ -97,7 +97,7 @@
       "strategy_registry": {
         "total": 9,
         "active": 9,
-        "total_signals": 9373,
+        "total_signals": 9376,
         "total_fills": 176,
         "total_pnl_krw": -366278
       },
@@ -132,7 +132,7 @@
         {
           "name": "volume_spike",
           "status": "paper_test",
-          "total_signals": 1856,
+          "total_signals": 1859,
           "total_fills": 12,
           "total_pnl_krw": -17952,
           "win_count": 3,
@@ -191,7 +191,7 @@
         "hybrid_guard_pipeline": true,
         "ai_judge_enabled": true
       },
-      "last_cycle": "2026-03-08T14:15:59Z",
+      "last_cycle": "2026-03-08T14:30:12Z",
       "config": {
         "capital_krw": 600000,
         "per_trade_krw": 50,
@@ -203,14 +203,23 @@
         "market": "USDT"
       },
       "signals": {
-        "ts": "2026-03-08T14:15:48.712702+00:00",
+        "ts": "2026-03-08T14:27:51.119407+00:00",
         "live_count": 0,
-        "paper_count": 0,
-        "strategy_count": 0,
-        "paper_signals": []
+        "paper_count": 1,
+        "strategy_count": 13,
+        "paper_signals": [
+          {
+            "symbol": "BTCUSDT",
+            "side": "buy",
+            "confidence": 0.4306015341138474,
+            "reason": "[volume_spike] volume spike x2.31 (alt learning signal)",
+            "entry_price": 67028.11,
+            "krw": 50000
+          }
+        ]
       },
       "scout": {
-        "ts": "2026-03-08T14:15:02.766214+00:00",
+        "ts": "2026-03-08T14:30:02.621312+00:00",
         "universe_count": 11,
         "top_symbols": [
           "BTCUSDT",
@@ -326,8 +335,8 @@
         }
       ],
       "cycle_health": {
-        "cycles_in_log": 278,
-        "completed": 278,
+        "cycles_in_log": 284,
+        "completed": 283,
         "errors": 303
       },
       "portfolio": {
@@ -636,7 +645,7 @@
   "summary": {
     "total_exchanges": 2,
     "total_positions": 5,
-    "total_signals": 6,
+    "total_signals": 7,
     "total_strategies": 18
   },
   "history": [
