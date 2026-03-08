@@ -1,5 +1,5 @@
 {
-  "ts": "2026-03-08T00:15:00Z",
+  "ts": "2026-03-08T00:30:00Z",
   "host": "jjanga-phone",
   "exchanges": [
     {
@@ -548,7 +548,7 @@
       "strategy_registry": {
         "total": 9,
         "active": 9,
-        "total_signals": 2272,
+        "total_signals": 2301,
         "total_fills": 122,
         "total_pnl_krw": -124011
       },
@@ -556,7 +556,7 @@
         {
           "name": "vivid_fractal_box",
           "status": "paper_test",
-          "total_signals": 445,
+          "total_signals": 451,
           "total_fills": 35,
           "total_pnl_krw": 4,
           "win_count": 2,
@@ -565,7 +565,7 @@
         {
           "name": "breakout",
           "status": "paper_test",
-          "total_signals": 111,
+          "total_signals": 112,
           "total_fills": 2,
           "total_pnl_krw": -51770,
           "win_count": 0,
@@ -592,7 +592,7 @@
         {
           "name": "volume_spike",
           "status": "paper_test",
-          "total_signals": 265,
+          "total_signals": 268,
           "total_fills": 12,
           "total_pnl_krw": -61408,
           "win_count": 1,
@@ -601,7 +601,7 @@
         {
           "name": "ict_fvg_sweep",
           "status": "paper_test",
-          "total_signals": 608,
+          "total_signals": 619,
           "total_fills": 18,
           "total_pnl_krw": -11465,
           "win_count": 3,
@@ -610,7 +610,7 @@
         {
           "name": "sol_trend_rider",
           "status": "active",
-          "total_signals": 796,
+          "total_signals": 804,
           "total_fills": 52,
           "total_pnl_krw": -2304,
           "win_count": 6,
@@ -640,7 +640,7 @@
         "reason": "PnL today -51918 <= -50000. Need user decision.",
         "since": "2026-03-08T02:35:23.527478+07:00"
       },
-      "last_cycle": "2026-03-08T00:15:30Z",
+      "last_cycle": "2026-03-08T00:30:30Z",
       "config": {
         "capital_krw": 600000,
         "per_trade_krw": 50,
@@ -652,31 +652,39 @@
         "market": "KRW"
       },
       "signals": {
-        "ts": "2026-03-08T00:15:19.301170+00:00",
-        "live_count": 6,
-        "paper_count": 2,
+        "ts": "2026-03-08T00:30:19.279925+00:00",
+        "live_count": 0,
+        "paper_count": 3,
         "strategy_count": 13,
         "paper_signals": [
           {
-            "symbol": "SOL_KRW",
+            "symbol": "XRP_KRW",
             "side": "sell",
             "confidence": 0.62,
-            "reason": "[vivid_fractal_box] BOX short @zone_top=123200.0000, bottom=122600.0000, width=0.49%",
-            "entry_price": 123300.0,
+            "reason": "[vivid_fractal_box] BOX short @zone_top=2010.0000, bottom=2001.0000, width=0.45%",
+            "entry_price": 2005.0,
             "krw": 50
           },
           {
-            "symbol": "SIGN_KRW",
+            "symbol": "XTER_KRW",
             "side": "buy",
             "confidence": 0.6,
-            "reason": "[ict_fvg_sweep] ICT: FVG retrace [71-72] gap=1.7% | KZ",
-            "entry_price": 71.36,
+            "reason": "[ict_fvg_sweep] ICT: FVG retrace [32-34] gap=3.6% | KZ",
+            "entry_price": 32.38,
+            "krw": 50000
+          },
+          {
+            "symbol": "SKR_KRW",
+            "side": "buy",
+            "confidence": 0.6,
+            "reason": "[ict_fvg_sweep] ICT: FVG retrace [36-36] gap=1.0% | KZ",
+            "entry_price": 35.76,
             "krw": 50000
           }
         ]
       },
       "scout": {
-        "ts": "2026-03-08T00:15:01.948055+00:00",
+        "ts": "2026-03-08T00:30:01.952383+00:00",
         "universe_count": 12,
         "top_symbols": [
           "USDT_KRW",
@@ -691,8 +699,8 @@
       },
       "recent_trades": [],
       "cycle_health": {
-        "cycles_in_log": 445,
-        "completed": 444,
+        "cycles_in_log": 451,
+        "completed": 450,
         "errors": 0
       },
       "portfolio": {
@@ -716,7 +724,7 @@
   "summary": {
     "total_exchanges": 2,
     "total_positions": 8,
-    "total_signals": 4,
+    "total_signals": 5,
     "total_strategies": 18
   },
   "history": [
