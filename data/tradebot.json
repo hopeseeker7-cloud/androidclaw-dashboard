@@ -1,5 +1,5 @@
 {
-  "ts": "2026-03-08T08:30:00Z",
+  "ts": "2026-03-08T08:45:01Z",
   "host": "jjanga-phone",
   "exchanges": [
     {
@@ -203,9 +203,11 @@
       "flags": {
         "mode": "PAUSE_REQUIRED",
         "reason": "PnL today -207719 <= -200000. Need user decision.",
-        "since": "2026-03-08T14:55:22.114701+07:00"
+        "since": "2026-03-08T14:55:22.114701+07:00",
+        "hybrid_guard_pipeline": true,
+        "ai_judge_enabled": true
       },
-      "last_cycle": "2026-03-08T08:30:24Z",
+      "last_cycle": "2026-03-08T08:45:24Z",
       "config": {
         "capital_krw": 600000,
         "per_trade_krw": 50,
@@ -241,7 +243,7 @@
         ]
       },
       "scout": {
-        "ts": "2026-03-08T08:30:03.827812+00:00",
+        "ts": "2026-03-08T08:45:03.499407+00:00",
         "universe_count": 12,
         "top_symbols": [
           "BTCUSDT",
@@ -251,7 +253,7 @@
           "BTWUSDT",
           "OPNUSDT",
           "XRPUSDT",
-          "SOLUSDT"
+          "RIVERUSDT"
         ]
       },
       "recent_trades": [
@@ -357,82 +359,82 @@
         }
       ],
       "cycle_health": {
-        "cycles_in_log": 140,
-        "completed": 140,
-        "errors": 22
+        "cycles_in_log": 146,
+        "completed": 146,
+        "errors": 34
       },
       "portfolio": {
         "capital_krw": 600000,
         "cash_krw": 100491.98,
         "invested_krw": 499508.02,
-        "portfolio_value": 601053.03,
-        "total_pnl_krw": 1053.03,
-        "total_pnl_pct": 0.18,
+        "portfolio_value": 601880.58,
+        "total_pnl_krw": 1880.58,
+        "total_pnl_pct": 0.31,
         "holdings": [
           {
             "symbol": "BTCUSDT",
             "qty": 3.7067347595549114,
             "avg_price": 67042.3,
-            "cur_price": 67280.75,
+            "cur_price": 67497.91,
             "buy_krw": 248508.02,
-            "val_krw": 249391.89,
-            "pnl_krw": 883.87,
-            "pnl_pct": 0.36,
+            "val_krw": 250196.85,
+            "pnl_krw": 1688.83,
+            "pnl_pct": 0.68,
             "side": "short"
           },
           {
             "symbol": "XAUTUSDT",
             "qty": 48.628671464695586,
             "avg_price": 5141.0,
-            "cur_price": 5144.5,
+            "cur_price": 5144.9,
             "buy_krw": 250000.0,
-            "val_krw": 250170.2,
-            "pnl_krw": 170.2,
-            "pnl_pct": 0.07,
+            "val_krw": 250189.65,
+            "pnl_krw": 189.65,
+            "pnl_pct": 0.08,
             "side": "short"
           },
           {
             "symbol": "BTCUSDT",
             "qty": 0.003709041976711667,
             "avg_price": 67402.85,
-            "cur_price": 67280.75,
+            "cur_price": 67497.91,
             "buy_krw": 250.0,
-            "val_krw": 249.55,
-            "pnl_krw": -0.45,
-            "pnl_pct": -0.18,
+            "val_krw": 250.35,
+            "pnl_krw": 0.35,
+            "pnl_pct": 0.14,
             "side": "short"
           },
           {
             "symbol": "XRPUSDT",
             "qty": 184.2706567406206,
             "avg_price": 1.3567,
-            "cur_price": 1.3566,
+            "cur_price": 1.3604,
             "buy_krw": 250.0,
-            "val_krw": 249.98,
-            "pnl_krw": -0.02,
-            "pnl_pct": -0.01,
+            "val_krw": 250.68,
+            "pnl_krw": 0.68,
+            "pnl_pct": 0.27,
             "side": "short"
           },
           {
             "symbol": "XRPUSDT",
             "qty": 184.22991893883568,
             "avg_price": 1.357,
-            "cur_price": 1.3566,
+            "cur_price": 1.3604,
             "buy_krw": 250.0,
-            "val_krw": 249.93,
-            "pnl_krw": -0.07,
-            "pnl_pct": -0.03,
+            "val_krw": 250.63,
+            "pnl_krw": 0.63,
+            "pnl_pct": 0.25,
             "side": "short"
           },
           {
             "symbol": "WBTCUSDT",
             "qty": 0.003721063152395397,
             "avg_price": 67185.1,
-            "cur_price": 67052.6,
+            "cur_price": 67303.8,
             "buy_krw": 250.0,
-            "val_krw": 249.51,
-            "pnl_krw": -0.49,
-            "pnl_pct": -0.2,
+            "val_krw": 250.44,
+            "pnl_krw": 0.44,
+            "pnl_pct": 0.18,
             "side": "short"
           }
         ],
@@ -443,33 +445,33 @@
             "pct": 16.7
           },
           {
-            "name": "XAUTUSDT",
-            "value": 250170.2,
+            "name": "BTCUSDT",
+            "value": 250196.85,
             "pct": 41.6
           },
           {
-            "name": "BTCUSDT",
-            "value": 249391.89,
-            "pct": 41.5
+            "name": "XAUTUSDT",
+            "value": 250189.65,
+            "pct": 41.6
           },
           {
             "name": "XRPUSDT",
-            "value": 249.98,
+            "value": 250.68,
             "pct": 0.0
           },
           {
             "name": "XRPUSDT",
-            "value": 249.93,
-            "pct": 0.0
-          },
-          {
-            "name": "BTCUSDT",
-            "value": 249.55,
+            "value": 250.63,
             "pct": 0.0
           },
           {
             "name": "WBTCUSDT",
-            "value": 249.51,
+            "value": 250.44,
+            "pct": 0.0
+          },
+          {
+            "name": "BTCUSDT",
+            "value": 250.35,
             "pct": 0.0
           }
         ]
@@ -579,7 +581,9 @@
       "flags": {
         "mode": "PAUSE_REQUIRED",
         "reason": "PnL today -51918 <= -50000. Need user decision.",
-        "since": "2026-03-08T02:35:23.527478+07:00"
+        "since": "2026-03-08T02:35:23.527478+07:00",
+        "hybrid_guard_pipeline": true,
+        "ai_judge_enabled": true
       },
       "last_cycle": "2026-03-08T00:57:29Z",
       "config": {
