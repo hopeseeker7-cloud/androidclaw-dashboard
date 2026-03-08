@@ -1,5 +1,5 @@
 {
-  "ts": "2026-03-08T07:30:00Z",
+  "ts": "2026-03-08T07:45:00Z",
   "host": "jjanga-phone",
   "exchanges": [
     {
@@ -12,7 +12,7 @@
           "symbol": "BTCUSDT",
           "direction": "short",
           "entry_price": 67042.3,
-          "qty": 3.7178618854850463,
+          "qty": 3.7141528435083346,
           "margin_usdt": 50000.0,
           "notional_usdt": 250000.0,
           "leverage": 5.0,
@@ -73,22 +73,6 @@
         },
         {
           "market_type": "futures",
-          "symbol": "OPNUSDT",
-          "direction": "short",
-          "entry_price": 0.3083,
-          "qty": 810898.475510866,
-          "margin_usdt": 50000.0,
-          "notional_usdt": 250000.0,
-          "leverage": 5.0,
-          "liquidation_price": 0.36841850000000004,
-          "opened_ts": "2026-03-08T14:30:37.577991+07:00",
-          "strategy": "sol_trend_rider",
-          "target_pct": 0.017,
-          "stop_pct": -0.01,
-          "adaptive_exit_enabled": true
-        },
-        {
-          "market_type": "futures",
           "symbol": "XRPUSDT",
           "direction": "short",
           "entry_price": 1.357,
@@ -118,26 +102,58 @@
           "target_pct": 0.0134,
           "stop_pct": -0.0085,
           "adaptive_exit_enabled": true
+        },
+        {
+          "market_type": "futures",
+          "symbol": "OPNUSDT",
+          "direction": "short",
+          "entry_price": 0.308,
+          "qty": 811688.3116883117,
+          "margin_usdt": 50000.0,
+          "notional_usdt": 250000.0,
+          "leverage": 5.0,
+          "liquidation_price": 0.36806,
+          "opened_ts": "2026-03-08T14:45:29.212711+07:00",
+          "strategy": "sol_trend_rider",
+          "target_pct": 0.017,
+          "stop_pct": -0.01,
+          "adaptive_exit_enabled": true
+        },
+        {
+          "market_type": "futures",
+          "symbol": "WBTCUSDT",
+          "direction": "short",
+          "entry_price": 67185.1,
+          "qty": 0.003721063152395397,
+          "margin_usdt": 50.0,
+          "notional_usdt": 250.0,
+          "leverage": 5.0,
+          "liquidation_price": 80286.19450000001,
+          "opened_ts": "2026-03-08T14:45:29.212711+07:00",
+          "strategy": "vivid_fractal_box",
+          "target_pct": 0.0134,
+          "stop_pct": -0.0085,
+          "adaptive_exit_enabled": true
         }
       ],
       "pnl_today": {
         "date": "2026-03-08",
-        "pnl_krw": -166082,
+        "pnl_krw": -191652,
         "trades": 0,
         "realized_krw": 0
       },
       "strategy_registry": {
         "total": 9,
         "active": 9,
-        "total_signals": 9296,
-        "total_fills": 171,
-        "total_pnl_krw": -324617
+        "total_signals": 9331,
+        "total_fills": 175,
+        "total_pnl_krw": -350187
       },
       "strategies_flat": [
         {
           "name": "ict_fvg_sweep",
           "status": "paper_test",
-          "total_signals": 1658,
+          "total_signals": 1667,
           "total_fills": 24,
           "total_pnl_krw": -9875,
           "win_count": 10,
@@ -146,17 +162,17 @@
         {
           "name": "sol_trend_rider",
           "status": "paper_test",
-          "total_signals": 3500,
-          "total_fills": 74,
-          "total_pnl_krw": -296002,
+          "total_signals": 3513,
+          "total_fills": 77,
+          "total_pnl_krw": -321572,
           "win_count": 12,
-          "loss_count": 61
+          "loss_count": 64
         },
         {
           "name": "vivid_fractal_box",
           "status": "active",
-          "total_signals": 1387,
-          "total_fills": 57,
+          "total_signals": 1394,
+          "total_fills": 58,
           "total_pnl_krw": 80,
           "win_count": 53,
           "loss_count": 5
@@ -164,7 +180,7 @@
         {
           "name": "volume_spike",
           "status": "paper_test",
-          "total_signals": 1846,
+          "total_signals": 1849,
           "total_fills": 12,
           "total_pnl_krw": -17952,
           "win_count": 3,
@@ -182,7 +198,7 @@
         {
           "name": "breakout",
           "status": "paper_test",
-          "total_signals": 786,
+          "total_signals": 789,
           "total_fills": 3,
           "total_pnl_krw": -865,
           "win_count": 2,
@@ -221,7 +237,7 @@
         "reason": "",
         "since": "2026-03-07T10:25:20.680165+07:00"
       },
-      "last_cycle": "2026-03-08T07:30:37Z",
+      "last_cycle": "2026-03-08T07:45:29Z",
       "config": {
         "capital_krw": 600000,
         "per_trade_krw": 50,
@@ -233,47 +249,55 @@
         "market": "USDT"
       },
       "signals": {
-        "ts": "2026-03-08T07:30:26.662653+00:00",
-        "live_count": 3,
-        "paper_count": 4,
+        "ts": "2026-03-08T07:45:18.338227+00:00",
+        "live_count": 2,
+        "paper_count": 6,
         "strategy_count": 13,
         "paper_signals": [
           {
             "symbol": "BSBUSDT",
+            "side": "sell",
+            "confidence": 0.65,
+            "reason": "[sol_trend_rider] EMA_align_dn ER=0.33 ROC=-0.009",
+            "entry_price": 0.12077,
+            "krw": 50000
+          },
+          {
+            "symbol": "XAUTUSDT",
             "side": "buy",
-            "confidence": 0.6,
-            "reason": "[ict_fvg_sweep] ICT: FVG retrace [0-0] gap=1.8% | KZ",
-            "entry_price": 0.12188,
+            "confidence": 0.52,
+            "reason": "[breakout] 5m breakout(>3) + vol x1.59 [KZ]",
+            "entry_price": 5147.8,
+            "krw": 50000
+          },
+          {
+            "symbol": "XAUTUSDT",
+            "side": "buy",
+            "confidence": 0.5139465171110958,
+            "reason": "[volume_spike] volume spike x3.14 (alt learning signal)",
+            "entry_price": 5147.8,
             "krw": 50000
           },
           {
             "symbol": "BTWUSDT",
             "side": "sell",
             "confidence": 0.8,
-            "reason": "[sol_trend_rider] EMA_align_dn ER=0.56 ROC=-0.004",
-            "entry_price": 0.013095,
+            "reason": "[sol_trend_rider] EMA_align_dn ER=0.48 ROC=-0.007",
+            "entry_price": 0.013133,
             "krw": 50000
           },
           {
             "symbol": "OPNUSDT",
             "side": "buy",
-            "confidence": 0.6,
-            "reason": "[ict_fvg_sweep] ICT: FVG retrace [0-0] gap=0.4% | KZ",
-            "entry_price": 0.3083,
-            "krw": 50000
-          },
-          {
-            "symbol": "OPNUSDT",
-            "side": "sell",
-            "confidence": 0.8,
-            "reason": "[sol_trend_rider] EMA_align_dn ER=0.41 ROC=-0.002",
-            "entry_price": 0.3083,
+            "confidence": 0.7,
+            "reason": "[ict_fvg_sweep] ICT: FVG retrace [0-0] gap=0.4% | MSS confirmed | KZ",
+            "entry_price": 0.308,
             "krw": 50000
           }
         ]
       },
       "scout": {
-        "ts": "2026-03-08T07:30:10.536181+00:00",
+        "ts": "2026-03-08T07:45:02.788520+00:00",
         "universe_count": 12,
         "top_symbols": [
           "BTCUSDT",
@@ -389,130 +413,146 @@
         }
       ],
       "cycle_health": {
-        "cycles_in_log": 116,
-        "completed": 116,
+        "cycles_in_log": 122,
+        "completed": 122,
         "errors": 0
       },
       "portfolio": {
         "capital_krw": 600000,
-        "cash_krw": -150254.01,
-        "invested_krw": 750254.01,
-        "portfolio_value": 611358.8,
-        "total_pnl_krw": 11358.8,
-        "total_pnl_pct": 1.89,
+        "cash_krw": -150255.35,
+        "invested_krw": 750255.35,
+        "portfolio_value": 608887.03,
+        "total_pnl_krw": 8887.03,
+        "total_pnl_pct": 1.48,
         "holdings": [
           {
             "symbol": "BTCUSDT",
-            "qty": 3.7178618854850463,
+            "qty": 3.7141528435083346,
             "avg_price": 67042.3,
-            "cur_price": 67365.67,
-            "buy_krw": 249254.01,
-            "val_krw": 250456.26,
-            "pnl_krw": 1202.24,
-            "pnl_pct": 0.48,
+            "cur_price": 67316.71,
+            "buy_krw": 249005.35,
+            "val_krw": 250024.55,
+            "pnl_krw": 1019.2,
+            "pnl_pct": 0.41,
             "side": "short"
           },
           {
             "symbol": "XAUTUSDT",
             "qty": 48.628671464695586,
             "avg_price": 5141.0,
-            "cur_price": 5146.4,
+            "cur_price": 5144.2,
             "buy_krw": 250000.0,
-            "val_krw": 250262.59,
-            "pnl_krw": 262.59,
-            "pnl_pct": 0.11,
+            "val_krw": 250155.61,
+            "pnl_krw": 155.61,
+            "pnl_pct": 0.06,
             "side": "short"
           },
           {
             "symbol": "BTCUSDT",
             "qty": 0.003709041976711667,
             "avg_price": 67402.85,
-            "cur_price": 67365.67,
+            "cur_price": 67316.71,
             "buy_krw": 250.0,
-            "val_krw": 249.86,
-            "pnl_krw": -0.14,
-            "pnl_pct": -0.06,
+            "val_krw": 249.68,
+            "pnl_krw": -0.32,
+            "pnl_pct": -0.13,
             "side": "short"
           },
           {
             "symbol": "XRPUSDT",
             "qty": 184.2706567406206,
             "avg_price": 1.3567,
-            "cur_price": 1.3594,
+            "cur_price": 1.3613,
             "buy_krw": 250.0,
-            "val_krw": 250.5,
-            "pnl_krw": 0.5,
-            "pnl_pct": 0.2,
-            "side": "short"
-          },
-          {
-            "symbol": "OPNUSDT",
-            "qty": 810898.475510866,
-            "avg_price": 0.3083,
-            "cur_price": 0.3205,
-            "buy_krw": 250000.0,
-            "val_krw": 259892.96,
-            "pnl_krw": 9892.96,
-            "pnl_pct": 3.96,
+            "val_krw": 250.85,
+            "pnl_krw": 0.85,
+            "pnl_pct": 0.34,
             "side": "short"
           },
           {
             "symbol": "XRPUSDT",
             "qty": 184.22991893883568,
             "avg_price": 1.357,
-            "cur_price": 1.3594,
+            "cur_price": 1.3613,
             "buy_krw": 250.0,
-            "val_krw": 250.44,
-            "pnl_krw": 0.44,
-            "pnl_pct": 0.18,
+            "val_krw": 250.79,
+            "pnl_krw": 0.79,
+            "pnl_pct": 0.32,
             "side": "short"
           },
           {
             "symbol": "WBTCUSDT",
             "qty": 0.003723840023832576,
             "avg_price": 67135.0,
-            "cur_price": 67187.4,
+            "cur_price": 67141.3,
             "buy_krw": 250.0,
-            "val_krw": 250.2,
-            "pnl_krw": 0.2,
-            "pnl_pct": 0.08,
+            "val_krw": 250.02,
+            "pnl_krw": 0.02,
+            "pnl_pct": 0.01,
+            "side": "short"
+          },
+          {
+            "symbol": "OPNUSDT",
+            "qty": 811688.3116883117,
+            "avg_price": 0.308,
+            "cur_price": 0.3175,
+            "buy_krw": 250000.0,
+            "val_krw": 257711.04,
+            "pnl_krw": 7711.04,
+            "pnl_pct": 3.08,
+            "side": "short"
+          },
+          {
+            "symbol": "WBTCUSDT",
+            "qty": 0.003721063152395397,
+            "avg_price": 67185.1,
+            "cur_price": 67141.3,
+            "buy_krw": 250.0,
+            "val_krw": 249.84,
+            "pnl_krw": -0.16,
+            "pnl_pct": -0.07,
             "side": "short"
           }
         ],
         "allocation": [
           {
             "name": "OPNUSDT",
-            "value": 259892.96,
-            "pct": 42.5
-          },
-          {
-            "name": "BTCUSDT",
-            "value": 250456.26,
-            "pct": 41.0
+            "value": 257711.04,
+            "pct": 42.3
           },
           {
             "name": "XAUTUSDT",
-            "value": 250262.59,
-            "pct": 40.9
+            "value": 250155.61,
+            "pct": 41.1
+          },
+          {
+            "name": "BTCUSDT",
+            "value": 250024.55,
+            "pct": 41.1
           },
           {
             "name": "XRPUSDT",
-            "value": 250.5,
+            "value": 250.85,
             "pct": 0.0
           },
           {
             "name": "XRPUSDT",
-            "value": 250.44,
+            "value": 250.79,
             "pct": 0.0
           },
           {
             "name": "WBTCUSDT",
-            "value": 250.2,
+            "value": 250.02,
+            "pct": 0.0
+          },
+          {
+            "name": "WBTCUSDT",
+            "value": 249.84,
             "pct": 0.0
           },
           {
             "name": "BTCUSDT",
-            "value": 249.86,
+            "value": 249.68,
             "pct": 0.0
           }
         ]
@@ -723,8 +763,8 @@
   ],
   "summary": {
     "total_exchanges": 2,
-    "total_positions": 7,
-    "total_signals": 10,
+    "total_positions": 8,
+    "total_signals": 12,
     "total_strategies": 18
   },
   "history": [
