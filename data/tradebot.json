@@ -1,5 +1,5 @@
 {
-  "ts": "2026-03-09T12:15:01Z",
+  "ts": "2026-03-09T12:30:00Z",
   "host": "jjanga-phone",
   "exchanges": [
     {
@@ -16,7 +16,7 @@
       "strategy_registry": {
         "total": 11,
         "active": 11,
-        "total_signals": 9583,
+        "total_signals": 9592,
         "total_fills": 176,
         "total_pnl_krw": -365280
       },
@@ -33,7 +33,7 @@
         {
           "name": "sol_trend_rider",
           "status": "paper_test",
-          "total_signals": 3668,
+          "total_signals": 3677,
           "total_fills": 78,
           "total_pnl_krw": -336643,
           "win_count": 13,
@@ -128,7 +128,7 @@
         "hybrid_guard_pipeline": true,
         "ai_judge_enabled": true
       },
-      "last_cycle": "2026-03-09T12:15:38Z",
+      "last_cycle": "2026-03-09T12:30:40Z",
       "config": {
         "capital_krw": 600000,
         "per_trade_krw": 50,
@@ -140,23 +140,39 @@
         "market": "USDT"
       },
       "signals": {
-        "ts": "2026-03-09T12:15:32.183390+00:00",
+        "ts": "2026-03-09T12:30:29.805293+00:00",
         "live_count": 0,
-        "paper_count": 1,
+        "paper_count": 3,
         "strategy_count": 17,
         "paper_signals": [
           {
             "symbol": "BTCUSDT",
             "side": "sell",
             "confidence": 0.8,
-            "reason": "[sol_trend_rider] EMA_align_dn ER=0.68 ROC=-0.003",
-            "entry_price": 66350.0,
+            "reason": "[sol_trend_rider] EMA_align_dn ER=0.63 ROC=-0.006",
+            "entry_price": 66523.48,
+            "krw": 50000
+          },
+          {
+            "symbol": "XLMUSDT",
+            "side": "sell",
+            "confidence": 0.8,
+            "reason": "[sol_trend_rider] EMA_align_dn ER=0.67 ROC=-0.005",
+            "entry_price": 0.1487,
+            "krw": 50000
+          },
+          {
+            "symbol": "DOGEUSDT",
+            "side": "sell",
+            "confidence": 0.8,
+            "reason": "[sol_trend_rider] EMA_align_dn ER=1.00 ROC=-0.014",
+            "entry_price": 0.08861,
             "krw": 50000
           }
         ]
       },
       "scout": {
-        "ts": "2026-03-09T12:15:04.693852+00:00",
+        "ts": "2026-03-09T12:30:03.564752+00:00",
         "universe_count": 11,
         "top_symbols": [
           "BTCUSDT",
@@ -272,8 +288,8 @@
         }
       ],
       "cycle_health": {
-        "cycles_in_log": 557,
-        "completed": 556,
+        "cycles_in_log": 560,
+        "completed": 560,
         "errors": 304
       },
       "portfolio": {
@@ -344,7 +360,7 @@
       "strategy_registry": {
         "total": 11,
         "active": 11,
-        "total_signals": 3515,
+        "total_signals": 3525,
         "total_fills": 200,
         "total_pnl_krw": -126995
       },
@@ -361,7 +377,7 @@
         {
           "name": "breakout",
           "status": "paper_test",
-          "total_signals": 183,
+          "total_signals": 184,
           "total_fills": 2,
           "total_pnl_krw": -51770,
           "win_count": 0,
@@ -388,7 +404,7 @@
         {
           "name": "volume_spike",
           "status": "paper_test",
-          "total_signals": 414,
+          "total_signals": 416,
           "total_fills": 12,
           "total_pnl_krw": -61408,
           "win_count": 1,
@@ -397,7 +413,7 @@
         {
           "name": "ict_fvg_sweep",
           "status": "paper_test",
-          "total_signals": 1073,
+          "total_signals": 1077,
           "total_fills": 18,
           "total_pnl_krw": -11465,
           "win_count": 3,
@@ -406,7 +422,7 @@
         {
           "name": "sol_trend_rider",
           "status": "active",
-          "total_signals": 1307,
+          "total_signals": 1310,
           "total_fills": 130,
           "total_pnl_krw": -5288,
           "win_count": 21,
@@ -456,7 +472,7 @@
         "hybrid_guard_pipeline": true,
         "ai_judge_enabled": true
       },
-      "last_cycle": "2026-03-09T12:12:29Z",
+      "last_cycle": "2026-03-09T12:27:43Z",
       "config": {
         "capital_krw": 600000,
         "per_trade_krw": 50,
@@ -468,23 +484,23 @@
         "market": "KRW"
       },
       "signals": {
-        "ts": "2026-03-09T12:12:18.888270+00:00",
-        "live_count": 0,
+        "ts": "2026-03-09T12:27:32.293396+00:00",
+        "live_count": 1,
         "paper_count": 1,
         "strategy_count": 17,
         "paper_signals": [
           {
             "symbol": "RESOLV_KRW",
             "side": "buy",
-            "confidence": 0.35,
-            "reason": "[ict_fvg_sweep] ICT: FVG retrace [160-163] gap=1.9%",
-            "entry_price": 162.0,
+            "confidence": 0.42,
+            "reason": "[ict_fvg_sweep] ICT: sweep below 162 by 0.6% | MSS confirmed",
+            "entry_price": 164.0,
             "krw": 50000
           }
         ]
       },
       "scout": {
-        "ts": "2026-03-09T12:12:01.596014+00:00",
+        "ts": "2026-03-09T12:27:14.768780+00:00",
         "universe_count": 12,
         "top_symbols": [
           "USDT_KRW",
@@ -499,27 +515,27 @@
       },
       "recent_trades": [],
       "cycle_health": {
-        "cycles_in_log": 715,
-        "completed": 714,
+        "cycles_in_log": 718,
+        "completed": 717,
         "errors": 0
       },
       "portfolio": {
         "capital_krw": 600000,
         "cash_krw": 450000.0,
         "invested_krw": 150000.0,
-        "portfolio_value": 599038.68,
-        "total_pnl_krw": -961.32,
-        "total_pnl_pct": -0.16,
+        "portfolio_value": 599082.92,
+        "total_pnl_krw": -917.08,
+        "total_pnl_pct": -0.15,
         "holdings": [
           {
             "symbol": "XRP_KRW",
             "qty": 24.91280518186348,
             "avg_price": 2007.0,
-            "cur_price": 1994.0,
+            "cur_price": 1999.0,
             "buy_krw": 50000.0,
-            "val_krw": 49676.13,
-            "pnl_krw": -323.87,
-            "pnl_pct": -0.65,
+            "val_krw": 49800.7,
+            "pnl_krw": -199.3,
+            "pnl_pct": -0.4,
             "side": "buy"
           },
           {
@@ -537,11 +553,11 @@
             "symbol": "SOL_KRW",
             "qty": 0.40160642570281124,
             "avg_price": 124500.0,
-            "cur_price": 123500.0,
+            "cur_price": 123300.0,
             "buy_krw": 50000.0,
-            "val_krw": 49598.39,
-            "pnl_krw": -401.61,
-            "pnl_pct": -0.8,
+            "val_krw": 49518.07,
+            "pnl_krw": -481.93,
+            "pnl_pct": -0.96,
             "side": "buy"
           }
         ],
@@ -552,18 +568,18 @@
             "pct": 75.1
           },
           {
+            "name": "XRP_KRW",
+            "value": 49800.7,
+            "pct": 8.3
+          },
+          {
             "name": "USDT_KRW",
             "value": 49764.15,
             "pct": 8.3
           },
           {
-            "name": "XRP_KRW",
-            "value": 49676.13,
-            "pct": 8.3
-          },
-          {
             "name": "SOL_KRW",
-            "value": 49598.39,
+            "value": 49518.07,
             "pct": 8.3
           }
         ]
@@ -573,7 +589,7 @@
   "summary": {
     "total_exchanges": 2,
     "total_positions": 3,
-    "total_signals": 2,
+    "total_signals": 4,
     "total_strategies": 22
   },
   "history": [
