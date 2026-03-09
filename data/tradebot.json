@@ -1,5 +1,5 @@
 {
-  "ts": "2026-03-09T16:00:00Z",
+  "ts": "2026-03-09T16:15:00Z",
   "host": "jjanga-phone",
   "exchanges": [
     {
@@ -16,7 +16,7 @@
       "strategy_registry": {
         "total": 12,
         "active": 12,
-        "total_signals": 9659,
+        "total_signals": 9660,
         "total_fills": 176,
         "total_pnl_krw": -365280
       },
@@ -51,7 +51,7 @@
         {
           "name": "volume_spike",
           "status": "paper_test",
-          "total_signals": 1929,
+          "total_signals": 1930,
           "total_fills": 12,
           "total_pnl_krw": -17952,
           "win_count": 3,
@@ -137,7 +137,7 @@
         "hybrid_guard_pipeline": true,
         "ai_judge_enabled": true
       },
-      "last_cycle": "2026-03-09T16:00:33Z",
+      "last_cycle": "2026-03-09T16:15:36Z",
       "config": {
         "capital_krw": 600000,
         "per_trade_krw": 50,
@@ -149,14 +149,14 @@
         "market": "USDT"
       },
       "signals": {
-        "ts": "2026-03-09T16:00:22.384863+00:00",
+        "ts": "2026-03-09T16:15:25.066286+00:00",
         "live_count": 0,
         "paper_count": 0,
         "strategy_count": 0,
         "paper_signals": []
       },
       "scout": {
-        "ts": "2026-03-09T16:00:00.903126+00:00",
+        "ts": "2026-03-09T16:15:03.688203+00:00",
         "universe_count": 11,
         "top_symbols": [
           "BTCUSDT",
@@ -272,8 +272,8 @@
         }
       ],
       "cycle_health": {
-        "cycles_in_log": 602,
-        "completed": 602,
+        "cycles_in_log": 605,
+        "completed": 605,
         "errors": 304
       },
       "portfolio": {
@@ -368,7 +368,7 @@
       "strategy_registry": {
         "total": 11,
         "active": 11,
-        "total_signals": 3774,
+        "total_signals": 3784,
         "total_fills": 203,
         "total_pnl_krw": -126724
       },
@@ -412,7 +412,7 @@
         {
           "name": "volume_spike",
           "status": "paper_test",
-          "total_signals": 460,
+          "total_signals": 461,
           "total_fills": 12,
           "total_pnl_krw": -61408,
           "win_count": 1,
@@ -421,7 +421,7 @@
         {
           "name": "ict_fvg_sweep",
           "status": "paper_test",
-          "total_signals": 1148,
+          "total_signals": 1151,
           "total_fills": 18,
           "total_pnl_krw": -11465,
           "win_count": 3,
@@ -430,7 +430,7 @@
         {
           "name": "sol_trend_rider",
           "status": "active",
-          "total_signals": 1414,
+          "total_signals": 1420,
           "total_fills": 133,
           "total_pnl_krw": -5017,
           "win_count": 22,
@@ -480,7 +480,7 @@
         "hybrid_guard_pipeline": true,
         "ai_judge_enabled": true
       },
-      "last_cycle": "2026-03-09T15:57:32Z",
+      "last_cycle": "2026-03-09T16:12:29Z",
       "config": {
         "capital_krw": 600000,
         "per_trade_krw": 50,
@@ -492,55 +492,31 @@
         "market": "KRW"
       },
       "signals": {
-        "ts": "2026-03-09T15:57:21.029730+00:00",
-        "live_count": 1,
-        "paper_count": 9,
+        "ts": "2026-03-09T16:12:18.432297+00:00",
+        "live_count": 2,
+        "paper_count": 2,
         "strategy_count": 17,
         "paper_signals": [
           {
-            "symbol": "XRP_KRW",
+            "symbol": "DOGE_KRW",
             "side": "buy",
-            "confidence": 0.6,
-            "reason": "[ict_fvg_sweep] ICT: FVG retrace [2000-2014] gap=0.7% | KZ",
-            "entry_price": 2003.0,
+            "confidence": 0.5638921650170191,
+            "reason": "[volume_spike] volume spike x3.64 (alt learning signal)",
+            "entry_price": 134.0,
             "krw": 50000
           },
           {
-            "symbol": "BTC_KRW",
+            "symbol": "SAHARA_KRW",
             "side": "buy",
-            "confidence": 0.51,
-            "reason": "[breakout] 5m breakout(>3) + vol x1.56 [KZ]",
-            "entry_price": 101381000.0,
-            "krw": 50000
-          },
-          {
-            "symbol": "ETH_KRW",
-            "side": "buy",
-            "confidence": 0.5,
-            "reason": "[breakout] 5m breakout(>3) + vol x1.34 [KZ]",
-            "entry_price": 2977000.0,
-            "krw": 50000
-          },
-          {
-            "symbol": "SOL_KRW",
-            "side": "buy",
-            "confidence": 0.8,
-            "reason": "[breakout] 5m breakout(>3) + vol x3.00 [KZ]",
-            "entry_price": 125300.0,
-            "krw": 50000
-          },
-          {
-            "symbol": "SOL_KRW",
-            "side": "buy",
-            "confidence": 0.8,
-            "reason": "[ict_fvg_sweep] ICT: FVG retrace [125100-125800] gap=0.6% | MSS confirmed | vol+ | KZ",
-            "entry_price": 125300.0,
+            "confidence": 0.7,
+            "reason": "[ict_fvg_sweep] ICT: FVG retrace [37-37] gap=0.4% | MSS confirmed | KZ",
+            "entry_price": 37.31,
             "krw": 50000
           }
         ]
       },
       "scout": {
-        "ts": "2026-03-09T15:57:03.724282+00:00",
+        "ts": "2026-03-09T16:12:01.295820+00:00",
         "universe_count": 12,
         "top_symbols": [
           "USDT_KRW",
@@ -548,34 +524,34 @@
           "BTC_KRW",
           "ETH_KRW",
           "SOL_KRW",
-          "COS_KRW",
           "DOGE_KRW",
+          "COS_KRW",
           "WLD_KRW"
         ]
       },
       "recent_trades": [],
       "cycle_health": {
-        "cycles_in_log": 760,
-        "completed": 759,
+        "cycles_in_log": 763,
+        "completed": 762,
         "errors": 0
       },
       "portfolio": {
         "capital_krw": 600000,
         "cash_krw": 350000.0,
         "invested_krw": 250000.0,
-        "portfolio_value": 598008.0,
-        "total_pnl_krw": -1992.0,
-        "total_pnl_pct": -0.33,
+        "portfolio_value": 597519.28,
+        "total_pnl_krw": -2480.72,
+        "total_pnl_pct": -0.41,
         "holdings": [
           {
             "symbol": "XRP_KRW",
             "qty": 24.91280518186348,
             "avg_price": 2007.0,
-            "cur_price": 2005.0,
+            "cur_price": 2000.0,
             "buy_krw": 50000.0,
-            "val_krw": 49950.17,
-            "pnl_krw": -49.83,
-            "pnl_pct": -0.1,
+            "val_krw": 49825.61,
+            "pnl_krw": -174.39,
+            "pnl_pct": -0.35,
             "side": "buy"
           },
           {
@@ -593,22 +569,22 @@
             "symbol": "BTC_KRW",
             "qty": 0.0004918839153959665,
             "avg_price": 101650000.0,
-            "cur_price": 101391000.0,
+            "cur_price": 101055000.0,
             "buy_krw": 50000.0,
-            "val_krw": 49872.6,
-            "pnl_krw": -127.4,
-            "pnl_pct": -0.25,
+            "val_krw": 49707.33,
+            "pnl_krw": -292.67,
+            "pnl_pct": -0.59,
             "side": "buy"
           },
           {
             "symbol": "SOL_KRW",
             "qty": 0.39777247414478917,
             "avg_price": 125700.0,
-            "cur_price": 125300.0,
+            "cur_price": 124800.0,
             "buy_krw": 50000.0,
-            "val_krw": 49840.89,
-            "pnl_krw": -159.11,
-            "pnl_pct": -0.32,
+            "val_krw": 49642.0,
+            "pnl_krw": -358.0,
+            "pnl_pct": -0.72,
             "side": "buy"
           },
           {
@@ -627,21 +603,21 @@
           {
             "name": "현금",
             "value": 350000.0,
-            "pct": 58.5
+            "pct": 58.6
           },
           {
             "name": "XRP_KRW",
-            "value": 49950.17,
-            "pct": 8.4
+            "value": 49825.61,
+            "pct": 8.3
           },
           {
             "name": "BTC_KRW",
-            "value": 49872.6,
+            "value": 49707.33,
             "pct": 8.3
           },
           {
             "name": "SOL_KRW",
-            "value": 49840.89,
+            "value": 49642.0,
             "pct": 8.3
           },
           {
@@ -661,7 +637,7 @@
   "summary": {
     "total_exchanges": 2,
     "total_positions": 5,
-    "total_signals": 9,
+    "total_signals": 2,
     "total_strategies": 23
   },
   "history": [
