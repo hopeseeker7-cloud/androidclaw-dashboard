@@ -1,11 +1,11 @@
 {
-  "timestamp": "2026-03-09T05:00:00Z",
+  "timestamp": "2026-03-09T05:15:00Z",
   "phone_resources": {
     "memory": {
       "total_mb": 7443,
-      "used_mb": 5423,
-      "available_mb": 2020,
-      "percent": 73
+      "used_mb": 5303,
+      "available_mb": 2140,
+      "percent": 71
     },
     "storage": {
       "used": "27G",
@@ -15,7 +15,7 @@
     "battery": {
       "level": 100,
       "status": "FULL",
-      "temperature": 36.3
+      "temperature": 36.7
     },
     "cpu": {
       "load_1m": 0,
@@ -27,41 +27,40 @@
     "claude": {
       "model": "Opus 4.6",
       "subscription": "Claude Max 5x",
-      "sessions_today": 4,
-      "sessions_total": 83,
-      "turns_today": 44,
-      "turns_total": 996,
-      "tokens_today_est": 132000,
-      "tokens_total_est": 2988000,
+      "sessions_today": 5,
+      "sessions_total": 84,
+      "turns_today": 45,
+      "turns_total": 997,
+      "tokens_today_est": 135000,
+      "tokens_total_est": 2991000,
       "daily_limit_est": 1800000,
-      "last_used": "2026-03-09T04:59:34.521786+00:00"
+      "last_used": "2026-03-09T05:01:20.765786+00:00"
     },
     "gpt": {
-      "model": "gpt-5.2",
+      "model": "GPT-5.2 (Codex)",
       "subscription": "ChatGPT Plus OAuth",
-      "input_tokens": 56534,
-      "output_tokens": 10935,
+      "input_tokens": 0,
+      "output_tokens": 0,
       "cache_read": 0,
       "cache_write": 0,
-      "total_tokens": 54979,
-      "remaining_tokens": 217021,
-      "percent_used": 20.2,
-      "context_tokens": 272000,
-      "last_used": 1772789136707,
-      "source": "openclaw_sessions",
+      "total_tokens": 0,
+      "remaining_tokens": null,
+      "percent_used": null,
+      "context_tokens": null,
+      "last_used": null,
+      "source": "unknown",
       "window_5h_pct": 5,
       "window_5h_reset": 1773035938000,
       "window_weekly_pct": 6,
-      "window_weekly_reset": 1773532140000,
+      "window_weekly_reset": 1773532141000,
       "plan": "plus ($0.00)",
-      "session_key": "agent:main:telegram:direct:7223758740",
       "today_tokens": 0,
       "binary_found": true
     }
   },
   "agent_stats": {
-    "runs_today": 42,
-    "success_today": 42,
+    "runs_today": 44,
+    "success_today": 44,
     "errors_today": 0,
     "success_rate": 100.0,
     "cron_jobs_active": 11
