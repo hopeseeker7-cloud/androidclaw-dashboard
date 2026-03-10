@@ -1,5 +1,5 @@
 {
-  "ts": "2026-03-10T17:00:01Z",
+  "ts": "2026-03-10T17:15:01Z",
   "host": "jjanga-phone",
   "exchanges": [
     {
@@ -16,7 +16,7 @@
       "strategy_registry": {
         "total": 12,
         "active": 12,
-        "total_signals": 10112,
+        "total_signals": 10121,
         "total_fills": 176,
         "total_pnl_krw": -365280
       },
@@ -33,7 +33,7 @@
         {
           "name": "sol_trend_rider",
           "status": "paper_test",
-          "total_signals": 4042,
+          "total_signals": 4050,
           "total_fills": 78,
           "total_pnl_krw": -336643,
           "win_count": 13,
@@ -51,7 +51,7 @@
         {
           "name": "volume_spike",
           "status": "paper_test",
-          "total_signals": 2037,
+          "total_signals": 2038,
           "total_fills": 12,
           "total_pnl_krw": -17952,
           "win_count": 3,
@@ -137,7 +137,7 @@
         "hybrid_guard_pipeline": true,
         "ai_judge_enabled": true
       },
-      "last_cycle": "2026-03-10T17:00:34Z",
+      "last_cycle": "2026-03-10T17:15:42Z",
       "config": {
         "capital_krw": 600000,
         "per_trade_krw": 100,
@@ -149,24 +149,32 @@
         "market": "USDT"
       },
       "signals": {
-        "ts": "2026-03-10T17:00:23.327770+00:00",
+        "ts": "2026-03-10T17:15:31.090897+00:00",
         "live_count": 0,
-        "paper_count": 3,
+        "paper_count": 4,
         "strategy_count": 17,
         "paper_signals": [
           {
             "symbol": "BTCUSDT",
             "side": "sell",
-            "confidence": 0.8,
-            "reason": "[sol_trend_rider] EMA_align_dn ER=0.89 ROC=-0.001",
-            "entry_price": 70253.45,
+            "confidence": 0.65,
+            "reason": "[sol_trend_rider] EMA_align_dn ER=0.40 ROC=-0.001",
+            "entry_price": 70319.04,
+            "krw": 50000
+          },
+          {
+            "symbol": "BGBUSDT",
+            "side": "buy",
+            "confidence": 0.7000000000000001,
+            "reason": "[volume_spike] volume spike x5.00 (alt learning signal)",
+            "entry_price": 2.181,
             "krw": 50000
           },
           {
             "symbol": "SOLUSDT",
-            "side": "buy",
-            "confidence": 0.7000000000000001,
-            "reason": "[volume_spike] volume spike x5.00 (alt learning signal)",
+            "side": "sell",
+            "confidence": 0.8,
+            "reason": "[sol_trend_rider] EMA_align_dn ER=0.48 ROC=-0.005",
             "entry_price": 86.38,
             "krw": 50000
           },
@@ -174,14 +182,14 @@
             "symbol": "DOGEUSDT",
             "side": "sell",
             "confidence": 0.8,
-            "reason": "[sol_trend_rider] EMA_align_dn ER=0.92 ROC=-0.004",
-            "entry_price": 0.09159,
+            "reason": "[sol_trend_rider] EMA_align_dn ER=0.90 ROC=-0.002",
+            "entry_price": 0.0921,
             "krw": 50000
           }
         ]
       },
       "scout": {
-        "ts": "2026-03-10T17:00:01.890302+00:00",
+        "ts": "2026-03-10T17:15:09.793007+00:00",
         "universe_count": 11,
         "top_symbols": [
           "TESTZEUSUSDT",
@@ -297,8 +305,8 @@
         }
       ],
       "cycle_health": {
-        "cycles_in_log": 902,
-        "completed": 902,
+        "cycles_in_log": 905,
+        "completed": 905,
         "errors": 305
       },
       "portfolio": {
@@ -574,7 +582,7 @@
   "summary": {
     "total_exchanges": 2,
     "total_positions": 1,
-    "total_signals": 12,
+    "total_signals": 13,
     "total_strategies": 23
   },
   "history": [
