@@ -1,11 +1,11 @@
 {
-  "timestamp": "2026-03-10T13:00:01Z",
+  "timestamp": "2026-03-10T13:15:00Z",
   "phone_resources": {
     "memory": {
       "total_mb": 7443,
-      "used_mb": 5231,
-      "available_mb": 2212,
-      "percent": 70
+      "used_mb": 5399,
+      "available_mb": 2044,
+      "percent": 73
     },
     "storage": {
       "used": "27G",
@@ -15,7 +15,7 @@
     "battery": {
       "level": 100,
       "status": "FULL",
-      "temperature": 39.7
+      "temperature": 38.4
     },
     "cpu": {
       "load_1m": 0,
@@ -27,41 +27,40 @@
     "claude": {
       "model": "Opus 4.6",
       "subscription": "Claude Max 5x",
-      "sessions_today": 4,
-      "sessions_total": 98,
-      "turns_today": 65,
-      "turns_total": 1116,
-      "tokens_today_est": 195000,
-      "tokens_total_est": 3348000,
+      "sessions_today": 5,
+      "sessions_total": 99,
+      "turns_today": 81,
+      "turns_total": 1132,
+      "tokens_today_est": 243000,
+      "tokens_total_est": 3396000,
       "daily_limit_est": 1800000,
-      "last_used": "2026-03-10T09:58:37.945711+00:00"
+      "last_used": "2026-03-10T13:13:41.665703+00:00"
     },
     "gpt": {
-      "model": "gpt-5.2",
+      "model": "GPT-5.2 (Codex)",
       "subscription": "ChatGPT Plus OAuth",
-      "input_tokens": 56534,
-      "output_tokens": 10935,
+      "input_tokens": 0,
+      "output_tokens": 0,
       "cache_read": 0,
       "cache_write": 0,
-      "total_tokens": 54979,
-      "remaining_tokens": 217021,
-      "percent_used": 20.2,
-      "context_tokens": 272000,
-      "last_used": 1772789136707,
-      "source": "openclaw_sessions",
+      "total_tokens": 0,
+      "remaining_tokens": null,
+      "percent_used": null,
+      "context_tokens": null,
+      "last_used": null,
+      "source": "unknown",
       "window_5h_pct": 1,
       "window_5h_reset": 1773156063000,
       "window_weekly_pct": 3,
       "window_weekly_reset": 1773723141000,
       "plan": "plus ($0.00)",
-      "session_key": "agent:main:telegram:direct:7223758740",
       "today_tokens": 0,
       "binary_found": true
     }
   },
   "agent_stats": {
-    "runs_today": 106,
-    "success_today": 106,
+    "runs_today": 108,
+    "success_today": 108,
     "errors_today": 0,
     "success_rate": 100.0,
     "cron_jobs_active": 16
