@@ -1,5 +1,5 @@
 {
-  "ts": "2026-03-10T08:00:01Z",
+  "ts": "2026-03-10T08:15:00Z",
   "host": "jjanga-phone",
   "exchanges": [
     {
@@ -16,7 +16,7 @@
       "strategy_registry": {
         "total": 12,
         "active": 12,
-        "total_signals": 9912,
+        "total_signals": 9915,
         "total_fills": 176,
         "total_pnl_krw": -365280
       },
@@ -51,7 +51,7 @@
         {
           "name": "volume_spike",
           "status": "paper_test",
-          "total_signals": 1985,
+          "total_signals": 1988,
           "total_fills": 12,
           "total_pnl_krw": -17952,
           "win_count": 3,
@@ -137,7 +137,7 @@
         "hybrid_guard_pipeline": true,
         "ai_judge_enabled": true
       },
-      "last_cycle": "2026-03-10T08:00:45Z",
+      "last_cycle": "2026-03-10T08:15:36Z",
       "config": {
         "capital_krw": 600000,
         "per_trade_krw": 100,
@@ -149,7 +149,7 @@
         "market": "USDT"
       },
       "signals": {
-        "ts": "2026-03-10T08:00:34.334138+00:00",
+        "ts": "2026-03-10T08:15:31.206319+00:00",
         "live_count": 0,
         "paper_count": 1,
         "strategy_count": 17,
@@ -157,15 +157,15 @@
           {
             "symbol": "XLMUSDT",
             "side": "buy",
-            "confidence": 0.8,
-            "reason": "[sol_trend_rider] EMA_align_up ER=0.80 ROC=0.002",
-            "entry_price": 0.1522,
+            "confidence": 0.41983724269985645,
+            "reason": "[volume_spike] volume spike x2.20 (alt learning signal)",
+            "entry_price": 0.1519,
             "krw": 50000
           }
         ]
       },
       "scout": {
-        "ts": "2026-03-10T08:00:01.772087+00:00",
+        "ts": "2026-03-10T08:15:09.924337+00:00",
         "universe_count": 11,
         "top_symbols": [
           "BTCUSDT",
@@ -281,8 +281,8 @@
         }
       ],
       "cycle_health": {
-        "cycles_in_log": 794,
-        "completed": 794,
+        "cycles_in_log": 797,
+        "completed": 796,
         "errors": 304
       },
       "portfolio": {
