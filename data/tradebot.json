@@ -1,5 +1,5 @@
 {
-  "ts": "2026-03-10T00:15:00Z",
+  "ts": "2026-03-10T00:30:00Z",
   "host": "jjanga-phone",
   "exchanges": [
     {
@@ -16,7 +16,7 @@
       "strategy_registry": {
         "total": 12,
         "active": 12,
-        "total_signals": 9787,
+        "total_signals": 9788,
         "total_fills": 176,
         "total_pnl_krw": -365280
       },
@@ -33,7 +33,7 @@
         {
           "name": "sol_trend_rider",
           "status": "paper_test",
-          "total_signals": 3821,
+          "total_signals": 3822,
           "total_fills": 78,
           "total_pnl_krw": -336643,
           "win_count": 13,
@@ -137,7 +137,7 @@
         "hybrid_guard_pipeline": true,
         "ai_judge_enabled": true
       },
-      "last_cycle": "2026-03-10T00:15:37Z",
+      "last_cycle": "2026-03-10T00:30:33Z",
       "config": {
         "capital_krw": 600000,
         "per_trade_krw": 50,
@@ -149,14 +149,14 @@
         "market": "USDT"
       },
       "signals": {
-        "ts": "2026-03-10T00:15:25.972138+00:00",
+        "ts": "2026-03-10T00:30:22.693500+00:00",
         "live_count": 0,
         "paper_count": 0,
         "strategy_count": 0,
         "paper_signals": []
       },
       "scout": {
-        "ts": "2026-03-10T00:15:04.666944+00:00",
+        "ts": "2026-03-10T00:30:01.403873+00:00",
         "universe_count": 11,
         "top_symbols": [
           "BTCUSDT",
@@ -272,8 +272,8 @@
         }
       ],
       "cycle_health": {
-        "cycles_in_log": 701,
-        "completed": 701,
+        "cycles_in_log": 704,
+        "completed": 704,
         "errors": 304
       },
       "portfolio": {
@@ -344,7 +344,7 @@
       "strategy_registry": {
         "total": 11,
         "active": 11,
-        "total_signals": 4267,
+        "total_signals": 4276,
         "total_fills": 210,
         "total_pnl_krw": -127209
       },
@@ -388,7 +388,7 @@
         {
           "name": "volume_spike",
           "status": "paper_test",
-          "total_signals": 539,
+          "total_signals": 541,
           "total_fills": 12,
           "total_pnl_krw": -61408,
           "win_count": 1,
@@ -397,7 +397,7 @@
         {
           "name": "ict_fvg_sweep",
           "status": "paper_test",
-          "total_signals": 1324,
+          "total_signals": 1327,
           "total_fills": 18,
           "total_pnl_krw": -11465,
           "win_count": 3,
@@ -406,7 +406,7 @@
         {
           "name": "sol_trend_rider",
           "status": "active",
-          "total_signals": 1619,
+          "total_signals": 1623,
           "total_fills": 140,
           "total_pnl_krw": -5502,
           "win_count": 24,
@@ -456,7 +456,7 @@
         "hybrid_guard_pipeline": true,
         "ai_judge_enabled": true
       },
-      "last_cycle": "2026-03-10T00:12:30Z",
+      "last_cycle": "2026-03-10T00:27:33Z",
       "config": {
         "capital_krw": 600000,
         "per_trade_krw": 50,
@@ -468,8 +468,8 @@
         "market": "KRW"
       },
       "signals": {
-        "ts": "2026-03-10T00:12:19.563131+00:00",
-        "live_count": 3,
+        "ts": "2026-03-10T00:27:22.077429+00:00",
+        "live_count": 1,
         "paper_count": 2,
         "strategy_count": 17,
         "paper_signals": [
@@ -477,22 +477,22 @@
             "symbol": "COS_KRW",
             "side": "buy",
             "confidence": 0.6,
-            "reason": "[ict_fvg_sweep] ICT: FVG retrace [2-2] gap=4.3% | KZ",
-            "entry_price": 1.81,
+            "reason": "[ict_fvg_sweep] ICT: FVG retrace [2-2] gap=3.0% | KZ",
+            "entry_price": 1.828,
             "krw": 50000
           },
           {
             "symbol": "FLOW_KRW",
             "side": "buy",
-            "confidence": 0.9,
-            "reason": "[ict_fvg_sweep] ICT: sweep below 93 by 1.5% | FVG retrace [92-95] gap=3.3% | MSS confirmed | KZ",
-            "entry_price": 92.96,
+            "confidence": 0.6,
+            "reason": "[ict_fvg_sweep] ICT: FVG retrace [89-95] gap=6.3% | KZ",
+            "entry_price": 91.29,
             "krw": 50000
           }
         ]
       },
       "scout": {
-        "ts": "2026-03-10T00:12:01.742561+00:00",
+        "ts": "2026-03-10T00:27:04.255732+00:00",
         "universe_count": 12,
         "top_symbols": [
           "USDT_KRW",
@@ -507,17 +507,17 @@
       },
       "recent_trades": [],
       "cycle_health": {
-        "cycles_in_log": 859,
-        "completed": 858,
+        "cycles_in_log": 862,
+        "completed": 861,
         "errors": 0
       },
       "portfolio": {
         "capital_krw": 600000,
         "cash_krw": 450000.0,
         "invested_krw": 150000.0,
-        "portfolio_value": 597526.4,
-        "total_pnl_krw": -2473.6,
-        "total_pnl_pct": -0.41,
+        "portfolio_value": 598369.91,
+        "total_pnl_krw": -1630.09,
+        "total_pnl_pct": -0.27,
         "holdings": [
           {
             "symbol": "USDT_KRW",
@@ -534,22 +534,22 @@
             "symbol": "BTC_KRW",
             "qty": 0.0004918839153959665,
             "avg_price": 101650000.0,
-            "cur_price": 100527000.0,
+            "cur_price": 100926000.0,
             "buy_krw": 50000.0,
-            "val_krw": 49447.61,
-            "pnl_krw": -552.39,
-            "pnl_pct": -1.1,
+            "val_krw": 49643.88,
+            "pnl_krw": -356.12,
+            "pnl_pct": -0.71,
             "side": "buy"
           },
           {
             "symbol": "COS_KRW",
             "qty": 26968.716289104636,
             "avg_price": 1.854,
-            "cur_price": 1.804,
+            "cur_price": 1.828,
             "buy_krw": 50000.0,
-            "val_krw": 48651.56,
-            "pnl_krw": -1348.44,
-            "pnl_pct": -2.7,
+            "val_krw": 49298.81,
+            "pnl_krw": -701.19,
+            "pnl_pct": -1.4,
             "side": "buy"
           }
         ],
@@ -557,11 +557,11 @@
           {
             "name": "현금",
             "value": 450000.0,
-            "pct": 75.3
+            "pct": 75.2
           },
           {
             "name": "BTC_KRW",
-            "value": 49447.61,
+            "value": 49643.88,
             "pct": 8.3
           },
           {
@@ -571,8 +571,8 @@
           },
           {
             "name": "COS_KRW",
-            "value": 48651.56,
-            "pct": 8.1
+            "value": 49298.81,
+            "pct": 8.2
           }
         ]
       }
