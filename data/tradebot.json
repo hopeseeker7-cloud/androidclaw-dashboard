@@ -1,5 +1,5 @@
 {
-  "ts": "2026-03-09T23:45:00Z",
+  "ts": "2026-03-10T00:00:01Z",
   "host": "jjanga-phone",
   "exchanges": [
     {
@@ -16,7 +16,7 @@
       "strategy_registry": {
         "total": 12,
         "active": 12,
-        "total_signals": 9786,
+        "total_signals": 9787,
         "total_fills": 176,
         "total_pnl_krw": -365280
       },
@@ -51,7 +51,7 @@
         {
           "name": "volume_spike",
           "status": "paper_test",
-          "total_signals": 1954,
+          "total_signals": 1955,
           "total_fills": 12,
           "total_pnl_krw": -17952,
           "win_count": 3,
@@ -137,7 +137,7 @@
         "hybrid_guard_pipeline": true,
         "ai_judge_enabled": true
       },
-      "last_cycle": "2026-03-09T23:45:36Z",
+      "last_cycle": "2026-03-10T00:00:34Z",
       "config": {
         "capital_krw": 600000,
         "per_trade_krw": 50,
@@ -149,14 +149,14 @@
         "market": "USDT"
       },
       "signals": {
-        "ts": "2026-03-09T23:45:25.478458+00:00",
+        "ts": "2026-03-10T00:00:23.168992+00:00",
         "live_count": 0,
         "paper_count": 0,
         "strategy_count": 0,
         "paper_signals": []
       },
       "scout": {
-        "ts": "2026-03-09T23:45:04.089039+00:00",
+        "ts": "2026-03-10T00:00:02.018461+00:00",
         "universe_count": 11,
         "top_symbols": [
           "BTCUSDT",
@@ -272,8 +272,8 @@
         }
       ],
       "cycle_health": {
-        "cycles_in_log": 695,
-        "completed": 695,
+        "cycles_in_log": 698,
+        "completed": 698,
         "errors": 304
       },
       "portfolio": {
@@ -344,7 +344,7 @@
       "strategy_registry": {
         "total": 11,
         "active": 11,
-        "total_signals": 4230,
+        "total_signals": 4248,
         "total_fills": 210,
         "total_pnl_krw": -127209
       },
@@ -388,7 +388,7 @@
         {
           "name": "volume_spike",
           "status": "paper_test",
-          "total_signals": 531,
+          "total_signals": 535,
           "total_fills": 12,
           "total_pnl_krw": -61408,
           "win_count": 1,
@@ -397,7 +397,7 @@
         {
           "name": "ict_fvg_sweep",
           "status": "paper_test",
-          "total_signals": 1317,
+          "total_signals": 1320,
           "total_fills": 18,
           "total_pnl_krw": -11465,
           "win_count": 3,
@@ -406,7 +406,7 @@
         {
           "name": "sol_trend_rider",
           "status": "active",
-          "total_signals": 1597,
+          "total_signals": 1608,
           "total_fills": 140,
           "total_pnl_krw": -5502,
           "win_count": 24,
@@ -456,7 +456,7 @@
         "hybrid_guard_pipeline": true,
         "ai_judge_enabled": true
       },
-      "last_cycle": "2026-03-09T23:42:29Z",
+      "last_cycle": "2026-03-09T23:57:32Z",
       "config": {
         "capital_krw": 600000,
         "per_trade_krw": 50,
@@ -468,8 +468,8 @@
         "market": "KRW"
       },
       "signals": {
-        "ts": "2026-03-09T23:42:18.541690+00:00",
-        "live_count": 0,
+        "ts": "2026-03-09T23:57:21.945252+00:00",
+        "live_count": 4,
         "paper_count": 1,
         "strategy_count": 17,
         "paper_signals": [
@@ -478,13 +478,13 @@
             "side": "buy",
             "confidence": 0.35,
             "reason": "[ict_fvg_sweep] ICT: FVG retrace [89-95] gap=6.3%",
-            "entry_price": 91.02,
+            "entry_price": 90.0,
             "krw": 50000
           }
         ]
       },
       "scout": {
-        "ts": "2026-03-09T23:42:01.098084+00:00",
+        "ts": "2026-03-09T23:57:04.309207+00:00",
         "universe_count": 12,
         "top_symbols": [
           "USDT_KRW",
@@ -499,17 +499,17 @@
       },
       "recent_trades": [],
       "cycle_health": {
-        "cycles_in_log": 853,
-        "completed": 852,
+        "cycles_in_log": 856,
+        "completed": 855,
         "errors": 0
       },
       "portfolio": {
         "capital_krw": 600000,
         "cash_krw": 450000.0,
         "invested_krw": 150000.0,
-        "portfolio_value": 598635.65,
-        "total_pnl_krw": -1364.35,
-        "total_pnl_pct": -0.23,
+        "portfolio_value": 598131.18,
+        "total_pnl_krw": -1868.82,
+        "total_pnl_pct": -0.31,
         "holdings": [
           {
             "symbol": "USDT_KRW",
@@ -526,22 +526,22 @@
             "symbol": "BTC_KRW",
             "qty": 0.0004918839153959665,
             "avg_price": 101650000.0,
-            "cur_price": 100589000.0,
+            "cur_price": 100331000.0,
             "buy_krw": 50000.0,
-            "val_krw": 49478.11,
-            "pnl_krw": -521.89,
-            "pnl_pct": -1.04,
+            "val_krw": 49351.21,
+            "pnl_krw": -648.79,
+            "pnl_pct": -1.3,
             "side": "buy"
           },
           {
             "symbol": "COS_KRW",
             "qty": 26968.716289104636,
             "avg_price": 1.854,
-            "cur_price": 1.844,
+            "cur_price": 1.83,
             "buy_krw": 50000.0,
-            "val_krw": 49730.31,
-            "pnl_krw": -269.69,
-            "pnl_pct": -0.54,
+            "val_krw": 49352.75,
+            "pnl_krw": -647.25,
+            "pnl_pct": -1.29,
             "side": "buy"
           }
         ],
@@ -552,18 +552,18 @@
             "pct": 75.2
           },
           {
+            "name": "USDT_KRW",
+            "value": 49427.22,
+            "pct": 8.3
+          },
+          {
             "name": "COS_KRW",
-            "value": 49730.31,
+            "value": 49352.75,
             "pct": 8.3
           },
           {
             "name": "BTC_KRW",
-            "value": 49478.11,
-            "pct": 8.3
-          },
-          {
-            "name": "USDT_KRW",
-            "value": 49427.22,
+            "value": 49351.21,
             "pct": 8.3
           }
         ]
@@ -675,6 +675,26 @@
       "cash_krw": 450000.0,
       "pnl_krw": -1250.18,
       "pnl_pct": -0.21,
+      "positions": 3
+    },
+    {
+      "date": "2026-03-10",
+      "exchange": "BITGET",
+      "capital_krw": 600000,
+      "portfolio_value": 600000,
+      "cash_krw": 600000,
+      "pnl_krw": 0,
+      "pnl_pct": 0.0,
+      "positions": 0
+    },
+    {
+      "date": "2026-03-10",
+      "exchange": "BITHUMB",
+      "capital_krw": 600000,
+      "portfolio_value": 598131.18,
+      "cash_krw": 450000.0,
+      "pnl_krw": -1868.82,
+      "pnl_pct": -0.31,
       "positions": 3
     }
   ]
