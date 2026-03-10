@@ -1,5 +1,5 @@
 {
-  "ts": "2026-03-10T21:00:01Z",
+  "ts": "2026-03-10T21:15:00Z",
   "host": "jjanga-phone",
   "exchanges": [
     {
@@ -16,7 +16,7 @@
       "strategy_registry": {
         "total": 12,
         "active": 12,
-        "total_signals": 10226,
+        "total_signals": 10228,
         "total_fills": 176,
         "total_pnl_krw": -365280
       },
@@ -33,7 +33,7 @@
         {
           "name": "sol_trend_rider",
           "status": "paper_test",
-          "total_signals": 4120,
+          "total_signals": 4121,
           "total_fills": 78,
           "total_pnl_krw": -336643,
           "win_count": 13,
@@ -51,7 +51,7 @@
         {
           "name": "volume_spike",
           "status": "paper_test",
-          "total_signals": 2068,
+          "total_signals": 2069,
           "total_fills": 12,
           "total_pnl_krw": -17952,
           "win_count": 3,
@@ -137,7 +137,7 @@
         "hybrid_guard_pipeline": true,
         "ai_judge_enabled": true
       },
-      "last_cycle": "2026-03-10T21:00:34Z",
+      "last_cycle": "2026-03-10T21:15:35Z",
       "config": {
         "capital_krw": 600000,
         "per_trade_krw": 100,
@@ -149,31 +149,14 @@
         "market": "USDT"
       },
       "signals": {
-        "ts": "2026-03-10T21:00:23.249303+00:00",
+        "ts": "2026-03-10T21:15:24.309196+00:00",
         "live_count": 0,
-        "paper_count": 2,
-        "strategy_count": 17,
-        "paper_signals": [
-          {
-            "symbol": "XLMUSDT",
-            "side": "buy",
-            "confidence": 0.7000000000000001,
-            "reason": "[volume_spike] volume spike x5.00 (alt learning signal)",
-            "entry_price": 0.1611,
-            "krw": 50000
-          },
-          {
-            "symbol": "BTCUSDT",
-            "side": "buy",
-            "confidence": 0.7000000000000001,
-            "reason": "[volume_spike] volume spike x5.00 (alt learning signal)",
-            "entry_price": 70878.1,
-            "krw": 50000
-          }
-        ]
+        "paper_count": 0,
+        "strategy_count": 0,
+        "paper_signals": []
       },
       "scout": {
-        "ts": "2026-03-10T21:00:01.878675+00:00",
+        "ts": "2026-03-10T21:15:03.191160+00:00",
         "universe_count": 11,
         "top_symbols": [
           "TESTZEUSUSDT",
@@ -289,8 +272,8 @@
         }
       ],
       "cycle_health": {
-        "cycles_in_log": 950,
-        "completed": 950,
+        "cycles_in_log": 953,
+        "completed": 953,
         "errors": 305
       },
       "portfolio": {
@@ -566,7 +549,7 @@
   "summary": {
     "total_exchanges": 2,
     "total_positions": 1,
-    "total_signals": 11,
+    "total_signals": 9,
     "total_strategies": 23
   },
   "history": [
