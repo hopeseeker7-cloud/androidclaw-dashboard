@@ -1,5 +1,5 @@
 {
-  "ts": "2026-03-11T06:30:00Z",
+  "ts": "2026-03-11T06:45:00Z",
   "host": "jjanga-phone",
   "exchanges": [
     {
@@ -16,7 +16,7 @@
       "strategy_registry": {
         "total": 12,
         "active": 12,
-        "total_signals": 10401,
+        "total_signals": 10405,
         "total_fills": 176,
         "total_pnl_krw": -365280
       },
@@ -33,7 +33,7 @@
         {
           "name": "sol_trend_rider",
           "status": "paper_test",
-          "total_signals": 4218,
+          "total_signals": 4221,
           "total_fills": 78,
           "total_pnl_krw": -336643,
           "win_count": 13,
@@ -51,7 +51,7 @@
         {
           "name": "volume_spike",
           "status": "paper_test",
-          "total_signals": 2124,
+          "total_signals": 2125,
           "total_fills": 12,
           "total_pnl_krw": -17952,
           "win_count": 3,
@@ -137,7 +137,7 @@
         "hybrid_guard_pipeline": true,
         "ai_judge_enabled": true
       },
-      "last_cycle": "2026-03-11T06:30:33Z",
+      "last_cycle": "2026-03-11T06:45:40Z",
       "config": {
         "capital_krw": 600000,
         "per_trade_krw": 5000,
@@ -149,7 +149,7 @@
         "market": "USDT"
       },
       "signals": {
-        "ts": "2026-03-11T06:30:22.934466+00:00",
+        "ts": "2026-03-11T06:45:29.287471+00:00",
         "live_count": 0,
         "paper_count": 1,
         "strategy_count": 17,
@@ -158,19 +158,19 @@
             "symbol": "ETHUSDT",
             "side": "buy",
             "confidence": 0.8,
-            "reason": "[sol_trend_rider] EMA_align_up ER=0.63 ROC=0.001",
+            "reason": "[sol_trend_rider] EMA_align_up ER=0.52 ROC=0.001",
             "entry_price": 2045.12,
             "krw": 50000
           }
         ]
       },
       "scout": {
-        "ts": "2026-03-11T06:30:01.594001+00:00",
+        "ts": "2026-03-11T06:45:04.383560+00:00",
         "universe_count": 11,
         "top_symbols": [
           "TESTZEUSUSDT",
-          "BTCUSDT",
           "XLMUSDT",
+          "BTCUSDT",
           "ETHUSDT",
           "BGBUSDT",
           "WBTCUSDT",
@@ -241,8 +241,8 @@
         }
       ],
       "cycle_health": {
-        "cycles_in_log": 1064,
-        "completed": 1064,
+        "cycles_in_log": 1067,
+        "completed": 1067,
         "errors": 305
       },
       "portfolio": {
@@ -751,7 +751,7 @@
             "consecutive_failures": 0
           },
           "gather_intel": {
-            "last_satisfied": "2026-03-11T13:14:50.311251+07:00",
+            "last_satisfied": "2026-03-11T13:31:42.136747+07:00",
             "consecutive_failures": 0
           },
           "tune_guards": {
