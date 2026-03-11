@@ -1,5 +1,5 @@
 {
-  "ts": "2026-03-11T09:45:00Z",
+  "ts": "2026-03-11T10:00:00Z",
   "host": "jjanga-phone",
   "exchanges": [
     {
@@ -16,7 +16,7 @@
       "strategy_registry": {
         "total": 12,
         "active": 12,
-        "total_signals": 10502,
+        "total_signals": 10504,
         "total_fills": 176,
         "total_pnl_krw": -365280
       },
@@ -51,7 +51,7 @@
         {
           "name": "volume_spike",
           "status": "paper_test",
-          "total_signals": 2141,
+          "total_signals": 2143,
           "total_fills": 12,
           "total_pnl_krw": -17952,
           "win_count": 3,
@@ -137,7 +137,7 @@
         "hybrid_guard_pipeline": true,
         "ai_judge_enabled": true
       },
-      "last_cycle": "2026-03-11T09:45:32Z",
+      "last_cycle": "2026-03-11T10:00:11Z",
       "config": {
         "capital_krw": 600000,
         "per_trade_krw": 50000,
@@ -149,23 +149,23 @@
         "market": "USDT"
       },
       "signals": {
-        "ts": "2026-03-11T09:45:26.900722+00:00",
+        "ts": "2026-03-11T09:55:29.609657+00:00",
         "live_count": 0,
         "paper_count": 1,
         "strategy_count": 17,
         "paper_signals": [
           {
-            "symbol": "BTCUSDT",
+            "symbol": "ETHUSDT",
             "side": "buy",
             "confidence": 0.7000000000000001,
             "reason": "[volume_spike] volume spike x5.00 (alt learning signal)",
-            "entry_price": 69930.5,
+            "entry_price": 2033.43,
             "krw": 50000
           }
         ]
       },
       "scout": {
-        "ts": "2026-03-11T09:45:05.362198+00:00",
+        "ts": "2026-03-11T10:00:01.559282+00:00",
         "universe_count": 11,
         "top_symbols": [
           "TESTZEUSUSDT",
@@ -241,8 +241,8 @@
         }
       ],
       "cycle_health": {
-        "cycles_in_log": 1103,
-        "completed": 1102,
+        "cycles_in_log": 1106,
+        "completed": 1105,
         "errors": 305
       },
       "portfolio": {
@@ -388,7 +388,7 @@
         "hybrid_guard_pipeline": true,
         "ai_judge_enabled": true
       },
-      "last_cycle": "2026-03-11T09:38:29Z",
+      "last_cycle": "2026-03-11T09:51:53Z",
       "config": {
         "capital_krw": 600000,
         "per_trade_krw": 50000,
@@ -662,9 +662,9 @@
         },
         "budget": {
           "date": "2026-03-11",
-          "hour": 16,
+          "hour": 17,
           "daily_calls": 31,
-          "hourly_calls": 1,
+          "hourly_calls": 0,
           "daily_tokens": 15500,
           "category_counts": {
             "low": 20,
@@ -681,7 +681,7 @@
             "consecutive_failures": 0
           },
           "gather_intel": {
-            "last_satisfied": "2026-03-11T16:35:13.343083+07:00",
+            "last_satisfied": "2026-03-11T16:51:53.193516+07:00",
             "consecutive_failures": 0
           },
           "tune_guards": {
