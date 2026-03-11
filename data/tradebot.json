@@ -1,5 +1,5 @@
 {
-  "ts": "2026-03-11T03:15:00Z",
+  "ts": "2026-03-11T03:30:00Z",
   "host": "jjanga-phone",
   "exchanges": [
     {
@@ -16,7 +16,7 @@
       "strategy_registry": {
         "total": 12,
         "active": 12,
-        "total_signals": 10336,
+        "total_signals": 10347,
         "total_fills": 176,
         "total_pnl_krw": -365280
       },
@@ -33,7 +33,7 @@
         {
           "name": "sol_trend_rider",
           "status": "paper_test",
-          "total_signals": 4186,
+          "total_signals": 4190,
           "total_fills": 78,
           "total_pnl_krw": -336643,
           "win_count": 13,
@@ -51,7 +51,7 @@
         {
           "name": "volume_spike",
           "status": "paper_test",
-          "total_signals": 2103,
+          "total_signals": 2107,
           "total_fills": 12,
           "total_pnl_krw": -17952,
           "win_count": 3,
@@ -69,7 +69,7 @@
         {
           "name": "breakout",
           "status": "paper_test",
-          "total_signals": 828,
+          "total_signals": 830,
           "total_fills": 3,
           "total_pnl_krw": -865,
           "win_count": 2,
@@ -123,7 +123,7 @@
         {
           "name": "eth_squeeze_trend",
           "status": "paper_test",
-          "total_signals": 4,
+          "total_signals": 5,
           "total_fills": 0,
           "total_pnl_krw": 0,
           "win_count": 0,
@@ -137,7 +137,7 @@
         "hybrid_guard_pipeline": true,
         "ai_judge_enabled": true
       },
-      "last_cycle": "2026-03-11T03:15:35Z",
+      "last_cycle": "2026-03-11T03:30:33Z",
       "config": {
         "capital_krw": 600000,
         "per_trade_krw": 5000,
@@ -149,7 +149,7 @@
         "market": "USDT"
       },
       "signals": {
-        "ts": "2026-03-11T03:15:24.870204+00:00",
+        "ts": "2026-03-11T03:30:22.391157+00:00",
         "live_count": 0,
         "paper_count": 2,
         "strategy_count": 17,
@@ -157,23 +157,23 @@
           {
             "symbol": "BTCUSDT",
             "side": "buy",
-            "confidence": 0.8,
-            "reason": "[sol_trend_rider] EMA_align_up ER=0.88 ROC=0.006",
-            "entry_price": 71319.1,
+            "confidence": 0.7000000000000001,
+            "reason": "[volume_spike] volume spike x5.00 (alt learning signal)",
+            "entry_price": 70878.1,
             "krw": 50000
           },
           {
             "symbol": "ETHUSDT",
             "side": "buy",
-            "confidence": 0.8,
-            "reason": "[sol_trend_rider] EMA_align_up ER=0.67 ROC=0.008",
-            "entry_price": 2079.88,
+            "confidence": 0.6481481481481483,
+            "reason": "[volume_spike] volume spike x4.48 (alt learning signal)",
+            "entry_price": 2063.55,
             "krw": 50000
           }
         ]
       },
       "scout": {
-        "ts": "2026-03-11T03:15:03.624585+00:00",
+        "ts": "2026-03-11T03:30:01.001697+00:00",
         "universe_count": 11,
         "top_symbols": [
           "TESTZEUSUSDT",
@@ -249,8 +249,8 @@
         }
       ],
       "cycle_health": {
-        "cycles_in_log": 1025,
-        "completed": 1025,
+        "cycles_in_log": 1028,
+        "completed": 1028,
         "errors": 305
       },
       "portfolio": {
@@ -278,14 +278,14 @@
       "pnl_today": {
         "date": "2026-03-11",
         "pnl_krw": -981.0,
-        "trades": 77,
+        "trades": 92,
         "realized_krw": -981.0
       },
       "strategy_registry": {
         "total": 11,
         "active": 11,
-        "total_signals": 5279,
-        "total_fills": 386,
+        "total_signals": 5303,
+        "total_fills": 401,
         "total_pnl_krw": -193206
       },
       "strategies_flat": [
@@ -328,7 +328,7 @@
         {
           "name": "volume_spike",
           "status": "paper_test",
-          "total_signals": 686,
+          "total_signals": 690,
           "total_fills": 12,
           "total_pnl_krw": -61408,
           "win_count": 1,
@@ -337,7 +337,7 @@
         {
           "name": "ict_fvg_sweep",
           "status": "paper_test",
-          "total_signals": 1628,
+          "total_signals": 1633,
           "total_fills": 18,
           "total_pnl_krw": -11465,
           "win_count": 3,
@@ -346,8 +346,8 @@
         {
           "name": "sol_trend_rider",
           "status": "active",
-          "total_signals": 2070,
-          "total_fills": 316,
+          "total_signals": 2085,
+          "total_fills": 331,
           "total_pnl_krw": -71499,
           "win_count": 33,
           "loss_count": 38
@@ -396,7 +396,7 @@
         "hybrid_guard_pipeline": true,
         "ai_judge_enabled": true
       },
-      "last_cycle": "2026-03-11T00:10:00Z",
+      "last_cycle": "2026-03-11T03:17:23Z",
       "config": {
         "capital_krw": 600000,
         "per_trade_krw": 5000,
@@ -408,14 +408,23 @@
         "market": "KRW"
       },
       "signals": {
-        "ts": "2026-03-11T03:14:01.895165+00:00",
-        "live_count": 1,
-        "paper_count": 0,
+        "ts": "2026-03-11T03:28:02.154167+00:00",
+        "live_count": 3,
+        "paper_count": 1,
         "strategy_count": 17,
-        "paper_signals": []
+        "paper_signals": [
+          {
+            "symbol": "SIGN_KRW",
+            "side": "buy",
+            "confidence": 0.35,
+            "reason": "[ict_fvg_sweep] ICT: FVG retrace [76-76] gap=0.3%",
+            "entry_price": 76.41,
+            "krw": 50000
+          }
+        ]
       },
       "scout": {
-        "ts": "2026-03-11T03:13:54.747061+00:00",
+        "ts": "2026-03-11T03:27:54.758943+00:00",
         "universe_count": 12,
         "top_symbols": [
           "XRP_KRW",
@@ -638,19 +647,19 @@
           "consecutive_wins": 0,
           "consecutive_losses": 0,
           "daily_pnl_pct": -0.0981,
-          "win_rate_7d": 0.10178117048346055,
-          "last_trade_ts": "2026-03-11T10:14:02.600827+07:00",
+          "win_rate_7d": 0.09803921568627451,
+          "last_trade_ts": "2026-03-11T10:28:02.948991+07:00",
           "transitions_today": 3,
           "date": "2026-03-11"
         },
         "budget": {
           "date": "2026-03-11",
           "hour": 10,
-          "daily_calls": 27,
-          "hourly_calls": 0,
-          "daily_tokens": 13500,
+          "daily_calls": 28,
+          "hourly_calls": 1,
+          "daily_tokens": 14000,
           "category_counts": {
-            "low": 19,
+            "low": 20,
             "high": 3,
             "medium": 5
           },
@@ -660,15 +669,15 @@
         },
         "desires": {
           "trading_cycle": {
-            "last_satisfied": "2026-03-11T10:14:02.638686+07:00",
+            "last_satisfied": "2026-03-11T10:28:02.993399+07:00",
             "consecutive_failures": 0
           },
           "gather_intel": {
-            "last_satisfied": "2026-03-11T10:04:27.402909+07:00",
+            "last_satisfied": "2026-03-11T10:19:57.590895+07:00",
             "consecutive_failures": 0
           },
           "tune_guards": {
-            "last_satisfied": "2026-03-11T09:49:54.050925+07:00",
+            "last_satisfied": "2026-03-11T10:20:24.070421+07:00",
             "consecutive_failures": 0
           },
           "reflect_on_trades": {
@@ -694,7 +703,7 @@
   "summary": {
     "total_exchanges": 2,
     "total_positions": 0,
-    "total_signals": 2,
+    "total_signals": 3,
     "total_strategies": 23
   },
   "history": [
