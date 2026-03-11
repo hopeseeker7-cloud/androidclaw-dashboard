@@ -1,5 +1,5 @@
 {
-  "ts": "2026-03-11T00:45:00Z",
+  "ts": "2026-03-11T01:00:00Z",
   "host": "jjanga-phone",
   "exchanges": [
     {
@@ -16,7 +16,7 @@
       "strategy_registry": {
         "total": 12,
         "active": 12,
-        "total_signals": 10298,
+        "total_signals": 10307,
         "total_fills": 176,
         "total_pnl_krw": -365280
       },
@@ -24,7 +24,7 @@
         {
           "name": "ict_fvg_sweep",
           "status": "paper_test",
-          "total_signals": 1675,
+          "total_signals": 1676,
           "total_fills": 24,
           "total_pnl_krw": -9875,
           "win_count": 10,
@@ -33,7 +33,7 @@
         {
           "name": "sol_trend_rider",
           "status": "paper_test",
-          "total_signals": 4164,
+          "total_signals": 4165,
           "total_fills": 78,
           "total_pnl_krw": -336643,
           "win_count": 13,
@@ -51,7 +51,7 @@
         {
           "name": "volume_spike",
           "status": "paper_test",
-          "total_signals": 2094,
+          "total_signals": 2096,
           "total_fills": 12,
           "total_pnl_krw": -17952,
           "win_count": 3,
@@ -69,7 +69,7 @@
         {
           "name": "breakout",
           "status": "paper_test",
-          "total_signals": 824,
+          "total_signals": 827,
           "total_fills": 3,
           "total_pnl_krw": -865,
           "win_count": 2,
@@ -78,7 +78,7 @@
         {
           "name": "doge_macd_squeeze",
           "status": "paper_test",
-          "total_signals": 57,
+          "total_signals": 58,
           "total_fills": 0,
           "total_pnl_krw": 0,
           "win_count": 0,
@@ -123,7 +123,7 @@
         {
           "name": "eth_squeeze_trend",
           "status": "paper_test",
-          "total_signals": 3,
+          "total_signals": 4,
           "total_fills": 0,
           "total_pnl_krw": 0,
           "win_count": 0,
@@ -137,7 +137,7 @@
         "hybrid_guard_pipeline": true,
         "ai_judge_enabled": true
       },
-      "last_cycle": "2026-03-11T00:45:36Z",
+      "last_cycle": "2026-03-11T01:00:33Z",
       "config": {
         "capital_krw": 600000,
         "per_trade_krw": 100,
@@ -149,14 +149,31 @@
         "market": "USDT"
       },
       "signals": {
-        "ts": "2026-03-11T00:45:25.117443+00:00",
+        "ts": "2026-03-11T01:00:22.502985+00:00",
         "live_count": 0,
-        "paper_count": 0,
-        "strategy_count": 0,
-        "paper_signals": []
+        "paper_count": 2,
+        "strategy_count": 17,
+        "paper_signals": [
+          {
+            "symbol": "SOLUSDT",
+            "side": "buy",
+            "confidence": 0.57,
+            "reason": "[breakout] 5m breakout(>3) + vol x1.86 [KZ]",
+            "entry_price": 87.79,
+            "krw": 50000
+          },
+          {
+            "symbol": "SOLUSDT",
+            "side": "buy",
+            "confidence": 0.7,
+            "reason": "[ict_fvg_sweep] ICT: sweep below 88 by 0.3% | MSS confirmed | KZ",
+            "entry_price": 87.79,
+            "krw": 50000
+          }
+        ]
       },
       "scout": {
-        "ts": "2026-03-11T00:45:03.850845+00:00",
+        "ts": "2026-03-11T01:00:01.396938+00:00",
         "universe_count": 11,
         "top_symbols": [
           "TESTZEUSUSDT",
@@ -232,8 +249,8 @@
         }
       ],
       "cycle_health": {
-        "cycles_in_log": 995,
-        "completed": 995,
+        "cycles_in_log": 998,
+        "completed": 998,
         "errors": 305
       },
       "portfolio": {
@@ -261,14 +278,14 @@
       "pnl_today": {
         "date": "2026-03-11",
         "pnl_krw": -981.0,
-        "trades": 5,
+        "trades": 11,
         "realized_krw": -981.0
       },
       "strategy_registry": {
         "total": 11,
         "active": 11,
-        "total_signals": 5140,
-        "total_fills": 314,
+        "total_signals": 5158,
+        "total_fills": 320,
         "total_pnl_krw": -193206
       },
       "strategies_flat": [
@@ -284,7 +301,7 @@
         {
           "name": "breakout",
           "status": "paper_test",
-          "total_signals": 309,
+          "total_signals": 311,
           "total_fills": 2,
           "total_pnl_krw": -51770,
           "win_count": 0,
@@ -311,7 +328,7 @@
         {
           "name": "volume_spike",
           "status": "paper_test",
-          "total_signals": 667,
+          "total_signals": 671,
           "total_fills": 12,
           "total_pnl_krw": -61408,
           "win_count": 1,
@@ -320,7 +337,7 @@
         {
           "name": "ict_fvg_sweep",
           "status": "paper_test",
-          "total_signals": 1595,
+          "total_signals": 1598,
           "total_fills": 18,
           "total_pnl_krw": -11465,
           "win_count": 3,
@@ -329,8 +346,8 @@
         {
           "name": "sol_trend_rider",
           "status": "active",
-          "total_signals": 1998,
-          "total_fills": 244,
+          "total_signals": 2004,
+          "total_fills": 250,
           "total_pnl_krw": -71499,
           "win_count": 33,
           "loss_count": 38
@@ -347,7 +364,7 @@
         {
           "name": "ict_sweep_revert",
           "status": "paper_test",
-          "total_signals": 42,
+          "total_signals": 43,
           "total_fills": 1,
           "total_pnl_krw": 2933,
           "win_count": 1,
@@ -356,7 +373,7 @@
         {
           "name": "eth_squeeze_trend",
           "status": "paper_test",
-          "total_signals": 12,
+          "total_signals": 13,
           "total_fills": 0,
           "total_pnl_krw": 0,
           "win_count": 0,
@@ -365,7 +382,7 @@
         {
           "name": "eth_squeeze_trend_v3",
           "status": "paper_test",
-          "total_signals": 12,
+          "total_signals": 13,
           "total_fills": 0,
           "total_pnl_krw": 0,
           "win_count": 0,
@@ -391,31 +408,31 @@
         "market": "KRW"
       },
       "signals": {
-        "ts": "2026-03-11T00:43:34.986694+00:00",
+        "ts": "2026-03-11T00:59:34.813196+00:00",
         "live_count": 2,
         "paper_count": 2,
         "strategy_count": 17,
         "paper_signals": [
           {
-            "symbol": "FLOW_KRW",
+            "symbol": "SIGN_KRW",
             "side": "buy",
-            "confidence": 0.6,
-            "reason": "[ict_fvg_sweep] ICT: FVG retrace [106-110] gap=3.8% | KZ",
-            "entry_price": 110.0,
+            "confidence": 0.4889408099688493,
+            "reason": "[ict_sweep_revert] ICT sweep below 77 by 0.39% then reclaim",
+            "entry_price": 77.18,
             "krw": 50000
           },
           {
-            "symbol": "SXT_KRW",
+            "symbol": "SIGN_KRW",
             "side": "buy",
-            "confidence": 0.4,
-            "reason": "[volume_spike] volume spike x1.95 (alt learning signal)",
-            "entry_price": 29.47,
+            "confidence": 0.5981638786587962,
+            "reason": "[volume_spike] volume spike x3.98 (alt learning signal)",
+            "entry_price": 77.18,
             "krw": 50000
           }
         ]
       },
       "scout": {
-        "ts": "2026-03-11T00:43:27.027925+00:00",
+        "ts": "2026-03-11T00:59:27.093342+00:00",
         "universe_count": 12,
         "top_symbols": [
           "XRP_KRW",
@@ -429,6 +446,78 @@
         ]
       },
       "recent_trades": [
+        {
+          "symbol": "SIGN_KRW",
+          "algo": "",
+          "type": "sell",
+          "entry": 77.18,
+          "exit": 77.18,
+          "pnl_pct": 0,
+          "pnl_krw": 0,
+          "win": false,
+          "reason": "paper: neutral fill at entry price | decision: [sol_trend_rider] EMA_align_dn ER=0.35 ROC=-0.003",
+          "ts": "2026-03-11T07:59:35.613679+07:00"
+        },
+        {
+          "symbol": "RESOLV_KRW",
+          "algo": "",
+          "type": "sell",
+          "entry": 164.0,
+          "exit": 164.0,
+          "pnl_pct": 0,
+          "pnl_krw": 0,
+          "win": false,
+          "reason": "paper: neutral fill at entry price | decision: [sol_trend_rider] EMA_align_dn ER=0.43 ROC=-0.035",
+          "ts": "2026-03-11T07:59:35.613679+07:00"
+        },
+        {
+          "symbol": "SIGN_KRW",
+          "algo": "",
+          "type": "sell",
+          "entry": 76.75,
+          "exit": 76.75,
+          "pnl_pct": 0,
+          "pnl_krw": 0,
+          "win": false,
+          "reason": "paper: neutral fill at entry price | decision: [sol_trend_rider] EMA_align_dn ER=0.50 ROC=-0.008",
+          "ts": "2026-03-11T07:55:33.314688+07:00"
+        },
+        {
+          "symbol": "RESOLV_KRW",
+          "algo": "",
+          "type": "sell",
+          "entry": 165.0,
+          "exit": 165.0,
+          "pnl_pct": 0,
+          "pnl_krw": 0,
+          "win": false,
+          "reason": "paper: neutral fill at entry price | decision: [sol_trend_rider] EMA_align_dn ER=0.41 ROC=-0.041",
+          "ts": "2026-03-11T07:55:33.314688+07:00"
+        },
+        {
+          "symbol": "SIGN_KRW",
+          "algo": "",
+          "type": "sell",
+          "entry": 76.91,
+          "exit": 76.91,
+          "pnl_pct": 0,
+          "pnl_krw": 0,
+          "win": false,
+          "reason": "paper: neutral fill at entry price | decision: [sol_trend_rider] EMA_align_dn ER=0.40 ROC=-0.008",
+          "ts": "2026-03-11T07:51:35.628264+07:00"
+        },
+        {
+          "symbol": "RESOLV_KRW",
+          "algo": "",
+          "type": "sell",
+          "entry": 166.0,
+          "exit": 166.0,
+          "pnl_pct": 0,
+          "pnl_krw": 0,
+          "win": false,
+          "reason": "paper: neutral fill at entry price | decision: [sol_trend_rider] EMA_align_dn ER=0.38 ROC=-0.035",
+          "ts": "2026-03-11T07:51:35.628264+07:00"
+        },
         {
           "symbol": "SIGN_KRW",
           "algo": "",
@@ -536,78 +625,6 @@
           "win": false,
           "reason": "paper: neutral fill at entry price | decision: [sol_trend_rider] EMA_align_dn ER=0.64 ROC=-0.001",
           "ts": "2026-03-10T22:30:32.913268+07:00"
-        },
-        {
-          "symbol": "WLD_KRW",
-          "algo": "",
-          "type": "sell",
-          "entry": 533.0,
-          "exit": 533.0,
-          "pnl_pct": 0,
-          "pnl_krw": 0,
-          "win": false,
-          "reason": "paper: neutral fill at entry price | decision: [sol_trend_rider] EMA_align_dn ER=0.26 ROC=-0.006",
-          "ts": "2026-03-10T22:30:32.913268+07:00"
-        },
-        {
-          "symbol": "RESOLV_KRW",
-          "algo": "",
-          "type": "sell",
-          "entry": 180.0,
-          "exit": 180.0,
-          "pnl_pct": 0,
-          "pnl_krw": 0,
-          "win": false,
-          "reason": "paper: neutral fill at entry price | decision: [sol_trend_rider] EMA_align_dn ER=0.29 ROC=-0.022",
-          "ts": "2026-03-10T22:30:32.913268+07:00"
-        },
-        {
-          "symbol": "WLD_KRW",
-          "algo": "",
-          "type": "sell",
-          "entry": 532.0,
-          "exit": 532.0,
-          "pnl_pct": 0,
-          "pnl_krw": 0,
-          "win": false,
-          "reason": "paper: neutral fill at entry price | decision: [sol_trend_rider] EMA_align_dn ER=0.26 ROC=-0.017",
-          "ts": "2026-03-10T22:27:00.681111+07:00"
-        },
-        {
-          "symbol": "XRP_KRW",
-          "algo": "sol_trend_rider",
-          "type": "sell",
-          "entry": 2074.0,
-          "exit": 2074.0,
-          "pnl_pct": -1.0,
-          "pnl_krw": -49552,
-          "win": false,
-          "reason": "exit: stop-loss hit (-1.00% <= -1.00%)",
-          "ts": "2026-03-10T22:27:00.219915+07:00"
-        },
-        {
-          "symbol": "USDT_KRW",
-          "algo": "",
-          "type": "sell",
-          "entry": 1457.0,
-          "exit": 1457.0,
-          "pnl_pct": 0,
-          "pnl_krw": 0,
-          "win": false,
-          "reason": "paper: neutral fill at entry price | decision: [sol_trend_rider] EMA_align_dn ER=0.54 ROC=-0.001",
-          "ts": "2026-03-10T22:23:23.879493+07:00"
-        },
-        {
-          "symbol": "USDT_KRW",
-          "algo": "",
-          "type": "sell",
-          "entry": 1457.0,
-          "exit": 1457.0,
-          "pnl_pct": 0,
-          "pnl_krw": 0,
-          "win": false,
-          "reason": "paper: neutral fill at entry price | decision: [sol_trend_rider] EMA_align_dn ER=0.54 ROC=-0.002",
-          "ts": "2026-03-10T22:19:52.107041+07:00"
         }
       ],
       "cycle_health": {
@@ -638,21 +655,21 @@
           "consecutive_wins": 0,
           "consecutive_losses": 6,
           "daily_pnl_pct": -0.0981,
-          "win_rate_7d": 0.12461059190031153,
-          "last_trade_ts": "2026-03-11T07:43:36.014897+07:00",
+          "win_rate_7d": 0.12232415902140673,
+          "last_trade_ts": "2026-03-11T07:59:35.613679+07:00",
           "transitions_today": 2,
           "date": "2026-03-11"
         },
         "budget": {
           "date": "2026-03-11",
-          "hour": 7,
-          "daily_calls": 20,
-          "hourly_calls": 2,
-          "daily_tokens": 10000,
+          "hour": 8,
+          "daily_calls": 21,
+          "hourly_calls": 0,
+          "daily_tokens": 10500,
           "category_counts": {
             "low": 15,
             "high": 2,
-            "medium": 3
+            "medium": 4
           },
           "kill_switch": false,
           "daily_trade_loss_krw": -981.0,
@@ -660,11 +677,11 @@
         },
         "desires": {
           "trading_cycle": {
-            "last_satisfied": "2026-03-11T07:43:36.050424+07:00",
+            "last_satisfied": "2026-03-11T07:59:35.655152+07:00",
             "consecutive_failures": 0
           },
           "gather_intel": {
-            "last_satisfied": "2026-03-11T07:41:27.707692+07:00",
+            "last_satisfied": "2026-03-11T07:57:27.395019+07:00",
             "consecutive_failures": 0
           },
           "tune_guards": {
@@ -676,7 +693,7 @@
             "consecutive_failures": 0
           },
           "hypothesize": {
-            "last_satisfied": "2026-03-11T05:51:37.398577+07:00",
+            "last_satisfied": "2026-03-11T07:52:24.045666+07:00",
             "consecutive_failures": 0
           },
           "research_strategy": {
@@ -684,7 +701,7 @@
             "consecutive_failures": 0
           },
           "report_to_owner": {
-            "last_satisfied": "2026-03-11T05:56:37.736357+07:00",
+            "last_satisfied": "2026-03-11T07:58:24.406472+07:00",
             "consecutive_failures": 0
           }
         }
@@ -694,7 +711,7 @@
   "summary": {
     "total_exchanges": 2,
     "total_positions": 0,
-    "total_signals": 2,
+    "total_signals": 4,
     "total_strategies": 23
   },
   "history": [
