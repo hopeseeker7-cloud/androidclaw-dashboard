@@ -1,5 +1,5 @@
 {
-  "ts": "2026-03-11T07:15:01Z",
+  "ts": "2026-03-11T07:30:00Z",
   "host": "jjanga-phone",
   "exchanges": [
     {
@@ -16,7 +16,7 @@
       "strategy_registry": {
         "total": 12,
         "active": 12,
-        "total_signals": 10415,
+        "total_signals": 10435,
         "total_fills": 176,
         "total_pnl_krw": -365280
       },
@@ -33,7 +33,7 @@
         {
           "name": "sol_trend_rider",
           "status": "paper_test",
-          "total_signals": 4228,
+          "total_signals": 4248,
           "total_fills": 78,
           "total_pnl_krw": -336643,
           "win_count": 13,
@@ -137,7 +137,7 @@
         "hybrid_guard_pipeline": true,
         "ai_judge_enabled": true
       },
-      "last_cycle": "2026-03-11T07:15:31Z",
+      "last_cycle": "2026-03-11T07:30:34Z",
       "config": {
         "capital_krw": 600000,
         "per_trade_krw": 50000,
@@ -149,31 +149,55 @@
         "market": "USDT"
       },
       "signals": {
-        "ts": "2026-03-11T07:15:31.827234+00:00",
+        "ts": "2026-03-11T07:30:23.004344+00:00",
         "live_count": 0,
-        "paper_count": 2,
+        "paper_count": 8,
         "strategy_count": 17,
         "paper_signals": [
+          {
+            "symbol": "XLMUSDT",
+            "side": "buy",
+            "confidence": 0.8,
+            "reason": "[sol_trend_rider] EMA_align_up ER=1.00 ROC=0.098",
+            "entry_price": 0.1748,
+            "krw": 50000
+          },
+          {
+            "symbol": "BTCUSDT",
+            "side": "buy",
+            "confidence": 0.8,
+            "reason": "[sol_trend_rider] EMA_align_up ER=0.65 ROC=0.015",
+            "entry_price": 70878.1,
+            "krw": 50000
+          },
           {
             "symbol": "ETHUSDT",
             "side": "buy",
             "confidence": 0.8,
-            "reason": "[sol_trend_rider] EMA_align_up ER=0.41 ROC=0.001",
-            "entry_price": 2043.21,
+            "reason": "[sol_trend_rider] EMA_align_up ER=0.43 ROC=0.004",
+            "entry_price": 2040.9,
             "krw": 50000
           },
           {
-            "symbol": "SOLUSDT",
+            "symbol": "WBTCUSDT",
+            "side": "sell",
+            "confidence": 0.8,
+            "reason": "[sol_trend_rider] EMA_align_dn ER=1.00 ROC=-0.039",
+            "entry_price": 61537.1,
+            "krw": 50000
+          },
+          {
+            "symbol": "USDCUSDT",
             "side": "buy",
             "confidence": 0.8,
-            "reason": "[sol_trend_rider] EMA_align_up ER=0.46 ROC=0.009",
-            "entry_price": 86.11,
+            "reason": "[sol_trend_rider] EMA_align_up ER=1.00 ROC=0.000",
+            "entry_price": 1.0,
             "krw": 50000
           }
         ]
       },
       "scout": {
-        "ts": "2026-03-11T07:15:06.408164+00:00",
+        "ts": "2026-03-11T07:30:01.540756+00:00",
         "universe_count": 11,
         "top_symbols": [
           "TESTZEUSUSDT",
@@ -249,8 +273,8 @@
         }
       ],
       "cycle_health": {
-        "cycles_in_log": 1073,
-        "completed": 1072,
+        "cycles_in_log": 1076,
+        "completed": 1076,
         "errors": 305
       },
       "portfolio": {
@@ -433,7 +457,7 @@
         "hybrid_guard_pipeline": true,
         "ai_judge_enabled": true
       },
-      "last_cycle": "2026-03-11T07:05:56Z",
+      "last_cycle": "2026-03-11T07:27:38Z",
       "config": {
         "capital_krw": 600000,
         "per_trade_krw": 50000,
@@ -759,7 +783,7 @@
             "consecutive_failures": 0
           },
           "gather_intel": {
-            "last_satisfied": "2026-03-11T14:05:56.579950+07:00",
+            "last_satisfied": "2026-03-11T14:22:49.180124+07:00",
             "consecutive_failures": 0
           },
           "tune_guards": {
@@ -789,7 +813,7 @@
   "summary": {
     "total_exchanges": 2,
     "total_positions": 3,
-    "total_signals": 3,
+    "total_signals": 9,
     "total_strategies": 23
   },
   "history": [
