@@ -205,24 +205,30 @@ function renderExchangeCard(ex) {
   let tradesHtml = '';
   const trades = ex.recent_trades || [];
   if (trades.length > 0) {
-    const tradeRows = trades.slice(-5).reverse().map(t => {
+    const tradeRows = trades.slice(0, 10).map(t => {
       const winIcon = t.win ? '✅' : '❌';
+      const pnlKrw = t.pnl_krw || 0;
+      const pnlCls = pnlKrw > 0 ? 'positive' : pnlKrw < 0 ? 'negative' : '';
+      const reason = (t.reason || '').replace(/^exit:\s*/i, '').slice(0, 30);
+      const tsStr = t.ts ? relativeTime(t.ts) : '—';
       return `
         <tr>
           <td class="mono">${escHtml(t.symbol)}</td>
-          <td>${escHtml(t.algo)}</td>
-          <td>${escHtml(t.type)}</td>
-          <td class="mono ${t.pnl_pct >= 0 ? 'positive' : 'negative'}">${t.pnl_pct > 0 ? '+' : ''}${t.pnl_pct}%</td>
+          <td>${escHtml(t.algo || t.type)}</td>
+          <td class="mono ${pnlCls}">${pnlKrw > 0 ? '+' : ''}${fmtKRW(pnlKrw)}</td>
+          <td class="mono ${pnlCls}">${t.pnl_pct > 0 ? '+' : ''}${t.pnl_pct}%</td>
+          <td class="sig-reason">${escHtml(reason)}</td>
+          <td>${tsStr}</td>
           <td>${winIcon}</td>
         </tr>`;
     }).join('');
 
     tradesHtml = `
       <div class="trading-subsection">
-        <div class="trading-sub-title">최근 거래 (최근 5건)</div>
+        <div class="trading-sub-title">최근 거래 (${trades.length}건)</div>
         <div class="trading-table-wrap">
           <table class="trading-table">
-            <thead><tr><th>심볼</th><th>알고리즘</th><th>유형</th><th>PnL%</th><th>승패</th></tr></thead>
+            <thead><tr><th>심볼</th><th>전략</th><th>PnL</th><th>수익률</th><th>사유</th><th>시간</th><th>결과</th></tr></thead>
             <tbody>${tradeRows}</tbody>
           </table>
         </div>
@@ -284,6 +290,70 @@ function renderExchangeCard(ex) {
       </div>`;
   }
 
+  /* ── Passionate Trader status ── */
+  let ptHtml = '';
+  const pt = ex.passionate_trader;
+  if (pt) {
+    const emo = pt.emotional || {};
+    const bud = pt.budget || {};
+    const des = pt.desires || {};
+    const emoState = emo.state || '—';
+    const emoMap = {
+      neutral: { emoji: '😐', ko: '평온', color: 'var(--text-dim)' },
+      excited: { emoji: '🤩', ko: '흥분', color: 'var(--accent-green)' },
+      confident: { emoji: '😎', ko: '자신감', color: 'var(--accent-blue, #60a5fa)' },
+      cautious: { emoji: '🤔', ko: '경계', color: 'var(--accent-yellow)' },
+      frustrated: { emoji: '😤', ko: '좌절', color: 'var(--accent-orange, #fb923c)' },
+      defeated: { emoji: '😭', ko: '패배', color: 'var(--accent-red)' },
+      bored: { emoji: '😴', ko: '지루함', color: 'var(--text-dim)' },
+    };
+    const emoInfo = emoMap[emoState] || { emoji: '❓', ko: emoState, color: 'var(--text-dim)' };
+    const riskPct = Math.round((emo.win_rate_7d || 0.5) * 100);
+    const dailyPnl = emo.daily_pnl_pct || 0;
+    const dailyPnlCls = dailyPnl > 0 ? 'positive' : dailyPnl < 0 ? 'negative' : '';
+    const cWins = emo.consecutive_wins || 0;
+    const cLoss = emo.consecutive_losses || 0;
+    const apiUsed = bud.daily_calls || 0;
+    const apiMax = 50;
+    const tradeLoss = Math.abs(bud.daily_trade_loss_krw || 0);
+
+    // Top desires by consecutive_failures (lower = healthier)
+    const desireEntries = Object.entries(des).filter(([k]) => k !== '_meta');
+    const desireChips = desireEntries.map(([name, d]) => {
+      const fails = d.consecutive_failures || 0;
+      const failCls = fails >= 3 ? 'negative' : fails > 0 ? 'accent-yellow' : '';
+      return `<span class="scout-chip ${failCls}" title="failures: ${fails}">${name}</span>`;
+    }).join('');
+
+    ptHtml = `
+      <div class="pt-status-bar">
+        <div class="pt-emotion" style="border-left: 3px solid ${emoInfo.color}">
+          <span class="pt-emoji">${emoInfo.emoji}</span>
+          <div>
+            <div class="pt-emotion-name" style="color:${emoInfo.color}">${emoInfo.ko}</div>
+            <div class="pt-emotion-detail">
+              연승 ${cWins} · 연패 ${cLoss} · 7일 승률 ${riskPct}%
+            </div>
+          </div>
+        </div>
+        <div class="pt-metrics-row">
+          <div class="pt-metric">
+            <span class="pt-metric-v ${dailyPnlCls}">${dailyPnl > 0 ? '+' : ''}${dailyPnl.toFixed(2)}%</span>
+            <span class="pt-metric-k">오늘 PnL</span>
+          </div>
+          <div class="pt-metric">
+            <span class="pt-metric-v">${apiUsed}/${apiMax}</span>
+            <span class="pt-metric-k">API 사용</span>
+          </div>
+          <div class="pt-metric">
+            <span class="pt-metric-v ${tradeLoss > 0 ? 'negative' : ''}">${fmtKRW(tradeLoss)}</span>
+            <span class="pt-metric-k">매매 손실</span>
+          </div>
+        </div>
+        ${desireChips ? `<div class="pt-desires">${desireChips}</div>` : ''}
+      </div>`;
+  }
+
   return `
     <div class="trading-exchange-card">
       <div class="trading-ex-header">
@@ -300,6 +370,7 @@ function renderExchangeCard(ex) {
         </div>
       </div>
 
+      ${ptHtml}
       ${renderPortfolioSection(ex, state.tradebot?.history || [])}
 
       <div class="trading-metrics">
