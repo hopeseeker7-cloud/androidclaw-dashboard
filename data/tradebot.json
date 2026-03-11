@@ -1,5 +1,5 @@
 {
-  "ts": "2026-03-11T21:00:00Z",
+  "ts": "2026-03-11T21:15:00Z",
   "host": "jjanga-phone",
   "exchanges": [
     {
@@ -137,7 +137,7 @@
         "hybrid_guard_pipeline": true,
         "ai_judge_enabled": true
       },
-      "last_cycle": "2026-03-11T21:00:29Z",
+      "last_cycle": "2026-03-11T21:15:30Z",
       "config": {
         "capital_krw": 600000,
         "per_trade_krw": 50000,
@@ -149,55 +149,14 @@
         "market": "USDT"
       },
       "signals": {
-        "ts": "2026-03-11T21:00:23.886447+00:00",
+        "ts": "2026-03-11T21:15:24.572626+00:00",
         "live_count": 0,
-        "paper_count": 5,
-        "strategy_count": 17,
-        "paper_signals": [
-          {
-            "symbol": "BGBUSDT",
-            "side": "buy",
-            "confidence": 0.56,
-            "reason": "[breakout] 5m breakout(>3) + vol x3.00 (off-KZ)",
-            "entry_price": 2.182,
-            "krw": 50000
-          },
-          {
-            "symbol": "BGBUSDT",
-            "side": "buy",
-            "confidence": 0.75,
-            "reason": "[doge_macd_squeeze] DOGE_sq(0.50)+MACD_bull vol=73.3x ROC=+0.1%",
-            "entry_price": 2.182,
-            "krw": 50000
-          },
-          {
-            "symbol": "BGBUSDT",
-            "side": "buy",
-            "confidence": 0.75,
-            "reason": "[eth_squeeze_trend] ETH_sq(0.50)+MACD_bull vol=73.3x ROC=+0.1%",
-            "entry_price": 2.182,
-            "krw": 50000
-          },
-          {
-            "symbol": "BGBUSDT",
-            "side": "buy",
-            "confidence": 0.8,
-            "reason": "[sol_trend_rider] EMA_align_up ER=1.00 ROC=0.001",
-            "entry_price": 2.182,
-            "krw": 50000
-          },
-          {
-            "symbol": "BGBUSDT",
-            "side": "buy",
-            "confidence": 0.7000000000000001,
-            "reason": "[volume_spike] volume spike x5.00 (alt learning signal)",
-            "entry_price": 2.182,
-            "krw": 50000
-          }
-        ]
+        "paper_count": 0,
+        "strategy_count": 0,
+        "paper_signals": []
       },
       "scout": {
-        "ts": "2026-03-11T21:00:01.291839+00:00",
+        "ts": "2026-03-11T21:15:03.512983+00:00",
         "universe_count": 11,
         "top_symbols": [
           "TESTZEUSUSDT",
@@ -273,8 +232,8 @@
         }
       ],
       "cycle_health": {
-        "cycles_in_log": 128,
-        "completed": 127,
+        "cycles_in_log": 131,
+        "completed": 130,
         "errors": 1
       },
       "portfolio": {
@@ -369,7 +328,7 @@
       "strategy_registry": {
         "total": 11,
         "active": 11,
-        "total_signals": 6318,
+        "total_signals": 6334,
         "total_fills": 480,
         "total_pnl_krw": -253285
       },
@@ -386,7 +345,7 @@
         {
           "name": "breakout",
           "status": "paper_test",
-          "total_signals": 397,
+          "total_signals": 398,
           "total_fills": 2,
           "total_pnl_krw": -51770,
           "win_count": 0,
@@ -395,7 +354,7 @@
         {
           "name": "doge_macd_squeeze",
           "status": "paper_test",
-          "total_signals": 26,
+          "total_signals": 27,
           "total_fills": 0,
           "total_pnl_krw": 0,
           "win_count": 0,
@@ -404,7 +363,7 @@
         {
           "name": "doge_macd_squeeze_v3",
           "status": "paper_test",
-          "total_signals": 8,
+          "total_signals": 9,
           "total_fills": 0,
           "total_pnl_krw": 0,
           "win_count": 0,
@@ -413,7 +372,7 @@
         {
           "name": "volume_spike",
           "status": "paper_test",
-          "total_signals": 869,
+          "total_signals": 874,
           "total_fills": 12,
           "total_pnl_krw": -61408,
           "win_count": 1,
@@ -422,7 +381,7 @@
         {
           "name": "ict_fvg_sweep",
           "status": "paper_test",
-          "total_signals": 1932,
+          "total_signals": 1937,
           "total_fills": 18,
           "total_pnl_krw": -11465,
           "win_count": 3,
@@ -431,7 +390,7 @@
         {
           "name": "sol_trend_rider",
           "status": "active",
-          "total_signals": 2504,
+          "total_signals": 2506,
           "total_fills": 410,
           "total_pnl_krw": -131578,
           "win_count": 34,
@@ -440,7 +399,7 @@
         {
           "name": "aggressive_breakout_momentum_v1",
           "status": "paper_test",
-          "total_signals": 12,
+          "total_signals": 13,
           "total_fills": 2,
           "total_pnl_krw": -1,
           "win_count": 0,
@@ -481,7 +440,7 @@
         "hybrid_guard_pipeline": true,
         "ai_judge_enabled": true
       },
-      "last_cycle": "2026-03-11T20:59:05Z",
+      "last_cycle": "2026-03-11T21:15:05Z",
       "config": {
         "capital_krw": 600000,
         "per_trade_krw": 50000,
@@ -493,55 +452,55 @@
         "market": "KRW"
       },
       "signals": {
-        "ts": "2026-03-11T20:59:05.153635+00:00",
+        "ts": "2026-03-11T21:15:04.757704+00:00",
         "live_count": 0,
-        "paper_count": 8,
+        "paper_count": 6,
         "strategy_count": 17,
         "paper_signals": [
           {
-            "symbol": "ETH_KRW",
+            "symbol": "ICP_KRW",
             "side": "buy",
-            "confidence": 0.49,
-            "reason": "[ict_fvg_sweep] ICT: FVG retrace [3019000-3033000] gap=0.5% | MSS confirmed | vol+",
-            "entry_price": 3025000.0,
+            "confidence": 0.35,
+            "reason": "[ict_fvg_sweep] ICT: FVG retrace [3850-3888] gap=1.0%",
+            "entry_price": 3853.0,
             "krw": 50000
           },
           {
-            "symbol": "ICP_KRW",
-            "side": "sell",
-            "confidence": 0.711,
-            "reason": "[aggressive_breakout_momentum_v1] ABM v1 short breakout: c<3859.0000, vol x2.56, mom=-1.13%, atr=0.36%",
-            "entry_price": 3839.0,
+            "symbol": "DOGE_KRW",
+            "side": "buy",
+            "confidence": 0.6085720846717733,
+            "reason": "[volume_spike] volume spike x4.09 (alt learning signal)",
+            "entry_price": 137.0,
+            "krw": 50000
+          },
+          {
+            "symbol": "ACX_KRW",
+            "side": "buy",
+            "confidence": 0.82,
+            "reason": "[aggressive_breakout_momentum_v1] ABM v1 long breakout: c>88.0800, vol x3.07, mom=3.14%, atr=0.90%",
+            "entry_price": 88.29,
             "krw": 50
           },
           {
-            "symbol": "SOL_KRW",
+            "symbol": "ACX_KRW",
             "side": "buy",
-            "confidence": 0.35,
-            "reason": "[ict_fvg_sweep] ICT: FVG retrace [127300-128200] gap=0.7%",
-            "entry_price": 127600.0,
+            "confidence": 0.59,
+            "reason": "[breakout] 5m breakout(>3) + vol x3.00 (off-KZ)",
+            "entry_price": 88.29,
             "krw": 50000
           },
           {
-            "symbol": "XAI_KRW",
+            "symbol": "ACX_KRW",
             "side": "buy",
-            "confidence": 0.42,
-            "reason": "[ict_fvg_sweep] ICT: FVG retrace [17-17] gap=1.6% | vol+",
-            "entry_price": 17.3,
-            "krw": 50000
-          },
-          {
-            "symbol": "XAI_KRW",
-            "side": "buy",
-            "confidence": 0.41269370151005647,
-            "reason": "[volume_spike] volume spike x2.13 (alt learning signal)",
-            "entry_price": 17.3,
+            "confidence": 0.6481101859430894,
+            "reason": "[volume_spike] volume spike x4.48 (alt learning signal)",
+            "entry_price": 88.29,
             "krw": 50000
           }
         ]
       },
       "scout": {
-        "ts": "2026-03-11T20:58:56.950945+00:00",
+        "ts": "2026-03-11T21:14:56.961635+00:00",
         "universe_count": 12,
         "top_symbols": [
           "USDT_KRW",
@@ -550,8 +509,8 @@
           "ETH_KRW",
           "ICP_KRW",
           "SOL_KRW",
-          "XAI_KRW",
-          "DOGE_KRW"
+          "DOGE_KRW",
+          "XAI_KRW"
         ]
       },
       "recent_trades": [
@@ -753,22 +712,22 @@
             "symbol": "XRP_KRW",
             "qty": 24.727992087042534,
             "avg_price": 2022.0,
-            "cur_price": 2036.0,
+            "cur_price": 2032.0,
             "buy_krw": 50000.0,
-            "val_krw": 50346.19,
-            "pnl_krw": 346.19,
-            "pnl_pct": 0.69,
+            "val_krw": 50247.28,
+            "pnl_krw": 247.28,
+            "pnl_pct": 0.49,
             "side": "buy"
           },
           {
             "symbol": "ETH_KRW",
             "qty": 0.01682935038707506,
             "avg_price": 2971000.0,
-            "cur_price": 3025000.0,
+            "cur_price": 3019000.0,
             "buy_krw": 50000.0,
-            "val_krw": 50908.78,
-            "pnl_krw": 908.78,
-            "pnl_pct": 1.82,
+            "val_krw": 50807.81,
+            "pnl_krw": 807.81,
+            "pnl_pct": 1.62,
             "side": "buy"
           },
           {
@@ -786,11 +745,11 @@
             "symbol": "ETH_KRW",
             "qty": 0.016801075268817203,
             "avg_price": 2976000.0,
-            "cur_price": 3025000.0,
+            "cur_price": 3019000.0,
             "buy_krw": 50000.0,
-            "val_krw": 50823.25,
-            "pnl_krw": 823.25,
-            "pnl_pct": 1.65,
+            "val_krw": 50722.45,
+            "pnl_krw": 722.45,
+            "pnl_pct": 1.44,
             "side": "buy"
           },
           {
@@ -813,18 +772,18 @@
           },
           {
             "name": "ETH_KRW",
-            "value": 50908.78,
-            "pct": 8.5
+            "value": 50807.81,
+            "pct": 8.4
           },
           {
             "name": "ETH_KRW",
-            "value": 50823.25,
+            "value": 50722.45,
             "pct": 8.4
           },
           {
             "name": "XRP_KRW",
-            "value": 50346.19,
-            "pct": 8.4
+            "value": 50247.28,
+            "pct": 8.3
           },
           {
             "name": "WLD_KRW",
@@ -852,14 +811,14 @@
         },
         "budget": {
           "date": "2026-03-12",
-          "hour": 3,
-          "daily_calls": 13,
+          "hour": 4,
+          "daily_calls": 16,
           "hourly_calls": 3,
-          "daily_tokens": 6500,
+          "daily_tokens": 8000,
           "category_counts": {
-            "low": 8,
-            "medium": 4,
-            "high": 1
+            "low": 9,
+            "medium": 5,
+            "high": 2
           },
           "kill_switch": false,
           "daily_trade_loss_krw": 0,
@@ -867,15 +826,15 @@
         },
         "desires": {
           "trading_cycle": {
-            "last_satisfied": "2026-03-12T03:59:05.831714+07:00",
+            "last_satisfied": "2026-03-12T04:15:05.428691+07:00",
             "consecutive_failures": 0
           },
           "gather_intel": {
-            "last_satisfied": "2026-03-12T03:48:57.235170+07:00",
+            "last_satisfied": "2026-03-12T04:04:57.248524+07:00",
             "consecutive_failures": 0
           },
           "tune_guards": {
-            "last_satisfied": "2026-03-12T03:37:53.726064+07:00",
+            "last_satisfied": "2026-03-12T04:08:53.752260+07:00",
             "consecutive_failures": 0
           },
           "reflect_on_trades": {
@@ -883,11 +842,11 @@
             "consecutive_failures": 0
           },
           "hypothesize": {
-            "last_satisfied": "2026-03-12T03:04:58.114113+07:00",
+            "last_satisfied": "2026-03-12T04:05:58.179112+07:00",
             "consecutive_failures": 0
           },
           "research_strategy": {
-            "last_satisfied": "2026-03-12T00:02:54.201329+07:00",
+            "last_satisfied": "2026-03-12T04:03:55.994614+07:00",
             "consecutive_failures": 0
           },
           "report_to_owner": {
@@ -901,7 +860,7 @@
   "summary": {
     "total_exchanges": 2,
     "total_positions": 5,
-    "total_signals": 13,
+    "total_signals": 6,
     "total_strategies": 23
   },
   "history": [
