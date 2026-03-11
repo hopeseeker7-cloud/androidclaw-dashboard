@@ -1,5 +1,5 @@
 {
-  "ts": "2026-03-11T08:45:01Z",
+  "ts": "2026-03-11T09:00:00Z",
   "host": "jjanga-phone",
   "exchanges": [
     {
@@ -16,7 +16,7 @@
       "strategy_registry": {
         "total": 12,
         "active": 12,
-        "total_signals": 10480,
+        "total_signals": 10486,
         "total_fills": 176,
         "total_pnl_krw": -365280
       },
@@ -33,7 +33,7 @@
         {
           "name": "sol_trend_rider",
           "status": "paper_test",
-          "total_signals": 4284,
+          "total_signals": 4287,
           "total_fills": 78,
           "total_pnl_krw": -336643,
           "win_count": 13,
@@ -51,7 +51,7 @@
         {
           "name": "volume_spike",
           "status": "paper_test",
-          "total_signals": 2136,
+          "total_signals": 2139,
           "total_fills": 12,
           "total_pnl_krw": -17952,
           "win_count": 3,
@@ -137,7 +137,7 @@
         "hybrid_guard_pipeline": true,
         "ai_judge_enabled": true
       },
-      "last_cycle": "2026-03-11T08:45:29Z",
+      "last_cycle": "2026-03-11T09:00:31Z",
       "config": {
         "capital_krw": 600000,
         "per_trade_krw": 50000,
@@ -149,7 +149,7 @@
         "market": "USDT"
       },
       "signals": {
-        "ts": "2026-03-11T08:45:29.876548+00:00",
+        "ts": "2026-03-11T09:00:31.077753+00:00",
         "live_count": 0,
         "paper_count": 2,
         "strategy_count": 17,
@@ -158,22 +158,22 @@
             "symbol": "BTCUSDT",
             "side": "sell",
             "confidence": 0.8,
-            "reason": "[sol_trend_rider] EMA_align_dn ER=0.59 ROC=-0.003",
-            "entry_price": 69638.46,
+            "reason": "[sol_trend_rider] EMA_align_dn ER=0.41 ROC=-0.001",
+            "entry_price": 69845.0,
             "krw": 50000
           },
           {
-            "symbol": "ETHUSDT",
+            "symbol": "BGBUSDT",
             "side": "buy",
             "confidence": 0.7000000000000001,
             "reason": "[volume_spike] volume spike x5.00 (alt learning signal)",
-            "entry_price": 2030.03,
+            "entry_price": 2.17,
             "krw": 50000
           }
         ]
       },
       "scout": {
-        "ts": "2026-03-11T08:45:04.933948+00:00",
+        "ts": "2026-03-11T09:00:01.279534+00:00",
         "universe_count": 11,
         "top_symbols": [
           "TESTZEUSUSDT",
@@ -249,8 +249,8 @@
         }
       ],
       "cycle_health": {
-        "cycles_in_log": 1091,
-        "completed": 1090,
+        "cycles_in_log": 1094,
+        "completed": 1093,
         "errors": 305
       },
       "portfolio": {
@@ -670,9 +670,9 @@
         },
         "budget": {
           "date": "2026-03-11",
-          "hour": 15,
+          "hour": 16,
           "daily_calls": 30,
-          "hourly_calls": 1,
+          "hourly_calls": 0,
           "daily_tokens": 15000,
           "category_counts": {
             "low": 20,
