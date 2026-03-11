@@ -1,5 +1,5 @@
 {
-  "ts": "2026-03-11T10:15:00Z",
+  "ts": "2026-03-11T10:30:01Z",
   "host": "jjanga-phone",
   "exchanges": [
     {
@@ -16,7 +16,7 @@
       "strategy_registry": {
         "total": 12,
         "active": 12,
-        "total_signals": 10504,
+        "total_signals": 10506,
         "total_fills": 176,
         "total_pnl_krw": -365280
       },
@@ -51,7 +51,7 @@
         {
           "name": "volume_spike",
           "status": "paper_test",
-          "total_signals": 2143,
+          "total_signals": 2145,
           "total_fills": 12,
           "total_pnl_krw": -17952,
           "win_count": 3,
@@ -137,7 +137,7 @@
         "hybrid_guard_pipeline": true,
         "ai_judge_enabled": true
       },
-      "last_cycle": "2026-03-11T10:15:20Z",
+      "last_cycle": "2026-03-11T10:30:27Z",
       "config": {
         "capital_krw": 600000,
         "per_trade_krw": 50000,
@@ -149,21 +149,30 @@
         "market": "USDT"
       },
       "signals": {
-        "ts": "2026-03-11T10:10:22.814741+00:00",
+        "ts": "2026-03-11T10:30:27.170182+00:00",
         "live_count": 0,
-        "paper_count": 0,
-        "strategy_count": 0,
-        "paper_signals": []
+        "paper_count": 1,
+        "strategy_count": 17,
+        "paper_signals": [
+          {
+            "symbol": "BTCUSDT",
+            "side": "buy",
+            "confidence": 0.7000000000000001,
+            "reason": "[volume_spike] volume spike x5.00 (alt learning signal)",
+            "entry_price": 70019.98,
+            "krw": 50000
+          }
+        ]
       },
       "scout": {
-        "ts": "2026-03-11T10:15:10.379920+00:00",
+        "ts": "2026-03-11T10:30:05.581057+00:00",
         "universe_count": 11,
         "top_symbols": [
           "TESTZEUSUSDT",
           "XLMUSDT",
           "BTCUSDT",
-          "BGBUSDT",
           "ETHUSDT",
+          "BGBUSDT",
           "WBTCUSDT",
           "USDCUSDT",
           "SOLUSDT"
@@ -232,9 +241,9 @@
         }
       ],
       "cycle_health": {
-        "cycles_in_log": 1109,
-        "completed": 1108,
-        "errors": 305
+        "cycles_in_log": 2,
+        "completed": 1,
+        "errors": 0
       },
       "portfolio": {
         "capital_krw": 600000,
@@ -257,32 +266,19 @@
       "exchange": "BITHUMB",
       "status": "NORMAL",
       "mode": "demo",
-      "positions": [
-        {
-          "symbol": "XAI_KRW",
-          "side": "buy",
-          "entry_price": 22.79,
-          "krw": 50000,
-          "qty": 2193.944712593243,
-          "opened_ts": "2026-03-11T17:12:06.259392+07:00",
-          "strategy": "sol_trend_rider",
-          "target_pct": 0.017,
-          "stop_pct": -0.01,
-          "adaptive_exit_enabled": true
-        }
-      ],
+      "positions": [],
       "pnl_today": {
         "date": "2026-03-11",
-        "pnl_krw": -5229.0,
-        "trades": 169,
-        "realized_krw": -5229.0
+        "pnl_krw": -9788.0,
+        "trades": 174,
+        "realized_krw": -9788.0
       },
       "strategy_registry": {
         "total": 11,
         "active": 11,
-        "total_signals": 5519,
-        "total_fills": 471,
-        "total_pnl_krw": -246985
+        "total_signals": 5534,
+        "total_fills": 474,
+        "total_pnl_krw": -251544
       },
       "strategies_flat": [
         {
@@ -297,7 +293,7 @@
         {
           "name": "breakout",
           "status": "paper_test",
-          "total_signals": 326,
+          "total_signals": 327,
           "total_fills": 2,
           "total_pnl_krw": -51770,
           "win_count": 0,
@@ -324,7 +320,7 @@
         {
           "name": "volume_spike",
           "status": "paper_test",
-          "total_signals": 739,
+          "total_signals": 741,
           "total_fills": 12,
           "total_pnl_krw": -61408,
           "win_count": 1,
@@ -333,7 +329,7 @@
         {
           "name": "ict_fvg_sweep",
           "status": "paper_test",
-          "total_signals": 1688,
+          "total_signals": 1697,
           "total_fills": 18,
           "total_pnl_krw": -11465,
           "win_count": 3,
@@ -342,11 +338,11 @@
         {
           "name": "sol_trend_rider",
           "status": "active",
-          "total_signals": 2178,
-          "total_fills": 401,
-          "total_pnl_krw": -125278,
+          "total_signals": 2181,
+          "total_fills": 404,
+          "total_pnl_krw": -129837,
           "win_count": 34,
-          "loss_count": 44
+          "loss_count": 46
         },
         {
           "name": "aggressive_breakout_momentum_v1",
@@ -392,7 +388,7 @@
         "hybrid_guard_pipeline": true,
         "ai_judge_enabled": true
       },
-      "last_cycle": "2026-03-11T10:12:06Z",
+      "last_cycle": "2026-03-11T10:28:07Z",
       "config": {
         "capital_krw": 600000,
         "per_trade_krw": 50000,
@@ -404,31 +400,31 @@
         "market": "KRW"
       },
       "signals": {
-        "ts": "2026-03-11T10:12:05.602850+00:00",
-        "live_count": 1,
+        "ts": "2026-03-11T10:28:06.425596+00:00",
+        "live_count": 0,
         "paper_count": 2,
         "strategy_count": 17,
         "paper_signals": [
           {
-            "symbol": "XRP_KRW",
-            "side": "sell",
-            "confidence": 0.75,
-            "reason": "[eth_squeeze_trend] ETH_sq(0.53)+MACD_bear vol=2.7x ROC=-0.1%",
-            "entry_price": 2016.0,
+            "symbol": "SOL_KRW",
+            "side": "buy",
+            "confidence": 0.35,
+            "reason": "[ict_fvg_sweep] ICT: FVG retrace [124700-125200] gap=0.4%",
+            "entry_price": 124700.0,
             "krw": 50000
           },
           {
-            "symbol": "XRP_KRW",
-            "side": "sell",
-            "confidence": 0.75,
-            "reason": "[eth_squeeze_trend_v3] ETH_sq(0.53)+MACD_bear vol=2.7x ROC=-0.1%",
-            "entry_price": 2016.0,
+            "symbol": "XAI_KRW",
+            "side": "buy",
+            "confidence": 0.35,
+            "reason": "[ict_fvg_sweep] ICT: FVG retrace [22-23] gap=6.8%",
+            "entry_price": 21.57,
             "krw": 50000
           }
         ]
       },
       "scout": {
-        "ts": "2026-03-11T10:11:57.415534+00:00",
+        "ts": "2026-03-11T10:27:58.008922+00:00",
         "universe_count": 12,
         "top_symbols": [
           "USDT_KRW",
@@ -442,6 +438,66 @@
         ]
       },
       "recent_trades": [
+        {
+          "symbol": "XTER_KRW",
+          "algo": "",
+          "type": "sell",
+          "entry": 24.58,
+          "exit": 24.58,
+          "pnl_pct": 0,
+          "pnl_krw": 0,
+          "win": false,
+          "reason": "paper: market fill at 25 | decision: [sol_trend_rider] EMA_align_dn ER=0.30 ROC=-0.004",
+          "ts": "2026-03-11T17:24:00.687952+07:00"
+        },
+        {
+          "symbol": "XAI_KRW",
+          "algo": "sol_trend_rider",
+          "type": "sell",
+          "entry": 21.36,
+          "exit": 21.36,
+          "pnl_pct": -5.07,
+          "pnl_krw": -2777,
+          "win": false,
+          "reason": "exit: stop-loss hit (-5.07% <= -1.00%)",
+          "ts": "2026-03-11T17:20:04.252958+07:00"
+        },
+        {
+          "symbol": "XAI_KRW",
+          "algo": "",
+          "type": "buy",
+          "entry": 22.5,
+          "exit": 22.5,
+          "pnl_pct": 0,
+          "pnl_krw": 0,
+          "win": false,
+          "reason": "paper: market fill at 22 | decision: [sol_trend_rider] EMA_align_up ER=0.41 ROC=0.022",
+          "ts": "2026-03-11T17:16:00.230489+07:00"
+        },
+        {
+          "symbol": "XTER_KRW",
+          "algo": "",
+          "type": "sell",
+          "entry": 24.64,
+          "exit": 24.64,
+          "pnl_pct": 0,
+          "pnl_krw": 0,
+          "win": false,
+          "reason": "paper: market fill at 25 | decision: [sol_trend_rider] EMA_align_dn ER=0.25 ROC=-0.002",
+          "ts": "2026-03-11T17:16:00.230489+07:00"
+        },
+        {
+          "symbol": "XAI_KRW",
+          "algo": "sol_trend_rider",
+          "type": "sell",
+          "entry": 22.09,
+          "exit": 22.09,
+          "pnl_pct": -3.07,
+          "pnl_krw": -1782,
+          "win": false,
+          "reason": "exit: stop-loss hit (-3.07% <= -1.00%)",
+          "ts": "2026-03-11T17:15:59.847230+07:00"
+        },
         {
           "symbol": "XAI_KRW",
           "algo": "",
@@ -561,66 +617,6 @@
           "win": false,
           "reason": "exit: stop-loss hit (-1.01% <= -1.00%)",
           "ts": "2026-03-11T13:02:03.158711+07:00"
-        },
-        {
-          "symbol": "BTC_KRW",
-          "algo": "sol_trend_rider",
-          "type": "sell",
-          "entry": 102558000.0,
-          "exit": 102558000.0,
-          "pnl_pct": -1.47,
-          "pnl_krw": -981,
-          "win": false,
-          "reason": "exit: stop-loss hit (-1.47% <= -1.00%)",
-          "ts": "2026-03-11T07:26:35.619138+07:00"
-        },
-        {
-          "symbol": "XRP_KRW",
-          "algo": "sol_trend_rider",
-          "type": "sell",
-          "entry": 2074.0,
-          "exit": 2074.0,
-          "pnl_pct": -1.0,
-          "pnl_krw": -49552,
-          "win": false,
-          "reason": "exit: stop-loss hit (-1.00% <= -1.00%)",
-          "ts": "2026-03-10T22:27:00.219915+07:00"
-        },
-        {
-          "symbol": "XRP_KRW",
-          "algo": "sol_trend_rider",
-          "type": "sell",
-          "entry": 2071.0,
-          "exit": 2071.0,
-          "pnl_pct": -1.15,
-          "pnl_krw": -822,
-          "win": false,
-          "reason": "exit: stop-loss hit (-1.15% <= -1.00%)",
-          "ts": "2026-03-10T22:19:51.636805+07:00"
-        },
-        {
-          "symbol": "DOGE_KRW",
-          "algo": "sol_trend_rider",
-          "type": "sell",
-          "entry": 142.0,
-          "exit": 142.0,
-          "pnl_pct": -2.07,
-          "pnl_krw": -1281,
-          "win": false,
-          "reason": "exit: stop-loss hit (-2.07% <= -1.00%)",
-          "ts": "2026-03-10T22:19:51.636805+07:00"
-        },
-        {
-          "symbol": "XRP_KRW",
-          "algo": "sol_trend_rider",
-          "type": "sell",
-          "entry": 2069.0,
-          "exit": 2069.0,
-          "pnl_pct": -1.24,
-          "pnl_krw": -869,
-          "win": false,
-          "reason": "exit: stop-loss hit (-1.24% <= -1.00%)",
-          "ts": "2026-03-10T22:16:15.246915+07:00"
         }
       ],
       "cycle_health": {
@@ -630,34 +626,17 @@
       },
       "portfolio": {
         "capital_krw": 600000,
-        "cash_krw": 352546.0,
-        "invested_krw": 50000.0,
-        "portfolio_value": 402546.0,
-        "total_pnl_krw": -197454.0,
-        "total_pnl_pct": -32.91,
-        "holdings": [
-          {
-            "symbol": "XAI_KRW",
-            "qty": 2193.944712593243,
-            "avg_price": 22.79,
-            "cur_price": 22.79,
-            "buy_krw": 50000.0,
-            "val_krw": 50000.0,
-            "pnl_krw": 0.0,
-            "pnl_pct": 0.0,
-            "side": "buy"
-          }
-        ],
+        "cash_krw": 397987.0,
+        "invested_krw": 0,
+        "portfolio_value": 397987.0,
+        "total_pnl_krw": -202013.0,
+        "total_pnl_pct": -33.67,
+        "holdings": [],
         "allocation": [
           {
             "name": "현금",
-            "value": 352546.0,
-            "pct": 91.7
-          },
-          {
-            "name": "XAI_KRW",
-            "value": 50000.0,
-            "pct": 8.3
+            "value": 397987.0,
+            "pct": 100.0
           }
         ]
       },
@@ -666,35 +645,35 @@
           "state": "frustrated",
           "since": "2026-03-11T15:21:49.394390+07:00",
           "consecutive_wins": 0,
-          "consecutive_losses": 4,
-          "daily_pnl_pct": -0.5229,
-          "win_rate_7d": 0.08577405857740586,
-          "last_trade_ts": "2026-03-11T17:12:06.259392+07:00",
+          "consecutive_losses": 6,
+          "daily_pnl_pct": -0.9788,
+          "win_rate_7d": 0.08506224066390042,
+          "last_trade_ts": "2026-03-11T17:24:00.687952+07:00",
           "transitions_today": 5,
           "date": "2026-03-11"
         },
         "budget": {
           "date": "2026-03-11",
           "hour": 17,
-          "daily_calls": 31,
-          "hourly_calls": 0,
-          "daily_tokens": 15500,
+          "daily_calls": 32,
+          "hourly_calls": 1,
+          "daily_tokens": 16000,
           "category_counts": {
             "low": 20,
             "high": 3,
-            "medium": 8
+            "medium": 9
           },
           "kill_switch": false,
-          "daily_trade_loss_krw": -5229.0,
+          "daily_trade_loss_krw": -9788.0,
           "hourly_trades": 0
         },
         "desires": {
           "trading_cycle": {
-            "last_satisfied": "2026-03-11T17:12:06.286294+07:00",
+            "last_satisfied": "2026-03-11T17:28:07.089764+07:00",
             "consecutive_failures": 0
           },
           "gather_intel": {
-            "last_satisfied": "2026-03-11T17:08:33.897251+07:00",
+            "last_satisfied": "2026-03-11T17:24:54.644558+07:00",
             "consecutive_failures": 0
           },
           "tune_guards": {
@@ -702,11 +681,11 @@
             "consecutive_failures": 0
           },
           "reflect_on_trades": {
-            "last_satisfied": "2026-03-11T16:15:09.510840+07:00",
+            "last_satisfied": "2026-03-11T17:16:50.843972+07:00",
             "consecutive_failures": 0
           },
           "hypothesize": {
-            "last_satisfied": "2026-03-11T16:16:49.571611+07:00",
+            "last_satisfied": "2026-03-11T17:17:55.251036+07:00",
             "consecutive_failures": 0
           },
           "research_strategy": {
@@ -714,7 +693,7 @@
             "consecutive_failures": 0
           },
           "report_to_owner": {
-            "last_satisfied": "2026-03-11T16:20:09.948473+07:00",
+            "last_satisfied": "2026-03-11T17:20:51.362606+07:00",
             "consecutive_failures": 0
           }
         }
@@ -723,8 +702,8 @@
   ],
   "summary": {
     "total_exchanges": 2,
-    "total_positions": 1,
-    "total_signals": 2,
+    "total_positions": 0,
+    "total_signals": 3,
     "total_strategies": 23
   },
   "history": [
