@@ -1,5 +1,5 @@
 {
-  "ts": "2026-03-12T12:30:00Z",
+  "ts": "2026-03-12T12:45:00Z",
   "host": "jjanga-phone",
   "exchanges": [
     {
@@ -129,7 +129,7 @@
       "strategy_registry": {
         "total": 12,
         "active": 12,
-        "total_signals": 11052,
+        "total_signals": 11055,
         "total_fills": 185,
         "total_pnl_krw": -362049
       },
@@ -146,7 +146,7 @@
         {
           "name": "sol_trend_rider",
           "status": "paper_test",
-          "total_signals": 4682,
+          "total_signals": 4685,
           "total_fills": 78,
           "total_pnl_krw": -336643,
           "win_count": 13,
@@ -262,14 +262,14 @@
         "market": "USDT"
       },
       "signals": {
-        "ts": "2026-03-12T12:28:05.702341+00:00",
+        "ts": "2026-03-12T12:42:26.595938+00:00",
         "live_count": 0,
         "paper_count": 0,
         "strategy_count": 0,
         "paper_signals": []
       },
       "scout": {
-        "ts": "2026-03-12T12:27:54.385480+00:00",
+        "ts": "2026-03-12T12:45:43.477839+00:00",
         "universe_count": 11,
         "top_symbols": [
           "BTCUSDT",
@@ -444,11 +444,11 @@
             "symbol": "ETHUSDT",
             "qty": 121.14692214129607,
             "avg_price": 2063.61,
-            "cur_price": 2062.31,
+            "cur_price": 2062.56,
             "buy_krw": 250000.0,
-            "val_krw": 249842.51,
-            "pnl_krw": -157.49,
-            "pnl_pct": -0.06,
+            "val_krw": 249872.8,
+            "pnl_krw": -127.2,
+            "pnl_pct": -0.05,
             "side": "long"
           },
           {
@@ -466,11 +466,11 @@
             "symbol": "ETHUSDT",
             "qty": 120.7577792161371,
             "avg_price": 2070.26,
-            "cur_price": 2062.31,
+            "cur_price": 2062.56,
             "buy_krw": 250000.0,
-            "val_krw": 249039.98,
-            "pnl_krw": -960.02,
-            "pnl_pct": -0.38,
+            "val_krw": 249070.17,
+            "pnl_krw": -929.83,
+            "pnl_pct": -0.37,
             "side": "long"
           },
           {
@@ -510,12 +510,12 @@
         "allocation": [
           {
             "name": "ETHUSDT",
-            "value": 249842.51,
-            "pct": 42.5
+            "value": 249872.8,
+            "pct": 42.6
           },
           {
             "name": "ETHUSDT",
-            "value": 249039.98,
+            "value": 249070.17,
             "pct": 42.4
           },
           {
@@ -560,12 +560,12 @@
         "budget": {
           "date": "2026-03-12",
           "hour": 19,
-          "daily_calls": 4,
-          "hourly_calls": 1,
-          "daily_tokens": 2000,
+          "daily_calls": 5,
+          "hourly_calls": 2,
+          "daily_tokens": 2500,
           "category_counts": {
             "high": 1,
-            "low": 3
+            "low": 4
           },
           "kill_switch": false,
           "daily_trade_loss_krw": 0.0,
@@ -573,23 +573,23 @@
         },
         "desires": {
           "trading_cycle": {
-            "last_satisfied": "2026-03-12T19:28:06.659099+07:00",
+            "last_satisfied": "2026-03-12T19:42:27.420524+07:00",
             "consecutive_failures": 0
           },
           "gather_intel": {
-            "last_satisfied": "2026-03-12T19:18:42.263842+07:00",
+            "last_satisfied": "2026-03-12T19:33:58.476755+07:00",
             "consecutive_failures": 0
           },
           "tune_guards": {
-            "last_satisfied": "2026-03-12T19:04:09.927885+07:00",
+            "last_satisfied": "2026-03-12T19:35:32.800288+07:00",
             "consecutive_failures": 0
           },
           "reflect_on_trades": {
-            "last_satisfied": "2026-03-12T19:21:15.003101+07:00",
+            "last_satisfied": "2026-03-12T19:41:33.921123+07:00",
             "consecutive_failures": 0
           },
           "hypothesize": {
-            "last_satisfied": "2026-03-12T19:17:37.423828+07:00",
+            "last_satisfied": "2026-03-12T19:32:53.511841+07:00",
             "consecutive_failures": 0
           },
           "research_strategy": {
@@ -597,7 +597,7 @@
             "consecutive_failures": 0
           },
           "report_to_owner": {
-            "last_satisfied": "2026-03-12T19:03:40.447596+07:00",
+            "last_satisfied": "2026-03-12T19:34:24.198842+07:00",
             "consecutive_failures": 0
           }
         }
@@ -1072,7 +1072,7 @@
             "consecutive_failures": 0
           },
           "gather_intel": {
-            "last_satisfied": "2026-03-12T19:17:54.181176+07:00",
+            "last_satisfied": "2026-03-12T19:34:34.352629+07:00",
             "consecutive_failures": 0
           },
           "tune_guards": {
@@ -1084,7 +1084,7 @@
             "consecutive_failures": 0
           },
           "hypothesize": {
-            "last_satisfied": "2026-03-12T19:26:10.076208+07:00",
+            "last_satisfied": "2026-03-12T19:42:50.085783+07:00",
             "consecutive_failures": 0
           },
           "research_strategy": {
@@ -1092,7 +1092,7 @@
             "consecutive_failures": 0
           },
           "report_to_owner": {
-            "last_satisfied": "2026-03-12T18:59:30.575176+07:00",
+            "last_satisfied": "2026-03-12T19:31:10.557127+07:00",
             "consecutive_failures": 0
           }
         }
