@@ -1,5 +1,5 @@
 {
-  "ts": "2026-03-12T08:15:00Z",
+  "ts": "2026-03-12T08:30:00Z",
   "host": "jjanga-phone",
   "exchanges": [
     {
@@ -97,7 +97,7 @@
       "strategy_registry": {
         "total": 12,
         "active": 12,
-        "total_signals": 10932,
+        "total_signals": 10938,
         "total_fills": 183,
         "total_pnl_krw": -362049
       },
@@ -114,7 +114,7 @@
         {
           "name": "sol_trend_rider",
           "status": "paper_test",
-          "total_signals": 4592,
+          "total_signals": 4597,
           "total_fills": 78,
           "total_pnl_krw": -336643,
           "win_count": 13,
@@ -132,7 +132,7 @@
         {
           "name": "volume_spike",
           "status": "active",
-          "total_signals": 2257,
+          "total_signals": 2258,
           "total_fills": 19,
           "total_pnl_krw": -14721,
           "win_count": 5,
@@ -218,7 +218,7 @@
         "hybrid_guard_pipeline": true,
         "ai_judge_enabled": true
       },
-      "last_cycle": "2026-03-12T08:15:30Z",
+      "last_cycle": "2026-03-12T08:30:33Z",
       "config": {
         "capital_krw": 600000,
         "per_trade_krw": 50000,
@@ -230,31 +230,23 @@
         "market": "USDT"
       },
       "signals": {
-        "ts": "2026-03-12T08:15:24.659400+00:00",
-        "live_count": 0,
-        "paper_count": 2,
+        "ts": "2026-03-12T08:30:22.148516+00:00",
+        "live_count": 1,
+        "paper_count": 1,
         "strategy_count": 17,
         "paper_signals": [
-          {
-            "symbol": "BTCUSDT",
-            "side": "buy",
-            "confidence": 0.8,
-            "reason": "[sol_trend_rider] EMA_align_up ER=0.51 ROC=0.005",
-            "entry_price": 70780.37,
-            "krw": 50000
-          },
           {
             "symbol": "ETHUSDT",
             "side": "buy",
             "confidence": 0.8,
-            "reason": "[sol_trend_rider] EMA_align_up ER=0.86 ROC=0.004",
-            "entry_price": 2072.9,
+            "reason": "[sol_trend_rider] EMA_align_up ER=0.82 ROC=0.002",
+            "entry_price": 2067.93,
             "krw": 50000
           }
         ]
       },
       "scout": {
-        "ts": "2026-03-12T08:15:03.113161+00:00",
+        "ts": "2026-03-12T08:30:00.782231+00:00",
         "universe_count": 11,
         "top_symbols": [
           "TESTZEUSUSDT",
@@ -378,8 +370,8 @@
         }
       ],
       "cycle_health": {
-        "cycles_in_log": 263,
-        "completed": 262,
+        "cycles_in_log": 266,
+        "completed": 266,
         "errors": 2
       },
       "portfolio": {
@@ -538,7 +530,7 @@
       "strategy_registry": {
         "total": 11,
         "active": 11,
-        "total_signals": 7313,
+        "total_signals": 7335,
         "total_fills": 483,
         "total_pnl_krw": -258528
       },
@@ -555,7 +547,7 @@
         {
           "name": "breakout",
           "status": "paper_test",
-          "total_signals": 462,
+          "total_signals": 466,
           "total_fills": 2,
           "total_pnl_krw": -51770,
           "win_count": 0,
@@ -582,7 +574,7 @@
         {
           "name": "volume_spike",
           "status": "paper_test",
-          "total_signals": 1055,
+          "total_signals": 1060,
           "total_fills": 12,
           "total_pnl_krw": -61408,
           "win_count": 1,
@@ -591,7 +583,7 @@
         {
           "name": "ict_fvg_sweep",
           "status": "paper_test",
-          "total_signals": 2159,
+          "total_signals": 2161,
           "total_fills": 18,
           "total_pnl_krw": -11465,
           "win_count": 3,
@@ -600,7 +592,7 @@
         {
           "name": "sol_trend_rider",
           "status": "active",
-          "total_signals": 2964,
+          "total_signals": 2975,
           "total_fills": 413,
           "total_pnl_krw": -136821,
           "win_count": 34,
@@ -650,7 +642,7 @@
         "hybrid_guard_pipeline": true,
         "ai_judge_enabled": true
       },
-      "last_cycle": "2026-03-12T08:15:17Z",
+      "last_cycle": "2026-03-12T08:30:22Z",
       "config": {
         "capital_krw": 600000,
         "per_trade_krw": 50000,
@@ -662,14 +654,14 @@
         "market": "KRW"
       },
       "signals": {
-        "ts": "2026-03-12T08:14:21.840397+00:00",
-        "live_count": 0,
+        "ts": "2026-03-12T08:30:21.907162+00:00",
+        "live_count": 3,
         "paper_count": 0,
-        "strategy_count": 0,
+        "strategy_count": 17,
         "paper_signals": []
       },
       "scout": {
-        "ts": "2026-03-12T08:14:13.958567+00:00",
+        "ts": "2026-03-12T08:30:13.918235+00:00",
         "universe_count": 12,
         "top_symbols": [
           "USDT_KRW",
@@ -881,33 +873,33 @@
             "symbol": "XRP_KRW",
             "qty": 24.727992087042534,
             "avg_price": 2022.0,
-            "cur_price": 2014.0,
+            "cur_price": 2018.0,
             "buy_krw": 50000.0,
-            "val_krw": 49802.18,
-            "pnl_krw": -197.82,
-            "pnl_pct": -0.4,
+            "val_krw": 49901.09,
+            "pnl_krw": -98.91,
+            "pnl_pct": -0.2,
             "side": "buy"
           },
           {
             "symbol": "ETH_KRW",
             "qty": 0.01682935038707506,
             "avg_price": 2971000.0,
-            "cur_price": 2987000.0,
+            "cur_price": 2995000.0,
             "buy_krw": 50000.0,
-            "val_krw": 50269.27,
-            "pnl_krw": 269.27,
-            "pnl_pct": 0.54,
+            "val_krw": 50403.9,
+            "pnl_krw": 403.9,
+            "pnl_pct": 0.81,
             "side": "buy"
           },
           {
             "symbol": "ETH_KRW",
             "qty": 0.016801075268817203,
             "avg_price": 2976000.0,
-            "cur_price": 2987000.0,
+            "cur_price": 2995000.0,
             "buy_krw": 50000.0,
-            "val_krw": 50184.81,
-            "pnl_krw": 184.81,
-            "pnl_pct": 0.37,
+            "val_krw": 50319.22,
+            "pnl_krw": 319.22,
+            "pnl_pct": 0.64,
             "side": "buy"
           },
           {
@@ -930,17 +922,17 @@
           },
           {
             "name": "ETH_KRW",
-            "value": 50269.27,
+            "value": 50403.9,
             "pct": 8.4
           },
           {
             "name": "ETH_KRW",
-            "value": 50184.81,
+            "value": 50319.22,
             "pct": 8.4
           },
           {
             "name": "XRP_KRW",
-            "value": 49802.18,
+            "value": 49901.09,
             "pct": 8.3
           },
           {
@@ -965,12 +957,12 @@
         "budget": {
           "date": "2026-03-12",
           "hour": 15,
-          "daily_calls": 42,
-          "hourly_calls": 0,
-          "daily_tokens": 22500,
+          "daily_calls": 43,
+          "hourly_calls": 1,
+          "daily_tokens": 23000,
           "category_counts": {
             "low": 20,
-            "medium": 13,
+            "medium": 14,
             "high": 4
           },
           "kill_switch": false,
@@ -979,7 +971,7 @@
         },
         "desires": {
           "trading_cycle": {
-            "last_satisfied": "2026-03-12T15:14:22.866606+07:00",
+            "last_satisfied": "2026-03-12T15:30:22.954090+07:00",
             "consecutive_failures": 0
           },
           "gather_intel": {
@@ -995,7 +987,7 @@
             "consecutive_failures": 0
           },
           "hypothesize": {
-            "last_satisfied": "2026-03-12T14:25:31.529830+07:00",
+            "last_satisfied": "2026-03-12T15:27:17.638193+07:00",
             "consecutive_failures": 0
           },
           "research_strategy": {
@@ -1003,7 +995,7 @@
             "consecutive_failures": 0
           },
           "report_to_owner": {
-            "last_satisfied": "2026-03-12T14:48:13.614576+07:00",
+            "last_satisfied": "2026-03-12T15:19:13.645201+07:00",
             "consecutive_failures": 0
           }
         }
@@ -1013,7 +1005,7 @@
   "summary": {
     "total_exchanges": 2,
     "total_positions": 9,
-    "total_signals": 2,
+    "total_signals": 1,
     "total_strategies": 23
   },
   "history": [
