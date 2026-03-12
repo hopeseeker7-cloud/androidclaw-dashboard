@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-03-12T19:30:00Z",
+  "timestamp": "2026-03-12T19:45:00Z",
   "servers": [
     {
       "id": "openclaw",
@@ -9,7 +9,7 @@
       "zone": "us-central1-a",
       "role": "자동매매 엔진",
       "status": "healthy",
-      "lastCheck": "2026-03-12T19:30:00Z",
+      "lastCheck": "2026-03-12T19:45:00Z",
       "consecutiveFailures": 0,
       "checks": {
         "ssh": true,
@@ -26,12 +26,12 @@
       "zone": "local",
       "role": "전략 연구 AI (v2)",
       "status": "healthy",
-      "lastCheck": "2026-03-12T19:30:00Z",
+      "lastCheck": "2026-03-12T19:45:00Z",
       "consecutiveFailures": 0,
       "checks": {
-        "research_log_age_h": 0.4,
+        "research_log_age_h": 0.6,
         "research_log_fresh": true,
-        "journal_age_h": 0.4,
+        "journal_age_h": 0.7,
         "cron_research": true,
         "cron_deepreview": true
       },
