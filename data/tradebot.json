@@ -1,5 +1,5 @@
 {
-  "ts": "2026-03-12T14:00:00Z",
+  "ts": "2026-03-12T14:15:00Z",
   "host": "jjanga-phone",
   "exchanges": [
     {
@@ -129,7 +129,7 @@
       "strategy_registry": {
         "total": 12,
         "active": 12,
-        "total_signals": 11091,
+        "total_signals": 11092,
         "total_fills": 185,
         "total_pnl_krw": -362049
       },
@@ -164,7 +164,7 @@
         {
           "name": "volume_spike",
           "status": "active",
-          "total_signals": 2289,
+          "total_signals": 2290,
           "total_fills": 21,
           "total_pnl_krw": -14721,
           "win_count": 5,
@@ -262,23 +262,14 @@
         "market": "USDT"
       },
       "signals": {
-        "ts": "2026-03-12T13:58:06.786358+00:00",
-        "live_count": 1,
-        "paper_count": 1,
-        "strategy_count": 17,
-        "paper_signals": [
-          {
-            "symbol": "BTCUSDT",
-            "side": "sell",
-            "confidence": 0.65,
-            "reason": "[sol_trend_rider] EMA_align_dn ER=0.37 ROC=-0.002",
-            "entry_price": 69553.74,
-            "krw": 50000
-          }
-        ]
+        "ts": "2026-03-12T14:12:24.256648+00:00",
+        "live_count": 0,
+        "paper_count": 0,
+        "strategy_count": 0,
+        "paper_signals": []
       },
       "scout": {
-        "ts": "2026-03-12T13:57:55.176092+00:00",
+        "ts": "2026-03-12T14:12:12.995729+00:00",
         "universe_count": 11,
         "top_symbols": [
           "BTCUSDT",
@@ -442,10 +433,10 @@
             "symbol": "BTCUSDT",
             "qty": 3.5254466740936077,
             "avg_price": 70688.0,
-            "cur_price": 70422.43,
+            "cur_price": 70421.1,
             "buy_krw": 249206.77,
-            "val_krw": 248270.52,
-            "pnl_krw": -936.25,
+            "val_krw": 248265.83,
+            "pnl_krw": -940.94,
             "pnl_pct": -0.38,
             "side": "long"
           },
@@ -453,21 +444,21 @@
             "symbol": "ETHUSDT",
             "qty": 121.14692214129607,
             "avg_price": 2063.61,
-            "cur_price": 2054.71,
+            "cur_price": 2072.19,
             "buy_krw": 250000.0,
-            "val_krw": 248921.79,
-            "pnl_krw": -1078.21,
-            "pnl_pct": -0.43,
+            "val_krw": 251039.44,
+            "pnl_krw": 1039.44,
+            "pnl_pct": 0.42,
             "side": "long"
           },
           {
             "symbol": "BTCUSDT",
             "qty": 3.5360833972539343,
             "avg_price": 70699.69,
-            "cur_price": 70422.43,
+            "cur_price": 70421.1,
             "buy_krw": 250000.0,
-            "val_krw": 249019.59,
-            "pnl_krw": -980.41,
+            "val_krw": 249014.88,
+            "pnl_krw": -985.12,
             "pnl_pct": -0.39,
             "side": "long"
           },
@@ -475,11 +466,11 @@
             "symbol": "ETHUSDT",
             "qty": 120.7577792161371,
             "avg_price": 2070.26,
-            "cur_price": 2054.71,
+            "cur_price": 2072.19,
             "buy_krw": 250000.0,
-            "val_krw": 248122.22,
-            "pnl_krw": -1877.78,
-            "pnl_pct": -0.75,
+            "val_krw": 250233.06,
+            "pnl_krw": 233.06,
+            "pnl_pct": 0.09,
             "side": "long"
           },
           {
@@ -518,39 +509,39 @@
         ],
         "allocation": [
           {
-            "name": "BTCUSDT",
-            "value": 249019.59,
-            "pct": 42.5
+            "name": "ETHUSDT",
+            "value": 251039.44,
+            "pct": 42.6
           },
           {
             "name": "ETHUSDT",
-            "value": 248921.79,
-            "pct": 42.5
+            "value": 250233.06,
+            "pct": 42.4
+          },
+          {
+            "name": "BTCUSDT",
+            "value": 249014.88,
+            "pct": 42.2
           },
           {
             "name": "BGBUSDT",
             "value": 248848.46,
-            "pct": 42.5
+            "pct": 42.2
           },
           {
             "name": "BTCUSDT",
-            "value": 248270.52,
-            "pct": 42.4
-          },
-          {
-            "name": "ETHUSDT",
-            "value": 248122.22,
-            "pct": 42.4
+            "value": 248265.83,
+            "pct": 42.1
           },
           {
             "name": "XLMUSDT",
             "value": 246714.64,
-            "pct": 42.1
+            "pct": 41.8
           },
           {
             "name": "SOLUSDT",
             "value": 244664.37,
-            "pct": 41.8
+            "pct": 41.5
           }
         ]
       },
@@ -569,12 +560,12 @@
         "budget": {
           "date": "2026-03-12",
           "hour": 21,
-          "daily_calls": 7,
-          "hourly_calls": 0,
-          "daily_tokens": 3500,
+          "daily_calls": 8,
+          "hourly_calls": 1,
+          "daily_tokens": 4000,
           "category_counts": {
             "high": 1,
-            "low": 6
+            "low": 7
           },
           "kill_switch": false,
           "daily_trade_loss_krw": 0.0,
@@ -582,23 +573,23 @@
         },
         "desires": {
           "trading_cycle": {
-            "last_satisfied": "2026-03-12T20:58:07.249297+07:00",
+            "last_satisfied": "2026-03-12T21:12:24.922437+07:00",
             "consecutive_failures": 0
           },
           "gather_intel": {
-            "last_satisfied": "2026-03-12T20:52:58.755766+07:00",
+            "last_satisfied": "2026-03-12T21:09:28.926702+07:00",
             "consecutive_failures": 0
           },
           "tune_guards": {
-            "last_satisfied": "2026-03-12T20:35:42.667805+07:00",
+            "last_satisfied": "2026-03-12T21:06:29.037911+07:00",
             "consecutive_failures": 0
           },
           "reflect_on_trades": {
-            "last_satisfied": "2026-03-12T20:42:54.619309+07:00",
+            "last_satisfied": "2026-03-12T21:03:37.597770+07:00",
             "consecutive_failures": 0
           },
           "hypothesize": {
-            "last_satisfied": "2026-03-12T20:49:20.254149+07:00",
+            "last_satisfied": "2026-03-12T21:04:20.288704+07:00",
             "consecutive_failures": 0
           },
           "research_strategy": {
@@ -606,7 +597,7 @@
             "consecutive_failures": 0
           },
           "report_to_owner": {
-            "last_satisfied": "2026-03-12T20:35:00.196399+07:00",
+            "last_satisfied": "2026-03-12T21:05:46.803911+07:00",
             "consecutive_failures": 0
           }
         }
@@ -1062,9 +1053,9 @@
         },
         "budget": {
           "date": "2026-03-12",
-          "hour": 20,
+          "hour": 21,
           "daily_calls": 7,
-          "hourly_calls": 3,
+          "hourly_calls": 0,
           "daily_tokens": 3500,
           "category_counts": {
             "low": 6,
@@ -1081,7 +1072,7 @@
             "consecutive_failures": 0
           },
           "gather_intel": {
-            "last_satisfied": "2026-03-12T20:44:37.562676+07:00",
+            "last_satisfied": "2026-03-12T21:01:17.667130+07:00",
             "consecutive_failures": 0
           },
           "tune_guards": {
@@ -1089,11 +1080,11 @@
             "consecutive_failures": 0
           },
           "reflect_on_trades": {
-            "last_satisfied": "2026-03-12T20:49:33.681223+07:00",
+            "last_satisfied": "2026-03-12T21:11:13.613885+07:00",
             "consecutive_failures": 0
           },
           "hypothesize": {
-            "last_satisfied": "2026-03-12T20:46:13.469947+07:00",
+            "last_satisfied": "2026-03-12T21:02:53.477503+07:00",
             "consecutive_failures": 0
           },
           "research_strategy": {
@@ -1101,7 +1092,7 @@
             "consecutive_failures": 0
           },
           "report_to_owner": {
-            "last_satisfied": "2026-03-12T20:34:30.645992+07:00",
+            "last_satisfied": "2026-03-12T21:04:33.972189+07:00",
             "consecutive_failures": 0
           }
         }
@@ -1111,7 +1102,7 @@
   "summary": {
     "total_exchanges": 2,
     "total_positions": 9,
-    "total_signals": 3,
+    "total_signals": 2,
     "total_strategies": 23
   },
   "history": [
