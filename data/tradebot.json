@@ -1,5 +1,5 @@
 {
-  "ts": "2026-03-14T05:00:00Z",
+  "ts": "2026-03-14T05:15:00Z",
   "host": "jjanga-phone",
   "exchanges": [
     {
@@ -33,7 +33,7 @@
       "strategy_registry": {
         "total": 12,
         "active": 3,
-        "total_signals": 11522,
+        "total_signals": 11526,
         "total_fills": 186,
         "total_pnl_krw": -376598
       },
@@ -50,7 +50,7 @@
         {
           "name": "sol_trend_rider",
           "status": "paper_test",
-          "total_signals": 5004,
+          "total_signals": 5006,
           "total_fills": 78,
           "total_pnl_krw": -336643,
           "win_count": 13,
@@ -68,7 +68,7 @@
         {
           "name": "volume_spike",
           "status": "active",
-          "total_signals": 2417,
+          "total_signals": 2418,
           "total_fills": 22,
           "total_pnl_krw": -29270,
           "win_count": 6,
@@ -86,7 +86,7 @@
         {
           "name": "breakout",
           "status": "active",
-          "total_signals": 866,
+          "total_signals": 867,
           "total_fills": 3,
           "total_pnl_krw": -865,
           "win_count": 2,
@@ -166,14 +166,23 @@
         "market": "USDT"
       },
       "signals": {
-        "ts": "2026-03-14T04:57:41.960055+00:00",
+        "ts": "2026-03-14T05:12:21.297583+00:00",
         "live_count": 0,
-        "paper_count": 0,
-        "strategy_count": 0,
-        "paper_signals": []
+        "paper_count": 1,
+        "strategy_count": 8,
+        "paper_signals": [
+          {
+            "symbol": "ETHUSDT",
+            "side": "buy",
+            "confidence": 0.8,
+            "reason": "[sol_trend_rider] EMA_align_up ER=0.44 ROC=0.001",
+            "entry_price": 2105.66,
+            "krw": 50000
+          }
+        ]
       },
       "scout": {
-        "ts": "2026-03-14T04:57:08.622014+00:00",
+        "ts": "2026-03-14T05:15:37.495074+00:00",
         "universe_count": 11,
         "top_symbols": [
           "TESTZEUSUSDT",
@@ -385,11 +394,11 @@
             "symbol": "ETHUSDT",
             "qty": 118.6233991772281,
             "avg_price": 2107.51,
-            "cur_price": 2101.55,
+            "cur_price": 2090.74,
             "buy_krw": 250000.0,
-            "val_krw": 249293.0,
-            "pnl_krw": -707.0,
-            "pnl_pct": -0.28,
+            "val_krw": 248010.69,
+            "pnl_krw": -1989.31,
+            "pnl_pct": -0.8,
             "side": "long"
           }
         ],
@@ -397,12 +406,12 @@
           {
             "name": "현금",
             "value": -26598.0,
-            "pct": 58.4
+            "pct": 58.5
           },
           {
             "name": "ETHUSDT",
-            "value": 249293.0,
-            "pct": 41.6
+            "value": 248010.69,
+            "pct": 41.5
           }
         ]
       },
@@ -435,7 +444,7 @@
         },
         "desires": {
           "trading_cycle": {
-            "last_satisfied": "2026-03-14T11:57:42.656398+07:00",
+            "last_satisfied": "2026-03-14T12:12:22.118734+07:00",
             "consecutive_failures": 0
           },
           "gather_intel": {
@@ -1089,7 +1098,7 @@
             "consecutive_failures": 0
           },
           "gather_intel": {
-            "last_satisfied": "2026-03-14T11:56:51.244808+07:00",
+            "last_satisfied": "2026-03-14T12:13:37.773442+07:00",
             "consecutive_failures": 0
           },
           "tune_guards": {
@@ -1123,7 +1132,7 @@
   "summary": {
     "total_exchanges": 2,
     "total_positions": 9,
-    "total_signals": 0,
+    "total_signals": 1,
     "total_strategies": 23
   },
   "history": [
