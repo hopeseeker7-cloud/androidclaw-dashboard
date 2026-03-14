@@ -1,5 +1,5 @@
 {
-  "ts": "2026-03-14T04:30:01Z",
+  "ts": "2026-03-14T04:45:00Z",
   "host": "jjanga-phone",
   "exchanges": [
     {
@@ -33,7 +33,7 @@
       "strategy_registry": {
         "total": 12,
         "active": 3,
-        "total_signals": 11516,
+        "total_signals": 11521,
         "total_fills": 186,
         "total_pnl_krw": -376598
       },
@@ -50,7 +50,7 @@
         {
           "name": "sol_trend_rider",
           "status": "paper_test",
-          "total_signals": 5000,
+          "total_signals": 5004,
           "total_fills": 78,
           "total_pnl_krw": -336643,
           "win_count": 13,
@@ -68,7 +68,7 @@
         {
           "name": "volume_spike",
           "status": "active",
-          "total_signals": 2415,
+          "total_signals": 2416,
           "total_fills": 22,
           "total_pnl_krw": -29270,
           "win_count": 6,
@@ -166,14 +166,23 @@
         "market": "USDT"
       },
       "signals": {
-        "ts": "2026-03-14T04:28:38.543366+00:00",
+        "ts": "2026-03-14T04:43:07.727525+00:00",
         "live_count": 1,
-        "paper_count": 0,
+        "paper_count": 1,
         "strategy_count": 8,
-        "paper_signals": []
+        "paper_signals": [
+          {
+            "symbol": "ETHUSDT",
+            "side": "buy",
+            "confidence": 0.65,
+            "reason": "[sol_trend_rider] EMA_align_up ER=0.29 ROC=0.004",
+            "entry_price": 2107.51,
+            "krw": 50000
+          }
+        ]
       },
       "scout": {
-        "ts": "2026-03-14T04:28:16.842019+00:00",
+        "ts": "2026-03-14T04:42:45.080967+00:00",
         "universe_count": 11,
         "top_symbols": [
           "TESTZEUSUSDT",
@@ -385,11 +394,11 @@
             "symbol": "ETHUSDT",
             "qty": 118.6233991772281,
             "avg_price": 2107.51,
-            "cur_price": 2101.3,
+            "cur_price": 2101.55,
             "buy_krw": 250000.0,
-            "val_krw": 249263.35,
-            "pnl_krw": -736.65,
-            "pnl_pct": -0.29,
+            "val_krw": 249293.0,
+            "pnl_krw": -707.0,
+            "pnl_pct": -0.28,
             "side": "long"
           }
         ],
@@ -401,7 +410,7 @@
           },
           {
             "name": "ETHUSDT",
-            "value": 249263.35,
+            "value": 249293.0,
             "pct": 41.6
           }
         ]
@@ -435,11 +444,11 @@
         },
         "desires": {
           "trading_cycle": {
-            "last_satisfied": "2026-03-14T11:28:39.277912+07:00",
+            "last_satisfied": "2026-03-14T11:43:08.404319+07:00",
             "consecutive_failures": 0
           },
           "gather_intel": {
-            "last_satisfied": "2026-03-14T11:26:03.440832+07:00",
+            "last_satisfied": "2026-03-14T11:43:24.257945+07:00",
             "consecutive_failures": 0
           },
           "tune_guards": {
@@ -1089,7 +1098,7 @@
             "consecutive_failures": 0
           },
           "gather_intel": {
-            "last_satisfied": "2026-03-14T11:23:04.790309+07:00",
+            "last_satisfied": "2026-03-14T11:39:57.378994+07:00",
             "consecutive_failures": 0
           },
           "tune_guards": {
@@ -1123,7 +1132,7 @@
   "summary": {
     "total_exchanges": 2,
     "total_positions": 9,
-    "total_signals": 0,
+    "total_signals": 1,
     "total_strategies": 23
   },
   "history": [
