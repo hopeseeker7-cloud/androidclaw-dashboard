@@ -1,5 +1,5 @@
 {
-  "ts": "2026-03-14T07:15:00Z",
+  "ts": "2026-03-14T07:15:46Z",
   "host": "jjanga-phone",
   "exchanges": [
     {
@@ -307,29 +307,29 @@
       },
       "passionate_trader": {
         "emotional": {
-          "state": "neutral",
-          "since": "",
-          "consecutive_wins": 1,
+          "state": "bored",
+          "since": "2026-03-14T14:15:47.489846+07:00",
+          "consecutive_wins": 0,
           "consecutive_losses": 0,
-          "daily_pnl_pct": -0.8723,
-          "win_rate_7d": 0.0673076923076923,
-          "last_trade_ts": "2026-03-14T13:27:09.555051+07:00",
-          "transitions_today": 0,
+          "daily_pnl_pct": 0.0,
+          "win_rate_7d": 0.5,
+          "last_trade_ts": "",
+          "transitions_today": 1,
           "date": "2026-03-14"
         },
         "budget": {
           "date": "2026-03-14",
           "hour": 14,
-          "daily_calls": 29,
-          "hourly_calls": 0,
-          "daily_tokens": 37000,
+          "daily_calls": 30,
+          "hourly_calls": 1,
+          "daily_tokens": 40000,
           "category_counts": {
             "low": 20,
             "medium": 6,
-            "high": 3
+            "high": 4
           },
           "kill_switch": false,
-          "daily_trade_loss_krw": -8723.0,
+          "daily_trade_loss_krw": 0,
           "hourly_trades": 0
         },
         "desires": {
@@ -354,7 +354,7 @@
             "consecutive_failures": 0
           },
           "research_strategy": {
-            "last_satisfied": "2026-03-14T08:07:07.321778+07:00",
+            "last_satisfied": "2026-03-14T14:16:07.585043+07:00",
             "consecutive_failures": 0
           },
           "report_to_owner": {
@@ -375,15 +375,15 @@
       "positions": [],
       "pnl_today": {
         "date": "2026-03-14",
-        "pnl_krw": -1286,
-        "trades": 0,
-        "realized_krw": 0
+        "pnl_krw": 0.0,
+        "trades": 3,
+        "realized_krw": 0.0
       },
       "strategy_registry": {
         "total": 11,
         "active": 3,
-        "total_signals": 10377,
-        "total_fills": 505,
+        "total_signals": 10381,
+        "total_fills": 508,
         "total_pnl_krw": -309999
       },
       "strategies_flat": [
@@ -426,7 +426,7 @@
         {
           "name": "volume_spike",
           "status": "active",
-          "total_signals": 1615,
+          "total_signals": 1616,
           "total_fills": 12,
           "total_pnl_krw": -61408,
           "win_count": 1,
@@ -444,8 +444,8 @@
         {
           "name": "sol_trend_rider",
           "status": "active",
-          "total_signals": 4756,
-          "total_fills": 435,
+          "total_signals": 4759,
+          "total_fills": 438,
           "total_pnl_krw": -188292,
           "win_count": 37,
           "loss_count": 56
@@ -506,54 +506,91 @@
         "market": "KRW"
       },
       "signals": {
-        "ts": "2026-03-14T04:15:09.301817+00:00",
-        "live_count": 3,
+        "ts": "2026-03-14T07:15:54.589081+00:00",
+        "live_count": 4,
         "paper_count": 0,
         "strategy_count": 9,
         "paper_signals": []
       },
       "scout": {
-        "ts": "2026-03-14T04:15:01.688268+00:00",
+        "ts": "2026-03-14T07:15:46.698239+00:00",
         "universe_count": 12,
         "top_symbols": [
           "XRP_KRW",
           "USDT_KRW",
-          "BTC_KRW",
           "TRUMP_KRW",
+          "BTC_KRW",
           "ETH_KRW",
           "SOL_KRW",
-          "ENSO_KRW",
-          "DOGE_KRW"
+          "DOGE_KRW",
+          "ENSO_KRW"
         ]
       },
-      "recent_trades": [],
+      "recent_trades": [
+        {
+          "symbol": "ENSO_KRW",
+          "algo": "",
+          "type": "sell",
+          "entry": 1958.0,
+          "exit": 1958.0,
+          "pnl_pct": 0,
+          "pnl_krw": 0,
+          "win": false,
+          "reason": "paper: market fill at 1,958 | decision: [sol_trend_rider] EMA_align_dn ER=0.32 ROC=-0.004",
+          "ts": "2026-03-14T14:15:55.498808+07:00"
+        },
+        {
+          "symbol": "RENDER_KRW",
+          "algo": "",
+          "type": "sell",
+          "entry": 2585.0,
+          "exit": 2585.0,
+          "pnl_pct": 0,
+          "pnl_krw": 0,
+          "win": false,
+          "reason": "paper: market fill at 2,585 | decision: [sol_trend_rider] EMA_align_dn ER=0.26 ROC=-0.004",
+          "ts": "2026-03-14T14:15:55.498808+07:00"
+        },
+        {
+          "symbol": "VIRTUAL_KRW",
+          "algo": "",
+          "type": "sell",
+          "entry": 1050.0,
+          "exit": 1050.0,
+          "pnl_pct": 0,
+          "pnl_krw": 0,
+          "win": false,
+          "reason": "paper: market fill at 1,050 | decision: [sol_trend_rider] EMA_align_dn ER=0.47 ROC=-0.006",
+          "ts": "2026-03-14T14:15:55.498808+07:00"
+        }
+      ],
       "cycle_health": {},
       "portfolio": {
         "capital_krw": 1000000,
-        "cash_krw": 1000000,
+        "cash_krw": 1000000.0,
         "invested_krw": 0,
-        "portfolio_value": 1000000,
-        "total_pnl_krw": 0,
+        "portfolio_value": 1000000.0,
+        "total_pnl_krw": 0.0,
         "total_pnl_pct": 0.0,
         "holdings": [],
         "allocation": [
           {
             "name": "현금",
-            "value": 1000000,
+            "value": 1000000.0,
             "pct": 100.0
           }
         ]
       },
       "passionate_trader": {
         "emotional": {
-          "state": "cautious",
-          "since": "2026-03-14T12:24:52.539208+07:00",
+          "state": "neutral",
+          "since": "2026-03-14T14:15:40.433483+07:00",
           "consecutive_wins": 0,
-          "consecutive_losses": 2,
-          "daily_pnl_pct": -0.1286,
-          "win_rate_7d": 0.0876068376068376,
-          "last_trade_ts": "2026-03-14T11:15:09.986644+07:00",
-          "transitions_today": 1,
+          "consecutive_losses": 0,
+          "daily_pnl_pct": 0.0,
+          "win_rate_7d": 0.0,
+          "last_trade_ts": "2026-03-14T14:15:55.498808+07:00",
+          "transitions_today": 2,
           "date": "2026-03-14"
         },
         "budget": {
@@ -568,12 +605,12 @@
             "high": 3
           },
           "kill_switch": false,
-          "daily_trade_loss_krw": -1286.0,
+          "daily_trade_loss_krw": 0.0,
           "hourly_trades": 0
         },
         "desires": {
           "trading_cycle": {
-            "last_satisfied": "2026-03-14T11:15:10.075644+07:00",
+            "last_satisfied": "2026-03-14T14:15:55.644311+07:00",
             "consecutive_failures": 0
           },
           "gather_intel": {
