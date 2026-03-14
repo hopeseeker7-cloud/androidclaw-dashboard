@@ -26,7 +26,7 @@ const CONFIG = {
     runs:     'data/runs.jsonl',
     costs:    'data/costs.json',
     health:   'data/health.json',
-    tradebot: 'data/tradebot.json',
+    tradebot: 'data/tradebot.json?v=20260314',
   },
 };
 
