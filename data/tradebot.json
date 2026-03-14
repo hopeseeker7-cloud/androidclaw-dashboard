@@ -1,5 +1,5 @@
 {
-  "ts": "2026-03-14T09:45:00Z",
+  "ts": "2026-03-14T10:00:00Z",
   "host": "jjanga-phone",
   "exchanges": [
     {
@@ -145,7 +145,7 @@
       "strategy_registry": {
         "total": 12,
         "active": 3,
-        "total_signals": 11624,
+        "total_signals": 11629,
         "total_fills": 211,
         "total_pnl_krw": -376598
       },
@@ -162,7 +162,7 @@
         {
           "name": "sol_trend_rider",
           "status": "paper_test",
-          "total_signals": 5075,
+          "total_signals": 5076,
           "total_fills": 78,
           "total_pnl_krw": -336643,
           "win_count": 13,
@@ -180,7 +180,7 @@
         {
           "name": "volume_spike",
           "status": "active",
-          "total_signals": 2443,
+          "total_signals": 2446,
           "total_fills": 43,
           "total_pnl_krw": -29270,
           "win_count": 6,
@@ -198,7 +198,7 @@
         {
           "name": "breakout",
           "status": "active",
-          "total_signals": 871,
+          "total_signals": 872,
           "total_fills": 7,
           "total_pnl_krw": -865,
           "win_count": 2,
@@ -278,23 +278,23 @@
         "market": "USDT"
       },
       "signals": {
-        "ts": "2026-03-14T09:43:39.351262+00:00",
-        "live_count": 0,
+        "ts": "2026-03-14T09:58:04.556929+00:00",
+        "live_count": 2,
         "paper_count": 1,
         "strategy_count": 8,
         "paper_signals": [
           {
             "symbol": "BTCUSDT",
-            "side": "buy",
+            "side": "sell",
             "confidence": 0.65,
-            "reason": "[sol_trend_rider] EMA_align_up ER=0.31 ROC=0.001",
-            "entry_price": 70933.68,
+            "reason": "[sol_trend_rider] EMA_align_dn ER=0.36 ROC=-0.002",
+            "entry_price": 70801.71,
             "krw": 1000000
           }
         ]
       },
       "scout": {
-        "ts": "2026-03-14T09:43:15.645400+00:00",
+        "ts": "2026-03-14T09:57:34.683092+00:00",
         "universe_count": 11,
         "top_symbols": [
           "BTCUSDT",
@@ -557,22 +557,22 @@
             "symbol": "BTCUSDT",
             "qty": 70.46819065873665,
             "avg_price": 70954.0,
-            "cur_price": 70681.91,
+            "cur_price": 70554.55,
             "buy_krw": 5000000.0,
-            "val_krw": 4980826.31,
-            "pnl_krw": -19173.69,
-            "pnl_pct": -0.38,
+            "val_krw": 4971851.48,
+            "pnl_krw": -28148.52,
+            "pnl_pct": -0.56,
             "side": "long"
           },
           {
             "symbol": "BTCUSDT",
             "qty": 70.46819065873665,
             "avg_price": 70954.0,
-            "cur_price": 70681.91,
+            "cur_price": 70554.55,
             "buy_krw": 5000000.0,
-            "val_krw": 4980826.31,
-            "pnl_krw": -19173.69,
-            "pnl_pct": -0.38,
+            "val_krw": 4971851.48,
+            "pnl_krw": -28148.52,
+            "pnl_pct": -0.56,
             "side": "long"
           },
           {
@@ -591,42 +591,42 @@
           {
             "name": "BGBUSDT",
             "value": 4995370.37,
-            "pct": 580.7
+            "pct": 593.1
           },
           {
             "name": "BGBUSDT",
             "value": 4995370.37,
-            "pct": 580.7
+            "pct": 593.1
           },
           {
             "name": "BGBUSDT",
             "value": 4990749.31,
-            "pct": 580.2
-          },
-          {
-            "name": "BTCUSDT",
-            "value": 4980826.31,
-            "pct": 579.1
-          },
-          {
-            "name": "BTCUSDT",
-            "value": 4980826.31,
-            "pct": 579.1
+            "pct": 592.6
           },
           {
             "name": "ETHUSDT",
             "value": 4976436.35,
-            "pct": 578.5
+            "pct": 590.9
           },
           {
             "name": "ETHUSDT",
             "value": 4976436.35,
-            "pct": 578.5
+            "pct": 590.9
+          },
+          {
+            "name": "BTCUSDT",
+            "value": 4971851.48,
+            "pct": 590.3
+          },
+          {
+            "name": "BTCUSDT",
+            "value": 4971851.48,
+            "pct": 590.3
           },
           {
             "name": "ETHUSDT",
             "value": 4964155.91,
-            "pct": 577.1
+            "pct": 589.4
           }
         ]
       },
@@ -644,7 +644,7 @@
         },
         "budget": {
           "date": "2026-03-14",
-          "hour": 16,
+          "hour": 17,
           "daily_calls": 31,
           "hourly_calls": 0,
           "daily_tokens": 41500,
@@ -659,11 +659,11 @@
         },
         "desires": {
           "trading_cycle": {
-            "last_satisfied": "2026-03-14T16:43:40.045258+07:00",
+            "last_satisfied": "2026-03-14T16:58:05.237946+07:00",
             "consecutive_failures": 0
           },
           "gather_intel": {
-            "last_satisfied": "2026-03-14T16:31:48.651540+07:00",
+            "last_satisfied": "2026-03-14T16:48:56.134313+07:00",
             "consecutive_failures": 0
           },
           "tune_guards": {
@@ -1064,7 +1064,7 @@
         },
         "budget": {
           "date": "2026-03-14",
-          "hour": 16,
+          "hour": 17,
           "daily_calls": 28,
           "hourly_calls": 0,
           "daily_tokens": 35500,
