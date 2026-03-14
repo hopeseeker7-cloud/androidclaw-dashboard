@@ -1,5 +1,5 @@
 {
-  "ts": "2026-03-14T15:45:00Z",
+  "ts": "2026-03-14T16:00:00Z",
   "host": "jjanga-phone",
   "exchanges": [
     {
@@ -145,7 +145,7 @@
       "strategy_registry": {
         "total": 12,
         "active": 3,
-        "total_signals": 11725,
+        "total_signals": 11733,
         "total_fills": 213,
         "total_pnl_krw": -316086
       },
@@ -162,7 +162,7 @@
         {
           "name": "sol_trend_rider",
           "status": "paper_test",
-          "total_signals": 5128,
+          "total_signals": 5132,
           "total_fills": 78,
           "total_pnl_krw": -336643,
           "win_count": 13,
@@ -180,7 +180,7 @@
         {
           "name": "volume_spike",
           "status": "active",
-          "total_signals": 2487,
+          "total_signals": 2489,
           "total_fills": 44,
           "total_pnl_krw": 31242,
           "win_count": 8,
@@ -198,7 +198,7 @@
         {
           "name": "breakout",
           "status": "active",
-          "total_signals": 875,
+          "total_signals": 877,
           "total_fills": 8,
           "total_pnl_krw": -865,
           "win_count": 2,
@@ -278,7 +278,7 @@
         "market": "USDT"
       },
       "signals": {
-        "ts": "2026-03-14T15:45:14.812611+00:00",
+        "ts": "2026-03-14T15:59:47.780901+00:00",
         "live_count": 1,
         "paper_count": 1,
         "strategy_count": 8,
@@ -287,14 +287,14 @@
             "symbol": "BTCUSDT",
             "side": "buy",
             "confidence": 0.65,
-            "reason": "[sol_trend_rider] EMA_align_up ER=0.30 ROC=0.002",
-            "entry_price": 71018.19,
+            "reason": "[sol_trend_rider] EMA_align_up ER=0.35 ROC=0.004",
+            "entry_price": 70978.72,
             "krw": 1000000
           }
         ]
       },
       "scout": {
-        "ts": "2026-03-14T15:45:04.096555+00:00",
+        "ts": "2026-03-14T15:59:36.863102+00:00",
         "universe_count": 11,
         "top_symbols": [
           "BTCUSDT",
@@ -644,7 +644,7 @@
         },
         "budget": {
           "date": "2026-03-14",
-          "hour": 22,
+          "hour": 23,
           "daily_calls": 33,
           "hourly_calls": 0,
           "daily_tokens": 46000,
@@ -659,11 +659,11 @@
         },
         "desires": {
           "trading_cycle": {
-            "last_satisfied": "2026-03-14T22:45:15.506333+07:00",
+            "last_satisfied": "2026-03-14T22:59:48.438784+07:00",
             "consecutive_failures": 0
           },
           "gather_intel": {
-            "last_satisfied": "2026-03-14T22:31:01.266005+07:00",
+            "last_satisfied": "2026-03-14T22:47:51.151514+07:00",
             "consecutive_failures": 0
           },
           "tune_guards": {
@@ -1064,7 +1064,7 @@
         },
         "budget": {
           "date": "2026-03-14",
-          "hour": 22,
+          "hour": 23,
           "daily_calls": 28,
           "hourly_calls": 0,
           "daily_tokens": 35500,
