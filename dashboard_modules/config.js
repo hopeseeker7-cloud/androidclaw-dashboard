@@ -1,6 +1,3 @@
-/* ─────────────────────────────────────────────
-   config.js — 상수 및 설정
-───────────────────────────────────────────── */
 'use strict';
 
 const CONFIG = {
@@ -18,12 +15,13 @@ const CONFIG = {
   CONF_HIGH:           60,
   CONF_MID:            40,
   DATA: {
-    agents:   'data/agents.json',
-    system:   'data/system.json',
-    runs:     'data/runs.jsonl',
-    costs:    'data/costs.json',
-    health:   'data/health.json',
-    tradebot: 'data/tradebot.json?v=20260314',
+    agents:          'data/agents.json',
+    system:          'data/system.json',
+    runs:            'data/runs.jsonl',
+    costs:           'data/costs.json',
+    health:          'data/health.json',
+    tradebot:        'data/tradebot.json?v=20260314',
+    tradebotHistory: 'data/tradebot_history.jsonl',
   },
 };
 
@@ -36,6 +34,6 @@ const AGENT_EMOJI_MAP = {
 };
 
 const DONUT_COLORS = [
-  '#F59E0B','#60A5FA','#34D399','#F472B6','#A78BFA',
-  '#FB923C','#2DD4BF','#E879F9','#FCD34D','#6EE7B7',
+  '#F59E0B', '#60A5FA', '#34D399', '#F472B6', '#A78BFA',
+  '#FB923C', '#2DD4BF', '#E879F9', '#FCD34D', '#6EE7B7',
 ];
