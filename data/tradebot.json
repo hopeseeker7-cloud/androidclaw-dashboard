@@ -1,5 +1,5 @@
 {
-  "ts": "2026-03-14T01:15:00Z",
+  "ts": "2026-03-14T01:30:00Z",
   "host": "jjanga-phone",
   "exchanges": [
     {
@@ -16,7 +16,7 @@
       "strategy_registry": {
         "total": 12,
         "active": 3,
-        "total_signals": 11467,
+        "total_signals": 11468,
         "total_fills": 185,
         "total_pnl_krw": -376598
       },
@@ -33,7 +33,7 @@
         {
           "name": "sol_trend_rider",
           "status": "paper_test",
-          "total_signals": 4968,
+          "total_signals": 4969,
           "total_fills": 78,
           "total_pnl_krw": -336643,
           "win_count": 13,
@@ -149,23 +149,14 @@
         "market": "USDT"
       },
       "signals": {
-        "ts": "2026-03-14T01:13:25.785493+00:00",
-        "live_count": 2,
-        "paper_count": 1,
-        "strategy_count": 8,
-        "paper_signals": [
-          {
-            "symbol": "BTCUSDT",
-            "side": "buy",
-            "confidence": 0.65,
-            "reason": "[sol_trend_rider] EMA_align_up ER=0.28 ROC=0.010",
-            "entry_price": 72686.0,
-            "krw": 50000
-          }
-        ]
+        "ts": "2026-03-14T01:27:47.203482+00:00",
+        "live_count": 0,
+        "paper_count": 0,
+        "strategy_count": 0,
+        "paper_signals": []
       },
       "scout": {
-        "ts": "2026-03-14T01:13:14.903720+00:00",
+        "ts": "2026-03-14T01:27:32.852824+00:00",
         "universe_count": 11,
         "top_symbols": [
           "TESTZEUSUSDT",
@@ -396,11 +387,11 @@
         "budget": {
           "date": "2026-03-14",
           "hour": 8,
-          "daily_calls": 26,
-          "hourly_calls": 2,
-          "daily_tokens": 33500,
+          "daily_calls": 27,
+          "hourly_calls": 3,
+          "daily_tokens": 34500,
           "category_counts": {
-            "low": 18,
+            "low": 19,
             "medium": 5,
             "high": 3
           },
@@ -410,15 +401,15 @@
         },
         "desires": {
           "trading_cycle": {
-            "last_satisfied": "2026-03-14T08:13:26.233331+07:00",
+            "last_satisfied": "2026-03-14T08:27:47.878338+07:00",
             "consecutive_failures": 0
           },
           "gather_intel": {
-            "last_satisfied": "2026-03-14T08:01:06.339258+07:00",
+            "last_satisfied": "2026-03-14T08:17:32.964109+07:00",
             "consecutive_failures": 0
           },
           "tune_guards": {
-            "last_satisfied": "2026-03-14T07:46:03.556527+07:00",
+            "last_satisfied": "2026-03-14T08:18:12.145538+07:00",
             "consecutive_failures": 0
           },
           "reflect_on_trades": {
@@ -458,7 +449,7 @@
       "strategy_registry": {
         "total": 11,
         "active": 3,
-        "total_signals": 10135,
+        "total_signals": 10144,
         "total_fills": 490,
         "total_pnl_krw": -307277
       },
@@ -475,7 +466,7 @@
         {
           "name": "breakout",
           "status": "active",
-          "total_signals": 698,
+          "total_signals": 702,
           "total_fills": 2,
           "total_pnl_krw": -51770,
           "win_count": 0,
@@ -502,7 +493,7 @@
         {
           "name": "volume_spike",
           "status": "active",
-          "total_signals": 1571,
+          "total_signals": 1576,
           "total_fills": 12,
           "total_pnl_krw": -61408,
           "win_count": 1,
@@ -582,14 +573,14 @@
         "market": "KRW"
       },
       "signals": {
-        "ts": "2026-03-14T01:13:54.276293+00:00",
-        "live_count": 0,
+        "ts": "2026-03-14T01:28:11.698860+00:00",
+        "live_count": 3,
         "paper_count": 0,
-        "strategy_count": 0,
+        "strategy_count": 9,
         "paper_signals": []
       },
       "scout": {
-        "ts": "2026-03-14T01:13:46.740044+00:00",
+        "ts": "2026-03-14T01:28:03.754060+00:00",
         "universe_count": 12,
         "top_symbols": [
           "XRP_KRW",
@@ -834,11 +825,11 @@
         },
         "desires": {
           "trading_cycle": {
-            "last_satisfied": "2026-03-14T08:13:54.920972+07:00",
+            "last_satisfied": "2026-03-14T08:28:12.151188+07:00",
             "consecutive_failures": 0
           },
           "gather_intel": {
-            "last_satisfied": "2026-03-14T08:12:23.872047+07:00",
+            "last_satisfied": "2026-03-14T08:28:49.704809+07:00",
             "consecutive_failures": 0
           },
           "tune_guards": {
@@ -872,7 +863,7 @@
   "summary": {
     "total_exchanges": 2,
     "total_positions": 0,
-    "total_signals": 1,
+    "total_signals": 0,
     "total_strategies": 23
   },
   "history": [
