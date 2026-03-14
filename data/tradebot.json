@@ -1,5 +1,5 @@
 {
-  "ts": "2026-03-14T12:15:00Z",
+  "ts": "2026-03-14T12:30:00Z",
   "host": "jjanga-phone",
   "exchanges": [
     {
@@ -145,7 +145,7 @@
       "strategy_registry": {
         "total": 12,
         "active": 3,
-        "total_signals": 11666,
+        "total_signals": 11672,
         "total_fills": 211,
         "total_pnl_krw": -376598
       },
@@ -162,7 +162,7 @@
         {
           "name": "sol_trend_rider",
           "status": "paper_test",
-          "total_signals": 5095,
+          "total_signals": 5099,
           "total_fills": 78,
           "total_pnl_krw": -336643,
           "win_count": 13,
@@ -180,7 +180,7 @@
         {
           "name": "volume_spike",
           "status": "active",
-          "total_signals": 2464,
+          "total_signals": 2466,
           "total_fills": 43,
           "total_pnl_krw": -29270,
           "win_count": 6,
@@ -278,23 +278,23 @@
         "market": "USDT"
       },
       "signals": {
-        "ts": "2026-03-14T12:14:49.340062+00:00",
+        "ts": "2026-03-14T12:28:58.094443+00:00",
         "live_count": 1,
         "paper_count": 1,
         "strategy_count": 8,
         "paper_signals": [
           {
-            "symbol": "ETHUSDT",
-            "side": "buy",
+            "symbol": "BTCUSDT",
+            "side": "sell",
             "confidence": 0.8,
-            "reason": "[sol_trend_rider] EMA_align_up ER=0.80 ROC=0.001",
-            "entry_price": 2092.06,
+            "reason": "[sol_trend_rider] EMA_align_dn ER=0.68 ROC=-0.001",
+            "entry_price": 70774.41,
             "krw": 1000000
           }
         ]
       },
       "scout": {
-        "ts": "2026-03-14T12:14:17.360461+00:00",
+        "ts": "2026-03-14T12:28:34.300667+00:00",
         "universe_count": 11,
         "top_symbols": [
           "BTCUSDT",
@@ -659,11 +659,11 @@
         },
         "desires": {
           "trading_cycle": {
-            "last_satisfied": "2026-03-14T19:14:50.130207+07:00",
+            "last_satisfied": "2026-03-14T19:28:58.947337+07:00",
             "consecutive_failures": 0
           },
           "gather_intel": {
-            "last_satisfied": "2026-03-14T19:05:36.721027+07:00",
+            "last_satisfied": "2026-03-14T19:22:33.980317+07:00",
             "consecutive_failures": 0
           },
           "tune_guards": {
