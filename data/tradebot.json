@@ -1,5 +1,5 @@
 {
-  "ts": "2026-03-14T16:45:00Z",
+  "ts": "2026-03-14T17:00:00Z",
   "host": "jjanga-phone",
   "exchanges": [
     {
@@ -145,7 +145,7 @@
       "strategy_registry": {
         "total": 12,
         "active": 3,
-        "total_signals": 11752,
+        "total_signals": 11761,
         "total_fills": 213,
         "total_pnl_krw": -316086
       },
@@ -162,7 +162,7 @@
         {
           "name": "sol_trend_rider",
           "status": "paper_test",
-          "total_signals": 5148,
+          "total_signals": 5155,
           "total_fills": 78,
           "total_pnl_krw": -336643,
           "win_count": 13,
@@ -180,7 +180,7 @@
         {
           "name": "volume_spike",
           "status": "active",
-          "total_signals": 2491,
+          "total_signals": 2493,
           "total_fills": 44,
           "total_pnl_krw": 31242,
           "win_count": 8,
@@ -278,30 +278,30 @@
         "market": "USDT"
       },
       "signals": {
-        "ts": "2026-03-14T16:43:26.025090+00:00",
-        "live_count": 0,
+        "ts": "2026-03-14T16:57:58.718385+00:00",
+        "live_count": 2,
         "paper_count": 1,
         "strategy_count": 8,
         "paper_signals": [
           {
-            "symbol": "ETHUSDT",
+            "symbol": "BGBUSDT",
             "side": "buy",
             "confidence": 0.8,
-            "reason": "[sol_trend_rider] EMA_align_up ER=0.58 ROC=0.004",
-            "entry_price": 2087.08,
+            "reason": "[sol_trend_rider] EMA_align_up ER=1.00 ROC=0.001",
+            "entry_price": 2.161,
             "krw": 1000000
           }
         ]
       },
       "scout": {
-        "ts": "2026-03-14T16:43:15.117213+00:00",
+        "ts": "2026-03-14T16:57:47.872843+00:00",
         "universe_count": 11,
         "top_symbols": [
           "BTCUSDT",
           "ETHUSDT",
-          "DOGEUSDT",
           "USDCUSDT",
           "BGBUSDT",
+          "DOGEUSDT",
           "SOLUSDT",
           "CRVUSDT",
           "WBTCUSDT"
@@ -535,22 +535,22 @@
             "symbol": "BTCUSDT",
             "qty": 70.46819065873665,
             "avg_price": 70954.0,
-            "cur_price": 70660.0,
+            "cur_price": 70709.48,
             "buy_krw": 5000000.0,
-            "val_krw": 4979282.35,
-            "pnl_krw": -20717.65,
-            "pnl_pct": -0.41,
+            "val_krw": 4982769.12,
+            "pnl_krw": -17230.88,
+            "pnl_pct": -0.34,
             "side": "long"
           },
           {
             "symbol": "BTCUSDT",
             "qty": 70.46819065873665,
             "avg_price": 70954.0,
-            "cur_price": 70660.0,
+            "cur_price": 70709.48,
             "buy_krw": 5000000.0,
-            "val_krw": 4979282.35,
-            "pnl_krw": -20717.65,
-            "pnl_pct": -0.41,
+            "val_krw": 4982769.12,
+            "pnl_krw": -17230.88,
+            "pnl_pct": -0.34,
             "side": "long"
           },
           {
@@ -568,11 +568,11 @@
             "symbol": "BTCUSDT",
             "qty": 70.31733651430213,
             "avg_price": 71106.22,
-            "cur_price": 70660.0,
+            "cur_price": 70709.48,
             "buy_krw": 5000000.0,
-            "val_krw": 4968623.0,
-            "pnl_krw": -31377.0,
-            "pnl_pct": -0.63,
+            "val_krw": 4972102.3,
+            "pnl_krw": -27897.7,
+            "pnl_pct": -0.56,
             "side": "long"
           },
           {
@@ -591,42 +591,42 @@
           {
             "name": "BGBUSDT",
             "value": 5000000.0,
-            "pct": 612.8
+            "pct": 605.0
           },
           {
             "name": "BGBUSDT",
             "value": 5000000.0,
-            "pct": 612.8
+            "pct": 605.0
           },
           {
             "name": "BGBUSDT",
             "value": 4995374.65,
-            "pct": 612.2
+            "pct": 604.5
           },
           {
             "name": "BTCUSDT",
-            "value": 4979282.35,
-            "pct": 610.2
+            "value": 4982769.12,
+            "pct": 602.9
           },
           {
             "name": "BTCUSDT",
-            "value": 4979282.35,
-            "pct": 610.2
+            "value": 4982769.12,
+            "pct": 602.9
           },
           {
             "name": "BTCUSDT",
-            "value": 4968623.0,
-            "pct": 608.9
+            "value": 4972102.3,
+            "pct": 601.7
           },
           {
             "name": "ETHUSDT",
             "value": 4958847.44,
-            "pct": 607.7
+            "pct": 600.1
           },
           {
             "name": "ETHUSDT",
             "value": 4934540.52,
-            "pct": 604.8
+            "pct": 597.1
           }
         ]
       },
@@ -636,34 +636,32 @@
           "since": "2026-03-14T20:42:47.007414+07:00",
           "consecutive_wins": 2,
           "consecutive_losses": 0,
-          "daily_pnl_pct": 6.051200000000001,
+          "daily_pnl_pct": 0.0,
           "win_rate_7d": 1.0,
           "last_trade_ts": "2026-03-14T20:56:10.587166+07:00",
-          "transitions_today": 5,
-          "date": "2026-03-14"
+          "transitions_today": 0,
+          "date": "2026-03-15"
         },
         "budget": {
-          "date": "2026-03-14",
-          "hour": 23,
-          "daily_calls": 33,
-          "hourly_calls": 0,
-          "daily_tokens": 46000,
+          "date": "2026-03-15",
+          "hour": 0,
+          "daily_calls": 1,
+          "hourly_calls": 1,
+          "daily_tokens": 500,
           "category_counts": {
-            "low": 20,
-            "medium": 8,
-            "high": 5
+            "low": 1
           },
           "kill_switch": false,
-          "daily_trade_loss_krw": 0.0,
+          "daily_trade_loss_krw": 0,
           "hourly_trades": 0
         },
         "desires": {
           "trading_cycle": {
-            "last_satisfied": "2026-03-14T23:43:26.707484+07:00",
+            "last_satisfied": "2026-03-14T23:57:59.404110+07:00",
             "consecutive_failures": 0
           },
           "gather_intel": {
-            "last_satisfied": "2026-03-14T23:38:45.802445+07:00",
+            "last_satisfied": "2026-03-14T23:55:34.911990+07:00",
             "consecutive_failures": 0
           },
           "tune_guards": {
@@ -683,11 +681,11 @@
             "consecutive_failures": 0
           },
           "report_to_owner": {
-            "last_satisfied": "2026-03-14T22:39:37.098140+07:00",
+            "last_satisfied": "2026-03-15T00:00:31.498586+07:00",
             "consecutive_failures": 0
           },
           "evaluate_experiments": {
-            "last_satisfied": "2026-03-14T06:03:54.746024+07:00",
+            "last_satisfied": "2026-03-15T00:00:03.656353+07:00",
             "consecutive_failures": 0
           }
         }
@@ -1052,29 +1050,25 @@
       },
       "passionate_trader": {
         "emotional": {
-          "state": "frustrated",
-          "since": "2026-03-14T15:47:07.070636+07:00",
+          "state": "cautious",
+          "since": "2026-03-15T00:00:15.088364+07:00",
           "consecutive_wins": 0,
           "consecutive_losses": 1,
-          "daily_pnl_pct": -3.5328,
+          "daily_pnl_pct": 0.0,
           "win_rate_7d": 0.0,
           "last_trade_ts": "2026-03-14T15:46:48.912010+07:00",
-          "transitions_today": 3,
-          "date": "2026-03-14"
+          "transitions_today": 1,
+          "date": "2026-03-15"
         },
         "budget": {
-          "date": "2026-03-14",
-          "hour": 23,
-          "daily_calls": 28,
+          "date": "2026-03-15",
+          "hour": 0,
+          "daily_calls": 0,
           "hourly_calls": 0,
-          "daily_tokens": 35500,
-          "category_counts": {
-            "low": 20,
-            "medium": 5,
-            "high": 3
-          },
+          "daily_tokens": 0,
+          "category_counts": {},
           "kill_switch": false,
-          "daily_trade_loss_krw": -35328.0,
+          "daily_trade_loss_krw": 0,
           "hourly_trades": 0
         },
         "desires": {
@@ -1083,7 +1077,7 @@
             "consecutive_failures": 0
           },
           "gather_intel": {
-            "last_satisfied": "2026-03-14T15:37:02.745857+07:00",
+            "last_satisfied": "2026-03-15T00:00:18.368812+07:00",
             "consecutive_failures": 0
           },
           "tune_guards": {
