@@ -1,5 +1,5 @@
 {
-  "ts": "2026-03-14T14:15:00Z",
+  "ts": "2026-03-14T14:30:00Z",
   "host": "jjanga-phone",
   "exchanges": [
     {
@@ -145,7 +145,7 @@
       "strategy_registry": {
         "total": 12,
         "active": 3,
-        "total_signals": 11692,
+        "total_signals": 11697,
         "total_fills": 213,
         "total_pnl_krw": -316086
       },
@@ -162,7 +162,7 @@
         {
           "name": "sol_trend_rider",
           "status": "paper_test",
-          "total_signals": 5104,
+          "total_signals": 5107,
           "total_fills": 78,
           "total_pnl_krw": -336643,
           "win_count": 13,
@@ -180,7 +180,7 @@
         {
           "name": "volume_spike",
           "status": "active",
-          "total_signals": 2480,
+          "total_signals": 2482,
           "total_fills": 44,
           "total_pnl_krw": 31242,
           "win_count": 8,
@@ -278,14 +278,23 @@
         "market": "USDT"
       },
       "signals": {
-        "ts": "2026-03-14T14:14:23.007512+00:00",
-        "live_count": 2,
-        "paper_count": 0,
+        "ts": "2026-03-14T14:28:55.829283+00:00",
+        "live_count": 1,
+        "paper_count": 1,
         "strategy_count": 8,
-        "paper_signals": []
+        "paper_signals": [
+          {
+            "symbol": "BTCUSDT",
+            "side": "buy",
+            "confidence": 0.65,
+            "reason": "[sol_trend_rider] EMA_align_up ER=0.33 ROC=0.001",
+            "entry_price": 71152.06,
+            "krw": 1000000
+          }
+        ]
       },
       "scout": {
-        "ts": "2026-03-14T14:14:11.950237+00:00",
+        "ts": "2026-03-14T14:28:44.814769+00:00",
         "universe_count": 11,
         "top_symbols": [
           "BTCUSDT",
@@ -650,11 +659,11 @@
         },
         "desires": {
           "trading_cycle": {
-            "last_satisfied": "2026-03-14T21:14:23.677089+07:00",
+            "last_satisfied": "2026-03-14T21:28:56.522491+07:00",
             "consecutive_failures": 0
           },
           "gather_intel": {
-            "last_satisfied": "2026-03-14T21:06:02.217038+07:00",
+            "last_satisfied": "2026-03-14T21:22:51.060098+07:00",
             "consecutive_failures": 0
           },
           "tune_guards": {
@@ -1108,7 +1117,7 @@
   "summary": {
     "total_exchanges": 2,
     "total_positions": 8,
-    "total_signals": 0,
+    "total_signals": 1,
     "total_strategies": 23
   },
   "history": [
