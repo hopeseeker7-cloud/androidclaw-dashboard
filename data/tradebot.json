@@ -1,5 +1,5 @@
 {
-  "ts": "2026-03-15T08:00:00Z",
+  "ts": "2026-03-15T08:15:00Z",
   "host": "jjanga-phone",
   "exchanges": [
     {
@@ -16,7 +16,7 @@
       "strategy_registry": {
         "total": 12,
         "active": 3,
-        "total_signals": 12048,
+        "total_signals": 12051,
         "total_fills": 213,
         "total_pnl_krw": -1348490
       },
@@ -33,7 +33,7 @@
         {
           "name": "sol_trend_rider",
           "status": "paper_test",
-          "total_signals": 5370,
+          "total_signals": 5372,
           "total_fills": 78,
           "total_pnl_krw": -336643,
           "win_count": 13,
@@ -51,7 +51,7 @@
         {
           "name": "volume_spike",
           "status": "active",
-          "total_signals": 2563,
+          "total_signals": 2564,
           "total_fills": 44,
           "total_pnl_krw": -1001162,
           "win_count": 8,
@@ -149,23 +149,14 @@
         "market": "USDT"
       },
       "signals": {
-        "ts": "2026-03-15T07:57:02.428964+00:00",
-        "live_count": 1,
-        "paper_count": 1,
-        "strategy_count": 8,
-        "paper_signals": [
-          {
-            "symbol": "BTCUSDT",
-            "side": "sell",
-            "confidence": 0.8,
-            "reason": "[sol_trend_rider] EMA_align_dn ER=0.56 ROC=-0.001",
-            "entry_price": 70776.53,
-            "krw": 1000000
-          }
-        ]
+        "ts": "2026-03-15T08:15:09.739467+00:00",
+        "live_count": 0,
+        "paper_count": 0,
+        "strategy_count": 0,
+        "paper_signals": []
       },
       "scout": {
-        "ts": "2026-03-15T08:00:24.721136+00:00",
+        "ts": "2026-03-15T08:14:45.002275+00:00",
         "universe_count": 11,
         "top_symbols": [
           "BTCUSDT",
@@ -326,7 +317,7 @@
         },
         "desires": {
           "trading_cycle": {
-            "last_satisfied": "2026-03-15T14:57:03.110281+07:00",
+            "last_satisfied": "2026-03-15T15:15:10.430221+07:00",
             "consecutive_failures": 0
           },
           "gather_intel": {
@@ -387,7 +378,7 @@
       "strategy_registry": {
         "total": 11,
         "active": 3,
-        "total_signals": 11421,
+        "total_signals": 11442,
         "total_fills": 618,
         "total_pnl_krw": -363102
       },
@@ -404,7 +395,7 @@
         {
           "name": "breakout",
           "status": "active",
-          "total_signals": 850,
+          "total_signals": 856,
           "total_fills": 3,
           "total_pnl_krw": -51770,
           "win_count": 0,
@@ -431,7 +422,7 @@
         {
           "name": "volume_spike",
           "status": "active",
-          "total_signals": 1879,
+          "total_signals": 1890,
           "total_fills": 14,
           "total_pnl_krw": -61408,
           "win_count": 1,
@@ -449,7 +440,7 @@
         {
           "name": "sol_trend_rider",
           "status": "active",
-          "total_signals": 5414,
+          "total_signals": 5418,
           "total_fills": 545,
           "total_pnl_krw": -241395,
           "win_count": 38,
@@ -511,14 +502,14 @@
         "market": "KRW"
       },
       "signals": {
-        "ts": "2026-03-15T07:59:25.175166+00:00",
-        "live_count": 3,
+        "ts": "2026-03-15T08:13:25.299936+00:00",
+        "live_count": 11,
         "paper_count": 0,
         "strategy_count": 9,
         "paper_signals": []
       },
       "scout": {
-        "ts": "2026-03-15T07:59:17.282132+00:00",
+        "ts": "2026-03-15T08:13:17.339226+00:00",
         "universe_count": 12,
         "top_symbols": [
           "COS_KRW",
@@ -630,44 +621,44 @@
             "symbol": "BTC_KRW",
             "qty": 0.009478403457721581,
             "avg_price": 105503000.0,
-            "cur_price": 105383000.0,
+            "cur_price": 105568000.0,
             "buy_krw": 1000000.0,
-            "val_krw": 998862.59,
-            "pnl_krw": -1137.41,
-            "pnl_pct": -0.11,
+            "val_krw": 1000616.1,
+            "pnl_krw": 616.1,
+            "pnl_pct": 0.06,
             "side": "buy"
           }
         ],
         "allocation": [
           {
             "name": "BTC_KRW",
-            "value": 998862.59,
+            "value": 1000616.1,
             "pct": 100.0
           }
         ]
       },
       "passionate_trader": {
         "emotional": {
-          "state": "neutral",
-          "since": "2026-03-15T09:41:43.299399+07:00",
+          "state": "bored",
+          "since": "2026-03-15T15:15:16.454743+07:00",
           "consecutive_wins": 1,
           "consecutive_losses": 0,
           "daily_pnl_pct": -1.7774999999999999,
           "win_rate_7d": 0.25,
           "last_trade_ts": "2026-03-15T11:15:09.770730+07:00",
-          "transitions_today": 4,
+          "transitions_today": 5,
           "date": "2026-03-15"
         },
         "budget": {
           "date": "2026-03-15",
           "hour": 15,
-          "daily_calls": 29,
-          "hourly_calls": 0,
-          "daily_tokens": 37000,
+          "daily_calls": 30,
+          "hourly_calls": 1,
+          "daily_tokens": 40000,
           "category_counts": {
             "low": 20,
             "medium": 6,
-            "high": 3
+            "high": 4
           },
           "kill_switch": false,
           "daily_trade_loss_krw": -17775.0,
@@ -675,7 +666,7 @@
         },
         "desires": {
           "trading_cycle": {
-            "last_satisfied": "2026-03-15T14:59:25.826312+07:00",
+            "last_satisfied": "2026-03-15T15:13:25.996182+07:00",
             "consecutive_failures": 0
           },
           "gather_intel": {
@@ -695,7 +686,7 @@
             "consecutive_failures": 0
           },
           "research_strategy": {
-            "last_satisfied": "2026-03-15T08:04:26.294330+07:00",
+            "last_satisfied": "2026-03-15T15:15:31.622843+07:00",
             "consecutive_failures": 0
           },
           "report_to_owner": {
@@ -713,7 +704,7 @@
   "summary": {
     "total_exchanges": 2,
     "total_positions": 1,
-    "total_signals": 1,
+    "total_signals": 0,
     "total_strategies": 23
   },
   "history": [
