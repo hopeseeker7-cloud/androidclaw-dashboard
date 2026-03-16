@@ -55,6 +55,7 @@ function buildPositionExposure(position) {
     return `${fmtUSDT(position.margin_usdt)} margin${leverage}`;
   }
 
+  if (position.krw != null) return fmtKRW(position.krw);
   if (position.size_krw != null) return fmtKRW(position.size_krw);
   if (position.entry_krw != null) return fmtKRW(position.entry_krw);
   if (position.qty != null) return fmtPlainNumber(position.qty, 6);
@@ -378,9 +379,10 @@ function renderExchangeCard(exchange) {
   if (posCount > 0) {
     const positionRows = positions.map(position => {
       const side = position.side || position.direction || '—';
-      const sideClass = side.toLowerCase().includes('long')
+      const sideLower = side.toLowerCase();
+      const sideClass = (sideLower.includes('long') || sideLower === 'buy')
         ? 'positive'
-        : side.toLowerCase().includes('short')
+        : (sideLower.includes('short') || sideLower === 'sell')
           ? 'negative'
           : '';
       const pnlText = positionPnlText(position);

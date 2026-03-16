@@ -55,7 +55,7 @@ function buildAllocationFromPositions(positions) {
 
   positions.forEach(position => {
     const key = position.symbol || 'UNKNOWN';
-    const value = Number(position.notional_usdt ?? position.margin_usdt ?? 0);
+    const value = Number(position.notional_usdt ?? position.margin_usdt ?? position.krw ?? 0);
     totals.set(key, (totals.get(key) || 0) + (Number.isFinite(value) ? value : 0));
   });
 
