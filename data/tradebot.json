@@ -1,5 +1,5 @@
 {
-  "ts": "2026-03-17T05:00:00Z",
+  "ts": "2026-03-17T05:15:00Z",
   "host": "jjanga-phone",
   "exchanges": [
     {
@@ -16,7 +16,7 @@
       "strategy_registry": {
         "total": 12,
         "active": 3,
-        "total_signals": 13131,
+        "total_signals": 13134,
         "total_fills": 217,
         "total_pnl_krw": -1167948
       },
@@ -51,7 +51,7 @@
         {
           "name": "volume_spike",
           "status": "active",
-          "total_signals": 2857,
+          "total_signals": 2860,
           "total_fills": 48,
           "total_pnl_krw": -820620,
           "win_count": 12,
@@ -149,14 +149,14 @@
         "market": "USDT"
       },
       "signals": {
-        "ts": "2026-03-17T04:59:37.199812+00:00",
-        "live_count": 0,
+        "ts": "2026-03-17T05:15:12.453358+00:00",
+        "live_count": 1,
         "paper_count": 0,
-        "strategy_count": 0,
+        "strategy_count": 8,
         "paper_signals": []
       },
       "scout": {
-        "ts": "2026-03-17T04:59:24.524015+00:00",
+        "ts": "2026-03-17T05:14:57.487371+00:00",
         "universe_count": 11,
         "top_symbols": [
           "BTCUSDT",
@@ -313,7 +313,7 @@
         },
         "desires": {
           "trading_cycle": {
-            "last_satisfied": "2026-03-17T11:59:37.965912+07:00",
+            "last_satisfied": "2026-03-17T12:15:13.545504+07:00",
             "consecutive_failures": 0
           },
           "gather_intel": {
@@ -337,7 +337,7 @@
             "consecutive_failures": 0
           },
           "report_to_owner": {
-            "last_satisfied": "2026-03-17T10:59:42.779486+07:00",
+            "last_satisfied": "2026-03-17T12:00:57.913450+07:00",
             "consecutive_failures": 0
           },
           "evaluate_experiments": {
@@ -355,14 +355,14 @@
       "pnl_today": {
         "date": "2026-03-17",
         "pnl_krw": 26290.0,
-        "trades": 15,
+        "trades": 30,
         "realized_krw": 26290.0
       },
       "strategy_registry": {
         "total": 11,
         "active": 3,
-        "total_signals": 14149,
-        "total_fills": 637,
+        "total_signals": 14170,
+        "total_fills": 652,
         "total_pnl_krw": -328411
       },
       "strategies_flat": [
@@ -378,7 +378,7 @@
         {
           "name": "breakout",
           "status": "active",
-          "total_signals": 1136,
+          "total_signals": 1137,
           "total_fills": 4,
           "total_pnl_krw": -39367,
           "win_count": 1,
@@ -405,7 +405,7 @@
         {
           "name": "volume_spike",
           "status": "active",
-          "total_signals": 2479,
+          "total_signals": 2484,
           "total_fills": 15,
           "total_pnl_krw": -61408,
           "win_count": 1,
@@ -423,8 +423,8 @@
         {
           "name": "sol_trend_rider",
           "status": "active",
-          "total_signals": 7256,
-          "total_fills": 562,
+          "total_signals": 7271,
+          "total_fills": 577,
           "total_pnl_krw": -219107,
           "win_count": 41,
           "loss_count": 58
@@ -485,14 +485,14 @@
         "market": "KRW"
       },
       "signals": {
-        "ts": "2026-03-17T04:57:31.154889+00:00",
-        "live_count": 5,
+        "ts": "2026-03-17T05:15:19.979491+00:00",
+        "live_count": 3,
         "paper_count": 0,
         "strategy_count": 9,
         "paper_signals": []
       },
       "scout": {
-        "ts": "2026-03-17T04:57:23.918656+00:00",
+        "ts": "2026-03-17T05:15:12.252545+00:00",
         "universe_count": 12,
         "top_symbols": [
           "XRP_KRW",
@@ -510,181 +510,181 @@
           "symbol": "XRP_KRW",
           "algo": "",
           "type": "sell",
-          "entry": 2256.0,
-          "exit": 2256.0,
+          "entry": 2244.0,
+          "exit": 2244.0,
           "pnl_pct": 0,
           "pnl_krw": 0,
           "win": false,
-          "reason": "paper: market fill at 2,256 | decision: [sol_trend_rider] EMA_align_dn ER=0.53 ROC=-0.004",
-          "ts": "2026-03-17T11:57:31.949857+07:00"
-        },
-        {
-          "symbol": "BTC_KRW",
-          "algo": "",
-          "type": "sell",
-          "entry": 109352000.0,
-          "exit": 109352000.0,
-          "pnl_pct": 0,
-          "pnl_krw": 0,
-          "win": false,
-          "reason": "paper: market fill at 109,352,000 | decision: [sol_trend_rider] EMA_align_dn ER=0.47 ROC=-0.001",
-          "ts": "2026-03-17T11:57:31.949857+07:00"
-        },
-        {
-          "symbol": "USDT_KRW",
-          "algo": "",
-          "type": "sell",
-          "entry": 1473.0,
-          "exit": 1473.0,
-          "pnl_pct": 0,
-          "pnl_krw": 0,
-          "win": false,
-          "reason": "paper: market fill at 1,473 | decision: [sol_trend_rider] EMA_align_dn ER=0.29 ROC=-0.002",
-          "ts": "2026-03-17T11:57:31.949857+07:00"
-        },
-        {
-          "symbol": "ETH_KRW",
-          "algo": "",
-          "type": "sell",
-          "entry": 3405000.0,
-          "exit": 3405000.0,
-          "pnl_pct": 0,
-          "pnl_krw": 0,
-          "win": false,
-          "reason": "paper: market fill at 3,405,000 | decision: [sol_trend_rider] EMA_align_dn ER=0.47 ROC=-0.001",
-          "ts": "2026-03-17T11:57:31.949857+07:00"
+          "reason": "paper: market fill at 2,244 | decision: [sol_trend_rider] EMA_align_dn ER=0.47 ROC=-0.005",
+          "ts": "2026-03-17T12:15:21.000277+07:00"
         },
         {
           "symbol": "WLD_KRW",
           "algo": "",
           "type": "sell",
-          "entry": 572.0,
-          "exit": 572.0,
+          "entry": 571.0,
+          "exit": 571.0,
           "pnl_pct": 0,
           "pnl_krw": 0,
           "win": false,
-          "reason": "paper: market fill at 572 | decision: [sol_trend_rider] EMA_align_dn ER=0.40 ROC=-0.002",
-          "ts": "2026-03-17T11:57:31.949857+07:00"
+          "reason": "paper: market fill at 571 | decision: [sol_trend_rider] EMA_align_dn ER=0.30 ROC=-0.003",
+          "ts": "2026-03-17T12:15:21.000277+07:00"
         },
         {
           "symbol": "XRP_KRW",
           "algo": "",
           "type": "sell",
-          "entry": 2256.0,
-          "exit": 2256.0,
+          "entry": 2246.0,
+          "exit": 2246.0,
           "pnl_pct": 0,
           "pnl_krw": 0,
           "win": false,
-          "reason": "paper: market fill at 2,256 | decision: [sol_trend_rider] EMA_align_dn ER=0.54 ROC=-0.007",
-          "ts": "2026-03-17T11:54:08.196295+07:00"
-        },
-        {
-          "symbol": "BTC_KRW",
-          "algo": "",
-          "type": "sell",
-          "entry": 109373000.0,
-          "exit": 109373000.0,
-          "pnl_pct": 0,
-          "pnl_krw": 0,
-          "win": false,
-          "reason": "paper: market fill at 109,373,000 | decision: [sol_trend_rider] EMA_align_dn ER=0.47 ROC=-0.005",
-          "ts": "2026-03-17T11:54:08.196295+07:00"
+          "reason": "paper: market fill at 2,246 | decision: [sol_trend_rider] EMA_align_dn ER=0.43 ROC=-0.003",
+          "ts": "2026-03-17T12:11:56.075085+07:00"
         },
         {
           "symbol": "USDT_KRW",
           "algo": "",
           "type": "sell",
-          "entry": 1473.0,
-          "exit": 1473.0,
+          "entry": 1472.0,
+          "exit": 1472.0,
           "pnl_pct": 0,
           "pnl_krw": 0,
           "win": false,
-          "reason": "paper: market fill at 1,473 | decision: [sol_trend_rider] EMA_align_dn ER=0.29 ROC=-0.003",
-          "ts": "2026-03-17T11:54:08.196295+07:00"
+          "reason": "paper: market fill at 1,472 | decision: [sol_trend_rider] EMA_align_dn ER=0.26 ROC=-0.001",
+          "ts": "2026-03-17T12:11:56.075085+07:00"
+        },
+        {
+          "symbol": "XRP_KRW",
+          "algo": "",
+          "type": "sell",
+          "entry": 2250.0,
+          "exit": 2250.0,
+          "pnl_pct": 0,
+          "pnl_krw": 0,
+          "win": false,
+          "reason": "paper: market fill at 2,250 | decision: [sol_trend_rider] EMA_align_dn ER=0.49 ROC=-0.001",
+          "ts": "2026-03-17T12:08:10.133406+07:00"
+        },
+        {
+          "symbol": "USDT_KRW",
+          "algo": "",
+          "type": "sell",
+          "entry": 1471.0,
+          "exit": 1471.0,
+          "pnl_pct": 0,
+          "pnl_krw": 0,
+          "win": false,
+          "reason": "paper: market fill at 1,471 | decision: [sol_trend_rider] EMA_align_dn ER=0.30 ROC=-0.002",
+          "ts": "2026-03-17T12:08:10.133406+07:00"
+        },
+        {
+          "symbol": "XRP_KRW",
+          "algo": "",
+          "type": "sell",
+          "entry": 2248.0,
+          "exit": 2248.0,
+          "pnl_pct": 0,
+          "pnl_krw": 0,
+          "win": false,
+          "reason": "paper: market fill at 2,248 | decision: [sol_trend_rider] EMA_align_dn ER=0.52 ROC=-0.001",
+          "ts": "2026-03-17T12:04:46.424587+07:00"
+        },
+        {
+          "symbol": "BTC_KRW",
+          "algo": "",
+          "type": "sell",
+          "entry": 109159000.0,
+          "exit": 109159000.0,
+          "pnl_pct": 0,
+          "pnl_krw": 0,
+          "win": false,
+          "reason": "paper: market fill at 109,159,000 | decision: [sol_trend_rider] EMA_align_dn ER=0.47 ROC=-0.001",
+          "ts": "2026-03-17T12:04:46.424587+07:00"
+        },
+        {
+          "symbol": "USDT_KRW",
+          "algo": "",
+          "type": "sell",
+          "entry": 1471.0,
+          "exit": 1471.0,
+          "pnl_pct": 0,
+          "pnl_krw": 0,
+          "win": false,
+          "reason": "paper: market fill at 1,471 | decision: [sol_trend_rider] EMA_align_dn ER=0.30 ROC=-0.003",
+          "ts": "2026-03-17T12:04:46.424587+07:00"
         },
         {
           "symbol": "ETH_KRW",
           "algo": "",
           "type": "sell",
-          "entry": 3404000.0,
-          "exit": 3404000.0,
+          "entry": 3398000.0,
+          "exit": 3398000.0,
           "pnl_pct": 0,
           "pnl_krw": 0,
           "win": false,
-          "reason": "paper: market fill at 3,404,000 | decision: [sol_trend_rider] EMA_align_dn ER=0.47 ROC=-0.003",
-          "ts": "2026-03-17T11:54:08.196295+07:00"
-        },
-        {
-          "symbol": "SOL_KRW",
-          "algo": "",
-          "type": "sell",
-          "entry": 138000.0,
-          "exit": 138000.0,
-          "pnl_pct": 0,
-          "pnl_krw": 0,
-          "win": false,
-          "reason": "paper: market fill at 138,000 | decision: [sol_trend_rider] EMA_align_dn ER=0.49 ROC=-0.001",
-          "ts": "2026-03-17T11:54:08.196295+07:00"
-        },
-        {
-          "symbol": "WLD_KRW",
-          "algo": "",
-          "type": "sell",
-          "entry": 572.0,
-          "exit": 572.0,
-          "pnl_pct": 0,
-          "pnl_krw": 0,
-          "win": false,
-          "reason": "paper: market fill at 572 | decision: [sol_trend_rider] EMA_align_dn ER=0.36 ROC=-0.002",
-          "ts": "2026-03-17T11:54:08.196295+07:00"
-        },
-        {
-          "symbol": "VIRTUAL_KRW",
-          "algo": "",
-          "type": "sell",
-          "entry": 1154.0,
-          "exit": 1154.0,
-          "pnl_pct": 0,
-          "pnl_krw": 0,
-          "win": false,
-          "reason": "paper: market fill at 1,154 | decision: [sol_trend_rider] EMA_align_dn ER=0.54 ROC=-0.010",
-          "ts": "2026-03-17T11:54:08.196295+07:00"
-        },
-        {
-          "symbol": "BTC_KRW",
-          "algo": "sol_trend_rider",
-          "type": "sell",
-          "entry": 109373000.0,
-          "exit": 109373000.0,
-          "pnl_pct": 2.16,
-          "pnl_krw": 4144,
-          "win": true,
-          "reason": "exit: time-stop 1724m >= 1440m",
-          "ts": "2026-03-17T11:54:07.678437+07:00"
-        },
-        {
-          "symbol": "SOL_KRW",
-          "algo": "sol_trend_rider",
-          "type": "sell",
-          "entry": 142100.0,
-          "exit": 142100.0,
-          "pnl_pct": 4.41,
-          "pnl_krw": 9743,
-          "win": true,
-          "reason": "exit: take-profit hit (4.41% >= 3.50%)",
-          "ts": "2026-03-17T05:35:48.117263+07:00"
+          "reason": "paper: market fill at 3,398,000 | decision: [sol_trend_rider] EMA_align_dn ER=0.47 ROC=-0.001",
+          "ts": "2026-03-17T12:04:46.424587+07:00"
         },
         {
           "symbol": "XRP_KRW",
-          "algo": "breakout",
+          "algo": "",
           "type": "sell",
-          "entry": 2254.0,
-          "exit": 2254.0,
-          "pnl_pct": 5.47,
-          "pnl_krw": 12403,
-          "win": true,
-          "reason": "exit: take-profit hit (5.47% >= 3.50%)",
-          "ts": "2026-03-17T01:47:01.087937+07:00"
+          "entry": 2252.0,
+          "exit": 2252.0,
+          "pnl_pct": 0,
+          "pnl_krw": 0,
+          "win": false,
+          "reason": "paper: market fill at 2,252 | decision: [sol_trend_rider] EMA_align_dn ER=0.52 ROC=-0.000",
+          "ts": "2026-03-17T12:01:15.452879+07:00"
+        },
+        {
+          "symbol": "BTC_KRW",
+          "algo": "",
+          "type": "sell",
+          "entry": 109160000.0,
+          "exit": 109160000.0,
+          "pnl_pct": 0,
+          "pnl_krw": 0,
+          "win": false,
+          "reason": "paper: market fill at 109,160,000 | decision: [sol_trend_rider] EMA_align_dn ER=0.47 ROC=-0.001",
+          "ts": "2026-03-17T12:01:15.452879+07:00"
+        },
+        {
+          "symbol": "USDT_KRW",
+          "algo": "",
+          "type": "sell",
+          "entry": 1472.0,
+          "exit": 1472.0,
+          "pnl_pct": 0,
+          "pnl_krw": 0,
+          "win": false,
+          "reason": "paper: market fill at 1,472 | decision: [sol_trend_rider] EMA_align_dn ER=0.26 ROC=-0.003",
+          "ts": "2026-03-17T12:01:15.452879+07:00"
+        },
+        {
+          "symbol": "ETH_KRW",
+          "algo": "",
+          "type": "sell",
+          "entry": 3400000.0,
+          "exit": 3400000.0,
+          "pnl_pct": 0,
+          "pnl_krw": 0,
+          "win": false,
+          "reason": "paper: market fill at 3,400,000 | decision: [sol_trend_rider] EMA_align_dn ER=0.46 ROC=-0.000",
+          "ts": "2026-03-17T12:01:15.452879+07:00"
+        },
+        {
+          "symbol": "DOGE_KRW",
+          "algo": "",
+          "type": "sell",
+          "entry": 147.0,
+          "exit": 147.0,
+          "pnl_pct": 0,
+          "pnl_krw": 0,
+          "win": false,
+          "reason": "paper: market fill at 147 | decision: [sol_trend_rider] EMA_align_dn ER=0.29 ROC=-0.007",
+          "ts": "2026-03-17T12:01:15.452879+07:00"
         }
       ],
       "cycle_health": {},
@@ -711,8 +711,8 @@
           "consecutive_wins": 5,
           "consecutive_losses": 0,
           "daily_pnl_pct": 2.629,
-          "win_rate_7d": 0.23809523809523808,
-          "last_trade_ts": "2026-03-17T11:57:31.949857+07:00",
+          "win_rate_7d": 0.1388888888888889,
+          "last_trade_ts": "2026-03-17T12:15:21.000277+07:00",
           "transitions_today": 2,
           "date": "2026-03-17"
         },
@@ -733,11 +733,11 @@
         },
         "desires": {
           "trading_cycle": {
-            "last_satisfied": "2026-03-17T11:57:32.073028+07:00",
+            "last_satisfied": "2026-03-17T12:15:21.176152+07:00",
             "consecutive_failures": 0
           },
           "gather_intel": {
-            "last_satisfied": "2026-03-17T11:45:07.837361+07:00",
+            "last_satisfied": "2026-03-17T12:01:52.873524+07:00",
             "consecutive_failures": 0
           },
           "tune_guards": {
@@ -757,7 +757,7 @@
             "consecutive_failures": 0
           },
           "report_to_owner": {
-            "last_satisfied": "2026-03-17T11:07:48.783041+07:00",
+            "last_satisfied": "2026-03-17T12:09:10.969803+07:00",
             "consecutive_failures": 0
           },
           "evaluate_experiments": {
