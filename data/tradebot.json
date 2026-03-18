@@ -1,5 +1,5 @@
 {
-  "ts": "2026-03-18T01:00:00Z",
+  "ts": "2026-03-18T01:15:01Z",
   "host": "jjanga-phone",
   "exchanges": [
     {
@@ -444,13 +444,13 @@
         "budget": {
           "date": "2026-03-18",
           "hour": 8,
-          "daily_calls": 24,
-          "hourly_calls": 0,
-          "daily_tokens": 29000,
+          "daily_calls": 26,
+          "hourly_calls": 2,
+          "daily_tokens": 33500,
           "category_counts": {
             "low": 18,
-            "medium": 4,
-            "high": 2
+            "medium": 5,
+            "high": 3
           },
           "kill_switch": false,
           "daily_trade_loss_krw": -77670.0,
@@ -462,7 +462,7 @@
             "consecutive_failures": 0
           },
           "gather_intel": {
-            "last_satisfied": "2026-03-18T07:55:22.820708+07:00",
+            "last_satisfied": "2026-03-18T08:13:43.214072+07:00",
             "consecutive_failures": 0
           },
           "tune_guards": {
@@ -470,19 +470,19 @@
             "consecutive_failures": 0
           },
           "reflect_on_trades": {
-            "last_satisfied": "2026-03-18T07:10:20.251107+07:00",
+            "last_satisfied": "2026-03-18T08:12:00.284717+07:00",
             "consecutive_failures": 0
           },
           "hypothesize": {
-            "last_satisfied": "2026-03-18T06:05:23.308162+07:00",
+            "last_satisfied": "2026-03-18T08:07:03.193003+07:00",
             "consecutive_failures": 0
           },
           "research_strategy": {
-            "last_satisfied": "2026-03-18T04:07:41.308143+07:00",
+            "last_satisfied": "2026-03-18T08:08:59.174136+07:00",
             "consecutive_failures": 0
           },
           "report_to_owner": {
-            "last_satisfied": "2026-03-18T07:13:40.523430+07:00",
+            "last_satisfied": "2026-03-18T08:15:20.646022+07:00",
             "consecutive_failures": 0
           },
           "evaluate_experiments": {
@@ -555,7 +555,7 @@
       "strategy_registry": {
         "total": 11,
         "active": 3,
-        "total_signals": 14477,
+        "total_signals": 14480,
         "total_fills": 664,
         "total_pnl_krw": -328190
       },
@@ -572,7 +572,7 @@
         {
           "name": "breakout",
           "status": "active",
-          "total_signals": 1227,
+          "total_signals": 1228,
           "total_fills": 8,
           "total_pnl_krw": -39146,
           "win_count": 2,
@@ -599,7 +599,7 @@
         {
           "name": "volume_spike",
           "status": "active",
-          "total_signals": 2674,
+          "total_signals": 2676,
           "total_fills": 18,
           "total_pnl_krw": -61408,
           "win_count": 1,
@@ -679,14 +679,14 @@
         "market": "KRW"
       },
       "signals": {
-        "ts": "2026-03-18T00:59:13.876167+00:00",
+        "ts": "2026-03-18T01:14:51.394343+00:00",
         "live_count": 0,
         "paper_count": 0,
         "strategy_count": 0,
         "paper_signals": []
       },
       "scout": {
-        "ts": "2026-03-18T00:59:06.778469+00:00",
+        "ts": "2026-03-18T01:14:44.257668+00:00",
         "universe_count": 12,
         "top_symbols": [
           "XRP_KRW",
@@ -894,66 +894,66 @@
             "symbol": "WLD_KRW",
             "qty": 436.3001745200698,
             "avg_price": 573.0,
-            "cur_price": 578.0,
+            "cur_price": 577.0,
             "buy_krw": 250000.0,
-            "val_krw": 252181.5,
-            "pnl_krw": 2181.5,
-            "pnl_pct": 0.87,
+            "val_krw": 251745.2,
+            "pnl_krw": 1745.2,
+            "pnl_pct": 0.7,
             "side": "buy"
           },
           {
             "symbol": "WLD_KRW",
             "qty": 437.06293706293707,
             "avg_price": 572.0,
-            "cur_price": 578.0,
+            "cur_price": 577.0,
             "buy_krw": 250000.0,
-            "val_krw": 252622.38,
-            "pnl_krw": 2622.38,
-            "pnl_pct": 1.05,
+            "val_krw": 252185.31,
+            "pnl_krw": 2185.31,
+            "pnl_pct": 0.87,
             "side": "buy"
           },
           {
             "symbol": "USDT_KRW",
             "qty": 169.37669376693768,
             "avg_price": 1476.0,
-            "cur_price": 1476.0,
+            "cur_price": 1475.0,
             "buy_krw": 250000.0,
-            "val_krw": 250000.0,
-            "pnl_krw": 0.0,
-            "pnl_pct": 0.0,
+            "val_krw": 249830.62,
+            "pnl_krw": -169.38,
+            "pnl_pct": -0.07,
             "side": "buy"
           },
           {
             "symbol": "SOL_KRW",
             "qty": 1.793400286944046,
             "avg_price": 139400.0,
-            "cur_price": 139500.0,
+            "cur_price": 139600.0,
             "buy_krw": 250000.0,
-            "val_krw": 250179.34,
-            "pnl_krw": 179.34,
-            "pnl_pct": 0.07,
+            "val_krw": 250358.68,
+            "pnl_krw": 358.68,
+            "pnl_pct": 0.14,
             "side": "buy"
           }
         ],
         "allocation": [
           {
             "name": "WLD_KRW",
-            "value": 252622.38,
+            "value": 252185.31,
             "pct": 25.1
           },
           {
             "name": "WLD_KRW",
-            "value": 252181.5,
+            "value": 251745.2,
             "pct": 25.1
           },
           {
             "name": "SOL_KRW",
-            "value": 250179.34,
+            "value": 250358.68,
             "pct": 24.9
           },
           {
             "name": "USDT_KRW",
-            "value": 250000.0,
+            "value": 249830.62,
             "pct": 24.9
           }
         ]
@@ -973,13 +973,13 @@
         "budget": {
           "date": "2026-03-18",
           "hour": 8,
-          "daily_calls": 24,
-          "hourly_calls": 0,
-          "daily_tokens": 29000,
+          "daily_calls": 27,
+          "hourly_calls": 3,
+          "daily_tokens": 34500,
           "category_counts": {
-            "low": 18,
-            "medium": 4,
-            "high": 2
+            "low": 19,
+            "medium": 5,
+            "high": 3
           },
           "kill_switch": false,
           "daily_trade_loss_krw": 0.0,
@@ -987,31 +987,31 @@
         },
         "desires": {
           "trading_cycle": {
-            "last_satisfied": "2026-03-18T07:59:14.808390+07:00",
+            "last_satisfied": "2026-03-18T08:14:52.243463+07:00",
             "consecutive_failures": 0
           },
           "gather_intel": {
-            "last_satisfied": "2026-03-18T07:54:46.732054+07:00",
+            "last_satisfied": "2026-03-18T08:10:24.274319+07:00",
             "consecutive_failures": 0
           },
           "tune_guards": {
-            "last_satisfied": "2026-03-18T07:44:06.007499+07:00",
+            "last_satisfied": "2026-03-18T08:15:21.079369+07:00",
             "consecutive_failures": 0
           },
           "reflect_on_trades": {
-            "last_satisfied": "2026-03-18T07:04:43.522121+07:00",
+            "last_satisfied": "2026-03-18T08:05:21.056173+07:00",
             "consecutive_failures": 0
           },
           "hypothesize": {
-            "last_satisfied": "2026-03-18T06:04:49.422305+07:00",
+            "last_satisfied": "2026-03-18T08:06:04.528533+07:00",
             "consecutive_failures": 0
           },
           "research_strategy": {
-            "last_satisfied": "2026-03-18T04:04:23.778147+07:00",
+            "last_satisfied": "2026-03-18T08:05:03.418641+07:00",
             "consecutive_failures": 0
           },
           "report_to_owner": {
-            "last_satisfied": "2026-03-18T07:07:13.945054+07:00",
+            "last_satisfied": "2026-03-18T08:07:51.434725+07:00",
             "consecutive_failures": 0
           },
           "evaluate_experiments": {
