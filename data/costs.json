@@ -1,11 +1,11 @@
 {
-  "timestamp": "2026-03-19T01:00:00Z",
+  "timestamp": "2026-03-19T01:15:00Z",
   "phone_resources": {
     "memory": {
       "total_mb": 7443,
-      "used_mb": 4282,
-      "available_mb": 3161,
-      "percent": 58
+      "used_mb": 4270,
+      "available_mb": 3173,
+      "percent": 57
     },
     "storage": {
       "used": "27G",
@@ -27,41 +27,40 @@
     "claude": {
       "model": "Opus 4.6",
       "subscription": "Claude Max 5x",
-      "sessions_today": 0,
-      "sessions_total": 211,
-      "turns_today": 0,
-      "turns_total": 1961,
-      "tokens_today_est": 0,
-      "tokens_total_est": 5883000,
+      "sessions_today": 1,
+      "sessions_total": 212,
+      "turns_today": 1,
+      "turns_total": 1962,
+      "tokens_today_est": 3000,
+      "tokens_total_est": 5886000,
       "daily_limit_est": 1800000,
-      "last_used": "2026-03-18T21:22:36.307983+00:00"
+      "last_used": "2026-03-19T01:05:03.687974+00:00"
     },
     "gpt": {
-      "model": "gpt-5.2",
+      "model": "GPT-5.2 (Codex)",
       "subscription": "ChatGPT Plus OAuth",
-      "input_tokens": 22348,
-      "output_tokens": 1304,
+      "input_tokens": 0,
+      "output_tokens": 0,
       "cache_read": 0,
       "cache_write": 0,
-      "total_tokens": 24653,
-      "remaining_tokens": 247347,
-      "percent_used": 9.1,
-      "context_tokens": 272000,
-      "last_used": 1773548759939,
-      "source": "openclaw_sessions",
+      "total_tokens": 0,
+      "remaining_tokens": null,
+      "percent_used": null,
+      "context_tokens": null,
+      "last_used": null,
+      "source": "unknown",
       "window_5h_pct": 1,
       "window_5h_reset": 1773896415000,
       "window_weekly_pct": 0,
-      "window_weekly_reset": 1774486824000,
+      "window_weekly_reset": 1774487727000,
       "plan": "plus ($0.00)",
-      "session_key": "agent:main:telegram:direct:7223758740",
       "today_tokens": 0,
       "binary_found": true
     }
   },
   "agent_stats": {
-    "runs_today": 10,
-    "success_today": 10,
+    "runs_today": 12,
+    "success_today": 12,
     "errors_today": 0,
     "success_rate": 100.0,
     "cron_jobs_active": 20
