@@ -1,5 +1,5 @@
 {
-  "ts": "2026-03-22T16:45:00Z",
+  "ts": "2026-03-22T17:00:00Z",
   "host": "jjanga-phone",
   "exchanges": [
     {
@@ -304,21 +304,19 @@
           "consecutive_wins": 0,
           "consecutive_losses": 6,
           "daily_pnl_pct": 0.0,
-          "win_rate_7d": 0.5,
+          "win_rate_7d": 0.4,
           "last_trade_ts": "2026-03-19T00:07:33.082220+07:00",
           "transitions_today": 0,
-          "date": "2026-03-22"
+          "date": "2026-03-23"
         },
         "budget": {
-          "date": "2026-03-22",
-          "hour": 23,
-          "daily_calls": 29,
-          "hourly_calls": 0,
-          "daily_tokens": 37000,
+          "date": "2026-03-23",
+          "hour": 0,
+          "daily_calls": 1,
+          "hourly_calls": 1,
+          "daily_tokens": 1000,
           "category_counts": {
-            "low": 20,
-            "medium": 6,
-            "high": 3
+            "low": 1
           },
           "kill_switch": false,
           "daily_trade_loss_krw": 0,
@@ -334,7 +332,7 @@
             "consecutive_failures": 0
           },
           "tune_guards": {
-            "last_satisfied": "2026-03-22T08:53:24.840245+07:00",
+            "last_satisfied": "2026-03-23T00:00:25.318308+07:00",
             "consecutive_failures": 0
           },
           "reflect_on_trades": {
@@ -374,7 +372,7 @@
       "strategy_registry": {
         "total": 11,
         "active": 3,
-        "total_signals": 15598,
+        "total_signals": 15601,
         "total_fills": 668,
         "total_pnl_krw": -373984
       },
@@ -391,7 +389,7 @@
         {
           "name": "breakout",
           "status": "active",
-          "total_signals": 1541,
+          "total_signals": 1542,
           "total_fills": 8,
           "total_pnl_krw": -38876,
           "win_count": 3,
@@ -418,7 +416,7 @@
         {
           "name": "volume_spike",
           "status": "active",
-          "total_signals": 3403,
+          "total_signals": 3405,
           "total_fills": 22,
           "total_pnl_krw": -107472,
           "win_count": 4,
@@ -498,14 +496,14 @@
         "market": "KRW"
       },
       "signals": {
-        "ts": "2026-03-22T16:43:56.908082+00:00",
-        "live_count": 0,
+        "ts": "2026-03-22T16:58:13.865773+00:00",
+        "live_count": 1,
         "paper_count": 0,
-        "strategy_count": 0,
+        "strategy_count": 9,
         "paper_signals": []
       },
       "scout": {
-        "ts": "2026-03-22T16:43:48.935573+00:00",
+        "ts": "2026-03-22T16:58:06.099403+00:00",
         "universe_count": 12,
         "top_symbols": [
           "USDT_KRW",
@@ -640,21 +638,19 @@
           "consecutive_wins": 0,
           "consecutive_losses": 1,
           "daily_pnl_pct": 0.0,
-          "win_rate_7d": 0.1875,
+          "win_rate_7d": 0.17391304347826086,
           "last_trade_ts": "2026-03-21T02:07:38.883157+07:00",
           "transitions_today": 0,
-          "date": "2026-03-22"
+          "date": "2026-03-23"
         },
         "budget": {
-          "date": "2026-03-22",
-          "hour": 23,
-          "daily_calls": 38,
-          "hourly_calls": 0,
-          "daily_tokens": 55000,
+          "date": "2026-03-23",
+          "hour": 0,
+          "daily_calls": 1,
+          "hourly_calls": 1,
+          "daily_tokens": 500,
           "category_counts": {
-            "low": 20,
-            "high": 6,
-            "medium": 12
+            "low": 1
           },
           "kill_switch": false,
           "daily_trade_loss_krw": 0,
@@ -662,7 +658,7 @@
         },
         "desires": {
           "trading_cycle": {
-            "last_satisfied": "2026-03-22T23:43:57.557204+07:00",
+            "last_satisfied": "2026-03-22T23:58:14.534551+07:00",
             "consecutive_failures": 0
           },
           "gather_intel": {
@@ -690,7 +686,7 @@
             "consecutive_failures": 0
           },
           "evaluate_experiments": {
-            "last_satisfied": "2026-03-22T06:00:53.466057+07:00",
+            "last_satisfied": "2026-03-23T00:00:13.791188+07:00",
             "consecutive_failures": 0
           }
         }
