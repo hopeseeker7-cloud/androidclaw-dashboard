@@ -1,5 +1,5 @@
 {
-  "ts": "2026-03-22T22:00:00Z",
+  "ts": "2026-03-22T22:15:00Z",
   "host": "jjanga-phone",
   "exchanges": [
     {
@@ -158,14 +158,14 @@
         "market": "USDT"
       },
       "signals": {
-        "ts": "2026-03-22T21:59:36.625254+00:00",
-        "live_count": 1,
+        "ts": "2026-03-22T22:13:36.608532+00:00",
+        "live_count": 0,
         "paper_count": 0,
-        "strategy_count": 8,
+        "strategy_count": 0,
         "paper_signals": []
       },
       "scout": {
-        "ts": "2026-03-22T21:59:25.869137+00:00",
+        "ts": "2026-03-22T22:13:25.800142+00:00",
         "universe_count": 11,
         "top_symbols": [
           "BTCUSDT",
@@ -312,11 +312,11 @@
         "budget": {
           "date": "2026-03-23",
           "hour": 5,
-          "daily_calls": 16,
-          "hourly_calls": 0,
-          "daily_tokens": 21000,
+          "daily_calls": 17,
+          "hourly_calls": 1,
+          "daily_tokens": 22000,
           "category_counts": {
-            "low": 11,
+            "low": 12,
             "medium": 3,
             "high": 2
           },
@@ -326,19 +326,19 @@
         },
         "desires": {
           "trading_cycle": {
-            "last_satisfied": "2026-03-23T04:59:37.303165+07:00",
+            "last_satisfied": "2026-03-23T05:13:37.280007+07:00",
             "consecutive_failures": 0
           },
           "gather_intel": {
-            "last_satisfied": "2026-03-23T04:52:29.035694+07:00",
+            "last_satisfied": "2026-03-23T05:08:28.984596+07:00",
             "consecutive_failures": 0
           },
           "tune_guards": {
-            "last_satisfied": "2026-03-23T04:40:25.381953+07:00",
+            "last_satisfied": "2026-03-23T05:12:25.396439+07:00",
             "consecutive_failures": 0
           },
           "reflect_on_trades": {
-            "last_satisfied": "2026-03-23T04:06:25.391038+07:00",
+            "last_satisfied": "2026-03-23T05:07:25.419442+07:00",
             "consecutive_failures": 0
           },
           "hypothesize": {
@@ -350,7 +350,7 @@
             "consecutive_failures": 0
           },
           "report_to_owner": {
-            "last_satisfied": "2026-03-23T04:10:25.771571+07:00",
+            "last_satisfied": "2026-03-23T05:11:25.790914+07:00",
             "consecutive_failures": 0
           },
           "evaluate_experiments": {
@@ -374,7 +374,7 @@
       "strategy_registry": {
         "total": 11,
         "active": 3,
-        "total_signals": 15675,
+        "total_signals": 15680,
         "total_fills": 669,
         "total_pnl_krw": -379796
       },
@@ -418,7 +418,7 @@
         {
           "name": "volume_spike",
           "status": "active",
-          "total_signals": 3473,
+          "total_signals": 3478,
           "total_fills": 23,
           "total_pnl_krw": -113284,
           "win_count": 4,
@@ -498,22 +498,22 @@
         "market": "KRW"
       },
       "signals": {
-        "ts": "2026-03-22T22:00:27.626802+00:00",
+        "ts": "2026-03-22T22:11:40.358271+00:00",
         "live_count": 1,
         "paper_count": 0,
         "strategy_count": 9,
         "paper_signals": []
       },
       "scout": {
-        "ts": "2026-03-22T22:00:19.839159+00:00",
+        "ts": "2026-03-22T22:11:32.560031+00:00",
         "universe_count": 12,
         "top_symbols": [
           "USDT_KRW",
           "XRP_KRW",
           "BTC_KRW",
           "ETH_KRW",
-          "WLD_KRW",
           "SOL_KRW",
+          "WLD_KRW",
           "XTER_KRW",
           "REI_KRW"
         ]
@@ -648,11 +648,11 @@
         "budget": {
           "date": "2026-03-23",
           "hour": 5,
-          "daily_calls": 16,
-          "hourly_calls": 0,
-          "daily_tokens": 21000,
+          "daily_calls": 17,
+          "hourly_calls": 1,
+          "daily_tokens": 22000,
           "category_counts": {
-            "low": 11,
+            "low": 12,
             "high": 2,
             "medium": 3
           },
@@ -662,19 +662,19 @@
         },
         "desires": {
           "trading_cycle": {
-            "last_satisfied": "2026-03-23T05:00:28.298166+07:00",
+            "last_satisfied": "2026-03-23T05:11:41.023414+07:00",
             "consecutive_failures": 0
           },
           "gather_intel": {
-            "last_satisfied": "2026-03-23T04:59:43.008972+07:00",
+            "last_satisfied": "2026-03-23T05:15:20.139056+07:00",
             "consecutive_failures": 0
           },
           "tune_guards": {
-            "last_satisfied": "2026-03-23T04:43:24.364109+07:00",
+            "last_satisfied": "2026-03-23T05:14:01.875931+07:00",
             "consecutive_failures": 0
           },
           "reflect_on_trades": {
-            "last_satisfied": "2026-03-23T04:05:14.147863+07:00",
+            "last_satisfied": "2026-03-23T05:05:16.894139+07:00",
             "consecutive_failures": 0
           },
           "hypothesize": {
@@ -686,7 +686,7 @@
             "consecutive_failures": 0
           },
           "report_to_owner": {
-            "last_satisfied": "2026-03-23T04:06:14.486645+07:00",
+            "last_satisfied": "2026-03-23T05:06:32.237559+07:00",
             "consecutive_failures": 0
           },
           "evaluate_experiments": {
