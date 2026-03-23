@@ -16,6 +16,7 @@ function render() {
     case 'home':
       renderServerGrid();
       renderAgentGrid();
+      renderValidation();
       renderTimeline();
       break;
     case 'runs':

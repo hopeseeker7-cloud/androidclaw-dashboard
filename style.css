@@ -1801,3 +1801,27 @@ body::after {
 .pt-metric-k { font-size: 0.7rem; color: var(--text-dim); margin-top: 2px; }
 .pt-desires { display: flex; flex-wrap: wrap; gap: 6px; width: 100%; margin-top: 4px; }
 .pt-desires .scout-chip { font-size: 0.72rem; }
+
+/* ── Validation Section (Phase 48) ── */
+.val-overall-bar {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 8px 12px; border-radius: 8px; margin-bottom: 10px;
+}
+.val-overall-badge { font-weight: 700; font-size: 0.9rem; }
+.val-mode-badge {
+  font-size: 0.7rem; padding: 2px 8px; border-radius: 4px;
+  background: rgba(255,255,255,0.06); color: var(--text-muted);
+}
+.val-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 8px; margin-bottom: 8px;
+}
+.val-card {
+  padding: 10px; border-radius: 8px; border: 1px solid var(--border);
+  background: var(--card-bg);
+}
+.val-card-title { font-size: 0.72rem; color: var(--text-muted); margin-bottom: 4px; }
+.val-card-verdict { font-size: 0.85rem; font-weight: 600; margin-bottom: 2px; }
+.val-card-detail { font-size: 0.7rem; color: var(--text-dim); }
+.val-blockers, .val-warnings { margin-top: 6px; margin-bottom: 4px; }
+.val-safety { font-size: 0.68rem; color: var(--text-dim); margin-top: 8px; }

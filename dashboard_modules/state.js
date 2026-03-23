@@ -1,13 +1,14 @@
 let state = {
-  agents:   [],
-  system:   null,
-  runs:     [],
-  costs:    null,
-  health:   null,
-  tradebot: null,
-  lastSync: null,
-  loading:  false,
-  errors:   [],
+  agents:     [],
+  system:     null,
+  runs:       [],
+  costs:      null,
+  health:     null,
+  tradebot:   null,
+  validation: null,
+  lastSync:   null,
+  loading:    false,
+  errors:     [],
 };
 
 let activeTab = 'home';
@@ -161,6 +162,7 @@ async function loadData() {
       fetchJSON(CONFIG.DATA.health),
       fetchJSON(CONFIG.DATA.tradebot),
       fetchJSONL(CONFIG.DATA.tradebotHistory),
+      fetchJSON(CONFIG.DATA.validation),
     ]);
 
     if (results[0].status === 'fulfilled') {
@@ -204,6 +206,13 @@ async function loadData() {
     }
 
     state.tradebot = normalizeTradebot(tradebotRaw, tradebotHistory);
+
+    if (results[7].status === 'fulfilled') {
+      state.validation = results[7].value;
+    } else {
+      state.validation = null;
+    }
+
     state.lastSync = new Date();
   } finally {
     state.loading = false;

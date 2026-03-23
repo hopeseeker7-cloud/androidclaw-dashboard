@@ -22,6 +22,7 @@ const CONFIG = {
     health:          'data/health.json',
     tradebot:        'data/tradebot.json?v=20260316',
     tradebotHistory: 'data/tradebot_history.jsonl',
+    validation:      'data/validation.json',
   },
 };
 

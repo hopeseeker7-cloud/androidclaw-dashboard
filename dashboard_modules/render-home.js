@@ -233,6 +233,159 @@ function renderTimelineItem(run) {
   `;
 }
 
+/* ── Validation & Operator Integration (Phase 48) ── */
+
+function verdictStyle(verdict) {
+  if (!verdict) return { fg: 'var(--text-dim)', bg: 'transparent' };
+  const v = verdict.toLowerCase();
+  if (v.includes('blocked'))      return { fg: 'var(--accent-red)',    bg: 'rgba(239,68,68,0.08)' };
+  if (v.includes('insufficient')) return { fg: 'var(--accent-yellow)', bg: 'rgba(245,158,11,0.08)' };
+  if (v.includes('deferred'))     return { fg: 'var(--accent-yellow)', bg: 'rgba(245,158,11,0.06)' };
+  if (v.includes('degrading'))    return { fg: 'var(--accent-yellow)', bg: 'rgba(245,158,11,0.06)' };
+  if (v.includes('mixed'))        return { fg: 'var(--accent-yellow)', bg: 'rgba(245,158,11,0.06)' };
+  if (v.includes('stable'))       return { fg: 'var(--accent-green)',  bg: 'rgba(52,211,153,0.08)' };
+  if (v.includes('aligned') || v.includes('pending')) return { fg: 'var(--accent-green)', bg: 'rgba(52,211,153,0.06)' };
+  return { fg: 'var(--text-dim)', bg: 'transparent' };
+}
+
+function urgencyColor(urgency) {
+  if (urgency === 'immediate')  return 'var(--accent-red)';
+  if (urgency === 'accelerated') return 'var(--accent-yellow)';
+  return 'var(--accent-green)';
+}
+
+function renderValidation() {
+  const panel = document.getElementById('validationPanel');
+  if (!panel) return;
+
+  const val = state.validation;
+  if (!val) {
+    panel.innerHTML = `
+      <div class="empty-state">
+        <span class="empty-state-icon">📊</span>
+        검증 데이터 없음
+      </div>`;
+    const statusEl = document.getElementById('validationStatus');
+    if (statusEl) statusEl.textContent = '—';
+    return;
+  }
+
+  // ── P25-28 Validation Cards ──
+  const overall   = val.overall_status || 'no data';
+  const overallSt = verdictStyle(overall);
+  const mode      = val.mode_display || val.mode || 'paper';
+  const nextAct   = val.next_action || '—';
+
+  const mv  = val.mock_validation || {};
+  const lv  = val.longitudinal || {};
+  const cv  = val.campaign || {};
+  const cal = val.calendar || {};
+
+  let html = `
+    <div class="val-overall-bar" style="background:${overallSt.bg}">
+      <div style="display:flex;align-items:center;gap:8px">
+        <span class="val-overall-badge" style="color:${overallSt.fg}">${escHtml(val.overall_display || overall)}</span>
+        <span class="val-mode-badge">${escHtml(mode)}</span>
+      </div>
+      <span style="font-size:0.75rem;color:var(--text-muted)">${escHtml(nextAct)}</span>
+    </div>
+    <div class="val-grid">
+      <div class="val-card">
+        <div class="val-card-title">Mock 검증</div>
+        <div class="val-card-verdict" style="color:${verdictStyle(mv.verdict).fg}">${escHtml(mv.verdict_display || mv.verdict || '—')}</div>
+        <div class="val-card-detail">통과율: ${escHtml(mv.pass_rate_pct || '—')}</div>
+      </div>
+      <div class="val-card">
+        <div class="val-card-title">종단 검증</div>
+        <div class="val-card-verdict" style="color:${verdictStyle(lv.verdict).fg}">${escHtml(lv.verdict_display || lv.verdict || '—')}</div>
+        <div class="val-card-detail">추세: ${escHtml(lv.trend || '—')}</div>
+      </div>
+      <div class="val-card">
+        <div class="val-card-title">캠페인 리뷰</div>
+        <div class="val-card-verdict" style="color:${verdictStyle(cv.verdict).fg}">${escHtml(cv.verdict_display || cv.verdict || '—')}</div>
+        <div class="val-card-detail">차단: ${cv.blocked_count ?? 0} · 경고: ${cv.warning_count ?? 0}</div>
+      </div>
+      <div class="val-card">
+        <div class="val-card-title">검토 일정</div>
+        <div class="val-card-verdict" style="color:${urgencyColor(cal.urgency)}">${escHtml(cal.urgency_display || cal.urgency || '—')}</div>
+        <div class="val-card-detail">연속 안정: ${cal.stable_streak ?? 0}회</div>
+      </div>
+    </div>`;
+
+  // ── Blockers / Warnings ──
+  const blockers = val.blockers || [];
+  const warnings = val.warnings || [];
+  if (blockers.length) {
+    html += `<div class="val-blockers"><strong style="color:var(--accent-red)">차단 사유 (${blockers.length})</strong>`;
+    blockers.forEach(b => { html += `<div style="font-size:0.75rem;color:var(--accent-red)">· ${escHtml(b)}</div>`; });
+    html += `</div>`;
+  }
+  if (warnings.length) {
+    html += `<div class="val-warnings"><strong style="color:var(--accent-yellow)">경고 (${warnings.length})</strong>`;
+    warnings.forEach(w => { html += `<div style="font-size:0.75rem;color:var(--accent-yellow)">· ${escHtml(w)}</div>`; });
+    html += `</div>`;
+  }
+
+  // ── P48 Operator Integration Block ──
+  const oi = val.operator_integration;
+  if (oi) {
+    const worstSt = verdictStyle(oi.worst_contract_verdict);
+    html += `
+    <div class="val-operator-integration" style="margin-top:12px;padding:12px;border:1px solid var(--border);border-radius:8px;background:var(--card-bg)">
+      <div style="font-weight:600;font-size:0.85rem;margin-bottom:8px;color:var(--text-primary)">Contract Status (P36–P47)</div>
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
+        <span style="font-size:0.8rem;font-weight:600;color:${worstSt.fg}">${escHtml(oi.worst_contract_verdict || '—')}</span>
+        <span style="font-size:0.72rem;color:var(--text-muted)">${oi.evaluated_count || 0}/${oi.total_hooks || 12} layers</span>
+      </div>
+      <div style="font-size:0.75rem;color:var(--text-primary);margin-bottom:4px">${escHtml(oi.operator_headline || '—')}</div>
+      <div style="font-size:0.72rem;color:var(--text-muted);margin-bottom:8px">${escHtml(oi.operator_action || '—')}</div>`;
+
+    // Governance / signoff snapshot
+    const gs = oi.governance_signoff_status;
+    if (gs) {
+      html += `
+      <div style="display:flex;gap:16px;margin-bottom:8px;font-size:0.72rem">
+        <div><span style="color:var(--text-muted)">Governance:</span> <span style="color:${verdictStyle(gs.governance_display).fg}">${escHtml(gs.governance_display || '—')}</span></div>
+        <div><span style="color:var(--text-muted)">Signoff:</span> <span style="color:${verdictStyle(gs.signoff_display).fg}">${escHtml(gs.signoff_display || '—')}</span></div>
+      </div>`;
+    }
+
+    // Next design step
+    if (oi.next_design_step) {
+      html += `<div style="font-size:0.72rem;color:var(--text-muted);margin-bottom:8px">다음: ${escHtml(oi.next_design_step)}</div>`;
+    }
+
+    // Prohibited actions
+    const prohibitions = oi.prohibition_strip || [];
+    if (prohibitions.length) {
+      html += `<div style="font-size:0.68rem;color:var(--text-dim);border-top:1px solid var(--border);padding-top:6px;margin-top:4px">`;
+      prohibitions.forEach(p => { html += `<div>· ${escHtml(p)}</div>`; });
+      html += `</div>`;
+    }
+
+    // Safety strip
+    const safety = oi.safety_strip;
+    if (safety) {
+      const modeDisp = safety.mode_display || safety.mode || 'paper';
+      html += `<div style="font-size:0.68rem;color:var(--text-dim);margin-top:4px">모드: ${escHtml(modeDisp)} · live: 비활성</div>`;
+    }
+
+    html += `</div>`;
+  }
+
+  // ── Safety footer ──
+  html += `<div class="val-safety" style="font-size:0.68rem;color:var(--text-dim);margin-top:8px">live orders: 비활성 · human approval: 필수</div>`;
+
+  panel.innerHTML = html;
+
+  // Update status badge
+  const statusEl = document.getElementById('validationStatus');
+  if (statusEl) {
+    statusEl.textContent = escHtml(val.overall_display || overall);
+    statusEl.style.color = overallSt.fg;
+  }
+}
+
 function renderTimeline() {
   const timeline  = document.getElementById('timeline');
   if (!timeline) return;
