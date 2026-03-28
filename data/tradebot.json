@@ -1,5 +1,5 @@
 {
-  "ts": "2026-03-28T00:45:00Z",
+  "ts": "2026-03-28T01:00:00Z",
   "host": "jjanga-phone",
   "exchanges": [
     {
@@ -158,14 +158,14 @@
         "market": "USDT"
       },
       "signals": {
-        "ts": "2026-03-28T00:42:28.711359+00:00",
-        "live_count": 2,
+        "ts": "2026-03-28T01:00:18.353014+00:00",
+        "live_count": 0,
         "paper_count": 0,
-        "strategy_count": 8,
+        "strategy_count": 0,
         "paper_signals": []
       },
       "scout": {
-        "ts": "2026-03-28T00:42:18.316722+00:00",
+        "ts": "2026-03-28T01:00:07.678976+00:00",
         "universe_count": 11,
         "top_symbols": [
           "BTCUSDT",
@@ -311,9 +311,9 @@
         },
         "budget": {
           "date": "2026-03-28",
-          "hour": 7,
+          "hour": 8,
           "daily_calls": 23,
-          "hourly_calls": 2,
+          "hourly_calls": 0,
           "daily_tokens": 28000,
           "category_counts": {
             "low": 17,
@@ -326,11 +326,11 @@
         },
         "desires": {
           "trading_cycle": {
-            "last_satisfied": "2026-03-28T07:42:29.481928+07:00",
+            "last_satisfied": "2026-03-28T08:00:19.255762+07:00",
             "consecutive_failures": 0
           },
           "gather_intel": {
-            "last_satisfied": "2026-03-28T07:32:18.779971+07:00",
+            "last_satisfied": "2026-03-28T07:48:02.197935+07:00",
             "consecutive_failures": 0
           },
           "tune_guards": {
@@ -374,7 +374,7 @@
       "strategy_registry": {
         "total": 11,
         "active": 3,
-        "total_signals": 16708,
+        "total_signals": 16710,
         "total_fills": 670,
         "total_pnl_krw": -386560
       },
@@ -418,7 +418,7 @@
         {
           "name": "volume_spike",
           "status": "active",
-          "total_signals": 4151,
+          "total_signals": 4152,
           "total_fills": 24,
           "total_pnl_krw": -120048,
           "win_count": 4,
@@ -436,7 +436,7 @@
         {
           "name": "sol_trend_rider",
           "status": "active",
-          "total_signals": 7440,
+          "total_signals": 7441,
           "total_fills": 582,
           "total_pnl_krw": -219107,
           "win_count": 41,
@@ -498,14 +498,14 @@
         "market": "KRW"
       },
       "signals": {
-        "ts": "2026-03-28T00:43:38.934829+00:00",
-        "live_count": 0,
+        "ts": "2026-03-28T00:59:39.091690+00:00",
+        "live_count": 1,
         "paper_count": 0,
-        "strategy_count": 0,
+        "strategy_count": 9,
         "paper_signals": []
       },
       "scout": {
-        "ts": "2026-03-28T00:43:32.011295+00:00",
+        "ts": "2026-03-28T00:59:32.106917+00:00",
         "universe_count": 12,
         "top_symbols": [
           "BTC_KRW",
@@ -513,8 +513,8 @@
           "XRP_KRW",
           "ETH_KRW",
           "ZTX_KRW",
-          "SOL_KRW",
           "WLD_KRW",
+          "SOL_KRW",
           "B3_KRW"
         ]
       },
@@ -575,12 +575,12 @@
         },
         "budget": {
           "date": "2026-03-28",
-          "hour": 7,
-          "daily_calls": 23,
-          "hourly_calls": 1,
-          "daily_tokens": 28000,
+          "hour": 8,
+          "daily_calls": 24,
+          "hourly_calls": 0,
+          "daily_tokens": 29000,
           "category_counts": {
-            "low": 17,
+            "low": 18,
             "medium": 4,
             "high": 2
           },
@@ -590,15 +590,15 @@
         },
         "desires": {
           "trading_cycle": {
-            "last_satisfied": "2026-03-28T07:43:39.703349+07:00",
+            "last_satisfied": "2026-03-28T07:59:39.882250+07:00",
             "consecutive_failures": 0
           },
           "gather_intel": {
-            "last_satisfied": "2026-03-28T07:32:31.796726+07:00",
+            "last_satisfied": "2026-03-28T07:48:32.537938+07:00",
             "consecutive_failures": 0
           },
           "tune_guards": {
-            "last_satisfied": "2026-03-28T07:17:29.264529+07:00",
+            "last_satisfied": "2026-03-28T07:49:29.272765+07:00",
             "consecutive_failures": 0
           },
           "reflect_on_trades": {
