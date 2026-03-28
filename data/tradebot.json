@@ -1,5 +1,5 @@
 {
-  "ts": "2026-03-28T06:45:00Z",
+  "ts": "2026-03-28T07:00:01Z",
   "host": "jjanga-phone",
   "exchanges": [
     {
@@ -16,7 +16,7 @@
       "strategy_registry": {
         "total": 13,
         "active": 4,
-        "total_signals": 14242,
+        "total_signals": 14244,
         "total_fills": 225,
         "total_pnl_krw": -1123065
       },
@@ -51,7 +51,7 @@
         {
           "name": "volume_spike",
           "status": "active",
-          "total_signals": 3534,
+          "total_signals": 3536,
           "total_fills": 53,
           "total_pnl_krw": -674451,
           "win_count": 14,
@@ -158,23 +158,14 @@
         "market": "USDT"
       },
       "signals": {
-        "ts": "2026-03-28T06:42:23.284083+00:00",
+        "ts": "2026-03-28T07:00:10.807575+00:00",
         "live_count": 1,
-        "paper_count": 1,
+        "paper_count": 0,
         "strategy_count": 8,
-        "paper_signals": [
-          {
-            "symbol": "SOLUSDT",
-            "side": "sell",
-            "confidence": 0.8,
-            "reason": "[sol_trend_rider] EMA_align_dn ER=1.00 ROC=-0.004",
-            "entry_price": 82.55,
-            "krw": 1000000
-          }
-        ]
+        "paper_signals": []
       },
       "scout": {
-        "ts": "2026-03-28T06:42:03.529940+00:00",
+        "ts": "2026-03-28T06:59:58.377269+00:00",
         "universe_count": 11,
         "top_symbols": [
           "BTCUSDT",
@@ -320,7 +311,7 @@
         },
         "budget": {
           "date": "2026-03-28",
-          "hour": 13,
+          "hour": 14,
           "daily_calls": 31,
           "hourly_calls": 0,
           "daily_tokens": 41500,
@@ -335,7 +326,7 @@
         },
         "desires": {
           "trading_cycle": {
-            "last_satisfied": "2026-03-28T13:42:24.746394+07:00",
+            "last_satisfied": "2026-03-28T14:00:12.326730+07:00",
             "consecutive_failures": 0
           },
           "gather_intel": {
@@ -584,7 +575,7 @@
         },
         "budget": {
           "date": "2026-03-28",
-          "hour": 13,
+          "hour": 14,
           "daily_calls": 29,
           "hourly_calls": 0,
           "daily_tokens": 37000,
@@ -637,7 +628,7 @@
   "summary": {
     "total_exchanges": 2,
     "total_positions": 0,
-    "total_signals": 1,
+    "total_signals": 0,
     "total_strategies": 24
   },
   "history": [
