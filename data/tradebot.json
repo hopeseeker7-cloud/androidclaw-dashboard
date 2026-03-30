@@ -1,5 +1,5 @@
 {
-  "ts": "2026-03-30T06:45:00Z",
+  "ts": "2026-03-30T07:00:00Z",
   "host": "jjanga-phone",
   "exchanges": [
     {
@@ -16,7 +16,7 @@
       "strategy_registry": {
         "total": 13,
         "active": 4,
-        "total_signals": 14772,
+        "total_signals": 14774,
         "total_fills": 225,
         "total_pnl_krw": -1123065
       },
@@ -51,7 +51,7 @@
         {
           "name": "volume_spike",
           "status": "active",
-          "total_signals": 3870,
+          "total_signals": 3872,
           "total_fills": 53,
           "total_pnl_krw": -674451,
           "win_count": 14,
@@ -158,23 +158,14 @@
         "market": "USDT"
       },
       "signals": {
-        "ts": "2026-03-30T06:44:53.531800+00:00",
+        "ts": "2026-03-30T06:59:10.269183+00:00",
         "live_count": 0,
-        "paper_count": 1,
-        "strategy_count": 8,
-        "paper_signals": [
-          {
-            "symbol": "SOLUSDT",
-            "side": "sell",
-            "confidence": 0.8,
-            "reason": "[sol_trend_rider] EMA_align_dn ER=1.00 ROC=-0.004",
-            "entry_price": 81.55,
-            "krw": 1000000
-          }
-        ]
+        "paper_count": 0,
+        "strategy_count": 0,
+        "paper_signals": []
       },
       "scout": {
-        "ts": "2026-03-30T06:44:42.643792+00:00",
+        "ts": "2026-03-30T06:58:59.460184+00:00",
         "universe_count": 11,
         "top_symbols": [
           "BTCUSDT",
@@ -320,7 +311,7 @@
         },
         "budget": {
           "date": "2026-03-30",
-          "hour": 13,
+          "hour": 14,
           "daily_calls": 31,
           "hourly_calls": 0,
           "daily_tokens": 41500,
@@ -335,7 +326,7 @@
         },
         "desires": {
           "trading_cycle": {
-            "last_satisfied": "2026-03-30T13:44:54.424118+07:00",
+            "last_satisfied": "2026-03-30T13:59:11.355653+07:00",
             "consecutive_failures": 0
           },
           "gather_intel": {
@@ -559,7 +550,7 @@
         },
         "budget": {
           "date": "2026-03-30",
-          "hour": 13,
+          "hour": 14,
           "daily_calls": 29,
           "hourly_calls": 0,
           "daily_tokens": 37000,
@@ -612,7 +603,7 @@
   "summary": {
     "total_exchanges": 2,
     "total_positions": 0,
-    "total_signals": 1,
+    "total_signals": 0,
     "total_strategies": 24
   },
   "history": [
