@@ -1,5 +1,5 @@
 {
-  "ts": "2026-03-30T17:45:01Z",
+  "ts": "2026-03-30T18:00:00Z",
   "host": "jjanga-phone",
   "exchanges": [
     {
@@ -16,7 +16,7 @@
       "strategy_registry": {
         "total": 13,
         "active": 4,
-        "total_signals": 14862,
+        "total_signals": 14864,
         "total_fills": 225,
         "total_pnl_krw": -1123065
       },
@@ -51,7 +51,7 @@
         {
           "name": "volume_spike",
           "status": "active",
-          "total_signals": 3949,
+          "total_signals": 3951,
           "total_fills": 53,
           "total_pnl_krw": -674451,
           "win_count": 14,
@@ -158,24 +158,24 @@
         "market": "USDT"
       },
       "signals": {
-        "ts": "2026-03-30T17:45:02.203090+00:00",
-        "live_count": 0,
+        "ts": "2026-03-30T17:59:21.452991+00:00",
+        "live_count": 1,
         "paper_count": 0,
-        "strategy_count": 0,
+        "strategy_count": 8,
         "paper_signals": []
       },
       "scout": {
-        "ts": "2026-03-30T17:44:51.145375+00:00",
+        "ts": "2026-03-30T17:59:10.457847+00:00",
         "universe_count": 11,
         "top_symbols": [
           "BTCUSDT",
           "ETHUSDT",
-          "CRVUSDT",
           "TESTZEUSUSDT",
-          "WBTCUSDT",
-          "USDCUSDT",
+          "CRVUSDT",
+          "DOGEUSDT",
           "BGBUSDT",
-          "XLMUSDT"
+          "SOLUSDT",
+          "USDCUSDT"
         ]
       },
       "recent_trades": [
@@ -311,9 +311,9 @@
         },
         "budget": {
           "date": "2026-03-31",
-          "hour": 0,
+          "hour": 1,
           "daily_calls": 5,
-          "hourly_calls": 5,
+          "hourly_calls": 0,
           "daily_tokens": 7000,
           "category_counts": {
             "low": 3,
@@ -326,11 +326,11 @@
         },
         "desires": {
           "trading_cycle": {
-            "last_satisfied": "2026-03-31T00:45:03.373076+07:00",
+            "last_satisfied": "2026-03-31T00:59:22.479867+07:00",
             "consecutive_failures": 0
           },
           "gather_intel": {
-            "last_satisfied": "2026-03-31T00:32:45.628181+07:00",
+            "last_satisfied": "2026-03-31T00:49:11.157264+07:00",
             "consecutive_failures": 0
           },
           "tune_guards": {
@@ -374,7 +374,7 @@
       "strategy_registry": {
         "total": 11,
         "active": 3,
-        "total_signals": 16943,
+        "total_signals": 16946,
         "total_fills": 670,
         "total_pnl_krw": -386560
       },
@@ -418,7 +418,7 @@
         {
           "name": "volume_spike",
           "status": "active",
-          "total_signals": 4297,
+          "total_signals": 4300,
           "total_fills": 24,
           "total_pnl_krw": -120048,
           "win_count": 4,
@@ -498,14 +498,14 @@
         "market": "KRW"
       },
       "signals": {
-        "ts": "2026-03-30T17:45:41.521447+00:00",
+        "ts": "2026-03-30T17:57:39.171417+00:00",
         "live_count": 0,
         "paper_count": 0,
         "strategy_count": 0,
         "paper_signals": []
       },
       "scout": {
-        "ts": "2026-03-30T17:45:34.090024+00:00",
+        "ts": "2026-03-30T17:57:31.768102+00:00",
         "universe_count": 12,
         "top_symbols": [
           "USDT_KRW",
@@ -550,9 +550,9 @@
         },
         "budget": {
           "date": "2026-03-31",
-          "hour": 0,
+          "hour": 1,
           "daily_calls": 5,
-          "hourly_calls": 5,
+          "hourly_calls": 0,
           "daily_tokens": 7000,
           "category_counts": {
             "low": 3,
@@ -565,11 +565,11 @@
         },
         "desires": {
           "trading_cycle": {
-            "last_satisfied": "2026-03-31T00:45:42.579615+07:00",
+            "last_satisfied": "2026-03-31T00:57:40.162174+07:00",
             "consecutive_failures": 0
           },
           "gather_intel": {
-            "last_satisfied": "2026-03-31T00:36:34.412910+07:00",
+            "last_satisfied": "2026-03-31T00:52:34.210083+07:00",
             "consecutive_failures": 0
           },
           "tune_guards": {
