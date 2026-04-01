@@ -1,5 +1,5 @@
 {
-  "ts": "2026-04-01T19:00:00Z",
+  "ts": "2026-04-01T19:15:00Z",
   "host": "jjanga-phone",
   "exchanges": [
     {
@@ -16,7 +16,7 @@
       "strategy_registry": {
         "total": 13,
         "active": 4,
-        "total_signals": 15335,
+        "total_signals": 15340,
         "total_fills": 225,
         "total_pnl_krw": -1123065
       },
@@ -51,7 +51,7 @@
         {
           "name": "volume_spike",
           "status": "active",
-          "total_signals": 4279,
+          "total_signals": 4282,
           "total_fills": 53,
           "total_pnl_krw": -674451,
           "win_count": 14,
@@ -69,7 +69,7 @@
         {
           "name": "breakout",
           "status": "active",
-          "total_signals": 1351,
+          "total_signals": 1353,
           "total_fills": 11,
           "total_pnl_krw": -102151,
           "win_count": 2,
@@ -158,14 +158,14 @@
         "market": "USDT"
       },
       "signals": {
-        "ts": "2026-04-01T19:00:04.687625+00:00",
+        "ts": "2026-04-01T19:14:22.047430+00:00",
         "live_count": 2,
         "paper_count": 0,
         "strategy_count": 8,
         "paper_signals": []
       },
       "scout": {
-        "ts": "2026-04-01T18:59:53.988674+00:00",
+        "ts": "2026-04-01T19:14:11.251315+00:00",
         "universe_count": 11,
         "top_symbols": [
           "TESTZEUSUSDT",
@@ -312,11 +312,11 @@
         "budget": {
           "date": "2026-04-02",
           "hour": 2,
-          "daily_calls": 7,
-          "hourly_calls": 0,
-          "daily_tokens": 9000,
+          "daily_calls": 8,
+          "hourly_calls": 1,
+          "daily_tokens": 10000,
           "category_counts": {
-            "low": 5,
+            "low": 6,
             "high": 1,
             "medium": 1
           },
@@ -326,19 +326,19 @@
         },
         "desires": {
           "trading_cycle": {
-            "last_satisfied": "2026-04-02T02:00:05.782868+07:00",
+            "last_satisfied": "2026-04-02T02:14:23.061529+07:00",
             "consecutive_failures": 0
           },
           "gather_intel": {
-            "last_satisfied": "2026-04-02T01:53:31.380582+07:00",
+            "last_satisfied": "2026-04-02T02:09:13.701622+07:00",
             "consecutive_failures": 0
           },
           "tune_guards": {
-            "last_satisfied": "2026-04-02T01:37:44.913494+07:00",
+            "last_satisfied": "2026-04-02T02:08:27.783699+07:00",
             "consecutive_failures": 0
           },
           "reflect_on_trades": {
-            "last_satisfied": "2026-04-02T01:04:10.582684+07:00",
+            "last_satisfied": "2026-04-02T02:04:53.502306+07:00",
             "consecutive_failures": 0
           },
           "hypothesize": {
@@ -350,7 +350,7 @@
             "consecutive_failures": 0
           },
           "report_to_owner": {
-            "last_satisfied": "2026-04-02T01:05:36.650690+07:00",
+            "last_satisfied": "2026-04-02T02:06:19.598925+07:00",
             "consecutive_failures": 0
           },
           "evaluate_experiments": {
@@ -374,7 +374,7 @@
       "strategy_registry": {
         "total": 11,
         "active": 3,
-        "total_signals": 17295,
+        "total_signals": 17301,
         "total_fills": 670,
         "total_pnl_krw": -386560
       },
@@ -391,7 +391,7 @@
         {
           "name": "breakout",
           "status": "active",
-          "total_signals": 2030,
+          "total_signals": 2033,
           "total_fills": 8,
           "total_pnl_krw": -38876,
           "win_count": 3,
@@ -418,7 +418,7 @@
         {
           "name": "volume_spike",
           "status": "active",
-          "total_signals": 4504,
+          "total_signals": 4507,
           "total_fills": 24,
           "total_pnl_krw": -120048,
           "win_count": 4,
@@ -498,14 +498,14 @@
         "market": "KRW"
       },
       "signals": {
-        "ts": "2026-04-01T18:58:21.498652+00:00",
+        "ts": "2026-04-01T19:12:38.318301+00:00",
         "live_count": 0,
         "paper_count": 0,
         "strategy_count": 0,
         "paper_signals": []
       },
       "scout": {
-        "ts": "2026-04-01T18:58:13.754316+00:00",
+        "ts": "2026-04-01T19:12:30.931966+00:00",
         "universe_count": 12,
         "top_symbols": [
           "USDT_KRW",
@@ -551,13 +551,13 @@
         "budget": {
           "date": "2026-04-02",
           "hour": 2,
-          "daily_calls": 7,
-          "hourly_calls": 0,
-          "daily_tokens": 9000,
+          "daily_calls": 9,
+          "hourly_calls": 2,
+          "daily_tokens": 11500,
           "category_counts": {
             "high": 1,
-            "medium": 1,
-            "low": 5
+            "medium": 2,
+            "low": 6
           },
           "kill_switch": false,
           "daily_trade_loss_krw": 0,
@@ -565,23 +565,23 @@
         },
         "desires": {
           "trading_cycle": {
-            "last_satisfied": "2026-04-02T01:58:22.327430+07:00",
+            "last_satisfied": "2026-04-02T02:12:39.308803+07:00",
             "consecutive_failures": 0
           },
           "gather_intel": {
-            "last_satisfied": "2026-04-02T01:55:22.471066+07:00",
+            "last_satisfied": "2026-04-02T02:11:05.090019+07:00",
             "consecutive_failures": 0
           },
           "tune_guards": {
-            "last_satisfied": "2026-04-02T01:39:36.799788+07:00",
+            "last_satisfied": "2026-04-02T02:10:19.344532+07:00",
             "consecutive_failures": 0
           },
           "reflect_on_trades": {
-            "last_satisfied": "2026-04-02T01:06:02.181197+07:00",
+            "last_satisfied": "2026-04-02T02:06:45.066692+07:00",
             "consecutive_failures": 0
           },
           "hypothesize": {
-            "last_satisfied": "2026-04-02T00:01:48.773168+07:00",
+            "last_satisfied": "2026-04-02T02:02:31.795948+07:00",
             "consecutive_failures": 0
           },
           "research_strategy": {
@@ -589,7 +589,7 @@
             "consecutive_failures": 0
           },
           "report_to_owner": {
-            "last_satisfied": "2026-04-02T01:07:28.308916+07:00",
+            "last_satisfied": "2026-04-02T02:08:11.122210+07:00",
             "consecutive_failures": 0
           },
           "evaluate_experiments": {
