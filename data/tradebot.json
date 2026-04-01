@@ -1,5 +1,5 @@
 {
-  "ts": "2026-04-01T17:45:00Z",
+  "ts": "2026-04-01T18:00:00Z",
   "host": "jjanga-phone",
   "exchanges": [
     {
@@ -16,7 +16,7 @@
       "strategy_registry": {
         "total": 13,
         "active": 4,
-        "total_signals": 15319,
+        "total_signals": 15325,
         "total_fills": 225,
         "total_pnl_krw": -1123065
       },
@@ -51,7 +51,7 @@
         {
           "name": "volume_spike",
           "status": "active",
-          "total_signals": 4269,
+          "total_signals": 4271,
           "total_fills": 53,
           "total_pnl_krw": -674451,
           "win_count": 14,
@@ -69,7 +69,7 @@
         {
           "name": "breakout",
           "status": "active",
-          "total_signals": 1345,
+          "total_signals": 1349,
           "total_fills": 11,
           "total_pnl_krw": -102151,
           "win_count": 2,
@@ -158,21 +158,21 @@
         "market": "USDT"
       },
       "signals": {
-        "ts": "2026-04-01T17:45:04.742072+00:00",
+        "ts": "2026-04-01T17:59:24.431452+00:00",
         "live_count": 3,
         "paper_count": 0,
         "strategy_count": 8,
         "paper_signals": []
       },
       "scout": {
-        "ts": "2026-04-01T17:44:53.912110+00:00",
+        "ts": "2026-04-01T17:59:13.452547+00:00",
         "universe_count": 11,
         "top_symbols": [
           "TESTZEUSUSDT",
           "BTCUSDT",
           "ETHUSDT",
-          "USDCUSDT",
           "WBTCUSDT",
+          "USDCUSDT",
           "XLMUSDT",
           "BGBUSDT",
           "SOLUSDT"
@@ -311,13 +311,14 @@
         },
         "budget": {
           "date": "2026-04-02",
-          "hour": 0,
-          "daily_calls": 4,
-          "hourly_calls": 4,
-          "daily_tokens": 5500,
+          "hour": 1,
+          "daily_calls": 5,
+          "hourly_calls": 0,
+          "daily_tokens": 7000,
           "category_counts": {
             "low": 3,
-            "high": 1
+            "high": 1,
+            "medium": 1
           },
           "kill_switch": false,
           "daily_trade_loss_krw": 0,
@@ -325,11 +326,11 @@
         },
         "desires": {
           "trading_cycle": {
-            "last_satisfied": "2026-04-02T00:45:05.634785+07:00",
+            "last_satisfied": "2026-04-02T00:59:25.467426+07:00",
             "consecutive_failures": 0
           },
           "gather_intel": {
-            "last_satisfied": "2026-04-02T00:33:30.774421+07:00",
+            "last_satisfied": "2026-04-02T00:49:14.269024+07:00",
             "consecutive_failures": 0
           },
           "tune_guards": {
@@ -341,7 +342,7 @@
             "consecutive_failures": 0
           },
           "hypothesize": {
-            "last_satisfied": "2026-04-01T22:54:18.383690+07:00",
+            "last_satisfied": "2026-04-02T00:55:00.610253+07:00",
             "consecutive_failures": 0
           },
           "research_strategy": {
@@ -373,7 +374,7 @@
       "strategy_registry": {
         "total": 11,
         "active": 3,
-        "total_signals": 17280,
+        "total_signals": 17283,
         "total_fills": 670,
         "total_pnl_krw": -386560
       },
@@ -390,7 +391,7 @@
         {
           "name": "breakout",
           "status": "active",
-          "total_signals": 2027,
+          "total_signals": 2028,
           "total_fills": 8,
           "total_pnl_krw": -38876,
           "win_count": 3,
@@ -417,7 +418,7 @@
         {
           "name": "volume_spike",
           "status": "active",
-          "total_signals": 4494,
+          "total_signals": 4496,
           "total_fills": 24,
           "total_pnl_krw": -120048,
           "win_count": 4,
@@ -497,14 +498,14 @@
         "market": "KRW"
       },
       "signals": {
-        "ts": "2026-04-01T17:43:21.462580+00:00",
-        "live_count": 1,
+        "ts": "2026-04-01T17:57:36.049202+00:00",
+        "live_count": 0,
         "paper_count": 0,
-        "strategy_count": 9,
+        "strategy_count": 0,
         "paper_signals": []
       },
       "scout": {
-        "ts": "2026-04-01T17:43:13.909168+00:00",
+        "ts": "2026-04-01T17:57:28.761307+00:00",
         "universe_count": 12,
         "top_symbols": [
           "USDT_KRW",
@@ -549,9 +550,9 @@
         },
         "budget": {
           "date": "2026-04-02",
-          "hour": 0,
+          "hour": 1,
           "daily_calls": 5,
-          "hourly_calls": 5,
+          "hourly_calls": 0,
           "daily_tokens": 7000,
           "category_counts": {
             "high": 1,
@@ -564,11 +565,11 @@
         },
         "desires": {
           "trading_cycle": {
-            "last_satisfied": "2026-04-02T00:43:22.291620+07:00",
+            "last_satisfied": "2026-04-02T00:57:37.054186+07:00",
             "consecutive_failures": 0
           },
           "gather_intel": {
-            "last_satisfied": "2026-04-02T00:34:39.331153+07:00",
+            "last_satisfied": "2026-04-02T00:51:05.199468+07:00",
             "consecutive_failures": 0
           },
           "tune_guards": {
