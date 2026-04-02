@@ -1,5 +1,5 @@
 {
-  "ts": "2026-04-02T17:00:01Z",
+  "ts": "2026-04-02T17:15:00Z",
   "host": "jjanga-phone",
   "exchanges": [
     {
@@ -16,7 +16,7 @@
       "strategy_registry": {
         "total": 13,
         "active": 4,
-        "total_signals": 15576,
+        "total_signals": 15581,
         "total_fills": 225,
         "total_pnl_krw": -1123065
       },
@@ -51,7 +51,7 @@
         {
           "name": "volume_spike",
           "status": "active",
-          "total_signals": 4433,
+          "total_signals": 4436,
           "total_fills": 53,
           "total_pnl_krw": -674451,
           "win_count": 14,
@@ -69,7 +69,7 @@
         {
           "name": "breakout",
           "status": "active",
-          "total_signals": 1421,
+          "total_signals": 1423,
           "total_fills": 11,
           "total_pnl_krw": -102151,
           "win_count": 2,
@@ -158,14 +158,14 @@
         "market": "USDT"
       },
       "signals": {
-        "ts": "2026-04-02T17:00:35.256320+00:00",
-        "live_count": 1,
+        "ts": "2026-04-02T17:14:49.775188+00:00",
+        "live_count": 2,
         "paper_count": 0,
         "strategy_count": 8,
         "paper_signals": []
       },
       "scout": {
-        "ts": "2026-04-02T17:00:24.140651+00:00",
+        "ts": "2026-04-02T17:14:39.032317+00:00",
         "universe_count": 11,
         "top_symbols": [
           "BTCUSDT",
@@ -312,11 +312,11 @@
         "budget": {
           "date": "2026-04-03",
           "hour": 0,
-          "daily_calls": 1,
-          "hourly_calls": 1,
-          "daily_tokens": 500,
+          "daily_calls": 2,
+          "hourly_calls": 2,
+          "daily_tokens": 1500,
           "category_counts": {
-            "low": 1
+            "low": 2
           },
           "kill_switch": false,
           "daily_trade_loss_krw": 0,
@@ -324,19 +324,19 @@
         },
         "desires": {
           "trading_cycle": {
-            "last_satisfied": "2026-04-03T00:00:36.435492+07:00",
+            "last_satisfied": "2026-04-03T00:14:50.798637+07:00",
             "consecutive_failures": 0
           },
           "gather_intel": {
-            "last_satisfied": "2026-04-02T11:49:23.020706+07:00",
+            "last_satisfied": "2026-04-03T00:01:50.023477+07:00",
             "consecutive_failures": 0
           },
           "tune_guards": {
-            "last_satisfied": "2026-04-02T08:49:29.851639+07:00",
+            "last_satisfied": "2026-04-03T00:02:29.939739+07:00",
             "consecutive_failures": 0
           },
           "reflect_on_trades": {
-            "last_satisfied": "2026-04-02T11:12:30.326637+07:00",
+            "last_satisfied": "2026-04-03T00:03:12.794838+07:00",
             "consecutive_failures": 0
           },
           "hypothesize": {
@@ -348,7 +348,7 @@
             "consecutive_failures": 0
           },
           "report_to_owner": {
-            "last_satisfied": "2026-04-02T10:13:04.534960+07:00",
+            "last_satisfied": "2026-04-03T00:04:38.892519+07:00",
             "consecutive_failures": 0
           },
           "evaluate_experiments": {
@@ -372,7 +372,7 @@
       "strategy_registry": {
         "total": 11,
         "active": 3,
-        "total_signals": 17711,
+        "total_signals": 17714,
         "total_fills": 673,
         "total_pnl_krw": -373538
       },
@@ -416,7 +416,7 @@
         {
           "name": "volume_spike",
           "status": "active",
-          "total_signals": 4780,
+          "total_signals": 4783,
           "total_fills": 25,
           "total_pnl_krw": -109562,
           "win_count": 5,
@@ -496,14 +496,14 @@
         "market": "KRW"
       },
       "signals": {
-        "ts": "2026-04-02T16:58:02.957864+00:00",
-        "live_count": 1,
+        "ts": "2026-04-02T17:12:34.859725+00:00",
+        "live_count": 0,
         "paper_count": 0,
-        "strategy_count": 9,
+        "strategy_count": 0,
         "paper_signals": []
       },
       "scout": {
-        "ts": "2026-04-02T16:57:55.899063+00:00",
+        "ts": "2026-04-02T17:12:27.425156+00:00",
         "universe_count": 12,
         "top_symbols": [
           "USDT_KRW",
@@ -622,12 +622,13 @@
         "budget": {
           "date": "2026-04-03",
           "hour": 0,
-          "daily_calls": 2,
-          "hourly_calls": 2,
-          "daily_tokens": 4500,
+          "daily_calls": 4,
+          "hourly_calls": 4,
+          "daily_tokens": 6000,
           "category_counts": {
             "high": 1,
-            "medium": 1
+            "medium": 1,
+            "low": 2
           },
           "kill_switch": false,
           "daily_trade_loss_krw": 0,
@@ -635,19 +636,19 @@
         },
         "desires": {
           "trading_cycle": {
-            "last_satisfied": "2026-04-02T23:58:03.790298+07:00",
+            "last_satisfied": "2026-04-03T00:12:35.865617+07:00",
             "consecutive_failures": 0
           },
           "gather_intel": {
-            "last_satisfied": "2026-04-02T23:53:53.729027+07:00",
+            "last_satisfied": "2026-04-03T00:09:36.163575+07:00",
             "consecutive_failures": 0
           },
           "tune_guards": {
-            "last_satisfied": "2026-04-02T08:54:36.717090+07:00",
+            "last_satisfied": "2026-04-03T00:03:07.350270+07:00",
             "consecutive_failures": 0
           },
           "reflect_on_trades": {
-            "last_satisfied": "2026-04-02T11:13:11.093063+07:00",
+            "last_satisfied": "2026-04-03T00:03:50.251105+07:00",
             "consecutive_failures": 0
           },
           "hypothesize": {
@@ -659,11 +660,11 @@
             "consecutive_failures": 0
           },
           "report_to_owner": {
-            "last_satisfied": "2026-04-02T22:32:01.099104+07:00",
+            "last_satisfied": "2026-04-03T00:04:33.398932+07:00",
             "consecutive_failures": 0
           },
           "evaluate_experiments": {
-            "last_satisfied": "2026-04-02T06:02:27.832600+07:00",
+            "last_satisfied": "2026-04-03T00:02:24.268220+07:00",
             "consecutive_failures": 0
           }
         }
