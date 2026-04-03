@@ -1,5 +1,5 @@
 {
-  "ts": "2026-04-03T16:00:00Z",
+  "ts": "2026-04-03T16:15:00Z",
   "host": "jjanga-phone",
   "exchanges": [
     {
@@ -16,7 +16,7 @@
       "strategy_registry": {
         "total": 13,
         "active": 4,
-        "total_signals": 15799,
+        "total_signals": 15803,
         "total_fills": 225,
         "total_pnl_krw": -1123065
       },
@@ -33,7 +33,7 @@
         {
           "name": "sol_trend_rider",
           "status": "paper_test",
-          "total_signals": 6495,
+          "total_signals": 6499,
           "total_fills": 78,
           "total_pnl_krw": -336643,
           "win_count": 13,
@@ -158,7 +158,7 @@
         "market": "USDT"
       },
       "signals": {
-        "ts": "2026-04-03T16:00:21.822315+00:00",
+        "ts": "2026-04-03T16:14:43.034042+00:00",
         "live_count": 0,
         "paper_count": 1,
         "strategy_count": 8,
@@ -167,14 +167,14 @@
             "symbol": "SOLUSDT",
             "side": "sell",
             "confidence": 0.8,
-            "reason": "[sol_trend_rider] EMA_align_dn ER=0.95 ROC=-0.002",
+            "reason": "[sol_trend_rider] EMA_align_dn ER=0.95 ROC=-0.005",
             "entry_price": 79.14,
             "krw": 1000000
           }
         ]
       },
       "scout": {
-        "ts": "2026-04-03T16:00:10.749517+00:00",
+        "ts": "2026-04-03T16:14:27.225090+00:00",
         "universe_count": 11,
         "top_symbols": [
           "TESTZEUSUSDT",
@@ -321,13 +321,13 @@
         "budget": {
           "date": "2026-04-03",
           "hour": 23,
-          "daily_calls": 37,
-          "hourly_calls": 0,
-          "daily_tokens": 53500,
+          "daily_calls": 38,
+          "hourly_calls": 1,
+          "daily_tokens": 55000,
           "category_counts": {
             "low": 20,
             "high": 6,
-            "medium": 11
+            "medium": 12
           },
           "kill_switch": false,
           "daily_trade_loss_krw": 0,
@@ -335,7 +335,7 @@
         },
         "desires": {
           "trading_cycle": {
-            "last_satisfied": "2026-04-03T23:00:22.875255+07:00",
+            "last_satisfied": "2026-04-03T23:14:44.183433+07:00",
             "consecutive_failures": 0
           },
           "gather_intel": {
@@ -351,7 +351,7 @@
             "consecutive_failures": 0
           },
           "hypothesize": {
-            "last_satisfied": "2026-04-03T21:08:40.145201+07:00",
+            "last_satisfied": "2026-04-03T23:08:51.387756+07:00",
             "consecutive_failures": 0
           },
           "research_strategy": {
@@ -821,7 +821,7 @@
             "consecutive_failures": 0
           },
           "gather_intel": {
-            "last_satisfied": "2026-04-03T22:57:08.445307+07:00",
+            "last_satisfied": "2026-04-03T23:14:00.980354+07:00",
             "consecutive_failures": 0
           },
           "tune_guards": {
