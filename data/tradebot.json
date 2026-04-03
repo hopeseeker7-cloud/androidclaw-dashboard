@@ -1,5 +1,5 @@
 {
-  "ts": "2026-04-03T19:15:00Z",
+  "ts": "2026-04-03T19:30:00Z",
   "host": "jjanga-phone",
   "exchanges": [
     {
@@ -16,7 +16,7 @@
       "strategy_registry": {
         "total": 13,
         "active": 4,
-        "total_signals": 15841,
+        "total_signals": 15848,
         "total_fills": 225,
         "total_pnl_krw": -1123065
       },
@@ -33,7 +33,7 @@
         {
           "name": "sol_trend_rider",
           "status": "paper_test",
-          "total_signals": 6507,
+          "total_signals": 6510,
           "total_fills": 78,
           "total_pnl_krw": -336643,
           "win_count": 13,
@@ -51,7 +51,7 @@
         {
           "name": "volume_spike",
           "status": "active",
-          "total_signals": 4620,
+          "total_signals": 4624,
           "total_fills": 53,
           "total_pnl_krw": -674451,
           "win_count": 14,
@@ -158,23 +158,14 @@
         "market": "USDT"
       },
       "signals": {
-        "ts": "2026-04-03T19:13:14.383633+00:00",
-        "live_count": 1,
-        "paper_count": 1,
-        "strategy_count": 8,
-        "paper_signals": [
-          {
-            "symbol": "SOLUSDT",
-            "side": "sell",
-            "confidence": 0.8,
-            "reason": "[sol_trend_rider] EMA_align_dn ER=1.00 ROC=-0.003",
-            "entry_price": 79.54,
-            "krw": 1000000
-          }
-        ]
+        "ts": "2026-04-03T19:27:31.629066+00:00",
+        "live_count": 0,
+        "paper_count": 0,
+        "strategy_count": 0,
+        "paper_signals": []
       },
       "scout": {
-        "ts": "2026-04-03T19:13:03.511875+00:00",
+        "ts": "2026-04-03T19:30:52.861292+00:00",
         "universe_count": 11,
         "top_symbols": [
           "TESTZEUSUSDT",
@@ -335,11 +326,11 @@
         },
         "desires": {
           "trading_cycle": {
-            "last_satisfied": "2026-04-04T02:13:15.226584+07:00",
+            "last_satisfied": "2026-04-04T02:27:32.640427+07:00",
             "consecutive_failures": 0
           },
           "gather_intel": {
-            "last_satisfied": "2026-04-04T02:10:12.662510+07:00",
+            "last_satisfied": "2026-04-04T02:25:55.827894+07:00",
             "consecutive_failures": 0
           },
           "tune_guards": {
@@ -383,7 +374,7 @@
       "strategy_registry": {
         "total": 11,
         "active": 3,
-        "total_signals": 17899,
+        "total_signals": 17904,
         "total_fills": 678,
         "total_pnl_krw": -393695
       },
@@ -400,7 +391,7 @@
         {
           "name": "breakout",
           "status": "active",
-          "total_signals": 2217,
+          "total_signals": 2219,
           "total_fills": 13,
           "total_pnl_krw": -46775,
           "win_count": 4,
@@ -427,7 +418,7 @@
         {
           "name": "volume_spike",
           "status": "active",
-          "total_signals": 4906,
+          "total_signals": 4909,
           "total_fills": 27,
           "total_pnl_krw": -119284,
           "win_count": 5,
@@ -507,14 +498,14 @@
         "market": "KRW"
       },
       "signals": {
-        "ts": "2026-04-03T19:14:05.796964+00:00",
+        "ts": "2026-04-03T19:30:06.447223+00:00",
         "live_count": 3,
         "paper_count": 0,
         "strategy_count": 9,
         "paper_signals": []
       },
       "scout": {
-        "ts": "2026-04-03T19:13:58.740302+00:00",
+        "ts": "2026-04-03T19:29:58.885571+00:00",
         "universe_count": 12,
         "top_symbols": [
           "USDT_KRW",
@@ -731,11 +722,11 @@
         },
         "desires": {
           "trading_cycle": {
-            "last_satisfied": "2026-04-04T02:14:06.654238+07:00",
+            "last_satisfied": "2026-04-04T02:30:07.536971+07:00",
             "consecutive_failures": 0
           },
           "gather_intel": {
-            "last_satisfied": "2026-04-04T02:08:01.360817+07:00",
+            "last_satisfied": "2026-04-04T02:24:01.398026+07:00",
             "consecutive_failures": 0
           },
           "tune_guards": {
@@ -769,7 +760,7 @@
   "summary": {
     "total_exchanges": 2,
     "total_positions": 0,
-    "total_signals": 1,
+    "total_signals": 0,
     "total_strategies": 24
   },
   "history": [
