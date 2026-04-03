@@ -1,5 +1,5 @@
 {
-  "ts": "2026-04-03T16:45:00Z",
+  "ts": "2026-04-03T17:00:00Z",
   "host": "jjanga-phone",
   "exchanges": [
     {
@@ -16,7 +16,7 @@
       "strategy_registry": {
         "total": 13,
         "active": 4,
-        "total_signals": 15814,
+        "total_signals": 15817,
         "total_fills": 225,
         "total_pnl_krw": -1123065
       },
@@ -51,7 +51,7 @@
         {
           "name": "volume_spike",
           "status": "active",
-          "total_signals": 4605,
+          "total_signals": 4608,
           "total_fills": 53,
           "total_pnl_krw": -674451,
           "win_count": 14,
@@ -158,14 +158,14 @@
         "market": "USDT"
       },
       "signals": {
-        "ts": "2026-04-03T16:43:12.807265+00:00",
+        "ts": "2026-04-03T16:57:29.295450+00:00",
         "live_count": 0,
         "paper_count": 0,
         "strategy_count": 0,
         "paper_signals": []
       },
       "scout": {
-        "ts": "2026-04-03T16:43:01.327530+00:00",
+        "ts": "2026-04-03T17:00:54.875507+00:00",
         "universe_count": 11,
         "top_symbols": [
           "TESTZEUSUSDT",
@@ -307,18 +307,16 @@
           "win_rate_7d": 0.5,
           "last_trade_ts": "",
           "transitions_today": 0,
-          "date": "2026-04-03"
+          "date": "2026-04-04"
         },
         "budget": {
-          "date": "2026-04-03",
-          "hour": 23,
-          "daily_calls": 38,
+          "date": "2026-04-04",
+          "hour": 0,
+          "daily_calls": 1,
           "hourly_calls": 1,
-          "daily_tokens": 55000,
+          "daily_tokens": 500,
           "category_counts": {
-            "low": 20,
-            "high": 6,
-            "medium": 12
+            "low": 1
           },
           "kill_switch": false,
           "daily_trade_loss_krw": 0,
@@ -326,7 +324,7 @@
         },
         "desires": {
           "trading_cycle": {
-            "last_satisfied": "2026-04-03T23:43:13.809585+07:00",
+            "last_satisfied": "2026-04-03T23:57:30.171509+07:00",
             "consecutive_failures": 0
           },
           "gather_intel": {
@@ -354,7 +352,7 @@
             "consecutive_failures": 0
           },
           "evaluate_experiments": {
-            "last_satisfied": "2026-04-03T06:01:04.204916+07:00",
+            "last_satisfied": "2026-04-04T00:00:09.116979+07:00",
             "consecutive_failures": 0
           }
         }
@@ -785,25 +783,23 @@
           "since": "2026-04-03T04:09:34.320486+07:00",
           "consecutive_wins": 0,
           "consecutive_losses": 2,
-          "daily_pnl_pct": -1.3478,
+          "daily_pnl_pct": 0.0,
           "win_rate_7d": 0.4,
           "last_trade_ts": "2026-04-03T04:09:15.008724+07:00",
-          "transitions_today": 3,
-          "date": "2026-04-03"
+          "transitions_today": 0,
+          "date": "2026-04-04"
         },
         "budget": {
-          "date": "2026-04-03",
-          "hour": 23,
-          "daily_calls": 29,
-          "hourly_calls": 0,
-          "daily_tokens": 37000,
+          "date": "2026-04-04",
+          "hour": 0,
+          "daily_calls": 1,
+          "hourly_calls": 1,
+          "daily_tokens": 1000,
           "category_counts": {
-            "high": 3,
-            "medium": 6,
-            "low": 20
+            "low": 1
           },
           "kill_switch": false,
-          "daily_trade_loss_krw": -13478.0,
+          "daily_trade_loss_krw": 0,
           "hourly_trades": 0
         },
         "desires": {
@@ -812,15 +808,15 @@
             "consecutive_failures": 0
           },
           "gather_intel": {
-            "last_satisfied": "2026-04-03T23:30:52.931810+07:00",
+            "last_satisfied": "2026-04-03T23:47:46.151165+07:00",
             "consecutive_failures": 0
           },
           "tune_guards": {
-            "last_satisfied": "2026-04-03T08:49:34.769050+07:00",
+            "last_satisfied": "2026-04-04T00:00:13.745683+07:00",
             "consecutive_failures": 0
           },
           "reflect_on_trades": {
-            "last_satisfied": "2026-04-03T11:10:12.440669+07:00",
+            "last_satisfied": "2026-04-04T00:00:50.499753+07:00",
             "consecutive_failures": 0
           },
           "hypothesize": {
