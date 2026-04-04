@@ -1,5 +1,5 @@
 {
-  "ts": "2026-04-04T22:00:00Z",
+  "ts": "2026-04-04T22:15:00Z",
   "host": "jjanga-phone",
   "exchanges": [
     {
@@ -16,7 +16,7 @@
       "strategy_registry": {
         "total": 13,
         "active": 4,
-        "total_signals": 16111,
+        "total_signals": 16112,
         "total_fills": 225,
         "total_pnl_krw": -1123065
       },
@@ -51,7 +51,7 @@
         {
           "name": "volume_spike",
           "status": "active",
-          "total_signals": 4811,
+          "total_signals": 4812,
           "total_fills": 53,
           "total_pnl_krw": -674451,
           "win_count": 14,
@@ -158,24 +158,24 @@
         "market": "USDT"
       },
       "signals": {
-        "ts": "2026-04-04T22:00:13.999925+00:00",
-        "live_count": 1,
+        "ts": "2026-04-04T22:14:33.020167+00:00",
+        "live_count": 0,
         "paper_count": 0,
-        "strategy_count": 8,
+        "strategy_count": 0,
         "paper_signals": []
       },
       "scout": {
-        "ts": "2026-04-04T22:00:02.940863+00:00",
+        "ts": "2026-04-04T22:14:22.349865+00:00",
         "universe_count": 11,
         "top_symbols": [
           "BTCUSDT",
           "ETHUSDT",
           "WBTCUSDT",
-          "SOLUSDT",
           "USDCUSDT",
-          "DOGEUSDT",
           "BGBUSDT",
-          "XLMUSDT"
+          "XLMUSDT",
+          "DOGEUSDT",
+          "SOLUSDT"
         ]
       },
       "recent_trades": [
@@ -312,11 +312,11 @@
         "budget": {
           "date": "2026-04-05",
           "hour": 5,
-          "daily_calls": 15,
-          "hourly_calls": 0,
-          "daily_tokens": 19500,
+          "daily_calls": 16,
+          "hourly_calls": 1,
+          "daily_tokens": 20500,
           "category_counts": {
-            "low": 11,
+            "low": 12,
             "high": 2,
             "medium": 2
           },
@@ -326,19 +326,19 @@
         },
         "desires": {
           "trading_cycle": {
-            "last_satisfied": "2026-04-05T05:00:15.080067+07:00",
+            "last_satisfied": "2026-04-05T05:14:34.009769+07:00",
             "consecutive_failures": 0
           },
           "gather_intel": {
-            "last_satisfied": "2026-04-05T04:47:57.311079+07:00",
+            "last_satisfied": "2026-04-05T05:04:22.750322+07:00",
             "consecutive_failures": 0
           },
           "tune_guards": {
-            "last_satisfied": "2026-04-05T04:42:53.758294+07:00",
+            "last_satisfied": "2026-04-05T05:13:36.624203+07:00",
             "consecutive_failures": 0
           },
           "reflect_on_trades": {
-            "last_satisfied": "2026-04-05T04:05:02.322815+07:00",
+            "last_satisfied": "2026-04-05T05:05:45.179352+07:00",
             "consecutive_failures": 0
           },
           "hypothesize": {
@@ -350,7 +350,7 @@
             "consecutive_failures": 0
           },
           "report_to_owner": {
-            "last_satisfied": "2026-04-05T04:07:11.242926+07:00",
+            "last_satisfied": "2026-04-05T05:07:54.100186+07:00",
             "consecutive_failures": 0
           },
           "evaluate_experiments": {
@@ -374,7 +374,7 @@
       "strategy_registry": {
         "total": 11,
         "active": 3,
-        "total_signals": 18121,
+        "total_signals": 18126,
         "total_fills": 678,
         "total_pnl_krw": -393695
       },
@@ -391,7 +391,7 @@
         {
           "name": "breakout",
           "status": "active",
-          "total_signals": 2279,
+          "total_signals": 2281,
           "total_fills": 13,
           "total_pnl_krw": -46775,
           "win_count": 4,
@@ -418,7 +418,7 @@
         {
           "name": "volume_spike",
           "status": "active",
-          "total_signals": 5056,
+          "total_signals": 5059,
           "total_fills": 27,
           "total_pnl_krw": -119284,
           "win_count": 5,
@@ -498,14 +498,14 @@
         "market": "KRW"
       },
       "signals": {
-        "ts": "2026-04-04T22:00:07.463607+00:00",
-        "live_count": 1,
+        "ts": "2026-04-04T22:14:06.922487+00:00",
+        "live_count": 3,
         "paper_count": 0,
         "strategy_count": 9,
         "paper_signals": []
       },
       "scout": {
-        "ts": "2026-04-04T21:59:59.694637+00:00",
+        "ts": "2026-04-04T22:13:59.593462+00:00",
         "universe_count": 12,
         "top_symbols": [
           "USDT_KRW",
@@ -731,12 +731,12 @@
         },
         "budget": {
           "date": "2026-04-05",
-          "hour": 4,
-          "daily_calls": 16,
-          "hourly_calls": 4,
-          "daily_tokens": 21000,
+          "hour": 5,
+          "daily_calls": 17,
+          "hourly_calls": 1,
+          "daily_tokens": 22000,
           "category_counts": {
-            "low": 11,
+            "low": 12,
             "medium": 3,
             "high": 2
           },
@@ -746,19 +746,19 @@
         },
         "desires": {
           "trading_cycle": {
-            "last_satisfied": "2026-04-05T05:00:08.549937+07:00",
+            "last_satisfied": "2026-04-05T05:14:07.954414+07:00",
             "consecutive_failures": 0
           },
           "gather_intel": {
-            "last_satisfied": "2026-04-05T04:53:02.087249+07:00",
+            "last_satisfied": "2026-04-05T05:09:02.503885+07:00",
             "consecutive_failures": 0
           },
           "tune_guards": {
-            "last_satisfied": "2026-04-05T04:40:58.789739+07:00",
+            "last_satisfied": "2026-04-05T05:12:58.808877+07:00",
             "consecutive_failures": 0
           },
           "reflect_on_trades": {
-            "last_satisfied": "2026-04-05T04:06:58.831709+07:00",
+            "last_satisfied": "2026-04-05T05:07:58.834181+07:00",
             "consecutive_failures": 0
           },
           "hypothesize": {
@@ -770,7 +770,7 @@
             "consecutive_failures": 0
           },
           "report_to_owner": {
-            "last_satisfied": "2026-04-05T04:10:59.125084+07:00",
+            "last_satisfied": "2026-04-05T05:11:59.278297+07:00",
             "consecutive_failures": 0
           },
           "evaluate_experiments": {
