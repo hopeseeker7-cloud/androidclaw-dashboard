@@ -1,5 +1,5 @@
 {
-  "ts": "2026-04-04T15:00:00Z",
+  "ts": "2026-04-04T15:15:00Z",
   "host": "jjanga-phone",
   "exchanges": [
     {
@@ -16,7 +16,7 @@
       "strategy_registry": {
         "total": 13,
         "active": 4,
-        "total_signals": 16044,
+        "total_signals": 16052,
         "total_fills": 225,
         "total_pnl_krw": -1123065
       },
@@ -33,7 +33,7 @@
         {
           "name": "sol_trend_rider",
           "status": "paper_test",
-          "total_signals": 6527,
+          "total_signals": 6532,
           "total_fills": 78,
           "total_pnl_krw": -336643,
           "win_count": 13,
@@ -51,7 +51,7 @@
         {
           "name": "volume_spike",
           "status": "active",
-          "total_signals": 4761,
+          "total_signals": 4764,
           "total_fills": 53,
           "total_pnl_krw": -674451,
           "win_count": 14,
@@ -158,14 +158,23 @@
         "market": "USDT"
       },
       "signals": {
-        "ts": "2026-04-04T14:58:04.529752+00:00",
+        "ts": "2026-04-04T15:15:41.483428+00:00",
         "live_count": 0,
-        "paper_count": 0,
-        "strategy_count": 0,
-        "paper_signals": []
+        "paper_count": 1,
+        "strategy_count": 8,
+        "paper_signals": [
+          {
+            "symbol": "SOLUSDT",
+            "side": "buy",
+            "confidence": 0.8,
+            "reason": "[sol_trend_rider] EMA_align_up ER=1.00 ROC=0.002",
+            "entry_price": 80.35,
+            "krw": 1000000
+          }
+        ]
       },
       "scout": {
-        "ts": "2026-04-04T14:57:42.541705+00:00",
+        "ts": "2026-04-04T15:15:30.594806+00:00",
         "universe_count": 11,
         "top_symbols": [
           "BTCUSDT",
@@ -326,7 +335,7 @@
         },
         "desires": {
           "trading_cycle": {
-            "last_satisfied": "2026-04-04T21:58:05.549935+07:00",
+            "last_satisfied": "2026-04-04T22:15:42.492154+07:00",
             "consecutive_failures": 0
           },
           "gather_intel": {
@@ -784,7 +793,7 @@
   "summary": {
     "total_exchanges": 2,
     "total_positions": 0,
-    "total_signals": 0,
+    "total_signals": 1,
     "total_strategies": 24
   },
   "history": [
