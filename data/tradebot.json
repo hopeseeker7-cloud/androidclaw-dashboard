@@ -1,5 +1,5 @@
 {
-  "ts": "2026-04-04T11:00:01Z",
+  "ts": "2026-04-04T11:15:00Z",
   "host": "jjanga-phone",
   "exchanges": [
     {
@@ -16,7 +16,7 @@
       "strategy_registry": {
         "total": 13,
         "active": 4,
-        "total_signals": 16013,
+        "total_signals": 16014,
         "total_fills": 225,
         "total_pnl_krw": -1123065
       },
@@ -132,7 +132,7 @@
         {
           "name": "bear_reversal",
           "status": "paper_test",
-          "total_signals": 1,
+          "total_signals": 2,
           "total_fills": 0,
           "total_pnl_krw": 0,
           "win_count": 0,
@@ -158,14 +158,23 @@
         "market": "USDT"
       },
       "signals": {
-        "ts": "2026-04-04T10:57:45.816466+00:00",
+        "ts": "2026-04-04T11:15:45.311340+00:00",
         "live_count": 0,
-        "paper_count": 0,
-        "strategy_count": 0,
-        "paper_signals": []
+        "paper_count": 1,
+        "strategy_count": 8,
+        "paper_signals": [
+          {
+            "symbol": "ETHUSDT",
+            "side": "sell",
+            "confidence": 0.5,
+            "reason": "[bear_reversal] BEAR_REV: EMA21(2050.78)<EMA55(2051.00) slope=0.00% RSI=65.6>65.0 BB_up=2052.4806 dist=0.100% vol+",
+            "entry_price": 2050.43,
+            "krw": 20
+          }
+        ]
       },
       "scout": {
-        "ts": "2026-04-04T10:57:34.975369+00:00",
+        "ts": "2026-04-04T11:15:33.618702+00:00",
         "universe_count": 11,
         "top_symbols": [
           "BTCUSDT",
@@ -326,7 +335,7 @@
         },
         "desires": {
           "trading_cycle": {
-            "last_satisfied": "2026-04-04T17:57:46.822721+07:00",
+            "last_satisfied": "2026-04-04T18:15:46.387047+07:00",
             "consecutive_failures": 0
           },
           "gather_intel": {
@@ -784,7 +793,7 @@
   "summary": {
     "total_exchanges": 2,
     "total_positions": 0,
-    "total_signals": 0,
+    "total_signals": 1,
     "total_strategies": 24
   },
   "history": [
