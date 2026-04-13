@@ -8,7 +8,7 @@
       "color": "#FF6B6B"
     },
     "status": "WORKING",
-    "lastRun": "2026-04-05T04:15:00Z",
+    "lastRun": "2026-04-13T19:45:00Z",
     "summary": "Dashboard data collecting"
   },
   {
@@ -44,20 +44,20 @@
       "color": "#10B981"
     },
     "status": "WORKING",
-    "lastRun": "2026-04-05T04:12:00Z",
-    "summary": "OpenClaw OK, MoneyCrab OK",
+    "lastRun": "2026-04-13T19:42:00Z",
+    "summary": "OpenClaw OK, MoneyCrab issue",
     "details": {
       "openclaw": {
         "fail_count": 0,
         "last_status": "up",
-        "last_check": "2026-04-05T04:12:00Z",
-        "summary": "GW:UP T:12 PnL:0 KRW (0t 0w) Pos:1/4"
+        "last_check": "2026-04-13T19:42:00Z",
+        "summary": "GW:UP T:12 PnL:38 KRW (1t 1w) Pos:1/4"
       },
       "moneycrab": {
-        "fail_count": 0,
-        "last_status": "up",
-        "last_check": "2026-04-05T04:12:00Z",
-        "summary": "Log:4h J:4h Strats:148 Cron:1"
+        "fail_count": 1,
+        "last_status": "down",
+        "last_check": "2026-04-13T19:42:00Z",
+        "summary": "log_stale(212h) Strats:148"
       }
     }
   },
@@ -70,7 +70,7 @@
       "color": "#3B82F6"
     },
     "status": "WORKING",
-    "lastRun": "2026-04-05T04:10:01Z",
+    "lastRun": "2026-04-13T19:40:02Z",
     "summary": "1 targets monitored, 0 alerts",
     "details": {
       "targets": 1,
@@ -86,14 +86,14 @@
       "emoji": "🦀",
       "color": "#EF4444"
     },
-    "status": "WORKING",
-    "lastRun": "2026-04-05T04:12:00Z",
-    "summary": "Log:4h J:4h Strats:148 Cron:1",
+    "status": "ERROR",
+    "lastRun": "2026-04-13T19:42:00Z",
+    "summary": "log_stale(212h) Strats:148",
     "details": {
-      "fail_count": 0,
-      "last_status": "up",
-      "last_check": "2026-04-05T04:12:00Z",
-      "summary": "Log:4h J:4h Strats:148 Cron:1"
+      "fail_count": 1,
+      "last_status": "down",
+      "last_check": "2026-04-13T19:42:00Z",
+      "summary": "log_stale(212h) Strats:148"
     }
   },
   {
