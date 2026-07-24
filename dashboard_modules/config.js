@@ -23,6 +23,7 @@ const CONFIG = {
     tradebot:        'data/tradebot.json?v=20260316',
     tradebotHistory: 'data/tradebot_history.jsonl',
     validation:      'data/validation.json',
+    krStock:         'data/kr_stock.json',
   },
 };
 

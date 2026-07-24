@@ -233,109 +233,182 @@ function renderTimelineItem(run) {
   `;
 }
 
-/* ── Validation & Operator Integration (Phase 48) ── */
+/* ── KR Stock 실거래 데이터 (P5 plumbing — data/kr_stock.json) ──
+   Replaces the former governance-verdict block (validation.json
+   mock/longitudinal/campaign/calendar cards). Functional wiring only;
+   visual polish is deferred to P6. Entry point name renderValidation()
+   and #validationPanel / #validationStatus element ids are kept so
+   app.js and index.html stay untouched. */
 
-function verdictStyle(verdict) {
-  if (!verdict) return { fg: 'var(--text-dim)', bg: 'transparent' };
-  const v = verdict.toLowerCase();
-  if (v.includes('blocked'))      return { fg: 'var(--accent-red)',    bg: 'rgba(239,68,68,0.08)' };
-  if (v.includes('insufficient')) return { fg: 'var(--accent-yellow)', bg: 'rgba(245,158,11,0.08)' };
-  if (v.includes('deferred'))     return { fg: 'var(--accent-yellow)', bg: 'rgba(245,158,11,0.06)' };
-  if (v.includes('degrading'))    return { fg: 'var(--accent-yellow)', bg: 'rgba(245,158,11,0.06)' };
-  if (v.includes('mixed'))        return { fg: 'var(--accent-yellow)', bg: 'rgba(245,158,11,0.06)' };
-  if (v.includes('stable'))       return { fg: 'var(--accent-green)',  bg: 'rgba(52,211,153,0.08)' };
-  if (v.includes('aligned') || v.includes('pending')) return { fg: 'var(--accent-green)', bg: 'rgba(52,211,153,0.06)' };
+function krSnapshotStyle(status) {
+  const s = String(status || '').toLowerCase();
+  if (s === 'blocked')    return { fg: 'var(--accent-red)',    bg: 'rgba(239,68,68,0.08)' };
+  if (s === 'degraded')   return { fg: 'var(--accent-yellow)', bg: 'rgba(245,158,11,0.08)' };
+  if (s === 'rebuilding') return { fg: 'var(--accent-yellow)', bg: 'rgba(245,158,11,0.06)' };
+  if (s === 'healthy')    return { fg: 'var(--accent-green)',  bg: 'rgba(52,211,153,0.08)' };
   return { fg: 'var(--text-dim)', bg: 'transparent' };
 }
 
-function urgencyColor(urgency) {
-  if (urgency === 'immediate')  return 'var(--accent-red)';
-  if (urgency === 'accelerated') return 'var(--accent-yellow)';
-  return 'var(--accent-green)';
+function fmtKRWFull(n) {
+  const num = Number(n);
+  if (!Number.isFinite(num)) return '—';
+  return '₩' + num.toLocaleString('ko-KR');
+}
+
+function fmtSignedKRW(n) {
+  const num = Number(n) || 0;
+  return (num > 0 ? '+' : '') + fmtKRWFull(num);
+}
+
+function krPnlColor(n) {
+  const num = Number(n) || 0;
+  if (num > 0) return 'var(--accent-green)';
+  if (num < 0) return 'var(--accent-red)';
+  return 'var(--text-dim)';
 }
 
 function renderValidation() {
+  // Entry point kept (called from app.js render()) — now renders kr_stock.json.
   const panel = document.getElementById('validationPanel');
   if (!panel) return;
 
-  const val = state.validation;
-  if (!val) {
+  fetchJSON(CONFIG.DATA.krStock)
+    .then(data => { state.krStock = data; renderKrStockPanel(panel, data); })
+    .catch(()   => { state.krStock = null; renderKrStockPanel(panel, null); });
+}
+
+function renderKrStockPanel(panel, ks) {
+  const statusEl = document.getElementById('validationStatus');
+
+  if (!ks) {
     panel.innerHTML = `
       <div class="empty-state">
         <span class="empty-state-icon">📊</span>
-        검증 데이터 없음
+        실거래 데이터 없음 (kr_stock.json 로딩 실패)
       </div>`;
-    const statusEl = document.getElementById('validationStatus');
-    if (statusEl) statusEl.textContent = '—';
+    if (statusEl) { statusEl.textContent = '—'; statusEl.style.color = 'var(--text-dim)'; }
     return;
   }
 
-  // ── P25-28 Validation Cards ──
-  const overall   = val.overall_status || 'no data';
-  const overallSt = verdictStyle(overall);
-  const mode      = val.mode_display || val.mode || 'paper';
-  const nextAct   = val.next_action || '—';
+  if (ks.data_available === false) {
+    panel.innerHTML = `
+      <div class="empty-state">
+        <span class="empty-state-icon">⏳</span>
+        ${escHtml(ks.message || '데이터 수집 대기')}
+      </div>`;
+    if (statusEl) { statusEl.textContent = '대기'; statusEl.style.color = 'var(--text-dim)'; }
+    return;
+  }
 
-  const mv  = val.mock_validation || {};
-  const lv  = val.longitudinal || {};
-  const cv  = val.campaign || {};
-  const cal = val.calendar || {};
+  const snap      = ks.snapshot || {};
+  const portfolio = ks.portfolio || {};
+  const cash      = portfolio.cash || {};
+  const positions = Array.isArray(ks.positions) ? ks.positions : [];
+  const pnl       = ks.pnl || {};
+  const recon     = ks.reconciliation || {};
+  const pipeline  = ks.pipeline || {};
+  const strategies = Array.isArray(ks.strategies) ? ks.strategies : [];
 
+  const snapSt = krSnapshotStyle(snap.snapshot_status);
+  const asOf   = snap.as_of_ts ? new Date(snap.as_of_ts).toLocaleString('ko-KR') : '—';
+
+  // ── Status bar: snapshot health + mode + as-of ──
   let html = `
-    <div class="val-overall-bar" style="background:${overallSt.bg}">
+    <div class="val-overall-bar" style="background:${snapSt.bg}">
       <div style="display:flex;align-items:center;gap:8px">
-        <span class="val-overall-badge" style="color:${overallSt.fg}">${escHtml(val.overall_display || overall)}</span>
-        <span class="val-mode-badge">${escHtml(mode)}</span>
+        <span class="val-overall-badge" style="color:${snapSt.fg}">${escHtml(snap.snapshot_status || '상태 없음')}</span>
+        <span class="val-mode-badge">${escHtml(ks.mode || 'paper')}</span>
+        <span style="font-size:0.72rem;color:var(--text-muted)">${escHtml(snap.market_status || '—')}</span>
       </div>
-      <span style="font-size:0.75rem;color:var(--text-muted)">${escHtml(nextAct)}</span>
-    </div>
+      <span style="font-size:0.72rem;color:var(--text-muted)">기준: ${escHtml(asOf)}</span>
+    </div>`;
+  if (snap.status_reason && snap.snapshot_status !== 'healthy') {
+    html += `<div style="font-size:0.72rem;color:${snapSt.fg};margin:4px 0">${escHtml(snap.status_reason)}</div>`;
+  }
+
+  // ── Portfolio + PnL summary cards ──
+  html += `
     <div class="val-grid">
       <div class="val-card">
-        <div class="val-card-title">Mock 검증</div>
-        <div class="val-card-verdict" style="color:${verdictStyle(mv.verdict).fg}">${escHtml(mv.verdict_display || mv.verdict || '—')}</div>
-        <div class="val-card-detail">통과율: ${escHtml(mv.pass_rate_pct || '—')}</div>
+        <div class="val-card-title">포트폴리오</div>
+        <div class="val-card-verdict">${fmtKRWFull(portfolio.total_value_krw)}</div>
+        <div class="val-card-detail">주문가능 ${fmtKRWFull(cash.buying_power_krw)} · 포지션 ${portfolio.position_count ?? 0}종목</div>
       </div>
       <div class="val-card">
-        <div class="val-card-title">종단 검증</div>
-        <div class="val-card-verdict" style="color:${verdictStyle(lv.verdict).fg}">${escHtml(lv.verdict_display || lv.verdict || '—')}</div>
-        <div class="val-card-detail">추세: ${escHtml(lv.trend || '—')}</div>
+        <div class="val-card-title">현금</div>
+        <div class="val-card-verdict">${fmtKRWFull(cash.deposit_cash_krw)}</div>
+        <div class="val-card-detail">정산대기 ${fmtKRWFull(cash.settlement_pending_cash_krw)} · 출금가능 ${fmtKRWFull(cash.withdrawable_cash_krw)}</div>
       </div>
       <div class="val-card">
-        <div class="val-card-title">캠페인 리뷰</div>
-        <div class="val-card-verdict" style="color:${verdictStyle(cv.verdict).fg}">${escHtml(cv.verdict_display || cv.verdict || '—')}</div>
-        <div class="val-card-detail">차단: ${cv.blocked_count ?? 0} · 경고: ${cv.warning_count ?? 0}</div>
+        <div class="val-card-title">당일 실현손익</div>
+        <div class="val-card-verdict" style="color:${krPnlColor(pnl.realized_today_krw)}">${fmtSignedKRW(pnl.realized_today_krw)}</div>
+        <div class="val-card-detail">누적 ${fmtSignedKRW(pnl.realized_cumulative_krw)} · 체결 ${pnl.trades_today ?? 0}건</div>
       </div>
       <div class="val-card">
-        <div class="val-card-title">검토 일정</div>
-        <div class="val-card-verdict" style="color:${urgencyColor(cal.urgency)}">${escHtml(cal.urgency_display || cal.urgency || '—')}</div>
-        <div class="val-card-detail">연속 안정: ${cal.stable_streak ?? 0}회</div>
+        <div class="val-card-title">평가손익</div>
+        <div class="val-card-verdict" style="color:${krPnlColor(pnl.unrealized_krw)}">${fmtSignedKRW(pnl.unrealized_krw)}</div>
+        <div class="val-card-detail">종목 ${snap.total_symbols ?? 0} · 지연 ${snap.stale_symbols ?? 0}</div>
       </div>
     </div>`;
 
-  // ── Blockers / Warnings ──
-  const blockers = val.blockers || [];
-  const warnings = val.warnings || [];
-  if (blockers.length) {
-    html += `<div class="val-blockers"><strong style="color:var(--accent-red)">차단 사유 (${blockers.length})</strong>`;
-    blockers.forEach(b => { html += `<div style="font-size:0.75rem;color:var(--accent-red)">· ${escHtml(b)}</div>`; });
+  // ── Positions ──
+  if (positions.length) {
+    html += `<div style="margin-top:8px">`;
+    positions.forEach(p => {
+      const pct = Number(p.pnl_pct) || 0;
+      html += `
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:4px 2px;font-size:0.78rem;border-bottom:1px solid var(--border-subtle,rgba(128,128,128,0.15))">
+          <span class="mono">${escHtml(p.symbol)} × ${p.quantity ?? 0}</span>
+          <span style="color:var(--text-muted)">평단 ${fmtKRWFull(p.avg_cost)}</span>
+          <span class="mono" style="color:${krPnlColor(p.unrealized_pnl_krw)}">${fmtSignedKRW(p.unrealized_pnl_krw)} (${pct > 0 ? '+' : ''}${pct.toFixed(2)}%)</span>
+        </div>`;
+    });
+    html += `</div>`;
+  } else {
+    html += `<div style="font-size:0.75rem;color:var(--text-dim);margin-top:8px">보유 포지션 없음</div>`;
+  }
+
+  // ── Reconciliation ──
+  const openIssues = recon.open_issues ?? 0;
+  const reconColor = recon.critical ? 'var(--accent-red)'
+    : (openIssues > 0 ? 'var(--accent-yellow)' : 'var(--accent-green)');
+  html += `
+    <div style="display:flex;gap:12px;font-size:0.72rem;margin-top:8px">
+      <span style="color:${reconColor}">정산검증: ${recon.critical ? 'CRITICAL' : (openIssues > 0 ? `이슈 ${openIssues}건` : '정상')}</span>
+      <span style="color:var(--text-muted)">파이프라인: ${escHtml(pipeline.last_status || '—')}${pipeline.last_run ? ' · ' + new Date(pipeline.last_run).toLocaleString('ko-KR') : ''}</span>
+    </div>`;
+  (recon.issues || []).slice(0, 3).forEach(issue => {
+    html += `<div style="font-size:0.7rem;color:${issue.severity === 'critical' ? 'var(--accent-red)' : 'var(--accent-yellow)'}">· [${escHtml(issue.severity)}] ${escHtml(issue.description)}</div>`;
+  });
+
+  // ── Pipeline stages ──
+  if (Array.isArray(pipeline.stages) && pipeline.stages.length) {
+    html += `<div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:4px">`;
+    pipeline.stages.forEach(st => {
+      const c = st.level === 'critical' ? 'var(--accent-red)'
+        : (st.level === 'warn' ? 'var(--accent-yellow)' : 'var(--accent-green)');
+      html += `<span style="font-size:0.68rem;color:${c}">${escHtml(st.topic)}: ${escHtml(st.event_type)}</span>`;
+    });
     html += `</div>`;
   }
-  if (warnings.length) {
-    html += `<div class="val-warnings"><strong style="color:var(--accent-yellow)">경고 (${warnings.length})</strong>`;
-    warnings.forEach(w => { html += `<div style="font-size:0.75rem;color:var(--accent-yellow)">· ${escHtml(w)}</div>`; });
+
+  // ── Strategies ──
+  if (strategies.length) {
+    html += `<div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:6px">`;
+    strategies.forEach(s => {
+      html += `<span class="val-mode-badge">${escHtml(s.name || '—')} · ${escHtml(s.status || '—')}</span>`;
+    });
     html += `</div>`;
   }
 
   // ── Safety footer ──
-  html += `<div class="val-safety" style="font-size:0.68rem;color:var(--text-dim);margin-top:8px">live orders: 비활성 · human approval: 필수</div>`;
+  html += `<div class="val-safety" style="font-size:0.68rem;color:var(--text-dim);margin-top:8px">live orders: 비활성 · paper/canary 전용</div>`;
 
   panel.innerHTML = html;
 
-  // Update status badge
-  const statusEl = document.getElementById('validationStatus');
   if (statusEl) {
-    statusEl.textContent = escHtml(val.overall_display || overall);
-    statusEl.style.color = overallSt.fg;
+    statusEl.textContent = escHtml(snap.snapshot_status || '—');
+    statusEl.style.color = snapSt.fg;
   }
 }
 
