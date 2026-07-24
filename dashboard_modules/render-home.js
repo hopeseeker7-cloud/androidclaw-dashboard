@@ -326,53 +326,6 @@ function renderValidation() {
     html += `</div>`;
   }
 
-  // ── P48 Operator Integration Block ──
-  const oi = val.operator_integration;
-  if (oi) {
-    const worstSt = verdictStyle(oi.worst_contract_verdict);
-    html += `
-    <div class="val-operator-integration" style="margin-top:12px;padding:12px;border:1px solid var(--border);border-radius:8px;background:var(--card-bg)">
-      <div style="font-weight:600;font-size:0.85rem;margin-bottom:8px;color:var(--text-primary)">Contract Status (P36–P47)</div>
-      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
-        <span style="font-size:0.8rem;font-weight:600;color:${worstSt.fg}">${escHtml(oi.worst_contract_verdict || '—')}</span>
-        <span style="font-size:0.72rem;color:var(--text-muted)">${oi.evaluated_count || 0}/${oi.total_hooks || 12} layers</span>
-      </div>
-      <div style="font-size:0.75rem;color:var(--text-primary);margin-bottom:4px">${escHtml(oi.operator_headline || '—')}</div>
-      <div style="font-size:0.72rem;color:var(--text-muted);margin-bottom:8px">${escHtml(oi.operator_action || '—')}</div>`;
-
-    // Governance / signoff snapshot
-    const gs = oi.governance_signoff_status;
-    if (gs) {
-      html += `
-      <div style="display:flex;gap:16px;margin-bottom:8px;font-size:0.72rem">
-        <div><span style="color:var(--text-muted)">Governance:</span> <span style="color:${verdictStyle(gs.governance_display).fg}">${escHtml(gs.governance_display || '—')}</span></div>
-        <div><span style="color:var(--text-muted)">Signoff:</span> <span style="color:${verdictStyle(gs.signoff_display).fg}">${escHtml(gs.signoff_display || '—')}</span></div>
-      </div>`;
-    }
-
-    // Next design step
-    if (oi.next_design_step) {
-      html += `<div style="font-size:0.72rem;color:var(--text-muted);margin-bottom:8px">다음: ${escHtml(oi.next_design_step)}</div>`;
-    }
-
-    // Prohibited actions
-    const prohibitions = oi.prohibition_strip || [];
-    if (prohibitions.length) {
-      html += `<div style="font-size:0.68rem;color:var(--text-dim);border-top:1px solid var(--border);padding-top:6px;margin-top:4px">`;
-      prohibitions.forEach(p => { html += `<div>· ${escHtml(p)}</div>`; });
-      html += `</div>`;
-    }
-
-    // Safety strip
-    const safety = oi.safety_strip;
-    if (safety) {
-      const modeDisp = safety.mode_display || safety.mode || 'paper';
-      html += `<div style="font-size:0.68rem;color:var(--text-dim);margin-top:4px">모드: ${escHtml(modeDisp)} · live: 비활성</div>`;
-    }
-
-    html += `</div>`;
-  }
-
   // ── Safety footer ──
   html += `<div class="val-safety" style="font-size:0.68rem;color:var(--text-dim);margin-top:8px">live orders: 비활성 · human approval: 필수</div>`;
 
