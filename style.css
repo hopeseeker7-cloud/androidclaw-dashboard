@@ -1825,3 +1825,46 @@ body::after {
 .val-card-detail { font-size: 0.7rem; color: var(--text-dim); }
 .val-blockers, .val-warnings { margin-top: 6px; margin-bottom: 4px; }
 .val-safety { font-size: 0.68rem; color: var(--text-dim); margin-top: 8px; }
+
+/* ── KR Stock 현황 (P6 dataviz polish — data/kr_stock.json) ── */
+.kr-statusbar {
+  display: flex; justify-content: space-between; align-items: center; gap: 8px;
+  padding: 8px 12px; border-radius: var(--radius-sm);
+  border: 1px solid var(--border); background: var(--bg-surface); margin-bottom: 10px;
+}
+.kr-badge { display: inline-flex; align-items: center; gap: 5px; font-size: 0.8rem; font-weight: 600; }
+.kr-ic { font-size: 0.68rem; line-height: 1; }
+.kr-chip {
+  font-size: 0.68rem; color: var(--text-muted); background: var(--bg-surface);
+  border: 1px solid var(--border-dim); border-radius: 999px; padding: 2px 9px;
+}
+.kr-stats {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 8px;
+}
+.kr-stat {
+  padding: 10px 12px; border-radius: var(--radius-sm);
+  border: 1px solid var(--border-dim); background: var(--bg-surface);
+}
+.kr-stat-label {
+  font-size: 0.66rem; color: var(--text-muted); text-transform: uppercase;
+  letter-spacing: 0.04em; margin-bottom: 5px;
+}
+.kr-stat-value {
+  font-family: var(--font-mono); font-size: 1.05rem; font-weight: 600;
+  color: var(--text-primary); display: flex; align-items: baseline; gap: 4px;
+}
+.kr-stat-value .kr-arrow { font-size: 0.78rem; }
+.kr-stat-sub { font-size: 0.66rem; color: var(--text-dim); margin-top: 4px; }
+.kr-postable { width: 100%; border-collapse: collapse; font-size: 0.78rem; margin-top: 10px; }
+.kr-postable th {
+  text-align: right; font-weight: 500; color: var(--text-dim); font-size: 0.64rem;
+  text-transform: uppercase; letter-spacing: 0.03em; padding: 3px 6px;
+  border-bottom: 1px solid var(--border);
+}
+.kr-postable td { text-align: right; padding: 6px; border-bottom: 1px solid var(--border-dim); font-family: var(--font-mono); }
+.kr-postable th:first-child, .kr-postable td:first-child { text-align: left; }
+.kr-meta-row { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; font-size: 0.72rem; margin-top: 10px; }
+.kr-safety {
+  font-size: 0.66rem; color: var(--text-dim); margin-top: 10px;
+  padding-top: 8px; border-top: 1px solid var(--border-dim);
+}

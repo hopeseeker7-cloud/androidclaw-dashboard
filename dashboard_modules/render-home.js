@@ -240,13 +240,17 @@ function renderTimelineItem(run) {
    and #validationPanel / #validationStatus element ids are kept so
    app.js and index.html stay untouched. */
 
-function krSnapshotStyle(status) {
+// Snapshot / reconciliation state → icon + status color + Korean label.
+// dataviz rule: status color is never used alone — always paired with an
+// icon (non-chromatic) and a label so state survives color-blindness / print.
+function krStatusView(status) {
   const s = String(status || '').toLowerCase();
-  if (s === 'blocked')    return { fg: 'var(--accent-red)',    bg: 'rgba(239,68,68,0.08)' };
-  if (s === 'degraded')   return { fg: 'var(--accent-yellow)', bg: 'rgba(245,158,11,0.08)' };
-  if (s === 'rebuilding') return { fg: 'var(--accent-yellow)', bg: 'rgba(245,158,11,0.06)' };
-  if (s === 'healthy')    return { fg: 'var(--accent-green)',  bg: 'rgba(52,211,153,0.08)' };
-  return { fg: 'var(--text-dim)', bg: 'transparent' };
+  if (s === 'healthy')    return { icon: '●', fg: 'var(--accent-green)',  label: '정상' };
+  if (s === 'rebuilding') return { icon: '◐', fg: 'var(--accent-yellow)', label: '재생성 중' };
+  if (s === 'degraded')   return { icon: '▲', fg: 'var(--accent-yellow)', label: '주의' };
+  if (s === 'stale')      return { icon: '▲', fg: 'var(--accent-yellow)', label: '데이터 지연' };
+  if (s === 'blocked')    return { icon: '✕', fg: 'var(--accent-red)',    label: '차단' };
+  return { icon: '○', fg: 'var(--text-dim)', label: status || '상태 없음' };
 }
 
 function fmtKRWFull(n) {
@@ -255,16 +259,13 @@ function fmtKRWFull(n) {
   return '₩' + num.toLocaleString('ko-KR');
 }
 
-function fmtSignedKRW(n) {
+// P&L → sign + directional arrow (secondary, non-chromatic encoding) + diverging color.
+// Returns {text, arrow, color} so callers never rely on hue alone.
+function krPnl(n) {
   const num = Number(n) || 0;
-  return (num > 0 ? '+' : '') + fmtKRWFull(num);
-}
-
-function krPnlColor(n) {
-  const num = Number(n) || 0;
-  if (num > 0) return 'var(--accent-green)';
-  if (num < 0) return 'var(--accent-red)';
-  return 'var(--text-dim)';
+  if (num > 0) return { text: '+' + fmtKRWFull(num), arrow: '▲', color: 'var(--accent-green)' };
+  if (num < 0) return { text: fmtKRWFull(num),       arrow: '▼', color: 'var(--accent-red)' };
+  return { text: fmtKRWFull(0), arrow: '·', color: 'var(--text-dim)' };
 }
 
 function renderValidation() {
@@ -309,106 +310,111 @@ function renderKrStockPanel(panel, ks) {
   const pipeline  = ks.pipeline || {};
   const strategies = Array.isArray(ks.strategies) ? ks.strategies : [];
 
-  const snapSt = krSnapshotStyle(snap.snapshot_status);
-  const asOf   = snap.as_of_ts ? new Date(snap.as_of_ts).toLocaleString('ko-KR') : '—';
+  const snapView = krStatusView(snap.snapshot_status);
+  const asOf     = snap.as_of_ts ? new Date(snap.as_of_ts).toLocaleString('ko-KR') : '—';
 
-  // ── Status bar: snapshot health + mode + as-of ──
+  // ── Status bar: snapshot health (icon+label) + mode + market + as-of ──
   let html = `
-    <div class="val-overall-bar" style="background:${snapSt.bg}">
-      <div style="display:flex;align-items:center;gap:8px">
-        <span class="val-overall-badge" style="color:${snapSt.fg}">${escHtml(snap.snapshot_status || '상태 없음')}</span>
-        <span class="val-mode-badge">${escHtml(ks.mode || 'paper')}</span>
+    <div class="kr-statusbar">
+      <div style="display:flex;align-items:center;gap:10px">
+        <span class="kr-badge" style="color:${snapView.fg}"><span class="kr-ic">${snapView.icon}</span>${escHtml(snapView.label)}</span>
+        <span class="kr-chip">${escHtml(ks.mode || 'paper')}</span>
         <span style="font-size:0.72rem;color:var(--text-muted)">${escHtml(snap.market_status || '—')}</span>
       </div>
-      <span style="font-size:0.72rem;color:var(--text-muted)">기준: ${escHtml(asOf)}</span>
+      <span style="font-size:0.72rem;color:var(--text-muted)">기준 ${escHtml(asOf)}</span>
     </div>`;
-  if (snap.status_reason && snap.snapshot_status !== 'healthy') {
-    html += `<div style="font-size:0.72rem;color:${snapSt.fg};margin:4px 0">${escHtml(snap.status_reason)}</div>`;
+  if (snap.status_reason && String(snap.snapshot_status).toLowerCase() !== 'healthy') {
+    html += `<div style="font-size:0.72rem;color:${snapView.fg};margin:-4px 0 8px">${escHtml(snap.status_reason)}</div>`;
   }
 
-  // ── Portfolio + PnL summary cards ──
+  // ── KPI stat tiles (P&L carries sign + arrow, never hue alone) ──
+  const realized   = krPnl(pnl.realized_today_krw);
+  const cumulative = krPnl(pnl.realized_cumulative_krw);
+  const unrealized = krPnl(pnl.unrealized_krw);
   html += `
-    <div class="val-grid">
-      <div class="val-card">
-        <div class="val-card-title">포트폴리오</div>
-        <div class="val-card-verdict">${fmtKRWFull(portfolio.total_value_krw)}</div>
-        <div class="val-card-detail">주문가능 ${fmtKRWFull(cash.buying_power_krw)} · 포지션 ${portfolio.position_count ?? 0}종목</div>
+    <div class="kr-stats">
+      <div class="kr-stat">
+        <div class="kr-stat-label">포트폴리오 총액</div>
+        <div class="kr-stat-value">${fmtKRWFull(portfolio.total_value_krw)}</div>
+        <div class="kr-stat-sub">주문가능 ${fmtKRWFull(cash.buying_power_krw)} · ${portfolio.position_count ?? 0}종목</div>
       </div>
-      <div class="val-card">
-        <div class="val-card-title">현금</div>
-        <div class="val-card-verdict">${fmtKRWFull(cash.deposit_cash_krw)}</div>
-        <div class="val-card-detail">정산대기 ${fmtKRWFull(cash.settlement_pending_cash_krw)} · 출금가능 ${fmtKRWFull(cash.withdrawable_cash_krw)}</div>
+      <div class="kr-stat">
+        <div class="kr-stat-label">당일 실현손익</div>
+        <div class="kr-stat-value" style="color:${realized.color}"><span class="kr-arrow">${realized.arrow}</span>${realized.text}</div>
+        <div class="kr-stat-sub">누적 ${cumulative.text} · 체결 ${pnl.trades_today ?? 0}건</div>
       </div>
-      <div class="val-card">
-        <div class="val-card-title">당일 실현손익</div>
-        <div class="val-card-verdict" style="color:${krPnlColor(pnl.realized_today_krw)}">${fmtSignedKRW(pnl.realized_today_krw)}</div>
-        <div class="val-card-detail">누적 ${fmtSignedKRW(pnl.realized_cumulative_krw)} · 체결 ${pnl.trades_today ?? 0}건</div>
+      <div class="kr-stat">
+        <div class="kr-stat-label">평가손익</div>
+        <div class="kr-stat-value" style="color:${unrealized.color}"><span class="kr-arrow">${unrealized.arrow}</span>${unrealized.text}</div>
+        <div class="kr-stat-sub">종목 ${snap.total_symbols ?? 0} · 지연 ${snap.stale_symbols ?? 0}</div>
       </div>
-      <div class="val-card">
-        <div class="val-card-title">평가손익</div>
-        <div class="val-card-verdict" style="color:${krPnlColor(pnl.unrealized_krw)}">${fmtSignedKRW(pnl.unrealized_krw)}</div>
-        <div class="val-card-detail">종목 ${snap.total_symbols ?? 0} · 지연 ${snap.stale_symbols ?? 0}</div>
+      <div class="kr-stat">
+        <div class="kr-stat-label">현금</div>
+        <div class="kr-stat-value">${fmtKRWFull(cash.deposit_cash_krw)}</div>
+        <div class="kr-stat-sub">정산대기 ${fmtKRWFull(cash.settlement_pending_cash_krw)}</div>
       </div>
     </div>`;
 
-  // ── Positions ──
+  // ── Positions table ──
   if (positions.length) {
-    html += `<div style="margin-top:8px">`;
+    html += `
+      <table class="kr-postable">
+        <thead><tr><th>종목</th><th>수량</th><th>평단</th><th>평가손익</th></tr></thead>
+        <tbody>`;
     positions.forEach(p => {
-      const pct = Number(p.pnl_pct) || 0;
+      const rowPnl = krPnl(p.unrealized_pnl_krw);
+      const pct    = Number(p.pnl_pct) || 0;
       html += `
-        <div style="display:flex;justify-content:space-between;align-items:center;padding:4px 2px;font-size:0.78rem;border-bottom:1px solid var(--border-subtle,rgba(128,128,128,0.15))">
-          <span class="mono">${escHtml(p.symbol)} × ${p.quantity ?? 0}</span>
-          <span style="color:var(--text-muted)">평단 ${fmtKRWFull(p.avg_cost)}</span>
-          <span class="mono" style="color:${krPnlColor(p.unrealized_pnl_krw)}">${fmtSignedKRW(p.unrealized_pnl_krw)} (${pct > 0 ? '+' : ''}${pct.toFixed(2)}%)</span>
-        </div>`;
+        <tr>
+          <td>${escHtml(p.symbol)}</td>
+          <td>${p.quantity ?? 0}</td>
+          <td>${fmtKRWFull(p.avg_cost)}</td>
+          <td style="color:${rowPnl.color}">${rowPnl.arrow} ${rowPnl.text} <span style="color:var(--text-dim)">(${pct > 0 ? '+' : ''}${pct.toFixed(2)}%)</span></td>
+        </tr>`;
     });
-    html += `</div>`;
+    html += `</tbody></table>`;
   } else {
-    html += `<div style="font-size:0.75rem;color:var(--text-dim);margin-top:8px">보유 포지션 없음</div>`;
+    html += `<div style="font-size:0.75rem;color:var(--text-dim);margin-top:10px">보유 포지션 없음</div>`;
   }
 
-  // ── Reconciliation ──
+  // ── Reconciliation + pipeline (icon+label status, not color alone) ──
   const openIssues = recon.open_issues ?? 0;
-  const reconColor = recon.critical ? 'var(--accent-red)'
-    : (openIssues > 0 ? 'var(--accent-yellow)' : 'var(--accent-green)');
+  const reconView = recon.critical
+    ? { icon: '✕', fg: 'var(--accent-red)',    label: '정합성 CRITICAL' }
+    : (openIssues > 0
+        ? { icon: '▲', fg: 'var(--accent-yellow)', label: `정합성 이슈 ${openIssues}건` }
+        : { icon: '●', fg: 'var(--accent-green)',  label: '정합성 정상' });
+  const pipeStatus = String(pipeline.last_status || '—');
+  const pipeView   = krStatusView(pipeStatus);
   html += `
-    <div style="display:flex;gap:12px;font-size:0.72rem;margin-top:8px">
-      <span style="color:${reconColor}">정산검증: ${recon.critical ? 'CRITICAL' : (openIssues > 0 ? `이슈 ${openIssues}건` : '정상')}</span>
-      <span style="color:var(--text-muted)">파이프라인: ${escHtml(pipeline.last_status || '—')}${pipeline.last_run ? ' · ' + new Date(pipeline.last_run).toLocaleString('ko-KR') : ''}</span>
+    <div class="kr-meta-row">
+      <span class="kr-badge" style="color:${reconView.fg}"><span class="kr-ic">${reconView.icon}</span>${escHtml(reconView.label)}</span>
+      <span style="color:var(--text-muted)"><span class="kr-ic" style="color:${pipeView.fg}">${pipeView.icon}</span> 파이프라인 ${escHtml(pipeStatus)}${pipeline.last_run ? ' · ' + new Date(pipeline.last_run).toLocaleString('ko-KR') : ''}</span>
     </div>`;
   (recon.issues || []).slice(0, 3).forEach(issue => {
-    html += `<div style="font-size:0.7rem;color:${issue.severity === 'critical' ? 'var(--accent-red)' : 'var(--accent-yellow)'}">· [${escHtml(issue.severity)}] ${escHtml(issue.description)}</div>`;
+    const iv = issue.severity === 'critical'
+      ? { icon: '✕', fg: 'var(--accent-red)' }
+      : { icon: '▲', fg: 'var(--accent-yellow)' };
+    html += `<div style="font-size:0.7rem;color:${iv.fg};margin-top:2px"><span class="kr-ic">${iv.icon}</span> [${escHtml(issue.severity)}] ${escHtml(issue.description)}</div>`;
   });
-
-  // ── Pipeline stages ──
-  if (Array.isArray(pipeline.stages) && pipeline.stages.length) {
-    html += `<div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:4px">`;
-    pipeline.stages.forEach(st => {
-      const c = st.level === 'critical' ? 'var(--accent-red)'
-        : (st.level === 'warn' ? 'var(--accent-yellow)' : 'var(--accent-green)');
-      html += `<span style="font-size:0.68rem;color:${c}">${escHtml(st.topic)}: ${escHtml(st.event_type)}</span>`;
-    });
-    html += `</div>`;
-  }
 
   // ── Strategies ──
   if (strategies.length) {
-    html += `<div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:6px">`;
+    html += `<div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:8px">`;
     strategies.forEach(s => {
-      html += `<span class="val-mode-badge">${escHtml(s.name || '—')} · ${escHtml(s.status || '—')}</span>`;
+      html += `<span class="kr-chip">${escHtml(s.name || '—')} · ${escHtml(s.status || '—')}</span>`;
     });
     html += `</div>`;
   }
 
   // ── Safety footer ──
-  html += `<div class="val-safety" style="font-size:0.68rem;color:var(--text-dim);margin-top:8px">live orders: 비활성 · paper/canary 전용</div>`;
+  html += `<div class="kr-safety">🔒 live 발주 비활성 · paper/canary 전용</div>`;
 
   panel.innerHTML = html;
 
   if (statusEl) {
-    statusEl.textContent = escHtml(snap.snapshot_status || '—');
-    statusEl.style.color = snapSt.fg;
+    statusEl.textContent = escHtml(snapView.label);
+    statusEl.style.color = snapView.fg;
   }
 }
 
