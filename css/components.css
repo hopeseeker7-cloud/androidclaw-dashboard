@@ -1,0 +1,261 @@
+/* ============================================================
+   Components — stat tiles, tables, badges, cards, empty states
+   Density-first: information over ornament.
+   ============================================================ */
+
+/* ── Card ── */
+.card {
+  background: var(--surface-1);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: var(--sp-4);
+}
+.card-tight { padding: var(--sp-3); }
+
+/* ── Status badge — icon + label, never colour alone ── */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-1);
+  padding: 2px var(--sp-2);
+  border-radius: var(--radius-pill);
+  font-size: var(--text-2xs);
+  font-weight: 600;
+  line-height: 1.6;
+  white-space: nowrap;
+}
+.badge-icon { font-size: 0.62rem; line-height: 1; }
+
+.badge-ok       { color: var(--status-ok);       background: var(--status-ok-bg); }
+.badge-warn     { color: var(--status-warn);     background: var(--status-warn-bg); }
+.badge-critical { color: var(--status-critical); background: var(--status-critical-bg); }
+.badge-idle     { color: var(--status-idle);     background: var(--surface-2); }
+
+/* Neutral chip for non-status metadata (mode, strategy, market) */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-1);
+  padding: 2px var(--sp-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-pill);
+  font-size: var(--text-2xs);
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+/* ── Status strip: the one-line "where do we stand" bar ── */
+.statusbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-3);
+  flex-wrap: wrap;
+  padding: var(--sp-3) var(--sp-4);
+  background: var(--surface-1);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--sp-3);
+}
+.statusbar-left {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  flex-wrap: wrap;
+}
+.statusbar-meta {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  min-width: 0;
+}
+.statusbar-reason {
+  flex-basis: 100%;
+  font-size: var(--text-xs);
+  color: var(--text-secondary);
+}
+
+/* ── KPI stat tile ── */
+.stat {
+  background: var(--surface-1);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: var(--sp-3) var(--sp-4);
+  min-width: 0;
+}
+.stat-label {
+  font-size: var(--text-2xs);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--sp-1);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.stat-value {
+  display: flex;
+  align-items: baseline;
+  gap: var(--sp-1);
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  font-size: var(--text-lg);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: var(--leading-tight);
+  overflow-wrap: anywhere;
+}
+.stat-sub {
+  font-size: var(--text-2xs);
+  color: var(--text-muted);
+  margin-top: var(--sp-1);
+}
+.stat-hero .stat-value { font-size: var(--text-xl); }
+
+/* P&L direction: arrow is the non-chromatic carrier, colour is secondary */
+.delta-arrow { font-size: 0.7em; }
+.up   { color: var(--pnl-up); }
+.down { color: var(--pnl-down); }
+.flat { color: var(--pnl-flat); }
+
+/* ── Table ── */
+.table-wrap {
+  /* Wide tables scroll here, never the page. */
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface-1);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--text-sm);
+}
+.table th {
+  position: sticky;
+  top: 0;
+  background: var(--surface-2);
+  font-size: var(--text-2xs);
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  text-align: right;
+  padding: var(--sp-2) var(--sp-3);
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+.table td {
+  padding: var(--sp-2) var(--sp-3);
+  text-align: right;
+  border-bottom: 1px solid var(--border);
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.table tbody tr:last-child td { border-bottom: none; }
+.table tbody tr:hover td { background: var(--surface-2); }
+
+.table th:first-child,
+.table td:first-child {
+  text-align: left;
+  font-family: var(--font-ui);
+}
+.table-muted { color: var(--text-muted); }
+
+/* ── Definition list (compact key/value pairs) ── */
+.dl {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: var(--sp-1) var(--sp-3);
+  font-size: var(--text-xs);
+}
+.dl dt { color: var(--text-muted); white-space: nowrap; }
+.dl dd {
+  margin: 0;
+  min-width: 0;
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+  /* Long values (snapshot ids, reasons) must break rather than widen the card. */
+  overflow-wrap: anywhere;
+}
+
+/* ── Issue / event list ── */
+.notes { display: flex; flex-direction: column; gap: var(--sp-1); }
+.note {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-2);
+  font-size: var(--text-xs);
+  color: var(--text-secondary);
+}
+.note-icon { flex: none; line-height: 1.5; }
+.note-warn     .note-icon { color: var(--status-warn); }
+.note-critical .note-icon { color: var(--status-critical); }
+
+/* ── Empty state ── */
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: var(--sp-6) var(--sp-4);
+  text-align: center;
+  background: var(--surface-1);
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--radius-md);
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+}
+.empty-icon { font-size: 1.5rem; opacity: 0.7; }
+.empty-hint { font-size: var(--text-xs); }
+
+/* ── Skeleton (first paint only) ── */
+.skeleton {
+  background: linear-gradient(90deg,
+    var(--surface-2) 25%, var(--surface-sunken) 37%, var(--surface-2) 63%);
+  background-size: 400% 100%;
+  animation: shimmer 1.4s ease infinite;
+  border-radius: var(--radius-sm);
+}
+@keyframes shimmer {
+  0%   { background-position: 100% 50%; }
+  100% { background-position: 0 50%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .skeleton { animation: none; }
+}
+
+/* ── Footer note ── */
+.footnote {
+  margin-top: var(--sp-4);
+  padding-top: var(--sp-3);
+  border-top: 1px solid var(--border);
+  font-size: var(--text-2xs);
+  color: var(--text-muted);
+}
+
+/* ── Error banner ── */
+.banner {
+  display: none;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: var(--sp-3) var(--sp-4);
+  margin-bottom: var(--sp-4);
+  border-radius: var(--radius-md);
+  font-size: var(--text-sm);
+  color: var(--status-critical);
+  background: var(--status-critical-bg);
+  border: 1px solid var(--status-critical);
+}
+.banner[data-visible="true"] { display: flex; }
+
+/* ── Phone tuning ── */
+@media (max-width: 640px) {
+  .stat { padding: var(--sp-3); }
+  .stat-value { font-size: 1.05rem; }
+  .stat-hero .stat-value { font-size: 1.4rem; }
+  .table th, .table td { padding: var(--sp-2); }
+  .statusbar { padding: var(--sp-3); }
+}

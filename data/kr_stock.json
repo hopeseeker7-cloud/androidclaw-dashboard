@@ -1,0 +1,77 @@
+{
+  "schema_version": "2.0",
+  "domain": "kr_stock",
+  "generated_at": "2026-07-25T06:28:43.131592+00:00",
+  "as_of": "2026-07-24T15:30:00+09:00",
+  "status": "ok",
+  "status_reason": "정상",
+  "data": {
+    "mode": "paper",
+    "snapshot": {
+      "status": "healthy",
+      "status_reason": "all checks passed",
+      "market_status": "holiday",
+      "snapshot_id": "019f97f6-35f9-7697-bbdf-4914fd7a967d",
+      "total_symbols": 0,
+      "stale_symbols": 0
+    },
+    "portfolio": {
+      "total_value_krw": 10000000,
+      "position_count": 0,
+      "cash": {
+        "available_krw": 10000000,
+        "settlement_pending_krw": 0,
+        "withdrawable_krw": 0,
+        "net_deposit_krw": 10000000,
+        "_ledger_raw": {
+          "deposit_cash_krw": -10000000,
+          "settlement_pending_cash_krw": 0,
+          "withdrawable_cash_krw": 0,
+          "buying_power_krw": 10000000
+        }
+      }
+    },
+    "positions": [],
+    "pnl": {
+      "realized_today_krw": 0,
+      "realized_cumulative_krw": 0,
+      "unrealized_krw": 0,
+      "trades_today": 0
+    },
+    "strategies": [
+      {
+        "name": "듀얼 모멘텀",
+        "status": "paper"
+      },
+      {
+        "name": "이격도 평균회귀",
+        "status": "paper"
+      }
+    ],
+    "reconciliation": {
+      "open_issues": 0,
+      "critical": false,
+      "issues": []
+    },
+    "pipeline": {
+      "last_run": "2026-07-25T05:56:38.350709+00:00",
+      "last_status": "info",
+      "stages": [
+        {
+          "topic": "pipeline",
+          "event_type": "pipeline_complete",
+          "level": "info",
+          "message": "Pipeline pass for 2026-07-24: 6 stages, 0 failed",
+          "created_at": "2026-07-25T05:56:38.350709+00:00"
+        },
+        {
+          "topic": "recon",
+          "event_type": "recon_summary",
+          "level": "critical",
+          "message": "Reconciliation PARTIAL: 0 checks, 0 issues (0 critical) — skipped: holdings, cash",
+          "created_at": "2026-07-25T05:56:38.350081+00:00"
+        }
+      ]
+    }
+  }
+}
