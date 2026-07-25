@@ -140,6 +140,7 @@ const KrStockDomain = (() => {
       ? UI.empty(p.status_reason || '아직 수집된 데이터가 없습니다',
                  'collect 파이프라인 실행 후 표시됩니다')
       : `${kpis(p.data)}
+         ${MarketSection.render(p.data.market)}
          <div class="subhead">보유 포지션</div>
          ${positions(p.data)}
          <div class="subhead">운영 상태</div>

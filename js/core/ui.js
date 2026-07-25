@@ -77,20 +77,23 @@ const UI = (() => {
   }
 
   /**
-   * Table. columns: [{ key, label, align, render }]
+   * Table. columns: [{ key, label, render }]
+   * opts.rowAttrs(row, index) -> attribute string for the <tr>, so callers can
+   * make rows selectable without post-processing the generated markup.
    * Rendered inside .table-wrap so wide tables scroll themselves.
    */
-  function table(columns, rows, emptyMessage = '항목 없음') {
+  function table(columns, rows, emptyMessage = '항목 없음', opts = {}) {
     if (!rows || !rows.length) return empty(emptyMessage);
     const head = columns
       .map(c => `<th scope="col">${Fmt.escHtml(c.label)}</th>`)
       .join('');
-    const body = rows.map(row => {
+    const body = rows.map((row, i) => {
       const cells = columns.map(c => {
         const raw = row[c.key];
         return `<td>${c.render ? c.render(raw, row) : Fmt.escHtml(raw)}</td>`;
       }).join('');
-      return `<tr>${cells}</tr>`;
+      const attrs = opts.rowAttrs ? ' ' + opts.rowAttrs(row, i) : '';
+      return `<tr${attrs}>${cells}</tr>`;
     }).join('');
     return `<div class="table-wrap">
       <table class="table"><thead><tr>${head}</tr></thead><tbody>${body}</tbody></table>

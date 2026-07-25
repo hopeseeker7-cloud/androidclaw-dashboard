@@ -113,6 +113,7 @@
   /* ── Start ── */
   document.addEventListener('DOMContentLoaded', () => {
     initTheme();
+    MarketSection.bind();
     el.refresh?.addEventListener('click', load);
     load();
     setInterval(load, REFRESH_MS);
