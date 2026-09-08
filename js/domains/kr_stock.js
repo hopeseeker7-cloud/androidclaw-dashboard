@@ -134,6 +134,72 @@ const KrStockDomain = (() => {
     </div>`;
   }
 
+  function flowAmount(value) {
+    if (typeof value !== 'number' || !Number.isFinite(value)) return '—';
+    const delta = Fmt.delta(value);
+    const sign = value > 0 ? '+' : value < 0 ? '-' : '';
+    const amount = Math.abs(value / 100000000).toLocaleString('ko-KR', {
+      minimumFractionDigits: 2, maximumFractionDigits: 2,
+    });
+    return `<span class="${delta.cls} num" title="${Fmt.krw(value)}"><span aria-hidden="true">${delta.arrow}</span> ${sign}${amount}억</span>`;
+  }
+
+  function flowSection(flow = {}) {
+    const sourceLabel = value => ({ KRX: 'KRX 확정', KIS: 'KIS 추정' }[value] || '—');
+    const columns = [
+      { key: 'name', label: '종목', render: (v, r) => `${Fmt.escHtml(v || r.symbol)}<div class="table-muted">${Fmt.escHtml(r.symbol)} · ${sourceLabel(r.source)}</div>` },
+      { key: 'foreign_net_krw', label: '외국인', render: flowAmount },
+      { key: 'institution_net_krw', label: '기관', render: flowAmount },
+      { key: 'individual_net_krw', label: '개인', render: flowAmount },
+      { key: 'foreign_net_5d_krw', label: '외인 5세션', render: flowAmount },
+      { key: 'foreign_net_20d_krw', label: '외인 20세션', render: flowAmount },
+    ];
+    const rank = (label, rows) => `<div class="card card-tight"><h3 class="subhead">${label}</h3>${UI.table(columns, rows || [], '해당 방향의 순매수·순매도 종목 없음')}</div>`;
+    const breadth = flow.breadth || {};
+    const dates = flow.as_of_by_source || {};
+    const violations = flow.integrity?.zero_sum_violations || 0;
+    return `<section id="kr-flow" aria-labelledby="kr-flow-title">
+      <h3 class="subhead" id="kr-flow-title">수급</h3>
+      <div class="section-meta">기준 ${Fmt.escHtml(flow.as_of || '—')} · KRX 확정 ${Fmt.escHtml(dates.KRX || '—')} · KIS 추정 ${Fmt.escHtml(dates.KIS || '—')} · 금액: 억 원</div>
+      <div class="grid grid-kpi section-spacing">${UI.stat({ label: '외국인 순매수 종목 / 수급 관측 종목', value: `${Fmt.count(breadth.foreign_buy_count ?? 0)} / ${Fmt.count(breadth.total_count ?? 0)}`, sub: '같은 종목·세션 KRX 우선, 없으면 KIS 추정' })}</div>
+      ${!(flow.rows || []).length ? UI.empty('수급 데이터 없음', '누적 세션 부족은 0이 아닌 —로 표시합니다') : ''}
+      ${violations ? `<div class="signal-note">무결성: KRX 합계 위반 ${Fmt.count(violations)}행 제외 (${flow.integrity.scope === 'full' ? '전체 이력' : '최근 20세션'})</div>` : ''}
+      <div class="grid grid-split section-spacing">${rank('외국인 순매수 상위 10', flow.top_foreign_buy)}${rank('외국인 순매도 상위 10', flow.top_foreign_sell)}</div>
+    </section>`;
+  }
+
+  function signalsSection(signals = {}) {
+    const pct = (v, signed = false) => {
+      if (typeof v !== 'number' || !Number.isFinite(v)) return '—';
+      if (!signed) return `${(v * 100).toFixed(1)}%`;
+      const delta = Fmt.delta(v);
+      return `<span class="${delta.cls}"><span aria-hidden="true">${delta.arrow}</span> ${Fmt.pct(v * 100)}</span>`;
+    };
+    const columns = [
+      { key: 'name', label: '종목', render: (v, r) => `${Fmt.escHtml(v || r.symbol)}<div class="table-muted">${Fmt.escHtml(r.symbol)} · ${Fmt.escHtml(r.side)}</div>` },
+      { key: 'confidence', label: '신뢰도', render: v => pct(v) },
+      { key: 'metadata', label: '12M', render: m => pct(m?.ret_12m, true) },
+      { key: 'metadata', label: '1M', render: m => pct(m?.ret_1m, true) },
+      { key: 'metadata', label: '52주고가 비율', render: m => pct(m?.pct_of_52w_high) },
+      { key: 'reason', label: '전략 근거', render: v => Fmt.escHtml(v || '—') },
+    ];
+    const conditions = Object.entries(signals.rejections_by_condition || {}).filter(([, n]) => typeof n === 'number' && Number.isFinite(n) && n >= 0);
+    const maxRejected = Math.max(1, ...conditions.map(([, n]) => n));
+    const bars = conditions.map(([key, n]) => `<div class="rejection-row"><span>${Fmt.escHtml(key)} · ${Fmt.count(n)}건</span><svg class="rejection-bar" viewBox="0 0 100 8" aria-hidden="true"><rect width="${100 * n / maxRejected}" height="8"></rect></svg></div>`).join('');
+    return `<section id="kr-signals" aria-labelledby="kr-signals-title">
+      <h3 class="subhead" id="kr-signals-title">신호(GR-01)</h3>
+      <div class="signal-note"><strong>원신호 — 게이트 미적용</strong><div>진입 조건 관측이며 실제 주문 가능 여부와 다릅니다.</div></div>
+      <div class="section-meta">기준 ${Fmt.escHtml(signals.as_of || '—')} · ${signals.universe_basis === 'kospi200_membership' ? 'KOSPI200 구성 종목' : signals.universe_basis === 'canonical_symbols_fallback' ? '시세 보유 종목 기준' : '유니버스 없음'}</div>
+      <div class="grid grid-kpi section-spacing">
+        ${UI.stat({ label: '유니버스', value: Fmt.count(signals.universe_count ?? 0) })}
+        ${UI.stat({ label: '스크리닝 통과', value: Fmt.count(signals.screened_count ?? 0), sub: `스크리닝 탈락 ${Fmt.count(signals.screening_rejections ?? 0)}종목` })}
+        ${UI.stat({ label: '진입 신호', value: Fmt.count(signals.signal_count ?? 0), sub: `진입 검사 탈락 ${Fmt.count(signals.entry_rejections ?? 0)}종목` })}
+      </div>
+      ${UI.table(columns, signals.entries || [], '오늘 진입 신호 없음')}
+      ${bars ? `<div class="card card-tight section-spacing"><h3 class="subhead">공개 API 탈락 사유</h3>${bars}</div>` : ''}
+    </section>`;
+  }
+
   function render(entry) {
     const p = entry.payload;
 
@@ -144,9 +210,12 @@ const KrStockDomain = (() => {
 
     const body = p.status === 'no_data'
       ? UI.empty(p.status_reason || '아직 수집된 데이터가 없습니다',
-                 'collect 파이프라인 실행 후 표시됩니다')
+                 'collect 파이프라인 실행 후 표시됩니다') +
+        flowSection(p.data.flow) + signalsSection(p.data.signals)
       : `${kpis(p.data)}
          ${MarketSection.render(p.data.market)}
+         ${flowSection(p.data.flow)}
+         ${signalsSection(p.data.signals)}
          <div class="subhead">보유 포지션</div>
          ${positions(p.data)}
          <div class="subhead">운영 상태</div>

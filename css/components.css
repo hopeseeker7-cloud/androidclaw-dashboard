@@ -357,3 +357,17 @@
   .table th, .table td { padding: var(--sp-2); }
   .statusbar { padding: var(--sp-3); }
 }
+
+/* Investor flow and strategy observations; never envelope status overrides. */
+.section-spacing { margin-top: var(--sp-3); margin-bottom: var(--sp-3); }
+.signal-note {
+  margin: var(--sp-2) 0;
+  padding: var(--sp-3);
+  border-left: 3px solid var(--accent);
+  background: var(--surface-2);
+  color: var(--text-secondary);
+  font-size: var(--text-xs);
+}
+.rejection-row { display: flex; align-items: center; gap: var(--sp-3); margin-top: var(--sp-2); }
+.rejection-row > span { min-width: 6rem; font-size: var(--text-xs); }
+.rejection-bar { flex: 1; min-width: 0; max-width: 20rem; height: 8px; fill: var(--accent); }
