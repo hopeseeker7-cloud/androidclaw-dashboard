@@ -44,6 +44,13 @@
   white-space: nowrap;
 }
 
+.chip-warn {
+  color: var(--status-warn);
+  background: var(--status-warn-bg);
+  border-color: var(--status-warn);
+  white-space: normal;
+}
+
 /* ── Status strip: the one-line "where do we stand" bar ── */
 .statusbar {
   display: flex;

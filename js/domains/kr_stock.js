@@ -20,6 +20,12 @@ const KrStockDomain = (() => {
     const mode = MODE_LABEL[d.mode] || d.mode || 'paper';
     const market = MARKET_LABEL[d.snapshot?.market_status] || d.snapshot?.market_status || '—';
     const reason = p.status !== 'ok' && p.status_reason ? p.status_reason : '';
+    const generatedAt = typeof p.generated_at === 'string' ? Date.parse(p.generated_at) : NaN;
+    const fileIsOld = Number.isFinite(generatedAt) && Date.now() - generatedAt > 48 * 60 * 60 * 1000;
+    const refreshed = `갱신 ${Fmt.relative(p.generated_at)}`;
+    const fileAge = fileIsOld
+      ? `<span class="chip chip-warn"><span aria-hidden="true">⚠</span> ${refreshed} · 생산자 정지 의심</span>`
+      : refreshed;
 
     return `<div class="statusbar">
       <div class="statusbar-left">
@@ -29,7 +35,7 @@ const KrStockDomain = (() => {
       </div>
       <div class="statusbar-meta">
         기준 <span class="mono">${Fmt.dateTime(p.as_of)}</span>
-        · 갱신 ${Fmt.relative(p.generated_at)}
+        · ${fileAge}
       </div>
       ${reason ? `<div class="statusbar-reason">${Fmt.escHtml(reason)}</div>` : ''}
     </div>`;
